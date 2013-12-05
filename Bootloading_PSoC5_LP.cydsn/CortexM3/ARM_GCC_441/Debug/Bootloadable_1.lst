@@ -1,0 +1,838 @@
+ARM GAS  C:\Users\wbz\AppData\Local\Temp\ccFjaPJJ.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 18, 4
+  12              		.thumb
+  13              		.file	"Bootloadable_1.c"
+  14              		.section	.debug_abbrev,"",%progbits
+  15              	.Ldebug_abbrev0:
+  16              		.section	.debug_info,"",%progbits
+  17              	.Ldebug_info0:
+  18              		.section	.debug_line,"",%progbits
+  19              	.Ldebug_line0:
+  20 0000 98000000 		.text
+  20      02006700 
+  20      00000201 
+  20      FB0E0D00 
+  20      01010101 
+  21              	.Ltext0:
+  22              		.cfi_sections	.debug_frame
+  23              		.section	.text.Bootloadable_1_Load,"ax",%progbits
+  24              		.align	2
+  25              		.global	Bootloadable_1_Load
+  26              		.thumb
+  27              		.thumb_func
+  28              		.type	Bootloadable_1_Load, %function
+  29              	Bootloadable_1_Load:
+  30              	.LFB0:
+  31              		.file 1 ".\\Generated_Source\\PSoC5\\Bootloadable_1.c"
+   1:.\Generated_Source\PSoC5/Bootloadable_1.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC5/Bootloadable_1.c **** * File Name: Bootloadable_1.c
+   3:.\Generated_Source\PSoC5/Bootloadable_1.c **** * Version 1.10
+   4:.\Generated_Source\PSoC5/Bootloadable_1.c **** *
+   5:.\Generated_Source\PSoC5/Bootloadable_1.c **** *  Description:
+   6:.\Generated_Source\PSoC5/Bootloadable_1.c **** *   Provides an API for the Bootloadable application. The API includes a
+   7:.\Generated_Source\PSoC5/Bootloadable_1.c **** *   single function for starting bootloader.
+   8:.\Generated_Source\PSoC5/Bootloadable_1.c **** *
+   9:.\Generated_Source\PSoC5/Bootloadable_1.c **** ********************************************************************************
+  10:.\Generated_Source\PSoC5/Bootloadable_1.c **** * Copyright 2008-2013, Cypress Semiconductor Corporation.  All rights reserved.
+  11:.\Generated_Source\PSoC5/Bootloadable_1.c **** * You may use this file only in accordance with the license, terms, conditions,
+  12:.\Generated_Source\PSoC5/Bootloadable_1.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  13:.\Generated_Source\PSoC5/Bootloadable_1.c **** * the software package with which this file was provided.
+  14:.\Generated_Source\PSoC5/Bootloadable_1.c **** *******************************************************************************/
+  15:.\Generated_Source\PSoC5/Bootloadable_1.c **** 
+  16:.\Generated_Source\PSoC5/Bootloadable_1.c **** #include "Bootloadable_1.h"
+  17:.\Generated_Source\PSoC5/Bootloadable_1.c **** 
+  18:.\Generated_Source\PSoC5/Bootloadable_1.c **** 
+  19:.\Generated_Source\PSoC5/Bootloadable_1.c **** /*******************************************************************************
+  20:.\Generated_Source\PSoC5/Bootloadable_1.c **** * Function Name: Bootloadable_1_Load
+  21:.\Generated_Source\PSoC5/Bootloadable_1.c **** ********************************************************************************
+  22:.\Generated_Source\PSoC5/Bootloadable_1.c **** * Summary:
+ARM GAS  C:\Users\wbz\AppData\Local\Temp\ccFjaPJJ.s 			page 2
+
+
+  23:.\Generated_Source\PSoC5/Bootloadable_1.c **** *  Begins the bootloading algorithm, downloading a new ACD image from the host.
+  24:.\Generated_Source\PSoC5/Bootloadable_1.c **** *
+  25:.\Generated_Source\PSoC5/Bootloadable_1.c **** * Parameters:
+  26:.\Generated_Source\PSoC5/Bootloadable_1.c **** *  None
+  27:.\Generated_Source\PSoC5/Bootloadable_1.c **** *
+  28:.\Generated_Source\PSoC5/Bootloadable_1.c **** * Returns:
+  29:.\Generated_Source\PSoC5/Bootloadable_1.c **** *  This method will never return. It will load a new application and reset
+  30:.\Generated_Source\PSoC5/Bootloadable_1.c **** *  the device.
+  31:.\Generated_Source\PSoC5/Bootloadable_1.c **** *
+  32:.\Generated_Source\PSoC5/Bootloadable_1.c **** *******************************************************************************/
+  33:.\Generated_Source\PSoC5/Bootloadable_1.c **** void Bootloadable_1_Load(void) 
+  34:.\Generated_Source\PSoC5/Bootloadable_1.c **** {
+  32              		.loc 1 34 0
+  33              		.cfi_startproc
+  34              		@ args = 0, pretend = 0, frame = 0
+  35              		@ frame_needed = 1, uses_anonymous_args = 0
+  36              		@ link register save eliminated.
+  37 0000 80B4     		push	{r7}
+  38              	.LCFI0:
+  39              		.cfi_def_cfa_offset 4
+  40 0002 00AF     		add	r7, sp, #0
+  41              		.cfi_offset 7, -4
+  42              	.LCFI1:
+  43              		.cfi_def_cfa_register 7
+  35:.\Generated_Source\PSoC5/Bootloadable_1.c ****     /* Schedule Bootloader to start after reset */
+  36:.\Generated_Source\PSoC5/Bootloadable_1.c ****     Bootloadable_1_SET_RUN_TYPE(Bootloadable_1_START_BTLDR);
+  44              		.loc 1 36 0
+  45 0004 44F2FA63 		movw	r3, #:lower16:1073759994
+  46 0008 C4F20003 		movt	r3, #:upper16:1073759994
+  47 000c 4FF04002 		mov	r2, #64
+  48 0010 1A70     		strb	r2, [r3, #0]
+  37:.\Generated_Source\PSoC5/Bootloadable_1.c **** 
+  38:.\Generated_Source\PSoC5/Bootloadable_1.c ****     /* Reset device */
+  39:.\Generated_Source\PSoC5/Bootloadable_1.c ****     Bootloadable_1_SOFTWARE_RESET;
+  49              		.loc 1 39 0
+  50 0012 44F2F663 		movw	r3, #:lower16:1073759990
+  51 0016 C4F20003 		movt	r3, #:upper16:1073759990
+  52 001a 4FF00102 		mov	r2, #1
+  53 001e 1A70     		strb	r2, [r3, #0]
+  40:.\Generated_Source\PSoC5/Bootloadable_1.c **** }
+  54              		.loc 1 40 0
+  55 0020 BD46     		mov	sp, r7
+  56 0022 80BC     		pop	{r7}
+  57 0024 7047     		bx	lr
+  58              		.cfi_endproc
+  59              	.LFE0:
+  60              		.size	Bootloadable_1_Load, .-Bootloadable_1_Load
+  61 0026 00BF     		.section	.text.Bootloadable_1_SetFlashByte,"ax",%progbits
+  62              		.align	2
+  63              		.global	Bootloadable_1_SetFlashByte
+  64              		.thumb
+  65              		.thumb_func
+  66              		.type	Bootloadable_1_SetFlashByte, %function
+  67              	Bootloadable_1_SetFlashByte:
+  68              	.LFB1:
+  41:.\Generated_Source\PSoC5/Bootloadable_1.c **** 
+  42:.\Generated_Source\PSoC5/Bootloadable_1.c **** 
+ARM GAS  C:\Users\wbz\AppData\Local\Temp\ccFjaPJJ.s 			page 3
+
+
+  43:.\Generated_Source\PSoC5/Bootloadable_1.c **** /*******************************************************************************
+  44:.\Generated_Source\PSoC5/Bootloadable_1.c **** * Function Name: Bootloadable_1_SetFlashByte
+  45:.\Generated_Source\PSoC5/Bootloadable_1.c **** ********************************************************************************
+  46:.\Generated_Source\PSoC5/Bootloadable_1.c **** * Summary:
+  47:.\Generated_Source\PSoC5/Bootloadable_1.c **** *  Sets byte at specified address in Flash.
+  48:.\Generated_Source\PSoC5/Bootloadable_1.c **** *
+  49:.\Generated_Source\PSoC5/Bootloadable_1.c **** * Parameters:  
+  50:.\Generated_Source\PSoC5/Bootloadable_1.c **** *  None
+  51:.\Generated_Source\PSoC5/Bootloadable_1.c **** *
+  52:.\Generated_Source\PSoC5/Bootloadable_1.c **** * Returns:
+  53:.\Generated_Source\PSoC5/Bootloadable_1.c **** *  None
+  54:.\Generated_Source\PSoC5/Bootloadable_1.c **** *
+  55:.\Generated_Source\PSoC5/Bootloadable_1.c **** *******************************************************************************/
+  56:.\Generated_Source\PSoC5/Bootloadable_1.c **** void Bootloadable_1_SetFlashByte(uint32 address, uint8 runType) 
+  57:.\Generated_Source\PSoC5/Bootloadable_1.c **** {
+  69              		.loc 1 57 0
+  70              		.cfi_startproc
+  71              		@ args = 0, pretend = 0, frame = 280
+  72              		@ frame_needed = 1, uses_anonymous_args = 0
+  73 0000 80B5     		push	{r7, lr}
+  74              	.LCFI2:
+  75              		.cfi_def_cfa_offset 8
+  76 0002 C6B0     		sub	sp, sp, #280
+  77              	.LCFI3:
+  78              		.cfi_def_cfa_offset 288
+  79 0004 00AF     		add	r7, sp, #0
+  80              		.cfi_offset 14, -4
+  81              		.cfi_offset 7, -8
+  82              	.LCFI4:
+  83              		.cfi_def_cfa_register 7
+  84 0006 07F10403 		add	r3, r7, #4
+  85 000a 1860     		str	r0, [r3, #0]
+  86 000c 0A46     		mov	r2, r1
+  87 000e 07F10403 		add	r3, r7, #4
+  88 0012 03F1FF33 		add	r3, r3, #-1
+  89 0016 1A70     		strb	r2, [r3, #0]
+  58:.\Generated_Source\PSoC5/Bootloadable_1.c ****     uint32 flsAddr = address - CYDEV_FLASH_BASE;
+  90              		.loc 1 58 0
+  91 0018 07F10403 		add	r3, r7, #4
+  92 001c 1B68     		ldr	r3, [r3, #0]
+  93 001e C7F80831 		str	r3, [r7, #264]
+  59:.\Generated_Source\PSoC5/Bootloadable_1.c ****     uint8 rowData[CYDEV_FLS_ROW_SIZE];
+  60:.\Generated_Source\PSoC5/Bootloadable_1.c **** 
+  61:.\Generated_Source\PSoC5/Bootloadable_1.c ****     #if !(CY_PSOC4)
+  62:.\Generated_Source\PSoC5/Bootloadable_1.c ****         uint8 arrayId = (flsAddr / CYDEV_FLS_SECTOR_SIZE);
+  94              		.loc 1 62 0
+  95 0022 D7F80831 		ldr	r3, [r7, #264]
+  96 0026 4FEA1343 		lsr	r3, r3, #16
+  97 002a 87F80D31 		strb	r3, [r7, #269]
+  63:.\Generated_Source\PSoC5/Bootloadable_1.c ****     #endif  /* !(CY_PSOC4) */
+  64:.\Generated_Source\PSoC5/Bootloadable_1.c **** 
+  65:.\Generated_Source\PSoC5/Bootloadable_1.c ****     uint16 rowNum = ((flsAddr % CYDEV_FLS_SECTOR_SIZE) / CYDEV_FLS_ROW_SIZE);
+  98              		.loc 1 65 0
+  99 002e D7F80831 		ldr	r3, [r7, #264]
+ 100 0032 4FEA0343 		lsl	r3, r3, #16
+ 101 0036 4FEA1343 		lsr	r3, r3, #16
+ 102 003a 4FEA1323 		lsr	r3, r3, #8
+ARM GAS  C:\Users\wbz\AppData\Local\Temp\ccFjaPJJ.s 			page 4
+
+
+ 103 003e A7F80E31 		strh	r3, [r7, #270]	@ movhi
+  66:.\Generated_Source\PSoC5/Bootloadable_1.c ****     uint32 baseAddr = address - (address % CYDEV_FLS_ROW_SIZE);
+ 104              		.loc 1 66 0
+ 105 0042 07F10403 		add	r3, r7, #4
+ 106 0046 1B68     		ldr	r3, [r3, #0]
+ 107 0048 23F0FF03 		bic	r3, r3, #255
+ 108 004c C7F81031 		str	r3, [r7, #272]
+  67:.\Generated_Source\PSoC5/Bootloadable_1.c ****     uint16 idx;
+  68:.\Generated_Source\PSoC5/Bootloadable_1.c **** 
+  69:.\Generated_Source\PSoC5/Bootloadable_1.c **** 
+  70:.\Generated_Source\PSoC5/Bootloadable_1.c ****     for (idx = 0; idx < CYDEV_FLS_ROW_SIZE; idx++)
+ 109              		.loc 1 70 0
+ 110 0050 4FF00003 		mov	r3, #0
+ 111 0054 A7F81631 		strh	r3, [r7, #278]	@ movhi
+ 112 0058 10E0     		b	.L4
+ 113              	.L5:
+  71:.\Generated_Source\PSoC5/Bootloadable_1.c ****     {
+  72:.\Generated_Source\PSoC5/Bootloadable_1.c ****         rowData[idx] = Bootloadable_1_GET_CODE_DATA(baseAddr + idx);
+ 114              		.loc 1 72 0
+ 115 005a B7F81631 		ldrh	r3, [r7, #278]
+ 116 005e B7F81611 		ldrh	r1, [r7, #278]
+ 117 0062 D7F81021 		ldr	r2, [r7, #272]
+ 118 0066 0A44     		add	r2, r1, r2
+ 119 0068 1178     		ldrb	r1, [r2, #0]	@ zero_extendqisi2
+ 120 006a 07F10802 		add	r2, r7, #8
+ 121 006e D154     		strb	r1, [r2, r3]
+ 122              		.loc 1 70 0
+ 123 0070 B7F81631 		ldrh	r3, [r7, #278]	@ movhi
+ 124 0074 03F10103 		add	r3, r3, #1
+ 125 0078 A7F81631 		strh	r3, [r7, #278]	@ movhi
+ 126              	.L4:
+ 127 007c B7F81631 		ldrh	r3, [r7, #278]
+ 128 0080 FF2B     		cmp	r3, #255
+ 129 0082 EAD9     		bls	.L5
+  73:.\Generated_Source\PSoC5/Bootloadable_1.c ****     }
+  74:.\Generated_Source\PSoC5/Bootloadable_1.c ****     rowData[address % CYDEV_FLS_ROW_SIZE] = runType;
+ 130              		.loc 1 74 0
+ 131 0084 07F10403 		add	r3, r7, #4
+ 132 0088 1B68     		ldr	r3, [r3, #0]
+ 133 008a 03F0FF02 		and	r2, r3, #255
+ 134 008e 07F10801 		add	r1, r7, #8
+ 135 0092 07F10403 		add	r3, r7, #4
+ 136 0096 03F1FF33 		add	r3, r3, #-1
+ 137 009a 1B78     		ldrb	r3, [r3, #0]
+ 138 009c 8B54     		strb	r3, [r1, r2]
+  75:.\Generated_Source\PSoC5/Bootloadable_1.c **** 
+  76:.\Generated_Source\PSoC5/Bootloadable_1.c ****     #if(CY_PSOC4)
+  77:.\Generated_Source\PSoC5/Bootloadable_1.c ****         CySysFlashWriteRow(rowNum, rowData);
+  78:.\Generated_Source\PSoC5/Bootloadable_1.c ****     #else
+  79:.\Generated_Source\PSoC5/Bootloadable_1.c ****         CyWriteRowData(arrayId, rowNum, rowData);
+ 139              		.loc 1 79 0
+ 140 009e 97F80D11 		ldrb	r1, [r7, #269]	@ zero_extendqisi2
+ 141 00a2 B7F80E21 		ldrh	r2, [r7, #270]
+ 142 00a6 07F10803 		add	r3, r7, #8
+ 143 00aa 0846     		mov	r0, r1
+ 144 00ac 1146     		mov	r1, r2
+ 145 00ae 1A46     		mov	r2, r3
+ARM GAS  C:\Users\wbz\AppData\Local\Temp\ccFjaPJJ.s 			page 5
+
+
+ 146 00b0 FFF7FEFF 		bl	CyWriteRowData
+  80:.\Generated_Source\PSoC5/Bootloadable_1.c ****     #endif  /* (CY_PSOC4) */
+  81:.\Generated_Source\PSoC5/Bootloadable_1.c **** }
+ 147              		.loc 1 81 0
+ 148 00b4 07F58C77 		add	r7, r7, #280
+ 149 00b8 BD46     		mov	sp, r7
+ 150 00ba 80BD     		pop	{r7, pc}
+ 151              		.cfi_endproc
+ 152              	.LFE1:
+ 153              		.size	Bootloadable_1_SetFlashByte, .-Bootloadable_1_SetFlashByte
+ 154              		.text
+ 155              	.Letext0:
+ 156              		.section	.debug_loc,"",%progbits
+ 157              	.Ldebug_loc0:
+ 158              	.LLST0:
+ 159 0000 00000000 		.4byte	.LFB0
+ 160 0004 02000000 		.4byte	.LCFI0
+ 161 0008 0100     		.2byte	0x1
+ 162 000a 5D       		.byte	0x5d
+ 163 000b 02000000 		.4byte	.LCFI0
+ 164 000f 04000000 		.4byte	.LCFI1
+ 165 0013 0200     		.2byte	0x2
+ 166 0015 7D       		.byte	0x7d
+ 167 0016 04       		.sleb128 4
+ 168 0017 04000000 		.4byte	.LCFI1
+ 169 001b 26000000 		.4byte	.LFE0
+ 170 001f 0200     		.2byte	0x2
+ 171 0021 77       		.byte	0x77
+ 172 0022 04       		.sleb128 4
+ 173 0023 00000000 		.4byte	0x0
+ 174 0027 00000000 		.4byte	0x0
+ 175              	.LLST1:
+ 176 002b 00000000 		.4byte	.LFB1
+ 177 002f 02000000 		.4byte	.LCFI2
+ 178 0033 0100     		.2byte	0x1
+ 179 0035 5D       		.byte	0x5d
+ 180 0036 02000000 		.4byte	.LCFI2
+ 181 003a 04000000 		.4byte	.LCFI3
+ 182 003e 0200     		.2byte	0x2
+ 183 0040 7D       		.byte	0x7d
+ 184 0041 08       		.sleb128 8
+ 185 0042 04000000 		.4byte	.LCFI3
+ 186 0046 06000000 		.4byte	.LCFI4
+ 187 004a 0300     		.2byte	0x3
+ 188 004c 7D       		.byte	0x7d
+ 189 004d A002     		.sleb128 288
+ 190 004f 06000000 		.4byte	.LCFI4
+ 191 0053 BC000000 		.4byte	.LFE1
+ 192 0057 0300     		.2byte	0x3
+ 193 0059 77       		.byte	0x77
+ 194 005a A002     		.sleb128 288
+ 195 005c 00000000 		.4byte	0x0
+ 196 0060 00000000 		.4byte	0x0
+ 197              		.file 2 ".\\Generated_Source\\PSoC5\\/cytypes.h"
+ 198              		.section	.debug_info
+ 199 0000 53010000 		.4byte	0x153
+ 200 0004 0200     		.2byte	0x2
+ARM GAS  C:\Users\wbz\AppData\Local\Temp\ccFjaPJJ.s 			page 6
+
+
+ 201 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 202 000a 04       		.byte	0x4
+ 203 000b 01       		.uleb128 0x1
+ 204 000c 99000000 		.4byte	.LASF22
+ 205 0010 01       		.byte	0x1
+ 206 0011 7F010000 		.4byte	.LASF23
+ 207 0015 DE000000 		.4byte	.LASF24
+ 208 0019 00000000 		.4byte	0x0
+ 209 001d 00000000 		.4byte	0x0
+ 210 0021 00000000 		.4byte	.Ldebug_ranges0+0x0
+ 211 0025 00000000 		.4byte	.Ldebug_line0
+ 212 0029 02       		.uleb128 0x2
+ 213 002a 01       		.byte	0x1
+ 214 002b 06       		.byte	0x6
+ 215 002c 6D010000 		.4byte	.LASF0
+ 216 0030 02       		.uleb128 0x2
+ 217 0031 01       		.byte	0x1
+ 218 0032 08       		.byte	0x8
+ 219 0033 A5000000 		.4byte	.LASF1
+ 220 0037 02       		.uleb128 0x2
+ 221 0038 02       		.byte	0x2
+ 222 0039 05       		.byte	0x5
+ 223 003a C4000000 		.4byte	.LASF2
+ 224 003e 02       		.uleb128 0x2
+ 225 003f 02       		.byte	0x2
+ 226 0040 07       		.byte	0x7
+ 227 0041 5A010000 		.4byte	.LASF3
+ 228 0045 02       		.uleb128 0x2
+ 229 0046 04       		.byte	0x4
+ 230 0047 05       		.byte	0x5
+ 231 0048 BB000000 		.4byte	.LASF4
+ 232 004c 02       		.uleb128 0x2
+ 233 004d 04       		.byte	0x4
+ 234 004e 07       		.byte	0x7
+ 235 004f 60000000 		.4byte	.LASF5
+ 236 0053 02       		.uleb128 0x2
+ 237 0054 08       		.byte	0x8
+ 238 0055 05       		.byte	0x5
+ 239 0056 00000000 		.4byte	.LASF6
+ 240 005a 02       		.uleb128 0x2
+ 241 005b 08       		.byte	0x8
+ 242 005c 07       		.byte	0x7
+ 243 005d 72000000 		.4byte	.LASF7
+ 244 0061 03       		.uleb128 0x3
+ 245 0062 04       		.byte	0x4
+ 246 0063 05       		.byte	0x5
+ 247 0064 696E7400 		.ascii	"int\000"
+ 248 0068 02       		.uleb128 0x2
+ 249 0069 04       		.byte	0x4
+ 250 006a 07       		.byte	0x7
+ 251 006b 15000000 		.4byte	.LASF8
+ 252 006f 04       		.uleb128 0x4
+ 253 0070 5A000000 		.4byte	.LASF9
+ 254 0074 02       		.byte	0x2
+ 255 0075 4C       		.byte	0x4c
+ 256 0076 30000000 		.4byte	0x30
+ 257 007a 04       		.uleb128 0x4
+ARM GAS  C:\Users\wbz\AppData\Local\Temp\ccFjaPJJ.s 			page 7
+
+
+ 258 007b A9010000 		.4byte	.LASF10
+ 259 007f 02       		.byte	0x2
+ 260 0080 4D       		.byte	0x4d
+ 261 0081 3E000000 		.4byte	0x3e
+ 262 0085 04       		.uleb128 0x4
+ 263 0086 0E000000 		.4byte	.LASF11
+ 264 008a 02       		.byte	0x2
+ 265 008b 4E       		.byte	0x4e
+ 266 008c 4C000000 		.4byte	0x4c
+ 267 0090 02       		.uleb128 0x2
+ 268 0091 04       		.byte	0x4
+ 269 0092 04       		.byte	0x4
+ 270 0093 79010000 		.4byte	.LASF12
+ 271 0097 02       		.uleb128 0x2
+ 272 0098 08       		.byte	0x8
+ 273 0099 04       		.byte	0x4
+ 274 009a CE000000 		.4byte	.LASF13
+ 275 009e 02       		.uleb128 0x2
+ 276 009f 01       		.byte	0x1
+ 277 00a0 08       		.byte	0x8
+ 278 00a1 BF010000 		.4byte	.LASF14
+ 279 00a5 05       		.uleb128 0x5
+ 280 00a6 04       		.byte	0x4
+ 281 00a7 07       		.byte	0x7
+ 282 00a8 06       		.uleb128 0x6
+ 283 00a9 01       		.byte	0x1
+ 284 00aa 22000000 		.4byte	.LASF25
+ 285 00ae 01       		.byte	0x1
+ 286 00af 21       		.byte	0x21
+ 287 00b0 01       		.byte	0x1
+ 288 00b1 00000000 		.4byte	.LFB0
+ 289 00b5 26000000 		.4byte	.LFE0
+ 290 00b9 00000000 		.4byte	.LLST0
+ 291 00bd 07       		.uleb128 0x7
+ 292 00be 01       		.byte	0x1
+ 293 00bf 36000000 		.4byte	.LASF26
+ 294 00c3 01       		.byte	0x1
+ 295 00c4 38       		.byte	0x38
+ 296 00c5 01       		.byte	0x1
+ 297 00c6 00000000 		.4byte	.LFB1
+ 298 00ca BC000000 		.4byte	.LFE1
+ 299 00ce 2B000000 		.4byte	.LLST1
+ 300 00d2 4A010000 		.4byte	0x14a
+ 301 00d6 08       		.uleb128 0x8
+ 302 00d7 91000000 		.4byte	.LASF15
+ 303 00db 01       		.byte	0x1
+ 304 00dc 38       		.byte	0x38
+ 305 00dd 85000000 		.4byte	0x85
+ 306 00e1 03       		.byte	0x3
+ 307 00e2 91       		.byte	0x91
+ 308 00e3 E47D     		.sleb128 -284
+ 309 00e5 08       		.uleb128 0x8
+ 310 00e6 52000000 		.4byte	.LASF16
+ 311 00ea 01       		.byte	0x1
+ 312 00eb 38       		.byte	0x38
+ 313 00ec 6F000000 		.4byte	0x6f
+ 314 00f0 03       		.byte	0x3
+ARM GAS  C:\Users\wbz\AppData\Local\Temp\ccFjaPJJ.s 			page 8
+
+
+ 315 00f1 91       		.byte	0x91
+ 316 00f2 E37D     		.sleb128 -285
+ 317 00f4 09       		.uleb128 0x9
+ 318 00f5 B3000000 		.4byte	.LASF17
+ 319 00f9 01       		.byte	0x1
+ 320 00fa 3A       		.byte	0x3a
+ 321 00fb 85000000 		.4byte	0x85
+ 322 00ff 02       		.byte	0x2
+ 323 0100 91       		.byte	0x91
+ 324 0101 68       		.sleb128 -24
+ 325 0102 09       		.uleb128 0x9
+ 326 0103 B7010000 		.4byte	.LASF18
+ 327 0107 01       		.byte	0x1
+ 328 0108 3B       		.byte	0x3b
+ 329 0109 4A010000 		.4byte	0x14a
+ 330 010d 03       		.byte	0x3
+ 331 010e 91       		.byte	0x91
+ 332 010f E87D     		.sleb128 -280
+ 333 0111 09       		.uleb128 0x9
+ 334 0112 89000000 		.4byte	.LASF19
+ 335 0116 01       		.byte	0x1
+ 336 0117 3E       		.byte	0x3e
+ 337 0118 6F000000 		.4byte	0x6f
+ 338 011c 02       		.byte	0x2
+ 339 011d 91       		.byte	0x91
+ 340 011e 6D       		.sleb128 -19
+ 341 011f 09       		.uleb128 0x9
+ 342 0120 B0010000 		.4byte	.LASF20
+ 343 0124 01       		.byte	0x1
+ 344 0125 41       		.byte	0x41
+ 345 0126 7A000000 		.4byte	0x7a
+ 346 012a 02       		.byte	0x2
+ 347 012b 91       		.byte	0x91
+ 348 012c 6E       		.sleb128 -18
+ 349 012d 09       		.uleb128 0x9
+ 350 012e D5000000 		.4byte	.LASF21
+ 351 0132 01       		.byte	0x1
+ 352 0133 42       		.byte	0x42
+ 353 0134 85000000 		.4byte	0x85
+ 354 0138 02       		.byte	0x2
+ 355 0139 91       		.byte	0x91
+ 356 013a 70       		.sleb128 -16
+ 357 013b 0A       		.uleb128 0xa
+ 358 013c 69647800 		.ascii	"idx\000"
+ 359 0140 01       		.byte	0x1
+ 360 0141 43       		.byte	0x43
+ 361 0142 7A000000 		.4byte	0x7a
+ 362 0146 02       		.byte	0x2
+ 363 0147 91       		.byte	0x91
+ 364 0148 76       		.sleb128 -10
+ 365 0149 00       		.byte	0x0
+ 366 014a 0B       		.uleb128 0xb
+ 367 014b 6F000000 		.4byte	0x6f
+ 368 014f 0C       		.uleb128 0xc
+ 369 0150 A5000000 		.4byte	0xa5
+ 370 0154 FF       		.byte	0xff
+ 371 0155 00       		.byte	0x0
+ARM GAS  C:\Users\wbz\AppData\Local\Temp\ccFjaPJJ.s 			page 9
+
+
+ 372 0156 00       		.byte	0x0
+ 373              		.section	.debug_abbrev
+ 374 0000 01       		.uleb128 0x1
+ 375 0001 11       		.uleb128 0x11
+ 376 0002 01       		.byte	0x1
+ 377 0003 25       		.uleb128 0x25
+ 378 0004 0E       		.uleb128 0xe
+ 379 0005 13       		.uleb128 0x13
+ 380 0006 0B       		.uleb128 0xb
+ 381 0007 03       		.uleb128 0x3
+ 382 0008 0E       		.uleb128 0xe
+ 383 0009 1B       		.uleb128 0x1b
+ 384 000a 0E       		.uleb128 0xe
+ 385 000b 11       		.uleb128 0x11
+ 386 000c 01       		.uleb128 0x1
+ 387 000d 52       		.uleb128 0x52
+ 388 000e 01       		.uleb128 0x1
+ 389 000f 55       		.uleb128 0x55
+ 390 0010 06       		.uleb128 0x6
+ 391 0011 10       		.uleb128 0x10
+ 392 0012 06       		.uleb128 0x6
+ 393 0013 00       		.byte	0x0
+ 394 0014 00       		.byte	0x0
+ 395 0015 02       		.uleb128 0x2
+ 396 0016 24       		.uleb128 0x24
+ 397 0017 00       		.byte	0x0
+ 398 0018 0B       		.uleb128 0xb
+ 399 0019 0B       		.uleb128 0xb
+ 400 001a 3E       		.uleb128 0x3e
+ 401 001b 0B       		.uleb128 0xb
+ 402 001c 03       		.uleb128 0x3
+ 403 001d 0E       		.uleb128 0xe
+ 404 001e 00       		.byte	0x0
+ 405 001f 00       		.byte	0x0
+ 406 0020 03       		.uleb128 0x3
+ 407 0021 24       		.uleb128 0x24
+ 408 0022 00       		.byte	0x0
+ 409 0023 0B       		.uleb128 0xb
+ 410 0024 0B       		.uleb128 0xb
+ 411 0025 3E       		.uleb128 0x3e
+ 412 0026 0B       		.uleb128 0xb
+ 413 0027 03       		.uleb128 0x3
+ 414 0028 08       		.uleb128 0x8
+ 415 0029 00       		.byte	0x0
+ 416 002a 00       		.byte	0x0
+ 417 002b 04       		.uleb128 0x4
+ 418 002c 16       		.uleb128 0x16
+ 419 002d 00       		.byte	0x0
+ 420 002e 03       		.uleb128 0x3
+ 421 002f 0E       		.uleb128 0xe
+ 422 0030 3A       		.uleb128 0x3a
+ 423 0031 0B       		.uleb128 0xb
+ 424 0032 3B       		.uleb128 0x3b
+ 425 0033 0B       		.uleb128 0xb
+ 426 0034 49       		.uleb128 0x49
+ 427 0035 13       		.uleb128 0x13
+ 428 0036 00       		.byte	0x0
+ARM GAS  C:\Users\wbz\AppData\Local\Temp\ccFjaPJJ.s 			page 10
+
+
+ 429 0037 00       		.byte	0x0
+ 430 0038 05       		.uleb128 0x5
+ 431 0039 24       		.uleb128 0x24
+ 432 003a 00       		.byte	0x0
+ 433 003b 0B       		.uleb128 0xb
+ 434 003c 0B       		.uleb128 0xb
+ 435 003d 3E       		.uleb128 0x3e
+ 436 003e 0B       		.uleb128 0xb
+ 437 003f 00       		.byte	0x0
+ 438 0040 00       		.byte	0x0
+ 439 0041 06       		.uleb128 0x6
+ 440 0042 2E       		.uleb128 0x2e
+ 441 0043 00       		.byte	0x0
+ 442 0044 3F       		.uleb128 0x3f
+ 443 0045 0C       		.uleb128 0xc
+ 444 0046 03       		.uleb128 0x3
+ 445 0047 0E       		.uleb128 0xe
+ 446 0048 3A       		.uleb128 0x3a
+ 447 0049 0B       		.uleb128 0xb
+ 448 004a 3B       		.uleb128 0x3b
+ 449 004b 0B       		.uleb128 0xb
+ 450 004c 27       		.uleb128 0x27
+ 451 004d 0C       		.uleb128 0xc
+ 452 004e 11       		.uleb128 0x11
+ 453 004f 01       		.uleb128 0x1
+ 454 0050 12       		.uleb128 0x12
+ 455 0051 01       		.uleb128 0x1
+ 456 0052 40       		.uleb128 0x40
+ 457 0053 06       		.uleb128 0x6
+ 458 0054 00       		.byte	0x0
+ 459 0055 00       		.byte	0x0
+ 460 0056 07       		.uleb128 0x7
+ 461 0057 2E       		.uleb128 0x2e
+ 462 0058 01       		.byte	0x1
+ 463 0059 3F       		.uleb128 0x3f
+ 464 005a 0C       		.uleb128 0xc
+ 465 005b 03       		.uleb128 0x3
+ 466 005c 0E       		.uleb128 0xe
+ 467 005d 3A       		.uleb128 0x3a
+ 468 005e 0B       		.uleb128 0xb
+ 469 005f 3B       		.uleb128 0x3b
+ 470 0060 0B       		.uleb128 0xb
+ 471 0061 27       		.uleb128 0x27
+ 472 0062 0C       		.uleb128 0xc
+ 473 0063 11       		.uleb128 0x11
+ 474 0064 01       		.uleb128 0x1
+ 475 0065 12       		.uleb128 0x12
+ 476 0066 01       		.uleb128 0x1
+ 477 0067 40       		.uleb128 0x40
+ 478 0068 06       		.uleb128 0x6
+ 479 0069 01       		.uleb128 0x1
+ 480 006a 13       		.uleb128 0x13
+ 481 006b 00       		.byte	0x0
+ 482 006c 00       		.byte	0x0
+ 483 006d 08       		.uleb128 0x8
+ 484 006e 05       		.uleb128 0x5
+ 485 006f 00       		.byte	0x0
+ARM GAS  C:\Users\wbz\AppData\Local\Temp\ccFjaPJJ.s 			page 11
+
+
+ 486 0070 03       		.uleb128 0x3
+ 487 0071 0E       		.uleb128 0xe
+ 488 0072 3A       		.uleb128 0x3a
+ 489 0073 0B       		.uleb128 0xb
+ 490 0074 3B       		.uleb128 0x3b
+ 491 0075 0B       		.uleb128 0xb
+ 492 0076 49       		.uleb128 0x49
+ 493 0077 13       		.uleb128 0x13
+ 494 0078 02       		.uleb128 0x2
+ 495 0079 0A       		.uleb128 0xa
+ 496 007a 00       		.byte	0x0
+ 497 007b 00       		.byte	0x0
+ 498 007c 09       		.uleb128 0x9
+ 499 007d 34       		.uleb128 0x34
+ 500 007e 00       		.byte	0x0
+ 501 007f 03       		.uleb128 0x3
+ 502 0080 0E       		.uleb128 0xe
+ 503 0081 3A       		.uleb128 0x3a
+ 504 0082 0B       		.uleb128 0xb
+ 505 0083 3B       		.uleb128 0x3b
+ 506 0084 0B       		.uleb128 0xb
+ 507 0085 49       		.uleb128 0x49
+ 508 0086 13       		.uleb128 0x13
+ 509 0087 02       		.uleb128 0x2
+ 510 0088 0A       		.uleb128 0xa
+ 511 0089 00       		.byte	0x0
+ 512 008a 00       		.byte	0x0
+ 513 008b 0A       		.uleb128 0xa
+ 514 008c 34       		.uleb128 0x34
+ 515 008d 00       		.byte	0x0
+ 516 008e 03       		.uleb128 0x3
+ 517 008f 08       		.uleb128 0x8
+ 518 0090 3A       		.uleb128 0x3a
+ 519 0091 0B       		.uleb128 0xb
+ 520 0092 3B       		.uleb128 0x3b
+ 521 0093 0B       		.uleb128 0xb
+ 522 0094 49       		.uleb128 0x49
+ 523 0095 13       		.uleb128 0x13
+ 524 0096 02       		.uleb128 0x2
+ 525 0097 0A       		.uleb128 0xa
+ 526 0098 00       		.byte	0x0
+ 527 0099 00       		.byte	0x0
+ 528 009a 0B       		.uleb128 0xb
+ 529 009b 01       		.uleb128 0x1
+ 530 009c 01       		.byte	0x1
+ 531 009d 49       		.uleb128 0x49
+ 532 009e 13       		.uleb128 0x13
+ 533 009f 00       		.byte	0x0
+ 534 00a0 00       		.byte	0x0
+ 535 00a1 0C       		.uleb128 0xc
+ 536 00a2 21       		.uleb128 0x21
+ 537 00a3 00       		.byte	0x0
+ 538 00a4 49       		.uleb128 0x49
+ 539 00a5 13       		.uleb128 0x13
+ 540 00a6 2F       		.uleb128 0x2f
+ 541 00a7 0B       		.uleb128 0xb
+ 542 00a8 00       		.byte	0x0
+ARM GAS  C:\Users\wbz\AppData\Local\Temp\ccFjaPJJ.s 			page 12
+
+
+ 543 00a9 00       		.byte	0x0
+ 544 00aa 00       		.byte	0x0
+ 545              		.section	.debug_pubnames,"",%progbits
+ 546 0000 46000000 		.4byte	0x46
+ 547 0004 0200     		.2byte	0x2
+ 548 0006 00000000 		.4byte	.Ldebug_info0
+ 549 000a 57010000 		.4byte	0x157
+ 550 000e A8000000 		.4byte	0xa8
+ 551 0012 426F6F74 		.ascii	"Bootloadable_1_Load\000"
+ 551      6C6F6164 
+ 551      61626C65 
+ 551      5F315F4C 
+ 551      6F616400 
+ 552 0026 BD000000 		.4byte	0xbd
+ 553 002a 426F6F74 		.ascii	"Bootloadable_1_SetFlashByte\000"
+ 553      6C6F6164 
+ 553      61626C65 
+ 553      5F315F53 
+ 553      6574466C 
+ 554 0046 00000000 		.4byte	0x0
+ 555              		.section	.debug_aranges,"",%progbits
+ 556 0000 24000000 		.4byte	0x24
+ 557 0004 0200     		.2byte	0x2
+ 558 0006 00000000 		.4byte	.Ldebug_info0
+ 559 000a 04       		.byte	0x4
+ 560 000b 00       		.byte	0x0
+ 561 000c 0000     		.2byte	0x0
+ 562 000e 0000     		.2byte	0x0
+ 563 0010 00000000 		.4byte	.LFB0
+ 564 0014 26000000 		.4byte	.LFE0-.LFB0
+ 565 0018 00000000 		.4byte	.LFB1
+ 566 001c BC000000 		.4byte	.LFE1-.LFB1
+ 567 0020 00000000 		.4byte	0x0
+ 568 0024 00000000 		.4byte	0x0
+ 569              		.section	.debug_ranges,"",%progbits
+ 570              	.Ldebug_ranges0:
+ 571 0000 00000000 		.4byte	.Ltext0
+ 572 0004 00000000 		.4byte	.Letext0
+ 573 0008 00000000 		.4byte	.LFB0
+ 574 000c 26000000 		.4byte	.LFE0
+ 575 0010 00000000 		.4byte	.LFB1
+ 576 0014 BC000000 		.4byte	.LFE1
+ 577 0018 00000000 		.4byte	0x0
+ 578 001c 00000000 		.4byte	0x0
+ 579              		.section	.debug_str,"MS",%progbits,1
+ 580              	.LASF6:
+ 581 0000 6C6F6E67 		.ascii	"long long int\000"
+ 581      206C6F6E 
+ 581      6720696E 
+ 581      7400
+ 582              	.LASF11:
+ 583 000e 75696E74 		.ascii	"uint32\000"
+ 583      333200
+ 584              	.LASF8:
+ 585 0015 756E7369 		.ascii	"unsigned int\000"
+ 585      676E6564 
+ 585      20696E74 
+ARM GAS  C:\Users\wbz\AppData\Local\Temp\ccFjaPJJ.s 			page 13
+
+
+ 585      00
+ 586              	.LASF25:
+ 587 0022 426F6F74 		.ascii	"Bootloadable_1_Load\000"
+ 587      6C6F6164 
+ 587      61626C65 
+ 587      5F315F4C 
+ 587      6F616400 
+ 588              	.LASF26:
+ 589 0036 426F6F74 		.ascii	"Bootloadable_1_SetFlashByte\000"
+ 589      6C6F6164 
+ 589      61626C65 
+ 589      5F315F53 
+ 589      6574466C 
+ 590              	.LASF16:
+ 591 0052 72756E54 		.ascii	"runType\000"
+ 591      79706500 
+ 592              	.LASF9:
+ 593 005a 75696E74 		.ascii	"uint8\000"
+ 593      3800
+ 594              	.LASF5:
+ 595 0060 6C6F6E67 		.ascii	"long unsigned int\000"
+ 595      20756E73 
+ 595      69676E65 
+ 595      6420696E 
+ 595      7400
+ 596              	.LASF7:
+ 597 0072 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 597      206C6F6E 
+ 597      6720756E 
+ 597      7369676E 
+ 597      65642069 
+ 598              	.LASF19:
+ 599 0089 61727261 		.ascii	"arrayId\000"
+ 599      79496400 
+ 600              	.LASF15:
+ 601 0091 61646472 		.ascii	"address\000"
+ 601      65737300 
+ 602              	.LASF22:
+ 603 0099 474E5520 		.ascii	"GNU C 4.4.1\000"
+ 603      4320342E 
+ 603      342E3100 
+ 604              	.LASF1:
+ 605 00a5 756E7369 		.ascii	"unsigned char\000"
+ 605      676E6564 
+ 605      20636861 
+ 605      7200
+ 606              	.LASF17:
+ 607 00b3 666C7341 		.ascii	"flsAddr\000"
+ 607      64647200 
+ 608              	.LASF4:
+ 609 00bb 6C6F6E67 		.ascii	"long int\000"
+ 609      20696E74 
+ 609      00
+ 610              	.LASF2:
+ 611 00c4 73686F72 		.ascii	"short int\000"
+ 611      7420696E 
+ 611      7400
+ARM GAS  C:\Users\wbz\AppData\Local\Temp\ccFjaPJJ.s 			page 14
+
+
+ 612              	.LASF13:
+ 613 00ce 646F7562 		.ascii	"double\000"
+ 613      6C6500
+ 614              	.LASF21:
+ 615 00d5 62617365 		.ascii	"baseAddr\000"
+ 615      41646472 
+ 615      00
+ 616              	.LASF24:
+ 617 00de 433A5C55 		.ascii	"C:\\Users\\wbz\\Desktop\\Element14 Posts\\036 - Boo"
+ 617      73657273 
+ 617      5C77627A 
+ 617      5C446573 
+ 617      6B746F70 
+ 618 010c 74696E67 		.ascii	"ting the PSoC 5LP Device - NS\\Bootloading_PSoC5_LP"
+ 618      20746865 
+ 618      2050536F 
+ 618      4320354C 
+ 618      50204465 
+ 619 013e 5C426F6F 		.ascii	"\\Bootloading_PSoC5_LP.cydsn\000"
+ 619      746C6F61 
+ 619      64696E67 
+ 619      5F50536F 
+ 619      43355F4C 
+ 620              	.LASF3:
+ 621 015a 73686F72 		.ascii	"short unsigned int\000"
+ 621      7420756E 
+ 621      7369676E 
+ 621      65642069 
+ 621      6E7400
+ 622              	.LASF0:
+ 623 016d 7369676E 		.ascii	"signed char\000"
+ 623      65642063 
+ 623      68617200 
+ 624              	.LASF12:
+ 625 0179 666C6F61 		.ascii	"float\000"
+ 625      7400
+ 626              	.LASF23:
+ 627 017f 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\Bootloadable_1.c\000"
+ 627      6E657261 
+ 627      7465645F 
+ 627      536F7572 
+ 627      63655C50 
+ 628              	.LASF10:
+ 629 01a9 75696E74 		.ascii	"uint16\000"
+ 629      313600
+ 630              	.LASF20:
+ 631 01b0 726F774E 		.ascii	"rowNum\000"
+ 631      756D00
+ 632              	.LASF18:
+ 633 01b7 726F7744 		.ascii	"rowData\000"
+ 633      61746100 
+ 634              	.LASF14:
+ 635 01bf 63686172 		.ascii	"char\000"
+ 635      00
+ 636              		.ident	"GCC: (Sourcery G++ Lite 2010q1-188) 4.4.1"

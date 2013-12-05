@@ -1,0 +1,879 @@
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cckfuqHT.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"FS_X_OS.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.FS_OS_Lock,"ax",%progbits
+  19              		.align	2
+  20              		.global	FS_OS_Lock
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	FS_OS_Lock, %function
+  24              	FS_OS_Lock:
+  25              	.LFB0:
+  26              		.file 1 ".\\FS_X_OS.c"
+   1:.\FS_X_OS.c   **** /*********************************************************************
+   2:.\FS_X_OS.c   **** *                SEGGER MICROCONTROLLER GmbH & Co. KG                *
+   3:.\FS_X_OS.c   **** *        Solutions for real time microcontroller applications        *
+   4:.\FS_X_OS.c   **** **********************************************************************
+   5:.\FS_X_OS.c   **** *                                                                    *
+   6:.\FS_X_OS.c   **** *        (c) 2003-2010     SEGGER Microcontroller GmbH & Co KG       *
+   7:.\FS_X_OS.c   **** *                                                                    *
+   8:.\FS_X_OS.c   **** *        Internet: www.segger.com    Support:  support@segger.com    *
+   9:.\FS_X_OS.c   **** *                                                                    *
+  10:.\FS_X_OS.c   **** **********************************************************************
+  11:.\FS_X_OS.c   **** 
+  12:.\FS_X_OS.c   **** **** emFile file system for embedded applications ****
+  13:.\FS_X_OS.c   **** emFile is protected by international copyright laws. Knowledge of the
+  14:.\FS_X_OS.c   **** source code may not be used to write a similar product. This file may
+  15:.\FS_X_OS.c   **** only be used in accordance with a license and should not be re-
+  16:.\FS_X_OS.c   **** distributed in any way. We appreciate your understanding and fairness.
+  17:.\FS_X_OS.c   **** ----------------------------------------------------------------------
+  18:.\FS_X_OS.c   **** ----------------------------------------------------------------------
+  19:.\FS_X_OS.c   **** File        : FS_X_OS.c
+  20:.\FS_X_OS.c   **** Purpose     : General template OS Layer for the file system
+  21:.\FS_X_OS.c   **** ---------------------------END-OF-HEADER------------------------------
+  22:.\FS_X_OS.c   **** */
+  23:.\FS_X_OS.c   **** 
+  24:.\FS_X_OS.c   **** /*********************************************************************
+  25:.\FS_X_OS.c   **** *
+  26:.\FS_X_OS.c   **** *             #include Section
+  27:.\FS_X_OS.c   **** *
+  28:.\FS_X_OS.c   **** **********************************************************************
+  29:.\FS_X_OS.c   **** */
+  30:.\FS_X_OS.c   **** 
+  31:.\FS_X_OS.c   **** #include "FS_Int.h"
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cckfuqHT.s 			page 2
+
+
+  32:.\FS_X_OS.c   **** #include "FS_OS.h"
+  33:.\FS_X_OS.c   **** #include "FS_Conf.h"
+  34:.\FS_X_OS.c   **** 
+  35:.\FS_X_OS.c   **** 
+  36:.\FS_X_OS.c   **** /*********************************************************************
+  37:.\FS_X_OS.c   **** *
+  38:.\FS_X_OS.c   **** *       Static data
+  39:.\FS_X_OS.c   **** *
+  40:.\FS_X_OS.c   **** **********************************************************************
+  41:.\FS_X_OS.c   **** */
+  42:.\FS_X_OS.c   **** 
+  43:.\FS_X_OS.c   **** 
+  44:.\FS_X_OS.c   **** /*********************************************************************
+  45:.\FS_X_OS.c   **** *
+  46:.\FS_X_OS.c   **** *       Public code
+  47:.\FS_X_OS.c   **** *
+  48:.\FS_X_OS.c   **** **********************************************************************
+  49:.\FS_X_OS.c   **** */
+  50:.\FS_X_OS.c   **** 
+  51:.\FS_X_OS.c   **** 
+  52:.\FS_X_OS.c   **** /*********************************************************************
+  53:.\FS_X_OS.c   **** *
+  54:.\FS_X_OS.c   **** *         FS_X_OS_Lock
+  55:.\FS_X_OS.c   **** *
+  56:.\FS_X_OS.c   **** *  Description:
+  57:.\FS_X_OS.c   **** *    Locks FS_Sema[LockIndex] semaphore.
+  58:.\FS_X_OS.c   **** *
+  59:.\FS_X_OS.c   **** */
+  60:.\FS_X_OS.c   **** void FS_OS_Lock(unsigned LockIndex) {
+  27              		.loc 1 60 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 8
+  30              		@ frame_needed = 1, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+  32 0000 80B4     		push	{r7}
+  33              	.LCFI0:
+  34              		.cfi_def_cfa_offset 4
+  35              		.cfi_offset 7, -4
+  36 0002 83B0     		sub	sp, sp, #12
+  37              	.LCFI1:
+  38              		.cfi_def_cfa_offset 16
+  39 0004 00AF     		add	r7, sp, #0
+  40              	.LCFI2:
+  41              		.cfi_def_cfa_register 7
+  42 0006 7860     		str	r0, [r7, #4]
+  61:.\FS_X_OS.c   **** 	FS_USE_PARA(LockIndex);
+  62:.\FS_X_OS.c   **** }
+  43              		.loc 1 62 0
+  44 0008 07F10C07 		add	r7, r7, #12
+  45 000c BD46     		mov	sp, r7
+  46 000e 80BC     		pop	{r7}
+  47 0010 7047     		bx	lr
+  48              		.cfi_endproc
+  49              	.LFE0:
+  50              		.size	FS_OS_Lock, .-FS_OS_Lock
+  51 0012 00BF     		.section	.text.FS_OS_Unlock,"ax",%progbits
+  52              		.align	2
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cckfuqHT.s 			page 3
+
+
+  53              		.global	FS_OS_Unlock
+  54              		.thumb
+  55              		.thumb_func
+  56              		.type	FS_OS_Unlock, %function
+  57              	FS_OS_Unlock:
+  58              	.LFB1:
+  63:.\FS_X_OS.c   **** 
+  64:.\FS_X_OS.c   **** 
+  65:.\FS_X_OS.c   **** /*********************************************************************
+  66:.\FS_X_OS.c   **** *
+  67:.\FS_X_OS.c   **** *       FS_X_OS_Unlock
+  68:.\FS_X_OS.c   **** *
+  69:.\FS_X_OS.c   **** *  Description:
+  70:.\FS_X_OS.c   **** *    Unlocks FS_Sema[LockIndex] semaphore.
+  71:.\FS_X_OS.c   **** *
+  72:.\FS_X_OS.c   **** */
+  73:.\FS_X_OS.c   **** void FS_OS_Unlock(unsigned LockIndex) {
+  59              		.loc 1 73 0
+  60              		.cfi_startproc
+  61              		@ args = 0, pretend = 0, frame = 8
+  62              		@ frame_needed = 1, uses_anonymous_args = 0
+  63              		@ link register save eliminated.
+  64 0000 80B4     		push	{r7}
+  65              	.LCFI3:
+  66              		.cfi_def_cfa_offset 4
+  67              		.cfi_offset 7, -4
+  68 0002 83B0     		sub	sp, sp, #12
+  69              	.LCFI4:
+  70              		.cfi_def_cfa_offset 16
+  71 0004 00AF     		add	r7, sp, #0
+  72              	.LCFI5:
+  73              		.cfi_def_cfa_register 7
+  74 0006 7860     		str	r0, [r7, #4]
+  74:.\FS_X_OS.c   **** 	FS_USE_PARA(LockIndex);
+  75:.\FS_X_OS.c   **** }
+  75              		.loc 1 75 0
+  76 0008 07F10C07 		add	r7, r7, #12
+  77 000c BD46     		mov	sp, r7
+  78 000e 80BC     		pop	{r7}
+  79 0010 7047     		bx	lr
+  80              		.cfi_endproc
+  81              	.LFE1:
+  82              		.size	FS_OS_Unlock, .-FS_OS_Unlock
+  83 0012 00BF     		.section	.text.FS_OS_Init,"ax",%progbits
+  84              		.align	2
+  85              		.global	FS_OS_Init
+  86              		.thumb
+  87              		.thumb_func
+  88              		.type	FS_OS_Init, %function
+  89              	FS_OS_Init:
+  90              	.LFB2:
+  76:.\FS_X_OS.c   **** 
+  77:.\FS_X_OS.c   **** /*********************************************************************
+  78:.\FS_X_OS.c   **** *
+  79:.\FS_X_OS.c   **** *             FS_X_OS_init
+  80:.\FS_X_OS.c   **** *
+  81:.\FS_X_OS.c   **** *  Description:
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cckfuqHT.s 			page 4
+
+
+  82:.\FS_X_OS.c   **** *    Initializes the OS resources.
+  83:.\FS_X_OS.c   **** *
+  84:.\FS_X_OS.c   **** *  Parameters:
+  85:.\FS_X_OS.c   **** *    None.
+  86:.\FS_X_OS.c   **** *
+  87:.\FS_X_OS.c   **** *  Return value:
+  88:.\FS_X_OS.c   **** *    0    - on success
+  89:.\FS_X_OS.c   **** *    -1   - on failure.
+  90:.\FS_X_OS.c   **** */
+  91:.\FS_X_OS.c   **** void FS_OS_Init(unsigned MaxNumLocks) {
+  91              		.loc 1 91 0
+  92              		.cfi_startproc
+  93              		@ args = 0, pretend = 0, frame = 16
+  94              		@ frame_needed = 1, uses_anonymous_args = 0
+  95              		@ link register save eliminated.
+  96 0000 80B4     		push	{r7}
+  97              	.LCFI6:
+  98              		.cfi_def_cfa_offset 4
+  99              		.cfi_offset 7, -4
+ 100 0002 85B0     		sub	sp, sp, #20
+ 101              	.LCFI7:
+ 102              		.cfi_def_cfa_offset 24
+ 103 0004 00AF     		add	r7, sp, #0
+ 104              	.LCFI8:
+ 105              		.cfi_def_cfa_register 7
+ 106 0006 7860     		str	r0, [r7, #4]
+  92:.\FS_X_OS.c   ****   unsigned i;
+  93:.\FS_X_OS.c   **** 
+  94:.\FS_X_OS.c   ****   for (i = 0; i < MaxNumLocks; i++) {
+ 107              		.loc 1 94 0
+ 108 0008 4FF00003 		mov	r3, #0
+ 109 000c FB60     		str	r3, [r7, #12]
+ 110 000e 03E0     		b	.L4
+ 111              	.L5:
+ 112              		.loc 1 94 0 is_stmt 0 discriminator 2
+ 113 0010 FB68     		ldr	r3, [r7, #12]
+ 114 0012 03F10103 		add	r3, r3, #1
+ 115 0016 FB60     		str	r3, [r7, #12]
+ 116              	.L4:
+ 117              		.loc 1 94 0 discriminator 1
+ 118 0018 FA68     		ldr	r2, [r7, #12]
+ 119 001a 7B68     		ldr	r3, [r7, #4]
+ 120 001c 9A42     		cmp	r2, r3
+ 121 001e F7D3     		bcc	.L5
+  95:.\FS_X_OS.c   ****   }
+  96:.\FS_X_OS.c   **** }
+ 122              		.loc 1 96 0 is_stmt 1
+ 123 0020 07F11407 		add	r7, r7, #20
+ 124 0024 BD46     		mov	sp, r7
+ 125 0026 80BC     		pop	{r7}
+ 126 0028 7047     		bx	lr
+ 127              		.cfi_endproc
+ 128              	.LFE2:
+ 129              		.size	FS_OS_Init, .-FS_OS_Init
+ 130 002a 00BF     		.section	.text.FS_OS_DeInit,"ax",%progbits
+ 131              		.align	2
+ 132              		.global	FS_OS_DeInit
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cckfuqHT.s 			page 5
+
+
+ 133              		.thumb
+ 134              		.thumb_func
+ 135              		.type	FS_OS_DeInit, %function
+ 136              	FS_OS_DeInit:
+ 137              	.LFB3:
+  97:.\FS_X_OS.c   **** 
+  98:.\FS_X_OS.c   **** /*********************************************************************
+  99:.\FS_X_OS.c   **** *
+ 100:.\FS_X_OS.c   **** *       FS_X_OS_DeInit
+ 101:.\FS_X_OS.c   **** *
+ 102:.\FS_X_OS.c   **** *  Description:
+ 103:.\FS_X_OS.c   **** *    Delete all locks that have been created by FS_X_OS_Init().
+ 104:.\FS_X_OS.c   **** *    This makes sure that a
+ 105:.\FS_X_OS.c   **** *
+ 106:.\FS_X_OS.c   **** *  Parameters:
+ 107:.\FS_X_OS.c   **** *    None.
+ 108:.\FS_X_OS.c   **** *
+ 109:.\FS_X_OS.c   **** */
+ 110:.\FS_X_OS.c   **** void FS_OS_DeInit(void) {
+ 138              		.loc 1 110 0
+ 139              		.cfi_startproc
+ 140              		@ args = 0, pretend = 0, frame = 8
+ 141              		@ frame_needed = 1, uses_anonymous_args = 0
+ 142              		@ link register save eliminated.
+ 143 0000 80B4     		push	{r7}
+ 144              	.LCFI9:
+ 145              		.cfi_def_cfa_offset 4
+ 146              		.cfi_offset 7, -4
+ 147 0002 83B0     		sub	sp, sp, #12
+ 148              	.LCFI10:
+ 149              		.cfi_def_cfa_offset 16
+ 150 0004 00AF     		add	r7, sp, #0
+ 151              	.LCFI11:
+ 152              		.cfi_def_cfa_register 7
+ 111:.\FS_X_OS.c   ****   unsigned i;
+ 112:.\FS_X_OS.c   ****   unsigned    NumLocks = 0;
+ 153              		.loc 1 112 0
+ 154 0006 4FF00003 		mov	r3, #0
+ 155 000a 3B60     		str	r3, [r7, #0]
+ 113:.\FS_X_OS.c   **** 
+ 114:.\FS_X_OS.c   ****   for (i = 0; i < NumLocks; i++) {
+ 156              		.loc 1 114 0
+ 157 000c 4FF00003 		mov	r3, #0
+ 158 0010 7B60     		str	r3, [r7, #4]
+ 159 0012 03E0     		b	.L7
+ 160              	.L8:
+ 161              		.loc 1 114 0 is_stmt 0 discriminator 2
+ 162 0014 7B68     		ldr	r3, [r7, #4]
+ 163 0016 03F10103 		add	r3, r3, #1
+ 164 001a 7B60     		str	r3, [r7, #4]
+ 165              	.L7:
+ 166              		.loc 1 114 0 discriminator 1
+ 167 001c 7A68     		ldr	r2, [r7, #4]
+ 168 001e 3B68     		ldr	r3, [r7, #0]
+ 169 0020 9A42     		cmp	r2, r3
+ 170 0022 F7D3     		bcc	.L8
+ 115:.\FS_X_OS.c   ****   }
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cckfuqHT.s 			page 6
+
+
+ 116:.\FS_X_OS.c   **** }
+ 171              		.loc 1 116 0 is_stmt 1
+ 172 0024 07F10C07 		add	r7, r7, #12
+ 173 0028 BD46     		mov	sp, r7
+ 174 002a 80BC     		pop	{r7}
+ 175 002c 7047     		bx	lr
+ 176              		.cfi_endproc
+ 177              	.LFE3:
+ 178              		.size	FS_OS_DeInit, .-FS_OS_DeInit
+ 179 002e 00BF     		.text
+ 180              	.Letext0:
+ 181              		.section	.debug_info,"",%progbits
+ 182              	.Ldebug_info0:
+ 183 0000 32010000 		.4byte	0x132
+ 184 0004 0200     		.2byte	0x2
+ 185 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 186 000a 04       		.byte	0x4
+ 187 000b 01       		.uleb128 0x1
+ 188 000c 28000000 		.4byte	.LASF17
+ 189 0010 01       		.byte	0x1
+ 190 0011 9C000000 		.4byte	.LASF18
+ 191 0015 EF000000 		.4byte	.LASF19
+ 192 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 193 001d 00000000 		.4byte	0
+ 194 0021 00000000 		.4byte	0
+ 195 0025 00000000 		.4byte	.Ldebug_line0
+ 196 0029 02       		.uleb128 0x2
+ 197 002a 01       		.byte	0x1
+ 198 002b 06       		.byte	0x6
+ 199 002c 43010000 		.4byte	.LASF0
+ 200 0030 02       		.uleb128 0x2
+ 201 0031 01       		.byte	0x1
+ 202 0032 08       		.byte	0x8
+ 203 0033 A8000000 		.4byte	.LASF1
+ 204 0037 02       		.uleb128 0x2
+ 205 0038 02       		.byte	0x2
+ 206 0039 05       		.byte	0x5
+ 207 003a 64010000 		.4byte	.LASF2
+ 208 003e 02       		.uleb128 0x2
+ 209 003f 02       		.byte	0x2
+ 210 0040 07       		.byte	0x7
+ 211 0041 30010000 		.4byte	.LASF3
+ 212 0045 03       		.uleb128 0x3
+ 213 0046 04       		.byte	0x4
+ 214 0047 05       		.byte	0x5
+ 215 0048 696E7400 		.ascii	"int\000"
+ 216 004c 02       		.uleb128 0x2
+ 217 004d 04       		.byte	0x4
+ 218 004e 07       		.byte	0x7
+ 219 004f 1B000000 		.4byte	.LASF4
+ 220 0053 02       		.uleb128 0x2
+ 221 0054 08       		.byte	0x8
+ 222 0055 05       		.byte	0x5
+ 223 0056 00000000 		.4byte	.LASF5
+ 224 005a 02       		.uleb128 0x2
+ 225 005b 08       		.byte	0x8
+ 226 005c 07       		.byte	0x7
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cckfuqHT.s 			page 7
+
+
+ 227 005d 85000000 		.4byte	.LASF6
+ 228 0061 02       		.uleb128 0x2
+ 229 0062 04       		.byte	0x4
+ 230 0063 05       		.byte	0x5
+ 231 0064 BB000000 		.4byte	.LASF7
+ 232 0068 02       		.uleb128 0x2
+ 233 0069 04       		.byte	0x4
+ 234 006a 07       		.byte	0x7
+ 235 006b 6E010000 		.4byte	.LASF8
+ 236 006f 02       		.uleb128 0x2
+ 237 0070 04       		.byte	0x4
+ 238 0071 07       		.byte	0x7
+ 239 0072 C4000000 		.4byte	.LASF9
+ 240 0076 02       		.uleb128 0x2
+ 241 0077 01       		.byte	0x1
+ 242 0078 08       		.byte	0x8
+ 243 0079 B6000000 		.4byte	.LASF10
+ 244 007d 04       		.uleb128 0x4
+ 245 007e 01       		.byte	0x1
+ 246 007f 4F010000 		.4byte	.LASF11
+ 247 0083 01       		.byte	0x1
+ 248 0084 3C       		.byte	0x3c
+ 249 0085 01       		.byte	0x1
+ 250 0086 00000000 		.4byte	.LFB0
+ 251 008a 12000000 		.4byte	.LFE0
+ 252 008e 00000000 		.4byte	.LLST0
+ 253 0092 01       		.byte	0x1
+ 254 0093 A6000000 		.4byte	0xa6
+ 255 0097 05       		.uleb128 0x5
+ 256 0098 5A010000 		.4byte	.LASF13
+ 257 009c 01       		.byte	0x1
+ 258 009d 3C       		.byte	0x3c
+ 259 009e 4C000000 		.4byte	0x4c
+ 260 00a2 02       		.byte	0x2
+ 261 00a3 91       		.byte	0x91
+ 262 00a4 74       		.sleb128 -12
+ 263 00a5 00       		.byte	0
+ 264 00a6 04       		.uleb128 0x4
+ 265 00a7 01       		.byte	0x1
+ 266 00a8 0E000000 		.4byte	.LASF12
+ 267 00ac 01       		.byte	0x1
+ 268 00ad 49       		.byte	0x49
+ 269 00ae 01       		.byte	0x1
+ 270 00af 00000000 		.4byte	.LFB1
+ 271 00b3 12000000 		.4byte	.LFE1
+ 272 00b7 38000000 		.4byte	.LLST1
+ 273 00bb 01       		.byte	0x1
+ 274 00bc CF000000 		.4byte	0xcf
+ 275 00c0 05       		.uleb128 0x5
+ 276 00c1 5A010000 		.4byte	.LASF13
+ 277 00c5 01       		.byte	0x1
+ 278 00c6 49       		.byte	0x49
+ 279 00c7 4C000000 		.4byte	0x4c
+ 280 00cb 02       		.byte	0x2
+ 281 00cc 91       		.byte	0x91
+ 282 00cd 74       		.sleb128 -12
+ 283 00ce 00       		.byte	0
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cckfuqHT.s 			page 8
+
+
+ 284 00cf 04       		.uleb128 0x4
+ 285 00d0 01       		.byte	0x1
+ 286 00d1 7A000000 		.4byte	.LASF14
+ 287 00d5 01       		.byte	0x1
+ 288 00d6 5B       		.byte	0x5b
+ 289 00d7 01       		.byte	0x1
+ 290 00d8 00000000 		.4byte	.LFB2
+ 291 00dc 2A000000 		.4byte	.LFE2
+ 292 00e0 70000000 		.4byte	.LLST2
+ 293 00e4 01       		.byte	0x1
+ 294 00e5 04010000 		.4byte	0x104
+ 295 00e9 05       		.uleb128 0x5
+ 296 00ea E3000000 		.4byte	.LASF15
+ 297 00ee 01       		.byte	0x1
+ 298 00ef 5B       		.byte	0x5b
+ 299 00f0 4C000000 		.4byte	0x4c
+ 300 00f4 02       		.byte	0x2
+ 301 00f5 91       		.byte	0x91
+ 302 00f6 6C       		.sleb128 -20
+ 303 00f7 06       		.uleb128 0x6
+ 304 00f8 6900     		.ascii	"i\000"
+ 305 00fa 01       		.byte	0x1
+ 306 00fb 5C       		.byte	0x5c
+ 307 00fc 4C000000 		.4byte	0x4c
+ 308 0100 02       		.byte	0x2
+ 309 0101 91       		.byte	0x91
+ 310 0102 74       		.sleb128 -12
+ 311 0103 00       		.byte	0
+ 312 0104 07       		.uleb128 0x7
+ 313 0105 01       		.byte	0x1
+ 314 0106 D6000000 		.4byte	.LASF20
+ 315 010a 01       		.byte	0x1
+ 316 010b 6E       		.byte	0x6e
+ 317 010c 01       		.byte	0x1
+ 318 010d 00000000 		.4byte	.LFB3
+ 319 0111 2E000000 		.4byte	.LFE3
+ 320 0115 A8000000 		.4byte	.LLST3
+ 321 0119 01       		.byte	0x1
+ 322 011a 06       		.uleb128 0x6
+ 323 011b 6900     		.ascii	"i\000"
+ 324 011d 01       		.byte	0x1
+ 325 011e 6F       		.byte	0x6f
+ 326 011f 4C000000 		.4byte	0x4c
+ 327 0123 02       		.byte	0x2
+ 328 0124 91       		.byte	0x91
+ 329 0125 74       		.sleb128 -12
+ 330 0126 08       		.uleb128 0x8
+ 331 0127 71000000 		.4byte	.LASF16
+ 332 012b 01       		.byte	0x1
+ 333 012c 70       		.byte	0x70
+ 334 012d 4C000000 		.4byte	0x4c
+ 335 0131 02       		.byte	0x2
+ 336 0132 91       		.byte	0x91
+ 337 0133 70       		.sleb128 -16
+ 338 0134 00       		.byte	0
+ 339 0135 00       		.byte	0
+ 340              		.section	.debug_abbrev,"",%progbits
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cckfuqHT.s 			page 9
+
+
+ 341              	.Ldebug_abbrev0:
+ 342 0000 01       		.uleb128 0x1
+ 343 0001 11       		.uleb128 0x11
+ 344 0002 01       		.byte	0x1
+ 345 0003 25       		.uleb128 0x25
+ 346 0004 0E       		.uleb128 0xe
+ 347 0005 13       		.uleb128 0x13
+ 348 0006 0B       		.uleb128 0xb
+ 349 0007 03       		.uleb128 0x3
+ 350 0008 0E       		.uleb128 0xe
+ 351 0009 1B       		.uleb128 0x1b
+ 352 000a 0E       		.uleb128 0xe
+ 353 000b 55       		.uleb128 0x55
+ 354 000c 06       		.uleb128 0x6
+ 355 000d 11       		.uleb128 0x11
+ 356 000e 01       		.uleb128 0x1
+ 357 000f 52       		.uleb128 0x52
+ 358 0010 01       		.uleb128 0x1
+ 359 0011 10       		.uleb128 0x10
+ 360 0012 06       		.uleb128 0x6
+ 361 0013 00       		.byte	0
+ 362 0014 00       		.byte	0
+ 363 0015 02       		.uleb128 0x2
+ 364 0016 24       		.uleb128 0x24
+ 365 0017 00       		.byte	0
+ 366 0018 0B       		.uleb128 0xb
+ 367 0019 0B       		.uleb128 0xb
+ 368 001a 3E       		.uleb128 0x3e
+ 369 001b 0B       		.uleb128 0xb
+ 370 001c 03       		.uleb128 0x3
+ 371 001d 0E       		.uleb128 0xe
+ 372 001e 00       		.byte	0
+ 373 001f 00       		.byte	0
+ 374 0020 03       		.uleb128 0x3
+ 375 0021 24       		.uleb128 0x24
+ 376 0022 00       		.byte	0
+ 377 0023 0B       		.uleb128 0xb
+ 378 0024 0B       		.uleb128 0xb
+ 379 0025 3E       		.uleb128 0x3e
+ 380 0026 0B       		.uleb128 0xb
+ 381 0027 03       		.uleb128 0x3
+ 382 0028 08       		.uleb128 0x8
+ 383 0029 00       		.byte	0
+ 384 002a 00       		.byte	0
+ 385 002b 04       		.uleb128 0x4
+ 386 002c 2E       		.uleb128 0x2e
+ 387 002d 01       		.byte	0x1
+ 388 002e 3F       		.uleb128 0x3f
+ 389 002f 0C       		.uleb128 0xc
+ 390 0030 03       		.uleb128 0x3
+ 391 0031 0E       		.uleb128 0xe
+ 392 0032 3A       		.uleb128 0x3a
+ 393 0033 0B       		.uleb128 0xb
+ 394 0034 3B       		.uleb128 0x3b
+ 395 0035 0B       		.uleb128 0xb
+ 396 0036 27       		.uleb128 0x27
+ 397 0037 0C       		.uleb128 0xc
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cckfuqHT.s 			page 10
+
+
+ 398 0038 11       		.uleb128 0x11
+ 399 0039 01       		.uleb128 0x1
+ 400 003a 12       		.uleb128 0x12
+ 401 003b 01       		.uleb128 0x1
+ 402 003c 40       		.uleb128 0x40
+ 403 003d 06       		.uleb128 0x6
+ 404 003e 9742     		.uleb128 0x2117
+ 405 0040 0C       		.uleb128 0xc
+ 406 0041 01       		.uleb128 0x1
+ 407 0042 13       		.uleb128 0x13
+ 408 0043 00       		.byte	0
+ 409 0044 00       		.byte	0
+ 410 0045 05       		.uleb128 0x5
+ 411 0046 05       		.uleb128 0x5
+ 412 0047 00       		.byte	0
+ 413 0048 03       		.uleb128 0x3
+ 414 0049 0E       		.uleb128 0xe
+ 415 004a 3A       		.uleb128 0x3a
+ 416 004b 0B       		.uleb128 0xb
+ 417 004c 3B       		.uleb128 0x3b
+ 418 004d 0B       		.uleb128 0xb
+ 419 004e 49       		.uleb128 0x49
+ 420 004f 13       		.uleb128 0x13
+ 421 0050 02       		.uleb128 0x2
+ 422 0051 0A       		.uleb128 0xa
+ 423 0052 00       		.byte	0
+ 424 0053 00       		.byte	0
+ 425 0054 06       		.uleb128 0x6
+ 426 0055 34       		.uleb128 0x34
+ 427 0056 00       		.byte	0
+ 428 0057 03       		.uleb128 0x3
+ 429 0058 08       		.uleb128 0x8
+ 430 0059 3A       		.uleb128 0x3a
+ 431 005a 0B       		.uleb128 0xb
+ 432 005b 3B       		.uleb128 0x3b
+ 433 005c 0B       		.uleb128 0xb
+ 434 005d 49       		.uleb128 0x49
+ 435 005e 13       		.uleb128 0x13
+ 436 005f 02       		.uleb128 0x2
+ 437 0060 0A       		.uleb128 0xa
+ 438 0061 00       		.byte	0
+ 439 0062 00       		.byte	0
+ 440 0063 07       		.uleb128 0x7
+ 441 0064 2E       		.uleb128 0x2e
+ 442 0065 01       		.byte	0x1
+ 443 0066 3F       		.uleb128 0x3f
+ 444 0067 0C       		.uleb128 0xc
+ 445 0068 03       		.uleb128 0x3
+ 446 0069 0E       		.uleb128 0xe
+ 447 006a 3A       		.uleb128 0x3a
+ 448 006b 0B       		.uleb128 0xb
+ 449 006c 3B       		.uleb128 0x3b
+ 450 006d 0B       		.uleb128 0xb
+ 451 006e 27       		.uleb128 0x27
+ 452 006f 0C       		.uleb128 0xc
+ 453 0070 11       		.uleb128 0x11
+ 454 0071 01       		.uleb128 0x1
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cckfuqHT.s 			page 11
+
+
+ 455 0072 12       		.uleb128 0x12
+ 456 0073 01       		.uleb128 0x1
+ 457 0074 40       		.uleb128 0x40
+ 458 0075 06       		.uleb128 0x6
+ 459 0076 9742     		.uleb128 0x2117
+ 460 0078 0C       		.uleb128 0xc
+ 461 0079 00       		.byte	0
+ 462 007a 00       		.byte	0
+ 463 007b 08       		.uleb128 0x8
+ 464 007c 34       		.uleb128 0x34
+ 465 007d 00       		.byte	0
+ 466 007e 03       		.uleb128 0x3
+ 467 007f 0E       		.uleb128 0xe
+ 468 0080 3A       		.uleb128 0x3a
+ 469 0081 0B       		.uleb128 0xb
+ 470 0082 3B       		.uleb128 0x3b
+ 471 0083 0B       		.uleb128 0xb
+ 472 0084 49       		.uleb128 0x49
+ 473 0085 13       		.uleb128 0x13
+ 474 0086 02       		.uleb128 0x2
+ 475 0087 0A       		.uleb128 0xa
+ 476 0088 00       		.byte	0
+ 477 0089 00       		.byte	0
+ 478 008a 00       		.byte	0
+ 479              		.section	.debug_loc,"",%progbits
+ 480              	.Ldebug_loc0:
+ 481              	.LLST0:
+ 482 0000 00000000 		.4byte	.LFB0
+ 483 0004 02000000 		.4byte	.LCFI0
+ 484 0008 0200     		.2byte	0x2
+ 485 000a 7D       		.byte	0x7d
+ 486 000b 00       		.sleb128 0
+ 487 000c 02000000 		.4byte	.LCFI0
+ 488 0010 04000000 		.4byte	.LCFI1
+ 489 0014 0200     		.2byte	0x2
+ 490 0016 7D       		.byte	0x7d
+ 491 0017 04       		.sleb128 4
+ 492 0018 04000000 		.4byte	.LCFI1
+ 493 001c 06000000 		.4byte	.LCFI2
+ 494 0020 0200     		.2byte	0x2
+ 495 0022 7D       		.byte	0x7d
+ 496 0023 10       		.sleb128 16
+ 497 0024 06000000 		.4byte	.LCFI2
+ 498 0028 12000000 		.4byte	.LFE0
+ 499 002c 0200     		.2byte	0x2
+ 500 002e 77       		.byte	0x77
+ 501 002f 10       		.sleb128 16
+ 502 0030 00000000 		.4byte	0
+ 503 0034 00000000 		.4byte	0
+ 504              	.LLST1:
+ 505 0038 00000000 		.4byte	.LFB1
+ 506 003c 02000000 		.4byte	.LCFI3
+ 507 0040 0200     		.2byte	0x2
+ 508 0042 7D       		.byte	0x7d
+ 509 0043 00       		.sleb128 0
+ 510 0044 02000000 		.4byte	.LCFI3
+ 511 0048 04000000 		.4byte	.LCFI4
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cckfuqHT.s 			page 12
+
+
+ 512 004c 0200     		.2byte	0x2
+ 513 004e 7D       		.byte	0x7d
+ 514 004f 04       		.sleb128 4
+ 515 0050 04000000 		.4byte	.LCFI4
+ 516 0054 06000000 		.4byte	.LCFI5
+ 517 0058 0200     		.2byte	0x2
+ 518 005a 7D       		.byte	0x7d
+ 519 005b 10       		.sleb128 16
+ 520 005c 06000000 		.4byte	.LCFI5
+ 521 0060 12000000 		.4byte	.LFE1
+ 522 0064 0200     		.2byte	0x2
+ 523 0066 77       		.byte	0x77
+ 524 0067 10       		.sleb128 16
+ 525 0068 00000000 		.4byte	0
+ 526 006c 00000000 		.4byte	0
+ 527              	.LLST2:
+ 528 0070 00000000 		.4byte	.LFB2
+ 529 0074 02000000 		.4byte	.LCFI6
+ 530 0078 0200     		.2byte	0x2
+ 531 007a 7D       		.byte	0x7d
+ 532 007b 00       		.sleb128 0
+ 533 007c 02000000 		.4byte	.LCFI6
+ 534 0080 04000000 		.4byte	.LCFI7
+ 535 0084 0200     		.2byte	0x2
+ 536 0086 7D       		.byte	0x7d
+ 537 0087 04       		.sleb128 4
+ 538 0088 04000000 		.4byte	.LCFI7
+ 539 008c 06000000 		.4byte	.LCFI8
+ 540 0090 0200     		.2byte	0x2
+ 541 0092 7D       		.byte	0x7d
+ 542 0093 18       		.sleb128 24
+ 543 0094 06000000 		.4byte	.LCFI8
+ 544 0098 2A000000 		.4byte	.LFE2
+ 545 009c 0200     		.2byte	0x2
+ 546 009e 77       		.byte	0x77
+ 547 009f 18       		.sleb128 24
+ 548 00a0 00000000 		.4byte	0
+ 549 00a4 00000000 		.4byte	0
+ 550              	.LLST3:
+ 551 00a8 00000000 		.4byte	.LFB3
+ 552 00ac 02000000 		.4byte	.LCFI9
+ 553 00b0 0200     		.2byte	0x2
+ 554 00b2 7D       		.byte	0x7d
+ 555 00b3 00       		.sleb128 0
+ 556 00b4 02000000 		.4byte	.LCFI9
+ 557 00b8 04000000 		.4byte	.LCFI10
+ 558 00bc 0200     		.2byte	0x2
+ 559 00be 7D       		.byte	0x7d
+ 560 00bf 04       		.sleb128 4
+ 561 00c0 04000000 		.4byte	.LCFI10
+ 562 00c4 06000000 		.4byte	.LCFI11
+ 563 00c8 0200     		.2byte	0x2
+ 564 00ca 7D       		.byte	0x7d
+ 565 00cb 10       		.sleb128 16
+ 566 00cc 06000000 		.4byte	.LCFI11
+ 567 00d0 2E000000 		.4byte	.LFE3
+ 568 00d4 0200     		.2byte	0x2
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cckfuqHT.s 			page 13
+
+
+ 569 00d6 77       		.byte	0x77
+ 570 00d7 10       		.sleb128 16
+ 571 00d8 00000000 		.4byte	0
+ 572 00dc 00000000 		.4byte	0
+ 573              		.section	.debug_aranges,"",%progbits
+ 574 0000 34000000 		.4byte	0x34
+ 575 0004 0200     		.2byte	0x2
+ 576 0006 00000000 		.4byte	.Ldebug_info0
+ 577 000a 04       		.byte	0x4
+ 578 000b 00       		.byte	0
+ 579 000c 0000     		.2byte	0
+ 580 000e 0000     		.2byte	0
+ 581 0010 00000000 		.4byte	.LFB0
+ 582 0014 12000000 		.4byte	.LFE0-.LFB0
+ 583 0018 00000000 		.4byte	.LFB1
+ 584 001c 12000000 		.4byte	.LFE1-.LFB1
+ 585 0020 00000000 		.4byte	.LFB2
+ 586 0024 2A000000 		.4byte	.LFE2-.LFB2
+ 587 0028 00000000 		.4byte	.LFB3
+ 588 002c 2E000000 		.4byte	.LFE3-.LFB3
+ 589 0030 00000000 		.4byte	0
+ 590 0034 00000000 		.4byte	0
+ 591              		.section	.debug_ranges,"",%progbits
+ 592              	.Ldebug_ranges0:
+ 593 0000 00000000 		.4byte	.LFB0
+ 594 0004 12000000 		.4byte	.LFE0
+ 595 0008 00000000 		.4byte	.LFB1
+ 596 000c 12000000 		.4byte	.LFE1
+ 597 0010 00000000 		.4byte	.LFB2
+ 598 0014 2A000000 		.4byte	.LFE2
+ 599 0018 00000000 		.4byte	.LFB3
+ 600 001c 2E000000 		.4byte	.LFE3
+ 601 0020 00000000 		.4byte	0
+ 602 0024 00000000 		.4byte	0
+ 603              		.section	.debug_line,"",%progbits
+ 604              	.Ldebug_line0:
+ 605 0000 86000000 		.section	.debug_str,"MS",%progbits,1
+ 605      02002200 
+ 605      00000201 
+ 605      FB0E0D00 
+ 605      01010101 
+ 606              	.LASF5:
+ 607 0000 6C6F6E67 		.ascii	"long long int\000"
+ 607      206C6F6E 
+ 607      6720696E 
+ 607      7400
+ 608              	.LASF12:
+ 609 000e 46535F4F 		.ascii	"FS_OS_Unlock\000"
+ 609      535F556E 
+ 609      6C6F636B 
+ 609      00
+ 610              	.LASF4:
+ 611 001b 756E7369 		.ascii	"unsigned int\000"
+ 611      676E6564 
+ 611      20696E74 
+ 611      00
+ 612              	.LASF17:
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cckfuqHT.s 			page 14
+
+
+ 613 0028 474E5520 		.ascii	"GNU C 4.7.3 20130312 (release) [ARM/embedded-4_7-br"
+ 613      4320342E 
+ 613      372E3320 
+ 613      32303133 
+ 613      30333132 
+ 614 005b 616E6368 		.ascii	"anch revision 196615]\000"
+ 614      20726576 
+ 614      6973696F 
+ 614      6E203139 
+ 614      36363135 
+ 615              	.LASF16:
+ 616 0071 4E756D4C 		.ascii	"NumLocks\000"
+ 616      6F636B73 
+ 616      00
+ 617              	.LASF14:
+ 618 007a 46535F4F 		.ascii	"FS_OS_Init\000"
+ 618      535F496E 
+ 618      697400
+ 619              	.LASF6:
+ 620 0085 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 620      206C6F6E 
+ 620      6720756E 
+ 620      7369676E 
+ 620      65642069 
+ 621              	.LASF18:
+ 622 009c 2E5C4653 		.ascii	".\\FS_X_OS.c\000"
+ 622      5F585F4F 
+ 622      532E6300 
+ 623              	.LASF1:
+ 624 00a8 756E7369 		.ascii	"unsigned char\000"
+ 624      676E6564 
+ 624      20636861 
+ 624      7200
+ 625              	.LASF10:
+ 626 00b6 63686172 		.ascii	"char\000"
+ 626      00
+ 627              	.LASF7:
+ 628 00bb 6C6F6E67 		.ascii	"long int\000"
+ 628      20696E74 
+ 628      00
+ 629              	.LASF9:
+ 630 00c4 6C6F6E67 		.ascii	"long unsigned int\000"
+ 630      20756E73 
+ 630      69676E65 
+ 630      6420696E 
+ 630      7400
+ 631              	.LASF20:
+ 632 00d6 46535F4F 		.ascii	"FS_OS_DeInit\000"
+ 632      535F4465 
+ 632      496E6974 
+ 632      00
+ 633              	.LASF15:
+ 634 00e3 4D61784E 		.ascii	"MaxNumLocks\000"
+ 634      756D4C6F 
+ 634      636B7300 
+ 635              	.LASF19:
+ 636 00ef 433A5C50 		.ascii	"C:\\Projects\\PSoC\\Bootloading_PSoC5_LP\\Bootloadi"
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cckfuqHT.s 			page 15
+
+
+ 636      726F6A65 
+ 636      6374735C 
+ 636      50536F43 
+ 636      5C426F6F 
+ 637 011e 6E675F50 		.ascii	"ng_PSoC5_LP.cydsn\000"
+ 637      536F4335 
+ 637      5F4C502E 
+ 637      63796473 
+ 637      6E00
+ 638              	.LASF3:
+ 639 0130 73686F72 		.ascii	"short unsigned int\000"
+ 639      7420756E 
+ 639      7369676E 
+ 639      65642069 
+ 639      6E7400
+ 640              	.LASF0:
+ 641 0143 7369676E 		.ascii	"signed char\000"
+ 641      65642063 
+ 641      68617200 
+ 642              	.LASF11:
+ 643 014f 46535F4F 		.ascii	"FS_OS_Lock\000"
+ 643      535F4C6F 
+ 643      636B00
+ 644              	.LASF13:
+ 645 015a 4C6F636B 		.ascii	"LockIndex\000"
+ 645      496E6465 
+ 645      7800
+ 646              	.LASF2:
+ 647 0164 73686F72 		.ascii	"short int\000"
+ 647      7420696E 
+ 647      7400
+ 648              	.LASF8:
+ 649 016e 73697A65 		.ascii	"sizetype\000"
+ 649      74797065 
+ 649      00
+ 650              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.7.3 20130312 (release) [ARM/embedded-4_7-br

@@ -1,0 +1,94 @@
+set_location "\GPS:BUART:sRX:RxShifter:u0\" datapathcell 3 0 2 
+set_location "\emFile_1:SPI0:BSPIM:mosi_pre_reg_split_1\" macrocell 3 5 1 0
+set_location "\emFile_1:Net_10\" macrocell 2 4 1 1
+set_location "\emFile_1:SPI0:BSPIM:tx_status_4\" macrocell 3 4 1 1
+set_location "\PWM_1:PWMUDB:sP16:pwmdp:u1\" datapathcell 2 2 2 
+set_location "\PSOC4:BUART:rx_status_4\" macrocell 2 1 1 0
+set_location "\GPS:BUART:rx_status_4\" macrocell 3 1 1 1
+set_location "\PSOC4:BUART:rx_state_0\" macrocell 2 0 0 0
+set_location "\emFile_1:Net_22\" macrocell 3 3 0 1
+set_location "\GPS:BUART:rx_counter_load\" macrocell 3 2 0 1
+set_location "\PSOC4:BUART:rx_counter_load\" macrocell 2 0 0 1
+set_location "\emFile_1:SPI0:BSPIM:RxStsReg\" statusicell 2 4 4 
+set_location "\PWM_1:PWMUDB:prevCompare1\" macrocell 2 2 0 2
+set_location "\PWM_1:PWMUDB:status_0\" macrocell 2 2 0 3
+set_location "\PSOC4:BUART:rx_postpoll\" macrocell 2 1 0 3
+set_location "\GPS:BUART:rx_state_2\" macrocell 3 2 0 0
+set_location "\PSOC4:BUART:rx_state_3\" macrocell 2 0 1 2
+set_location "\PSOC4:BUART:rx_state_stop1_reg\" macrocell 2 0 0 3
+set_location "Net_203" macrocell 2 3 1 1
+set_location "\PSOC4:BUART:rx_load_fifo\" macrocell 2 0 1 1
+set_location "\PWM_1:PWMUDB:status_5\" macrocell 2 5 0 1
+set_location "\PWM_1:PWMUDB:final_kill_reg\" macrocell 2 5 0 0
+set_location "\emFile_1:SPI0:BSPIM:ld_ident\" macrocell 3 4 0 1
+set_location "\PWM_1:PWMUDB:sP16:pwmdp:u0\" datapathcell 3 2 2 
+set_location "\emFile_1:SPI0:BSPIM:tx_status_0\" macrocell 3 4 1 3
+set_location "\GPS:BUART:rx_address_detected\" macrocell 3 2 0 3
+set_location "\PSOC4:BUART:sTX:TxSts\" statusicell 2 3 4 
+set_location "\emFile_1:SPI0:BSPIM:mosi_hs_reg\" macrocell 2 4 0 0
+set_location "\PSOC4:BUART:rx_status_3\" macrocell 2 0 0 2
+set_location "\PSOC4:BUART:rx_last\" macrocell 2 0 1 3
+set_location "\emFile_1:SPI0:BSPIM:TxStsReg\" statusicell 3 4 4 
+set_location "\emFile_1:SPI0:BSPIM:cnt_enable\" macrocell 2 4 0 2
+set_location "\PSOC4:BUART:tx_state_2\" macrocell 3 3 1 1
+set_location "\GPS:BUART:rx_status_5\" macrocell 3 1 1 3
+set_location "\PSOC4:BUART:rx_status_5\" macrocell 2 1 1 3
+set_location "\emFile_1:Net_1\" macrocell 2 4 1 2
+set_location "\PWM_1:PWMUDB:runmode_enable\" macrocell 2 2 0 0
+set_location "\PSOC4:BUART:pollcount_0\" macrocell 2 1 0 2
+set_location "\GPS:BUART:rx_last\" macrocell 3 0 1 1
+set_location "\PSOC4:BUART:sTX:sCLOCK:TxBitClkGen\" datapathcell 3 3 2 
+set_location "\emFile_1:SPI0:BSPIM:load_cond\" macrocell 3 3 0 0
+set_location "MODIN2_1" macrocell 3 0 1 0
+set_location "\PSOC4:BUART:sRX:RxSts\" statusicell 2 1 4 
+set_location "\GPS:BUART:sRX:RxBitCounter\" count7cell 3 2 7 
+set_location "\GPS:BUART:rx_state_0\" macrocell 3 1 0 0
+set_location "\PSOC4:BUART:tx_bitclk\" macrocell 2 2 1 0
+set_location "Net_4" macrocell 2 2 0 1
+set_location "\PSOC4:BUART:tx_state_0\" macrocell 2 3 0 2
+set_location "\PSOC4:BUART:pollcount_1\" macrocell 2 1 0 0
+set_location "\emFile_1:SPI0:BSPIM:load_rx_data\" macrocell 3 5 1 1
+set_location "\PSOC4:BUART:rx_address_detected\" macrocell 3 0 0 0
+set_location "\PSOC4:BUART:sRX:RxBitCounter\" count7cell 2 0 7 
+set_location "\PSOC4:BUART:tx_status_0\" macrocell 2 3 0 1
+set_location "\PSOC4:BUART:rx_bitclk_enable\" macrocell 2 1 1 1
+set_location "\PSOC4:BUART:sTX:TxShifter:u0\" datapathcell 2 3 2 
+set_location "\PSOC4:BUART:txn\" macrocell 2 3 1 0
+set_location "\emFile_1:SPI0:BSPIM:mosi_pre_reg\" macrocell 2 5 1 1
+set_location "\PWM_1:PWMUDB:genblk8:stsreg\" statusicell 2 2 4 
+set_location "\emFile_1:SPI0:BSPIM:sR8:Dp:u0\" datapathcell 3 5 2 
+set_location "\emFile_1:SPI0:BSPIM:state_2\" macrocell 3 4 0 0
+set_location "\GPS:BUART:rx_bitclk_enable\" macrocell 3 2 1 0
+set_location "\PSOC4:BUART:sRX:RxShifter:u0\" datapathcell 2 1 2 
+set_location "\PSOC4:BUART:tx_state_1\" macrocell 3 3 1 3
+set_location "\PSOC4:BUART:tx_status_2\" macrocell 2 5 0 3
+set_location "\emFile_1:SPI0:BSPIM:mosi_pre_reg_split\" macrocell 3 5 0 0
+set_location "\emFile_1:SPI0:BSPIM:state_0\" macrocell 3 4 1 2
+set_location "\GPS:BUART:rx_state_3\" macrocell 3 2 0 2
+set_location "\emFile_1:SPI0:BSPIM:state_1\" macrocell 3 4 1 0
+set_location "\PSOC4:BUART:rx_state_2\" macrocell 2 0 1 0
+set_location "MODIN2_0" macrocell 3 0 1 3
+set_location "\emFile_1:SPI0:BSPIM:rx_status_6\" macrocell 3 5 1 2
+set_location "\PSOC4:BUART:counter_load_not\" macrocell 3 3 1 0
+set_location "\GPS:BUART:sRX:RxSts\" statusicell 3 1 4 
+set_location "\GPS:BUART:rx_load_fifo\" macrocell 3 1 0 1
+set_location "\GPS:BUART:rx_status_3\" macrocell 3 1 0 2
+set_location "\PSOC4:BUART:tx_bitclk_enable_pre\" macrocell 2 2 1 3
+set_location "\GPS:BUART:rx_postpoll\" macrocell 3 0 1 2
+set_location "\emFile_1:SPI0:BSPIM:mosi_from_dp_reg\" macrocell 2 4 0 3
+set_location "\GPS:BUART:rx_state_stop1_reg\" macrocell 3 2 1 1
+set_location "\emFile_1:SPI0:BSPIM:BitCounter\" count7cell 3 5 7 
+set_location "\GPS:RXInternalInterrupt\" interrupt -1 -1 0
+set_location "\PSOC4:RXInternalInterrupt\" interrupt -1 -1 1
+set_location "\PWM_1:PWMUDB:genblk1:ctrlreg\" controlcell 2 2 6 
+set_io "STATUS_LED(0)" iocell 3 1
+set_location "ClockBlock" clockblockcell -1 -1 0
+# Note: port 12 is the logical name for port 7
+set_io "Rx_1(0)" iocell 12 1
+# Note: port 12 is the logical name for port 7
+set_io "Tx_1(0)" iocell 12 0
+set_io "\emFile_1:sclk0(0)\" iocell 3 5
+set_io "\emFile_1:mosi0(0)\" iocell 0 0
+set_io "\emFile_1:miso0(0)\" iocell 0 1
+set_io "GPS_RX(0)" iocell 3 6
+set_io "\emFile_1:SPI0_CS(0)\" iocell 3 4

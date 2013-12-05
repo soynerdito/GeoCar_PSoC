@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CyXmlSerializer>
+<!--This file is machine generated and read. It is not intended to be edited by hand.-->
+<!--Due to this, there is no schema for this file.-->
+<CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21 type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtWrkspcCustomData" version="4">
+<CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997 type_name="CyDesigner.Common.Base.CyCustomData" version="2">
+<userData>
+<dataGuid v="1b906a0f-a7b6-4e4d-a428-82f98b53cb35">
+<CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35 type_name="CyDesigner.Common.ProjMgmt.GUI.CyExplorerWindow+CyExplorerWindowState" version="3" SelectedTab="Source">
+<TreeKeys>
+<v>Source</v>
+<v>Components</v>
+<v>Output</v>
+</TreeKeys>
+<TreeStates>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Bootloading_PSoC5_LP.cydwr">
+<ExpandedNodeIds>
+<v>Bootloading_PSoC5_LP</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Source Files</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Generated_Source</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Generated_Source\PSoC5</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>Bootloading_PSoC5_LP</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\TopDesign.cysch</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Bootloading_PSoC5_LP.cydwr</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Header Files</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Source Files</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Source Files\FS_ConfigIO.c</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Source Files\FS_X_OS.c</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Source Files\main.c</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Generated_Source</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Generated_Source\PSoC5</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Generated_Source\PSoC5\Bootloadable_1</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Generated_Source\PSoC5\Clock_1</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Generated_Source\PSoC5\cy_boot</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Generated_Source\PSoC5\emFile_1</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Generated_Source\PSoC5\emFile_1_Clock_1</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Generated_Source\PSoC5\emFile_1_miso0</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Generated_Source\PSoC5\emFile_1_mosi0</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Generated_Source\PSoC5\emFile_1_sclk0</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Generated_Source\PSoC5\emFile_1_SPI0</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Generated_Source\PSoC5\emFile_1_SPI0_CS</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Generated_Source\PSoC5\GPS</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Generated_Source\PSoC5\GPS_IntClock</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Generated_Source\PSoC5\GPS_RX</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Generated_Source\PSoC5\PSOC4</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Generated_Source\PSoC5\PSOC4_IntClock</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Generated_Source\PSoC5\PWM_1</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Generated_Source\PSoC5\STATUS_LED</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Generated_Source\PSoC5\cybootloader.c</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Generated_Source\PSoC5\cybootloader.icf</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Generated_Source\PSoC5\cydevice.h</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Generated_Source\PSoC5\cydevice_trm.h</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Generated_Source\PSoC5\cydevicegnu.inc</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\TopDesign\TopDesign.cysch">
+<ExpandedNodeIds>
+<v>Bootloading_PSoC5_LP</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\TopDesign</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\TopDesign\TopDesign.cysch</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>Bootloading_PSoC5_LP</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\TopDesign</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\TopDesign\TopDesign.cysch</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>Bootloading_PSoC5_LP</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\Bootloadable_1.lst</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\Clock_1.lst</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\Cm3Start.lst</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\cybootloader.lst</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\CyDmac.lst</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\CyFlash.lst</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\CyLib.lst</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\cymetadata.lst</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\cyPm.lst</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\CySpc.lst</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\cyutils.lst</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\emFile_1_Clock_1.lst</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\emFile_1_ConfigMMC_SPI.lst</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\emFile_1_miso0.lst</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\emFile_1_MMC_HW_SPI.lst</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\emFile_1_mosi0.lst</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\emFile_1_PM.lst</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\emFile_1_sclk0.lst</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\emFile_1_SPI0.lst</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\emFile_1_SPI0_CS.lst</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\emFile_1_SPI0_INT.lst</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\emFile_1_SPI0_PM.lst</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\FS_ConfigIO.lst</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\FS_X_OS.lst</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\GPS.lst</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\GPS_BOOT.lst</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\GPS_INT.lst</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\GPS_IntClock.lst</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\GPS_PM.lst</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\GPS_RX.lst</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\main.lst</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\PSOC4.lst</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\PSOC4_BOOT.lst</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\PSOC4_INT.lst</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\PSOC4_IntClock.lst</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\PSOC4_PM.lst</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\PWM_1.lst</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\PWM_1_PM.lst</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\STATUS_LED.lst</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Bootloading_PSoC5_LP.cyacd</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Bootloading_PSoC5_LP.elf</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Bootloading_PSoC5_LP.hex</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Bootloading_PSoC5_LP.map</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Bootloading_PSoC5_LP.rpt</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Bootloading_PSoC5_LP_timing.html</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>Bootloading_PSoC5_LP</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\Bootloadable_1.lst</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\Clock_1.lst</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\Cm3Start.lst</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\cybootloader.lst</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\CyDmac.lst</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\CyFlash.lst</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\CyLib.lst</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\cymetadata.lst</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\cyPm.lst</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\CySpc.lst</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\cyutils.lst</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\emFile_1_Clock_1.lst</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\emFile_1_ConfigMMC_SPI.lst</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\emFile_1_miso0.lst</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\emFile_1_MMC_HW_SPI.lst</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\emFile_1_mosi0.lst</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\emFile_1_PM.lst</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\emFile_1_sclk0.lst</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\emFile_1_SPI0.lst</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\emFile_1_SPI0_CS.lst</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\emFile_1_SPI0_INT.lst</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\emFile_1_SPI0_PM.lst</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\FS_ConfigIO.lst</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\FS_X_OS.lst</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\GPS.lst</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+</TreeStates>
+<TreeKeysV2>
+<v>Datasheet</v>
+</TreeKeysV2>
+<TreeStatesV2>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>Bootloading_PSoC5_LP</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\PSoC 5 Architecture TRM</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CY8C58LP Family Datasheet</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\System Reference Guide v4_0</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Bootloadable_v1_20</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\cy_clock_v2_10</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\cy_constant_v1_0</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\cy_pins_v1_90</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\emFile_v1_20</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\PWM_v3_0</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\UART_v2_30</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>Bootloading_PSoC5_LP</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\PSoC 5 Architecture TRM</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CY8C58LP Family Datasheet</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\System Reference Guide v4_0</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Bootloadable_v1_20</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\cy_clock_v2_10</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\cy_constant_v1_0</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\cy_pins_v1_90</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\emFile_v1_20</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\PWM_v3_0</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\UART_v2_30</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+</TreeStatesV2>
+</CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35>
+</dataGuid>
+</userData>
+</CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
+<Unloaded />
+<OpenDocs>
+<name v=".\Bootloading_PSoC5_LP.cydsn\TopDesign\TopDesign.cysch" />
+<name v=".\Bootloading_PSoC5_LP.cydsn\Bootloading_PSoC5_LP.cydwr" />
+<name v=".\Bootloading_PSoC5_LP.cydsn\main.c" />
+<name v=".\Bootloading_PSoC5_LP.cydsn\FS_ConfigIO.c" />
+</OpenDocs>
+<config v="" />
+<AutoUpdate v="true" />
+</CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>
+</CyXmlSerializer>

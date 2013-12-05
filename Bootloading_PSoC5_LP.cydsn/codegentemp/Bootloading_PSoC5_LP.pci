@@ -1,0 +1,11 @@
+# Bootloading_PSoC5_LP
+# 2013-12-03 05:10:34Z
+
+set_io "GPS_RX(0)" iocell 3 6
+set_io "Rx_1(0)" iocell 12 1
+set_io "STATUS_LED(0)" iocell 3 1
+set_io "Tx_1(0)" iocell 12 0
+set_io "\emFile_1:SPI0_CS(0)\" iocell 3 4
+set_io "\emFile_1:miso0(0)\" iocell 0 1
+set_io "\emFile_1:mosi0(0)\" iocell 0 0
+set_io "\emFile_1:sclk0(0)\" iocell 3 5

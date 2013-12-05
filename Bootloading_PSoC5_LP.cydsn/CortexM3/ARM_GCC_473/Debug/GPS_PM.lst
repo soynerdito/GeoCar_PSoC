@@ -1,0 +1,1016 @@
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccvXnylp.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"GPS_PM.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.bss
+  19              		.align	2
+  20              	GPS_backup:
+  21 0000 0000     		.space	2
+  22 0002 0000     		.section	.text.GPS_SaveConfig,"ax",%progbits
+  23              		.align	2
+  24              		.global	GPS_SaveConfig
+  25              		.thumb
+  26              		.thumb_func
+  27              		.type	GPS_SaveConfig, %function
+  28              	GPS_SaveConfig:
+  29              	.LFB0:
+  30              		.file 1 ".\\Generated_Source\\PSoC5\\GPS_PM.c"
+   1:.\Generated_Source\PSoC5/GPS_PM.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC5/GPS_PM.c **** * File Name: GPS_PM.c
+   3:.\Generated_Source\PSoC5/GPS_PM.c **** * Version 2.30
+   4:.\Generated_Source\PSoC5/GPS_PM.c **** *
+   5:.\Generated_Source\PSoC5/GPS_PM.c **** * Description:
+   6:.\Generated_Source\PSoC5/GPS_PM.c **** *  This file provides Sleep/WakeUp APIs functionality.
+   7:.\Generated_Source\PSoC5/GPS_PM.c **** *
+   8:.\Generated_Source\PSoC5/GPS_PM.c **** * Note:
+   9:.\Generated_Source\PSoC5/GPS_PM.c **** *
+  10:.\Generated_Source\PSoC5/GPS_PM.c **** ********************************************************************************
+  11:.\Generated_Source\PSoC5/GPS_PM.c **** * Copyright 2008-2012, Cypress Semiconductor Corporation.  All rights reserved.
+  12:.\Generated_Source\PSoC5/GPS_PM.c **** * You may use this file only in accordance with the license, terms, conditions,
+  13:.\Generated_Source\PSoC5/GPS_PM.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  14:.\Generated_Source\PSoC5/GPS_PM.c **** * the software package with which this file was provided.
+  15:.\Generated_Source\PSoC5/GPS_PM.c **** *******************************************************************************/
+  16:.\Generated_Source\PSoC5/GPS_PM.c **** 
+  17:.\Generated_Source\PSoC5/GPS_PM.c **** #include "GPS.h"
+  18:.\Generated_Source\PSoC5/GPS_PM.c **** 
+  19:.\Generated_Source\PSoC5/GPS_PM.c **** 
+  20:.\Generated_Source\PSoC5/GPS_PM.c **** /***************************************
+  21:.\Generated_Source\PSoC5/GPS_PM.c **** * Local data allocation
+  22:.\Generated_Source\PSoC5/GPS_PM.c **** ***************************************/
+  23:.\Generated_Source\PSoC5/GPS_PM.c **** 
+  24:.\Generated_Source\PSoC5/GPS_PM.c **** static GPS_BACKUP_STRUCT  GPS_backup =
+  25:.\Generated_Source\PSoC5/GPS_PM.c **** {
+  26:.\Generated_Source\PSoC5/GPS_PM.c ****     /* enableState - disabled */
+  27:.\Generated_Source\PSoC5/GPS_PM.c ****     0u,
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccvXnylp.s 			page 2
+
+
+  28:.\Generated_Source\PSoC5/GPS_PM.c **** };
+  29:.\Generated_Source\PSoC5/GPS_PM.c **** 
+  30:.\Generated_Source\PSoC5/GPS_PM.c **** 
+  31:.\Generated_Source\PSoC5/GPS_PM.c **** 
+  32:.\Generated_Source\PSoC5/GPS_PM.c **** /*******************************************************************************
+  33:.\Generated_Source\PSoC5/GPS_PM.c **** * Function Name: GPS_SaveConfig
+  34:.\Generated_Source\PSoC5/GPS_PM.c **** ********************************************************************************
+  35:.\Generated_Source\PSoC5/GPS_PM.c **** *
+  36:.\Generated_Source\PSoC5/GPS_PM.c **** * Summary:
+  37:.\Generated_Source\PSoC5/GPS_PM.c **** *  Saves the current user configuration.
+  38:.\Generated_Source\PSoC5/GPS_PM.c **** *
+  39:.\Generated_Source\PSoC5/GPS_PM.c **** * Parameters:
+  40:.\Generated_Source\PSoC5/GPS_PM.c **** *  None.
+  41:.\Generated_Source\PSoC5/GPS_PM.c **** *
+  42:.\Generated_Source\PSoC5/GPS_PM.c **** * Return:
+  43:.\Generated_Source\PSoC5/GPS_PM.c **** *  None.
+  44:.\Generated_Source\PSoC5/GPS_PM.c **** *
+  45:.\Generated_Source\PSoC5/GPS_PM.c **** * Global Variables:
+  46:.\Generated_Source\PSoC5/GPS_PM.c **** *  GPS_backup - modified when non-retention registers are saved.
+  47:.\Generated_Source\PSoC5/GPS_PM.c **** *
+  48:.\Generated_Source\PSoC5/GPS_PM.c **** * Reentrant:
+  49:.\Generated_Source\PSoC5/GPS_PM.c **** *  No.
+  50:.\Generated_Source\PSoC5/GPS_PM.c **** *
+  51:.\Generated_Source\PSoC5/GPS_PM.c **** *******************************************************************************/
+  52:.\Generated_Source\PSoC5/GPS_PM.c **** void GPS_SaveConfig(void)
+  53:.\Generated_Source\PSoC5/GPS_PM.c **** {
+  31              		.loc 1 53 0
+  32              		.cfi_startproc
+  33              		@ args = 0, pretend = 0, frame = 0
+  34              		@ frame_needed = 1, uses_anonymous_args = 0
+  35              		@ link register save eliminated.
+  36 0000 80B4     		push	{r7}
+  37              	.LCFI0:
+  38              		.cfi_def_cfa_offset 4
+  39              		.cfi_offset 7, -4
+  40 0002 00AF     		add	r7, sp, #0
+  41              	.LCFI1:
+  42              		.cfi_def_cfa_register 7
+  54:.\Generated_Source\PSoC5/GPS_PM.c ****     #if (CY_UDB_V0)
+  55:.\Generated_Source\PSoC5/GPS_PM.c **** 
+  56:.\Generated_Source\PSoC5/GPS_PM.c ****         #if(GPS_CONTROL_REG_REMOVED == 0u)
+  57:.\Generated_Source\PSoC5/GPS_PM.c ****             GPS_backup.cr = GPS_CONTROL_REG;
+  58:.\Generated_Source\PSoC5/GPS_PM.c ****         #endif /* End GPS_CONTROL_REG_REMOVED */
+  59:.\Generated_Source\PSoC5/GPS_PM.c **** 
+  60:.\Generated_Source\PSoC5/GPS_PM.c ****         #if( (GPS_RX_ENABLED) || (GPS_HD_ENABLED) )
+  61:.\Generated_Source\PSoC5/GPS_PM.c ****             GPS_backup.rx_period = GPS_RXBITCTR_PERIOD_REG;
+  62:.\Generated_Source\PSoC5/GPS_PM.c ****             GPS_backup.rx_mask = GPS_RXSTATUS_MASK_REG;
+  63:.\Generated_Source\PSoC5/GPS_PM.c ****             #if (GPS_RXHW_ADDRESS_ENABLED)
+  64:.\Generated_Source\PSoC5/GPS_PM.c ****                 GPS_backup.rx_addr1 = GPS_RXADDRESS1_REG;
+  65:.\Generated_Source\PSoC5/GPS_PM.c ****                 GPS_backup.rx_addr2 = GPS_RXADDRESS2_REG;
+  66:.\Generated_Source\PSoC5/GPS_PM.c ****             #endif /* End GPS_RXHW_ADDRESS_ENABLED */
+  67:.\Generated_Source\PSoC5/GPS_PM.c ****         #endif /* End GPS_RX_ENABLED | GPS_HD_ENABLED*/
+  68:.\Generated_Source\PSoC5/GPS_PM.c **** 
+  69:.\Generated_Source\PSoC5/GPS_PM.c ****         #if(GPS_TX_ENABLED)
+  70:.\Generated_Source\PSoC5/GPS_PM.c ****             #if(GPS_TXCLKGEN_DP)
+  71:.\Generated_Source\PSoC5/GPS_PM.c ****                 GPS_backup.tx_clk_ctr = GPS_TXBITCLKGEN_CTR_REG;
+  72:.\Generated_Source\PSoC5/GPS_PM.c ****                 GPS_backup.tx_clk_compl = GPS_TXBITCLKTX_COMPLETE_REG;
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccvXnylp.s 			page 3
+
+
+  73:.\Generated_Source\PSoC5/GPS_PM.c ****             #else
+  74:.\Generated_Source\PSoC5/GPS_PM.c ****                 GPS_backup.tx_period = GPS_TXBITCTR_PERIOD_REG;
+  75:.\Generated_Source\PSoC5/GPS_PM.c ****             #endif /*End GPS_TXCLKGEN_DP */
+  76:.\Generated_Source\PSoC5/GPS_PM.c ****             GPS_backup.tx_mask = GPS_TXSTATUS_MASK_REG;
+  77:.\Generated_Source\PSoC5/GPS_PM.c ****         #endif /*End GPS_TX_ENABLED */
+  78:.\Generated_Source\PSoC5/GPS_PM.c **** 
+  79:.\Generated_Source\PSoC5/GPS_PM.c **** 
+  80:.\Generated_Source\PSoC5/GPS_PM.c ****     #else /* CY_UDB_V1 */
+  81:.\Generated_Source\PSoC5/GPS_PM.c **** 
+  82:.\Generated_Source\PSoC5/GPS_PM.c ****         #if(GPS_CONTROL_REG_REMOVED == 0u)
+  83:.\Generated_Source\PSoC5/GPS_PM.c ****             GPS_backup.cr = GPS_CONTROL_REG;
+  84:.\Generated_Source\PSoC5/GPS_PM.c ****         #endif /* End GPS_CONTROL_REG_REMOVED */
+  85:.\Generated_Source\PSoC5/GPS_PM.c **** 
+  86:.\Generated_Source\PSoC5/GPS_PM.c ****     #endif  /* End CY_UDB_V0 */
+  87:.\Generated_Source\PSoC5/GPS_PM.c **** }
+  43              		.loc 1 87 0
+  44 0004 BD46     		mov	sp, r7
+  45 0006 80BC     		pop	{r7}
+  46 0008 7047     		bx	lr
+  47              		.cfi_endproc
+  48              	.LFE0:
+  49              		.size	GPS_SaveConfig, .-GPS_SaveConfig
+  50 000a 00BF     		.section	.text.GPS_RestoreConfig,"ax",%progbits
+  51              		.align	2
+  52              		.global	GPS_RestoreConfig
+  53              		.thumb
+  54              		.thumb_func
+  55              		.type	GPS_RestoreConfig, %function
+  56              	GPS_RestoreConfig:
+  57              	.LFB1:
+  88:.\Generated_Source\PSoC5/GPS_PM.c **** 
+  89:.\Generated_Source\PSoC5/GPS_PM.c **** 
+  90:.\Generated_Source\PSoC5/GPS_PM.c **** /*******************************************************************************
+  91:.\Generated_Source\PSoC5/GPS_PM.c **** * Function Name: GPS_RestoreConfig
+  92:.\Generated_Source\PSoC5/GPS_PM.c **** ********************************************************************************
+  93:.\Generated_Source\PSoC5/GPS_PM.c **** *
+  94:.\Generated_Source\PSoC5/GPS_PM.c **** * Summary:
+  95:.\Generated_Source\PSoC5/GPS_PM.c **** *  Restores the current user configuration.
+  96:.\Generated_Source\PSoC5/GPS_PM.c **** *
+  97:.\Generated_Source\PSoC5/GPS_PM.c **** * Parameters:
+  98:.\Generated_Source\PSoC5/GPS_PM.c **** *  None.
+  99:.\Generated_Source\PSoC5/GPS_PM.c **** *
+ 100:.\Generated_Source\PSoC5/GPS_PM.c **** * Return:
+ 101:.\Generated_Source\PSoC5/GPS_PM.c **** *  None.
+ 102:.\Generated_Source\PSoC5/GPS_PM.c **** *
+ 103:.\Generated_Source\PSoC5/GPS_PM.c **** * Global Variables:
+ 104:.\Generated_Source\PSoC5/GPS_PM.c **** *  GPS_backup - used when non-retention registers are restored.
+ 105:.\Generated_Source\PSoC5/GPS_PM.c **** *
+ 106:.\Generated_Source\PSoC5/GPS_PM.c **** * Reentrant:
+ 107:.\Generated_Source\PSoC5/GPS_PM.c **** *  No.
+ 108:.\Generated_Source\PSoC5/GPS_PM.c **** *
+ 109:.\Generated_Source\PSoC5/GPS_PM.c **** *******************************************************************************/
+ 110:.\Generated_Source\PSoC5/GPS_PM.c **** void GPS_RestoreConfig(void)
+ 111:.\Generated_Source\PSoC5/GPS_PM.c **** {
+  58              		.loc 1 111 0
+  59              		.cfi_startproc
+  60              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccvXnylp.s 			page 4
+
+
+  61              		@ frame_needed = 1, uses_anonymous_args = 0
+  62              		@ link register save eliminated.
+  63 0000 80B4     		push	{r7}
+  64              	.LCFI2:
+  65              		.cfi_def_cfa_offset 4
+  66              		.cfi_offset 7, -4
+  67 0002 00AF     		add	r7, sp, #0
+  68              	.LCFI3:
+  69              		.cfi_def_cfa_register 7
+ 112:.\Generated_Source\PSoC5/GPS_PM.c **** 
+ 113:.\Generated_Source\PSoC5/GPS_PM.c ****     #if (CY_UDB_V0)
+ 114:.\Generated_Source\PSoC5/GPS_PM.c **** 
+ 115:.\Generated_Source\PSoC5/GPS_PM.c ****         #if(GPS_CONTROL_REG_REMOVED == 0u)
+ 116:.\Generated_Source\PSoC5/GPS_PM.c ****             GPS_CONTROL_REG = GPS_backup.cr;
+ 117:.\Generated_Source\PSoC5/GPS_PM.c ****         #endif /* End GPS_CONTROL_REG_REMOVED */
+ 118:.\Generated_Source\PSoC5/GPS_PM.c **** 
+ 119:.\Generated_Source\PSoC5/GPS_PM.c ****         #if( (GPS_RX_ENABLED) || (GPS_HD_ENABLED) )
+ 120:.\Generated_Source\PSoC5/GPS_PM.c ****             GPS_RXBITCTR_PERIOD_REG = GPS_backup.rx_period;
+ 121:.\Generated_Source\PSoC5/GPS_PM.c ****             GPS_RXSTATUS_MASK_REG = GPS_backup.rx_mask;
+ 122:.\Generated_Source\PSoC5/GPS_PM.c ****             #if (GPS_RXHW_ADDRESS_ENABLED)
+ 123:.\Generated_Source\PSoC5/GPS_PM.c ****                 GPS_RXADDRESS1_REG = GPS_backup.rx_addr1;
+ 124:.\Generated_Source\PSoC5/GPS_PM.c ****                 GPS_RXADDRESS2_REG = GPS_backup.rx_addr2;
+ 125:.\Generated_Source\PSoC5/GPS_PM.c ****             #endif /* End GPS_RXHW_ADDRESS_ENABLED */
+ 126:.\Generated_Source\PSoC5/GPS_PM.c ****         #endif  /* End (GPS_RX_ENABLED) || (GPS_HD_ENABLED) */
+ 127:.\Generated_Source\PSoC5/GPS_PM.c **** 
+ 128:.\Generated_Source\PSoC5/GPS_PM.c ****         #if(GPS_TX_ENABLED)
+ 129:.\Generated_Source\PSoC5/GPS_PM.c ****             #if(GPS_TXCLKGEN_DP)
+ 130:.\Generated_Source\PSoC5/GPS_PM.c ****                 GPS_TXBITCLKGEN_CTR_REG = GPS_backup.tx_clk_ctr;
+ 131:.\Generated_Source\PSoC5/GPS_PM.c ****                 GPS_TXBITCLKTX_COMPLETE_REG = GPS_backup.tx_clk_compl;
+ 132:.\Generated_Source\PSoC5/GPS_PM.c ****             #else
+ 133:.\Generated_Source\PSoC5/GPS_PM.c ****                 GPS_TXBITCTR_PERIOD_REG = GPS_backup.tx_period;
+ 134:.\Generated_Source\PSoC5/GPS_PM.c ****             #endif /*End GPS_TXCLKGEN_DP */
+ 135:.\Generated_Source\PSoC5/GPS_PM.c ****             GPS_TXSTATUS_MASK_REG = GPS_backup.tx_mask;
+ 136:.\Generated_Source\PSoC5/GPS_PM.c ****         #endif /*End GPS_TX_ENABLED */
+ 137:.\Generated_Source\PSoC5/GPS_PM.c **** 
+ 138:.\Generated_Source\PSoC5/GPS_PM.c ****     #else /* CY_UDB_V1 */
+ 139:.\Generated_Source\PSoC5/GPS_PM.c **** 
+ 140:.\Generated_Source\PSoC5/GPS_PM.c ****         #if(GPS_CONTROL_REG_REMOVED == 0u)
+ 141:.\Generated_Source\PSoC5/GPS_PM.c ****             GPS_CONTROL_REG = GPS_backup.cr;
+ 142:.\Generated_Source\PSoC5/GPS_PM.c ****         #endif /* End GPS_CONTROL_REG_REMOVED */
+ 143:.\Generated_Source\PSoC5/GPS_PM.c **** 
+ 144:.\Generated_Source\PSoC5/GPS_PM.c ****     #endif  /* End CY_UDB_V0 */
+ 145:.\Generated_Source\PSoC5/GPS_PM.c **** }
+  70              		.loc 1 145 0
+  71 0004 BD46     		mov	sp, r7
+  72 0006 80BC     		pop	{r7}
+  73 0008 7047     		bx	lr
+  74              		.cfi_endproc
+  75              	.LFE1:
+  76              		.size	GPS_RestoreConfig, .-GPS_RestoreConfig
+  77 000a 00BF     		.section	.text.GPS_Sleep,"ax",%progbits
+  78              		.align	2
+  79              		.global	GPS_Sleep
+  80              		.thumb
+  81              		.thumb_func
+  82              		.type	GPS_Sleep, %function
+  83              	GPS_Sleep:
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccvXnylp.s 			page 5
+
+
+  84              	.LFB2:
+ 146:.\Generated_Source\PSoC5/GPS_PM.c **** 
+ 147:.\Generated_Source\PSoC5/GPS_PM.c **** 
+ 148:.\Generated_Source\PSoC5/GPS_PM.c **** /*******************************************************************************
+ 149:.\Generated_Source\PSoC5/GPS_PM.c **** * Function Name: GPS_Sleep
+ 150:.\Generated_Source\PSoC5/GPS_PM.c **** ********************************************************************************
+ 151:.\Generated_Source\PSoC5/GPS_PM.c **** *
+ 152:.\Generated_Source\PSoC5/GPS_PM.c **** * Summary:
+ 153:.\Generated_Source\PSoC5/GPS_PM.c **** *  Stops and saves the user configuration. Should be called
+ 154:.\Generated_Source\PSoC5/GPS_PM.c **** *  just prior to entering sleep.
+ 155:.\Generated_Source\PSoC5/GPS_PM.c **** *
+ 156:.\Generated_Source\PSoC5/GPS_PM.c **** *
+ 157:.\Generated_Source\PSoC5/GPS_PM.c **** * Parameters:
+ 158:.\Generated_Source\PSoC5/GPS_PM.c **** *  None.
+ 159:.\Generated_Source\PSoC5/GPS_PM.c **** *
+ 160:.\Generated_Source\PSoC5/GPS_PM.c **** * Return:
+ 161:.\Generated_Source\PSoC5/GPS_PM.c **** *  None.
+ 162:.\Generated_Source\PSoC5/GPS_PM.c **** *
+ 163:.\Generated_Source\PSoC5/GPS_PM.c **** * Global Variables:
+ 164:.\Generated_Source\PSoC5/GPS_PM.c **** *  GPS_backup - modified when non-retention registers are saved.
+ 165:.\Generated_Source\PSoC5/GPS_PM.c **** *
+ 166:.\Generated_Source\PSoC5/GPS_PM.c **** * Reentrant:
+ 167:.\Generated_Source\PSoC5/GPS_PM.c **** *  No.
+ 168:.\Generated_Source\PSoC5/GPS_PM.c **** *
+ 169:.\Generated_Source\PSoC5/GPS_PM.c **** *******************************************************************************/
+ 170:.\Generated_Source\PSoC5/GPS_PM.c **** void GPS_Sleep(void)
+ 171:.\Generated_Source\PSoC5/GPS_PM.c **** {
+  85              		.loc 1 171 0
+  86              		.cfi_startproc
+  87              		@ args = 0, pretend = 0, frame = 0
+  88              		@ frame_needed = 1, uses_anonymous_args = 0
+  89 0000 80B5     		push	{r7, lr}
+  90              	.LCFI4:
+  91              		.cfi_def_cfa_offset 8
+  92              		.cfi_offset 7, -8
+  93              		.cfi_offset 14, -4
+  94 0002 00AF     		add	r7, sp, #0
+  95              	.LCFI5:
+  96              		.cfi_def_cfa_register 7
+ 172:.\Generated_Source\PSoC5/GPS_PM.c **** 
+ 173:.\Generated_Source\PSoC5/GPS_PM.c ****     #if(GPS_RX_ENABLED || GPS_HD_ENABLED)
+ 174:.\Generated_Source\PSoC5/GPS_PM.c ****         if((GPS_RXSTATUS_ACTL_REG  & GPS_INT_ENABLE) != 0u)
+  97              		.loc 1 174 0
+  98 0004 46F29653 		movw	r3, #26006
+  99 0008 C4F20003 		movt	r3, 16384
+ 100 000c 1B78     		ldrb	r3, [r3, #0]
+ 101 000e DBB2     		uxtb	r3, r3
+ 102 0010 03F01003 		and	r3, r3, #16
+ 103 0014 002B     		cmp	r3, #0
+ 104 0016 07D0     		beq	.L4
+ 175:.\Generated_Source\PSoC5/GPS_PM.c ****         {
+ 176:.\Generated_Source\PSoC5/GPS_PM.c ****             GPS_backup.enableState = 1u;
+ 105              		.loc 1 176 0
+ 106 0018 40F20003 		movw	r3, #:lower16:GPS_backup
+ 107 001c C0F20003 		movt	r3, #:upper16:GPS_backup
+ 108 0020 4FF00102 		mov	r2, #1
+ 109 0024 1A70     		strb	r2, [r3, #0]
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccvXnylp.s 			page 6
+
+
+ 110 0026 06E0     		b	.L5
+ 111              	.L4:
+ 177:.\Generated_Source\PSoC5/GPS_PM.c ****         }
+ 178:.\Generated_Source\PSoC5/GPS_PM.c ****         else
+ 179:.\Generated_Source\PSoC5/GPS_PM.c ****         {
+ 180:.\Generated_Source\PSoC5/GPS_PM.c ****             GPS_backup.enableState = 0u;
+ 112              		.loc 1 180 0
+ 113 0028 40F20003 		movw	r3, #:lower16:GPS_backup
+ 114 002c C0F20003 		movt	r3, #:upper16:GPS_backup
+ 115 0030 4FF00002 		mov	r2, #0
+ 116 0034 1A70     		strb	r2, [r3, #0]
+ 117              	.L5:
+ 181:.\Generated_Source\PSoC5/GPS_PM.c ****         }
+ 182:.\Generated_Source\PSoC5/GPS_PM.c ****     #else
+ 183:.\Generated_Source\PSoC5/GPS_PM.c ****         if((GPS_TXSTATUS_ACTL_REG  & GPS_INT_ENABLE) !=0u)
+ 184:.\Generated_Source\PSoC5/GPS_PM.c ****         {
+ 185:.\Generated_Source\PSoC5/GPS_PM.c ****             GPS_backup.enableState = 1u;
+ 186:.\Generated_Source\PSoC5/GPS_PM.c ****         }
+ 187:.\Generated_Source\PSoC5/GPS_PM.c ****         else
+ 188:.\Generated_Source\PSoC5/GPS_PM.c ****         {
+ 189:.\Generated_Source\PSoC5/GPS_PM.c ****             GPS_backup.enableState = 0u;
+ 190:.\Generated_Source\PSoC5/GPS_PM.c ****         }
+ 191:.\Generated_Source\PSoC5/GPS_PM.c ****     #endif /* End GPS_RX_ENABLED || GPS_HD_ENABLED*/
+ 192:.\Generated_Source\PSoC5/GPS_PM.c **** 
+ 193:.\Generated_Source\PSoC5/GPS_PM.c ****     GPS_Stop();
+ 118              		.loc 1 193 0
+ 119 0036 FFF7FEFF 		bl	GPS_Stop
+ 194:.\Generated_Source\PSoC5/GPS_PM.c ****     GPS_SaveConfig();
+ 120              		.loc 1 194 0
+ 121 003a FFF7FEFF 		bl	GPS_SaveConfig
+ 195:.\Generated_Source\PSoC5/GPS_PM.c **** }
+ 122              		.loc 1 195 0
+ 123 003e 80BD     		pop	{r7, pc}
+ 124              		.cfi_endproc
+ 125              	.LFE2:
+ 126              		.size	GPS_Sleep, .-GPS_Sleep
+ 127              		.section	.text.GPS_Wakeup,"ax",%progbits
+ 128              		.align	2
+ 129              		.global	GPS_Wakeup
+ 130              		.thumb
+ 131              		.thumb_func
+ 132              		.type	GPS_Wakeup, %function
+ 133              	GPS_Wakeup:
+ 134              	.LFB3:
+ 196:.\Generated_Source\PSoC5/GPS_PM.c **** 
+ 197:.\Generated_Source\PSoC5/GPS_PM.c **** 
+ 198:.\Generated_Source\PSoC5/GPS_PM.c **** /*******************************************************************************
+ 199:.\Generated_Source\PSoC5/GPS_PM.c **** * Function Name: GPS_Wakeup
+ 200:.\Generated_Source\PSoC5/GPS_PM.c **** ********************************************************************************
+ 201:.\Generated_Source\PSoC5/GPS_PM.c **** *
+ 202:.\Generated_Source\PSoC5/GPS_PM.c **** * Summary:
+ 203:.\Generated_Source\PSoC5/GPS_PM.c **** *  Restores and enables the user configuration. Should be called
+ 204:.\Generated_Source\PSoC5/GPS_PM.c **** *  just after awaking from sleep.
+ 205:.\Generated_Source\PSoC5/GPS_PM.c **** *
+ 206:.\Generated_Source\PSoC5/GPS_PM.c **** * Parameters:
+ 207:.\Generated_Source\PSoC5/GPS_PM.c **** *  None.
+ 208:.\Generated_Source\PSoC5/GPS_PM.c **** *
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccvXnylp.s 			page 7
+
+
+ 209:.\Generated_Source\PSoC5/GPS_PM.c **** * Return:
+ 210:.\Generated_Source\PSoC5/GPS_PM.c **** *  None.
+ 211:.\Generated_Source\PSoC5/GPS_PM.c **** *
+ 212:.\Generated_Source\PSoC5/GPS_PM.c **** * Global Variables:
+ 213:.\Generated_Source\PSoC5/GPS_PM.c **** *  GPS_backup - used when non-retention registers are restored.
+ 214:.\Generated_Source\PSoC5/GPS_PM.c **** *
+ 215:.\Generated_Source\PSoC5/GPS_PM.c **** * Reentrant:
+ 216:.\Generated_Source\PSoC5/GPS_PM.c **** *  No.
+ 217:.\Generated_Source\PSoC5/GPS_PM.c **** *
+ 218:.\Generated_Source\PSoC5/GPS_PM.c **** *******************************************************************************/
+ 219:.\Generated_Source\PSoC5/GPS_PM.c **** void GPS_Wakeup(void)
+ 220:.\Generated_Source\PSoC5/GPS_PM.c **** {
+ 135              		.loc 1 220 0
+ 136              		.cfi_startproc
+ 137              		@ args = 0, pretend = 0, frame = 0
+ 138              		@ frame_needed = 1, uses_anonymous_args = 0
+ 139 0000 80B5     		push	{r7, lr}
+ 140              	.LCFI6:
+ 141              		.cfi_def_cfa_offset 8
+ 142              		.cfi_offset 7, -8
+ 143              		.cfi_offset 14, -4
+ 144 0002 00AF     		add	r7, sp, #0
+ 145              	.LCFI7:
+ 146              		.cfi_def_cfa_register 7
+ 221:.\Generated_Source\PSoC5/GPS_PM.c ****     GPS_RestoreConfig();
+ 147              		.loc 1 221 0
+ 148 0004 FFF7FEFF 		bl	GPS_RestoreConfig
+ 222:.\Generated_Source\PSoC5/GPS_PM.c ****     #if( (GPS_RX_ENABLED) || (GPS_HD_ENABLED) )
+ 223:.\Generated_Source\PSoC5/GPS_PM.c ****         GPS_ClearRxBuffer();
+ 149              		.loc 1 223 0
+ 150 0008 FFF7FEFF 		bl	GPS_ClearRxBuffer
+ 224:.\Generated_Source\PSoC5/GPS_PM.c ****     #endif /* End (GPS_RX_ENABLED) || (GPS_HD_ENABLED) */
+ 225:.\Generated_Source\PSoC5/GPS_PM.c ****     #if(GPS_TX_ENABLED || GPS_HD_ENABLED)
+ 226:.\Generated_Source\PSoC5/GPS_PM.c ****         GPS_ClearTxBuffer();
+ 227:.\Generated_Source\PSoC5/GPS_PM.c ****     #endif /* End GPS_TX_ENABLED || GPS_HD_ENABLED */
+ 228:.\Generated_Source\PSoC5/GPS_PM.c **** 
+ 229:.\Generated_Source\PSoC5/GPS_PM.c ****     if(GPS_backup.enableState != 0u)
+ 151              		.loc 1 229 0
+ 152 000c 40F20003 		movw	r3, #:lower16:GPS_backup
+ 153 0010 C0F20003 		movt	r3, #:upper16:GPS_backup
+ 154 0014 1B78     		ldrb	r3, [r3, #0]	@ zero_extendqisi2
+ 155 0016 002B     		cmp	r3, #0
+ 156 0018 01D0     		beq	.L6
+ 230:.\Generated_Source\PSoC5/GPS_PM.c ****     {
+ 231:.\Generated_Source\PSoC5/GPS_PM.c ****         GPS_Enable();
+ 157              		.loc 1 231 0
+ 158 001a FFF7FEFF 		bl	GPS_Enable
+ 159              	.L6:
+ 232:.\Generated_Source\PSoC5/GPS_PM.c ****     }
+ 233:.\Generated_Source\PSoC5/GPS_PM.c **** }
+ 160              		.loc 1 233 0
+ 161 001e 80BD     		pop	{r7, pc}
+ 162              		.cfi_endproc
+ 163              	.LFE3:
+ 164              		.size	GPS_Wakeup, .-GPS_Wakeup
+ 165              		.text
+ 166              	.Letext0:
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccvXnylp.s 			page 8
+
+
+ 167              		.file 2 ".\\Generated_Source\\PSoC5\\cytypes.h"
+ 168              		.file 3 ".\\Generated_Source\\PSoC5\\GPS.h"
+ 169              		.section	.debug_info,"",%progbits
+ 170              	.Ldebug_info0:
+ 171 0000 40010000 		.4byte	0x140
+ 172 0004 0200     		.2byte	0x2
+ 173 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 174 000a 04       		.byte	0x4
+ 175 000b 01       		.uleb128 0x1
+ 176 000c 7E000000 		.4byte	.LASF22
+ 177 0010 01       		.byte	0x1
+ 178 0011 A6010000 		.4byte	.LASF23
+ 179 0015 33000000 		.4byte	.LASF24
+ 180 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 181 001d 00000000 		.4byte	0
+ 182 0021 00000000 		.4byte	0
+ 183 0025 00000000 		.4byte	.Ldebug_line0
+ 184 0029 02       		.uleb128 0x2
+ 185 002a 01       		.byte	0x1
+ 186 002b 06       		.byte	0x6
+ 187 002c 69010000 		.4byte	.LASF0
+ 188 0030 02       		.uleb128 0x2
+ 189 0031 01       		.byte	0x1
+ 190 0032 08       		.byte	0x8
+ 191 0033 24010000 		.4byte	.LASF1
+ 192 0037 02       		.uleb128 0x2
+ 193 0038 02       		.byte	0x2
+ 194 0039 05       		.byte	0x5
+ 195 003a 8A010000 		.4byte	.LASF2
+ 196 003e 02       		.uleb128 0x2
+ 197 003f 02       		.byte	0x2
+ 198 0040 07       		.byte	0x7
+ 199 0041 0E000000 		.4byte	.LASF3
+ 200 0045 02       		.uleb128 0x2
+ 201 0046 04       		.byte	0x4
+ 202 0047 05       		.byte	0x5
+ 203 0048 37010000 		.4byte	.LASF4
+ 204 004c 02       		.uleb128 0x2
+ 205 004d 04       		.byte	0x4
+ 206 004e 07       		.byte	0x7
+ 207 004f CD000000 		.4byte	.LASF5
+ 208 0053 02       		.uleb128 0x2
+ 209 0054 08       		.byte	0x8
+ 210 0055 05       		.byte	0x5
+ 211 0056 00000000 		.4byte	.LASF6
+ 212 005a 02       		.uleb128 0x2
+ 213 005b 08       		.byte	0x8
+ 214 005c 07       		.byte	0x7
+ 215 005d E9000000 		.4byte	.LASF7
+ 216 0061 03       		.uleb128 0x3
+ 217 0062 04       		.byte	0x4
+ 218 0063 05       		.byte	0x5
+ 219 0064 696E7400 		.ascii	"int\000"
+ 220 0068 02       		.uleb128 0x2
+ 221 0069 04       		.byte	0x4
+ 222 006a 07       		.byte	0x7
+ 223 006b 99010000 		.4byte	.LASF8
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccvXnylp.s 			page 9
+
+
+ 224 006f 04       		.uleb128 0x4
+ 225 0070 C7000000 		.4byte	.LASF12
+ 226 0074 02       		.byte	0x2
+ 227 0075 5B       		.byte	0x5b
+ 228 0076 30000000 		.4byte	0x30
+ 229 007a 02       		.uleb128 0x2
+ 230 007b 04       		.byte	0x4
+ 231 007c 04       		.byte	0x4
+ 232 007d 84010000 		.4byte	.LASF9
+ 233 0081 02       		.uleb128 0x2
+ 234 0082 08       		.byte	0x8
+ 235 0083 04       		.byte	0x4
+ 236 0084 4C010000 		.4byte	.LASF10
+ 237 0088 02       		.uleb128 0x2
+ 238 0089 01       		.byte	0x1
+ 239 008a 08       		.byte	0x8
+ 240 008b 32010000 		.4byte	.LASF11
+ 241 008f 04       		.uleb128 0x4
+ 242 0090 94010000 		.4byte	.LASF13
+ 243 0094 02       		.byte	0x2
+ 244 0095 F0       		.byte	0xf0
+ 245 0096 9A000000 		.4byte	0x9a
+ 246 009a 05       		.uleb128 0x5
+ 247 009b 6F000000 		.4byte	0x6f
+ 248 009f 02       		.uleb128 0x2
+ 249 00a0 04       		.byte	0x4
+ 250 00a1 07       		.byte	0x7
+ 251 00a2 C8010000 		.4byte	.LASF14
+ 252 00a6 06       		.uleb128 0x6
+ 253 00a7 21000000 		.4byte	.LASF25
+ 254 00ab 02       		.byte	0x2
+ 255 00ac 03       		.byte	0x3
+ 256 00ad 45       		.byte	0x45
+ 257 00ae CF000000 		.4byte	0xcf
+ 258 00b2 07       		.uleb128 0x7
+ 259 00b3 40010000 		.4byte	.LASF15
+ 260 00b7 03       		.byte	0x3
+ 261 00b8 47       		.byte	0x47
+ 262 00b9 6F000000 		.4byte	0x6f
+ 263 00bd 02       		.byte	0x2
+ 264 00be 23       		.byte	0x23
+ 265 00bf 00       		.uleb128 0
+ 266 00c0 07       		.uleb128 0x7
+ 267 00c1 DF000000 		.4byte	.LASF16
+ 268 00c5 03       		.byte	0x3
+ 269 00c6 4D       		.byte	0x4d
+ 270 00c7 6F000000 		.4byte	0x6f
+ 271 00cb 02       		.byte	0x2
+ 272 00cc 23       		.byte	0x23
+ 273 00cd 01       		.uleb128 0x1
+ 274 00ce 00       		.byte	0
+ 275 00cf 04       		.uleb128 0x4
+ 276 00d0 12010000 		.4byte	.LASF17
+ 277 00d4 03       		.byte	0x3
+ 278 00d5 64       		.byte	0x64
+ 279 00d6 A6000000 		.4byte	0xa6
+ 280 00da 08       		.uleb128 0x8
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccvXnylp.s 			page 10
+
+
+ 281 00db 01       		.byte	0x1
+ 282 00dc 75010000 		.4byte	.LASF18
+ 283 00e0 01       		.byte	0x1
+ 284 00e1 34       		.byte	0x34
+ 285 00e2 01       		.byte	0x1
+ 286 00e3 00000000 		.4byte	.LFB0
+ 287 00e7 0A000000 		.4byte	.LFE0
+ 288 00eb 00000000 		.4byte	.LLST0
+ 289 00ef 01       		.byte	0x1
+ 290 00f0 08       		.uleb128 0x8
+ 291 00f1 01       		.byte	0x1
+ 292 00f2 00010000 		.4byte	.LASF19
+ 293 00f6 01       		.byte	0x1
+ 294 00f7 6E       		.byte	0x6e
+ 295 00f8 01       		.byte	0x1
+ 296 00f9 00000000 		.4byte	.LFB1
+ 297 00fd 0A000000 		.4byte	.LFE1
+ 298 0101 2C000000 		.4byte	.LLST1
+ 299 0105 01       		.byte	0x1
+ 300 0106 09       		.uleb128 0x9
+ 301 0107 01       		.byte	0x1
+ 302 0108 74000000 		.4byte	.LASF20
+ 303 010c 01       		.byte	0x1
+ 304 010d AA       		.byte	0xaa
+ 305 010e 01       		.byte	0x1
+ 306 010f 00000000 		.4byte	.LFB2
+ 307 0113 40000000 		.4byte	.LFE2
+ 308 0117 58000000 		.4byte	.LLST2
+ 309 011b 01       		.byte	0x1
+ 310 011c 09       		.uleb128 0x9
+ 311 011d 01       		.byte	0x1
+ 312 011e 53010000 		.4byte	.LASF21
+ 313 0122 01       		.byte	0x1
+ 314 0123 DB       		.byte	0xdb
+ 315 0124 01       		.byte	0x1
+ 316 0125 00000000 		.4byte	.LFB3
+ 317 0129 20000000 		.4byte	.LFE3
+ 318 012d 84000000 		.4byte	.LLST3
+ 319 0131 01       		.byte	0x1
+ 320 0132 0A       		.uleb128 0xa
+ 321 0133 5E010000 		.4byte	.LASF26
+ 322 0137 01       		.byte	0x1
+ 323 0138 18       		.byte	0x18
+ 324 0139 CF000000 		.4byte	0xcf
+ 325 013d 05       		.byte	0x5
+ 326 013e 03       		.byte	0x3
+ 327 013f 00000000 		.4byte	GPS_backup
+ 328 0143 00       		.byte	0
+ 329              		.section	.debug_abbrev,"",%progbits
+ 330              	.Ldebug_abbrev0:
+ 331 0000 01       		.uleb128 0x1
+ 332 0001 11       		.uleb128 0x11
+ 333 0002 01       		.byte	0x1
+ 334 0003 25       		.uleb128 0x25
+ 335 0004 0E       		.uleb128 0xe
+ 336 0005 13       		.uleb128 0x13
+ 337 0006 0B       		.uleb128 0xb
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccvXnylp.s 			page 11
+
+
+ 338 0007 03       		.uleb128 0x3
+ 339 0008 0E       		.uleb128 0xe
+ 340 0009 1B       		.uleb128 0x1b
+ 341 000a 0E       		.uleb128 0xe
+ 342 000b 55       		.uleb128 0x55
+ 343 000c 06       		.uleb128 0x6
+ 344 000d 11       		.uleb128 0x11
+ 345 000e 01       		.uleb128 0x1
+ 346 000f 52       		.uleb128 0x52
+ 347 0010 01       		.uleb128 0x1
+ 348 0011 10       		.uleb128 0x10
+ 349 0012 06       		.uleb128 0x6
+ 350 0013 00       		.byte	0
+ 351 0014 00       		.byte	0
+ 352 0015 02       		.uleb128 0x2
+ 353 0016 24       		.uleb128 0x24
+ 354 0017 00       		.byte	0
+ 355 0018 0B       		.uleb128 0xb
+ 356 0019 0B       		.uleb128 0xb
+ 357 001a 3E       		.uleb128 0x3e
+ 358 001b 0B       		.uleb128 0xb
+ 359 001c 03       		.uleb128 0x3
+ 360 001d 0E       		.uleb128 0xe
+ 361 001e 00       		.byte	0
+ 362 001f 00       		.byte	0
+ 363 0020 03       		.uleb128 0x3
+ 364 0021 24       		.uleb128 0x24
+ 365 0022 00       		.byte	0
+ 366 0023 0B       		.uleb128 0xb
+ 367 0024 0B       		.uleb128 0xb
+ 368 0025 3E       		.uleb128 0x3e
+ 369 0026 0B       		.uleb128 0xb
+ 370 0027 03       		.uleb128 0x3
+ 371 0028 08       		.uleb128 0x8
+ 372 0029 00       		.byte	0
+ 373 002a 00       		.byte	0
+ 374 002b 04       		.uleb128 0x4
+ 375 002c 16       		.uleb128 0x16
+ 376 002d 00       		.byte	0
+ 377 002e 03       		.uleb128 0x3
+ 378 002f 0E       		.uleb128 0xe
+ 379 0030 3A       		.uleb128 0x3a
+ 380 0031 0B       		.uleb128 0xb
+ 381 0032 3B       		.uleb128 0x3b
+ 382 0033 0B       		.uleb128 0xb
+ 383 0034 49       		.uleb128 0x49
+ 384 0035 13       		.uleb128 0x13
+ 385 0036 00       		.byte	0
+ 386 0037 00       		.byte	0
+ 387 0038 05       		.uleb128 0x5
+ 388 0039 35       		.uleb128 0x35
+ 389 003a 00       		.byte	0
+ 390 003b 49       		.uleb128 0x49
+ 391 003c 13       		.uleb128 0x13
+ 392 003d 00       		.byte	0
+ 393 003e 00       		.byte	0
+ 394 003f 06       		.uleb128 0x6
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccvXnylp.s 			page 12
+
+
+ 395 0040 13       		.uleb128 0x13
+ 396 0041 01       		.byte	0x1
+ 397 0042 03       		.uleb128 0x3
+ 398 0043 0E       		.uleb128 0xe
+ 399 0044 0B       		.uleb128 0xb
+ 400 0045 0B       		.uleb128 0xb
+ 401 0046 3A       		.uleb128 0x3a
+ 402 0047 0B       		.uleb128 0xb
+ 403 0048 3B       		.uleb128 0x3b
+ 404 0049 0B       		.uleb128 0xb
+ 405 004a 01       		.uleb128 0x1
+ 406 004b 13       		.uleb128 0x13
+ 407 004c 00       		.byte	0
+ 408 004d 00       		.byte	0
+ 409 004e 07       		.uleb128 0x7
+ 410 004f 0D       		.uleb128 0xd
+ 411 0050 00       		.byte	0
+ 412 0051 03       		.uleb128 0x3
+ 413 0052 0E       		.uleb128 0xe
+ 414 0053 3A       		.uleb128 0x3a
+ 415 0054 0B       		.uleb128 0xb
+ 416 0055 3B       		.uleb128 0x3b
+ 417 0056 0B       		.uleb128 0xb
+ 418 0057 49       		.uleb128 0x49
+ 419 0058 13       		.uleb128 0x13
+ 420 0059 38       		.uleb128 0x38
+ 421 005a 0A       		.uleb128 0xa
+ 422 005b 00       		.byte	0
+ 423 005c 00       		.byte	0
+ 424 005d 08       		.uleb128 0x8
+ 425 005e 2E       		.uleb128 0x2e
+ 426 005f 00       		.byte	0
+ 427 0060 3F       		.uleb128 0x3f
+ 428 0061 0C       		.uleb128 0xc
+ 429 0062 03       		.uleb128 0x3
+ 430 0063 0E       		.uleb128 0xe
+ 431 0064 3A       		.uleb128 0x3a
+ 432 0065 0B       		.uleb128 0xb
+ 433 0066 3B       		.uleb128 0x3b
+ 434 0067 0B       		.uleb128 0xb
+ 435 0068 27       		.uleb128 0x27
+ 436 0069 0C       		.uleb128 0xc
+ 437 006a 11       		.uleb128 0x11
+ 438 006b 01       		.uleb128 0x1
+ 439 006c 12       		.uleb128 0x12
+ 440 006d 01       		.uleb128 0x1
+ 441 006e 40       		.uleb128 0x40
+ 442 006f 06       		.uleb128 0x6
+ 443 0070 9742     		.uleb128 0x2117
+ 444 0072 0C       		.uleb128 0xc
+ 445 0073 00       		.byte	0
+ 446 0074 00       		.byte	0
+ 447 0075 09       		.uleb128 0x9
+ 448 0076 2E       		.uleb128 0x2e
+ 449 0077 00       		.byte	0
+ 450 0078 3F       		.uleb128 0x3f
+ 451 0079 0C       		.uleb128 0xc
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccvXnylp.s 			page 13
+
+
+ 452 007a 03       		.uleb128 0x3
+ 453 007b 0E       		.uleb128 0xe
+ 454 007c 3A       		.uleb128 0x3a
+ 455 007d 0B       		.uleb128 0xb
+ 456 007e 3B       		.uleb128 0x3b
+ 457 007f 0B       		.uleb128 0xb
+ 458 0080 27       		.uleb128 0x27
+ 459 0081 0C       		.uleb128 0xc
+ 460 0082 11       		.uleb128 0x11
+ 461 0083 01       		.uleb128 0x1
+ 462 0084 12       		.uleb128 0x12
+ 463 0085 01       		.uleb128 0x1
+ 464 0086 40       		.uleb128 0x40
+ 465 0087 06       		.uleb128 0x6
+ 466 0088 9642     		.uleb128 0x2116
+ 467 008a 0C       		.uleb128 0xc
+ 468 008b 00       		.byte	0
+ 469 008c 00       		.byte	0
+ 470 008d 0A       		.uleb128 0xa
+ 471 008e 34       		.uleb128 0x34
+ 472 008f 00       		.byte	0
+ 473 0090 03       		.uleb128 0x3
+ 474 0091 0E       		.uleb128 0xe
+ 475 0092 3A       		.uleb128 0x3a
+ 476 0093 0B       		.uleb128 0xb
+ 477 0094 3B       		.uleb128 0x3b
+ 478 0095 0B       		.uleb128 0xb
+ 479 0096 49       		.uleb128 0x49
+ 480 0097 13       		.uleb128 0x13
+ 481 0098 02       		.uleb128 0x2
+ 482 0099 0A       		.uleb128 0xa
+ 483 009a 00       		.byte	0
+ 484 009b 00       		.byte	0
+ 485 009c 00       		.byte	0
+ 486              		.section	.debug_loc,"",%progbits
+ 487              	.Ldebug_loc0:
+ 488              	.LLST0:
+ 489 0000 00000000 		.4byte	.LFB0
+ 490 0004 02000000 		.4byte	.LCFI0
+ 491 0008 0200     		.2byte	0x2
+ 492 000a 7D       		.byte	0x7d
+ 493 000b 00       		.sleb128 0
+ 494 000c 02000000 		.4byte	.LCFI0
+ 495 0010 04000000 		.4byte	.LCFI1
+ 496 0014 0200     		.2byte	0x2
+ 497 0016 7D       		.byte	0x7d
+ 498 0017 04       		.sleb128 4
+ 499 0018 04000000 		.4byte	.LCFI1
+ 500 001c 0A000000 		.4byte	.LFE0
+ 501 0020 0200     		.2byte	0x2
+ 502 0022 77       		.byte	0x77
+ 503 0023 04       		.sleb128 4
+ 504 0024 00000000 		.4byte	0
+ 505 0028 00000000 		.4byte	0
+ 506              	.LLST1:
+ 507 002c 00000000 		.4byte	.LFB1
+ 508 0030 02000000 		.4byte	.LCFI2
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccvXnylp.s 			page 14
+
+
+ 509 0034 0200     		.2byte	0x2
+ 510 0036 7D       		.byte	0x7d
+ 511 0037 00       		.sleb128 0
+ 512 0038 02000000 		.4byte	.LCFI2
+ 513 003c 04000000 		.4byte	.LCFI3
+ 514 0040 0200     		.2byte	0x2
+ 515 0042 7D       		.byte	0x7d
+ 516 0043 04       		.sleb128 4
+ 517 0044 04000000 		.4byte	.LCFI3
+ 518 0048 0A000000 		.4byte	.LFE1
+ 519 004c 0200     		.2byte	0x2
+ 520 004e 77       		.byte	0x77
+ 521 004f 04       		.sleb128 4
+ 522 0050 00000000 		.4byte	0
+ 523 0054 00000000 		.4byte	0
+ 524              	.LLST2:
+ 525 0058 00000000 		.4byte	.LFB2
+ 526 005c 02000000 		.4byte	.LCFI4
+ 527 0060 0200     		.2byte	0x2
+ 528 0062 7D       		.byte	0x7d
+ 529 0063 00       		.sleb128 0
+ 530 0064 02000000 		.4byte	.LCFI4
+ 531 0068 04000000 		.4byte	.LCFI5
+ 532 006c 0200     		.2byte	0x2
+ 533 006e 7D       		.byte	0x7d
+ 534 006f 08       		.sleb128 8
+ 535 0070 04000000 		.4byte	.LCFI5
+ 536 0074 40000000 		.4byte	.LFE2
+ 537 0078 0200     		.2byte	0x2
+ 538 007a 77       		.byte	0x77
+ 539 007b 08       		.sleb128 8
+ 540 007c 00000000 		.4byte	0
+ 541 0080 00000000 		.4byte	0
+ 542              	.LLST3:
+ 543 0084 00000000 		.4byte	.LFB3
+ 544 0088 02000000 		.4byte	.LCFI6
+ 545 008c 0200     		.2byte	0x2
+ 546 008e 7D       		.byte	0x7d
+ 547 008f 00       		.sleb128 0
+ 548 0090 02000000 		.4byte	.LCFI6
+ 549 0094 04000000 		.4byte	.LCFI7
+ 550 0098 0200     		.2byte	0x2
+ 551 009a 7D       		.byte	0x7d
+ 552 009b 08       		.sleb128 8
+ 553 009c 04000000 		.4byte	.LCFI7
+ 554 00a0 20000000 		.4byte	.LFE3
+ 555 00a4 0200     		.2byte	0x2
+ 556 00a6 77       		.byte	0x77
+ 557 00a7 08       		.sleb128 8
+ 558 00a8 00000000 		.4byte	0
+ 559 00ac 00000000 		.4byte	0
+ 560              		.section	.debug_aranges,"",%progbits
+ 561 0000 34000000 		.4byte	0x34
+ 562 0004 0200     		.2byte	0x2
+ 563 0006 00000000 		.4byte	.Ldebug_info0
+ 564 000a 04       		.byte	0x4
+ 565 000b 00       		.byte	0
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccvXnylp.s 			page 15
+
+
+ 566 000c 0000     		.2byte	0
+ 567 000e 0000     		.2byte	0
+ 568 0010 00000000 		.4byte	.LFB0
+ 569 0014 0A000000 		.4byte	.LFE0-.LFB0
+ 570 0018 00000000 		.4byte	.LFB1
+ 571 001c 0A000000 		.4byte	.LFE1-.LFB1
+ 572 0020 00000000 		.4byte	.LFB2
+ 573 0024 40000000 		.4byte	.LFE2-.LFB2
+ 574 0028 00000000 		.4byte	.LFB3
+ 575 002c 20000000 		.4byte	.LFE3-.LFB3
+ 576 0030 00000000 		.4byte	0
+ 577 0034 00000000 		.4byte	0
+ 578              		.section	.debug_ranges,"",%progbits
+ 579              	.Ldebug_ranges0:
+ 580 0000 00000000 		.4byte	.LFB0
+ 581 0004 0A000000 		.4byte	.LFE0
+ 582 0008 00000000 		.4byte	.LFB1
+ 583 000c 0A000000 		.4byte	.LFE1
+ 584 0010 00000000 		.4byte	.LFB2
+ 585 0014 40000000 		.4byte	.LFE2
+ 586 0018 00000000 		.4byte	.LFB3
+ 587 001c 20000000 		.4byte	.LFE3
+ 588 0020 00000000 		.4byte	0
+ 589 0024 00000000 		.4byte	0
+ 590              		.section	.debug_line,"",%progbits
+ 591              	.Ldebug_line0:
+ 592 0000 A6000000 		.section	.debug_str,"MS",%progbits,1
+ 592      02004E00 
+ 592      00000201 
+ 592      FB0E0D00 
+ 592      01010101 
+ 593              	.LASF6:
+ 594 0000 6C6F6E67 		.ascii	"long long int\000"
+ 594      206C6F6E 
+ 594      6720696E 
+ 594      7400
+ 595              	.LASF3:
+ 596 000e 73686F72 		.ascii	"short unsigned int\000"
+ 596      7420756E 
+ 596      7369676E 
+ 596      65642069 
+ 596      6E7400
+ 597              	.LASF25:
+ 598 0021 4750535F 		.ascii	"GPS_backupStruct_\000"
+ 598      6261636B 
+ 598      75705374 
+ 598      72756374 
+ 598      5F00
+ 599              	.LASF24:
+ 600 0033 433A5C50 		.ascii	"C:\\Projects\\PSoC\\Bootloading_PSoC5_LP\\Bootloadi"
+ 600      726F6A65 
+ 600      6374735C 
+ 600      50536F43 
+ 600      5C426F6F 
+ 601 0062 6E675F50 		.ascii	"ng_PSoC5_LP.cydsn\000"
+ 601      536F4335 
+ 601      5F4C502E 
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccvXnylp.s 			page 16
+
+
+ 601      63796473 
+ 601      6E00
+ 602              	.LASF20:
+ 603 0074 4750535F 		.ascii	"GPS_Sleep\000"
+ 603      536C6565 
+ 603      7000
+ 604              	.LASF22:
+ 605 007e 474E5520 		.ascii	"GNU C 4.7.3 20130312 (release) [ARM/embedded-4_7-br"
+ 605      4320342E 
+ 605      372E3320 
+ 605      32303133 
+ 605      30333132 
+ 606 00b1 616E6368 		.ascii	"anch revision 196615]\000"
+ 606      20726576 
+ 606      6973696F 
+ 606      6E203139 
+ 606      36363135 
+ 607              	.LASF12:
+ 608 00c7 75696E74 		.ascii	"uint8\000"
+ 608      3800
+ 609              	.LASF5:
+ 610 00cd 6C6F6E67 		.ascii	"long unsigned int\000"
+ 610      20756E73 
+ 610      69676E65 
+ 610      6420696E 
+ 610      7400
+ 611              	.LASF16:
+ 612 00df 72785F70 		.ascii	"rx_period\000"
+ 612      6572696F 
+ 612      6400
+ 613              	.LASF7:
+ 614 00e9 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 614      206C6F6E 
+ 614      6720756E 
+ 614      7369676E 
+ 614      65642069 
+ 615              	.LASF19:
+ 616 0100 4750535F 		.ascii	"GPS_RestoreConfig\000"
+ 616      52657374 
+ 616      6F726543 
+ 616      6F6E6669 
+ 616      6700
+ 617              	.LASF17:
+ 618 0112 4750535F 		.ascii	"GPS_BACKUP_STRUCT\000"
+ 618      4241434B 
+ 618      55505F53 
+ 618      54525543 
+ 618      5400
+ 619              	.LASF1:
+ 620 0124 756E7369 		.ascii	"unsigned char\000"
+ 620      676E6564 
+ 620      20636861 
+ 620      7200
+ 621              	.LASF11:
+ 622 0132 63686172 		.ascii	"char\000"
+ 622      00
+ 623              	.LASF4:
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccvXnylp.s 			page 17
+
+
+ 624 0137 6C6F6E67 		.ascii	"long int\000"
+ 624      20696E74 
+ 624      00
+ 625              	.LASF15:
+ 626 0140 656E6162 		.ascii	"enableState\000"
+ 626      6C655374 
+ 626      61746500 
+ 627              	.LASF10:
+ 628 014c 646F7562 		.ascii	"double\000"
+ 628      6C6500
+ 629              	.LASF21:
+ 630 0153 4750535F 		.ascii	"GPS_Wakeup\000"
+ 630      57616B65 
+ 630      757000
+ 631              	.LASF26:
+ 632 015e 4750535F 		.ascii	"GPS_backup\000"
+ 632      6261636B 
+ 632      757000
+ 633              	.LASF0:
+ 634 0169 7369676E 		.ascii	"signed char\000"
+ 634      65642063 
+ 634      68617200 
+ 635              	.LASF18:
+ 636 0175 4750535F 		.ascii	"GPS_SaveConfig\000"
+ 636      53617665 
+ 636      436F6E66 
+ 636      696700
+ 637              	.LASF9:
+ 638 0184 666C6F61 		.ascii	"float\000"
+ 638      7400
+ 639              	.LASF2:
+ 640 018a 73686F72 		.ascii	"short int\000"
+ 640      7420696E 
+ 640      7400
+ 641              	.LASF13:
+ 642 0194 72656738 		.ascii	"reg8\000"
+ 642      00
+ 643              	.LASF8:
+ 644 0199 756E7369 		.ascii	"unsigned int\000"
+ 644      676E6564 
+ 644      20696E74 
+ 644      00
+ 645              	.LASF23:
+ 646 01a6 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\GPS_PM.c\000"
+ 646      6E657261 
+ 646      7465645F 
+ 646      536F7572 
+ 646      63655C50 
+ 647              	.LASF14:
+ 648 01c8 73697A65 		.ascii	"sizetype\000"
+ 648      74797065 
+ 648      00
+ 649              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.7.3 20130312 (release) [ARM/embedded-4_7-br

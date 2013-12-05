@@ -1,0 +1,424 @@
+ARM GAS  C:\Users\wbz\AppData\Local\Temp\ccWfAxce.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 18, 4
+  12              		.thumb
+  13              		.file	"main.c"
+  14              		.section	.debug_abbrev,"",%progbits
+  15              	.Ldebug_abbrev0:
+  16              		.section	.debug_info,"",%progbits
+  17              	.Ldebug_info0:
+  18              		.section	.debug_line,"",%progbits
+  19              	.Ldebug_line0:
+  20 0000 5D000000 		.text
+  20      02004600 
+  20      00000201 
+  20      FB0E0D00 
+  20      01010101 
+  21              	.Ltext0:
+  22              		.cfi_sections	.debug_frame
+  23              		.section	.text.main,"ax",%progbits
+  24              		.align	2
+  25              		.global	main
+  26              		.thumb
+  27              		.thumb_func
+  28              		.type	main, %function
+  29              	main:
+  30              	.LFB29:
+  31              		.file 1 ".\\main.c"
+   1:.\main.c      **** /* ========================================
+   2:.\main.c      ****  *
+   3:.\main.c      ****  * Copyright YOUR COMPANY, THE YEAR
+   4:.\main.c      ****  * All Rights Reserved
+   5:.\main.c      ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:.\main.c      ****  *
+   7:.\main.c      ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:.\main.c      ****  * WHICH IS THE PROPERTY OF your company.
+   9:.\main.c      ****  *
+  10:.\main.c      ****  * ========================================
+  11:.\main.c      **** */
+  12:.\main.c      **** #include <device.h>
+  13:.\main.c      **** 
+  14:.\main.c      **** void main()
+  15:.\main.c      **** {
+  32              		.loc 1 15 0
+  33              		.cfi_startproc
+  34              		@ args = 0, pretend = 0, frame = 0
+  35              		@ frame_needed = 1, uses_anonymous_args = 0
+  36 0000 80B5     		push	{r7, lr}
+  37              	.LCFI0:
+  38              		.cfi_def_cfa_offset 8
+ARM GAS  C:\Users\wbz\AppData\Local\Temp\ccWfAxce.s 			page 2
+
+
+  39 0002 00AF     		add	r7, sp, #0
+  40              		.cfi_offset 14, -4
+  41              		.cfi_offset 7, -8
+  42              	.LCFI1:
+  43              		.cfi_def_cfa_register 7
+  16:.\main.c      ****     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
+  17:.\main.c      **** 	PWM_1_Start();
+  44              		.loc 1 17 0
+  45 0004 FFF7FEFF 		bl	PWM_1_Start
+  46              	.L2:
+  18:.\main.c      ****     /* CyGlobalIntEnable; */ /* Uncomment this line to enable global interrupts. */
+  19:.\main.c      ****     for(;;)
+  20:.\main.c      ****     {
+  21:.\main.c      ****         /* Place your application code here. */
+  22:.\main.c      ****     }
+  47              		.loc 1 22 0
+  48 0008 FEE7     		b	.L2
+  49              		.cfi_endproc
+  50              	.LFE29:
+  51              		.size	main, .-main
+  52 000a 00BF     		.text
+  53              	.Letext0:
+  54              		.section	.debug_loc,"",%progbits
+  55              	.Ldebug_loc0:
+  56              	.LLST0:
+  57 0000 00000000 		.4byte	.LFB29
+  58 0004 02000000 		.4byte	.LCFI0
+  59 0008 0100     		.2byte	0x1
+  60 000a 5D       		.byte	0x5d
+  61 000b 02000000 		.4byte	.LCFI0
+  62 000f 04000000 		.4byte	.LCFI1
+  63 0013 0200     		.2byte	0x2
+  64 0015 7D       		.byte	0x7d
+  65 0016 08       		.sleb128 8
+  66 0017 04000000 		.4byte	.LCFI1
+  67 001b 0A000000 		.4byte	.LFE29
+  68 001f 0200     		.2byte	0x2
+  69 0021 77       		.byte	0x77
+  70 0022 08       		.sleb128 8
+  71 0023 00000000 		.4byte	0x0
+  72 0027 00000000 		.4byte	0x0
+  73              		.file 2 "./Generated_Source/PSoC5/core_cm3.h"
+  74              		.section	.debug_info
+  75 0000 AB000000 		.4byte	0xab
+  76 0004 0200     		.2byte	0x2
+  77 0006 00000000 		.4byte	.Ldebug_abbrev0
+  78 000a 04       		.byte	0x4
+  79 000b 01       		.uleb128 0x1
+  80 000c 49000000 		.4byte	.LASF12
+  81 0010 01       		.byte	0x1
+  82 0011 30010000 		.4byte	.LASF13
+  83 0015 8F000000 		.4byte	.LASF14
+  84 0019 00000000 		.4byte	0x0
+  85 001d 00000000 		.4byte	0x0
+  86 0021 00000000 		.4byte	.Ldebug_ranges0+0x0
+  87 0025 00000000 		.4byte	.Ldebug_line0
+  88 0029 02       		.uleb128 0x2
+ARM GAS  C:\Users\wbz\AppData\Local\Temp\ccWfAxce.s 			page 3
+
+
+  89 002a 01       		.byte	0x1
+  90 002b 06       		.byte	0x6
+  91 002c 1E010000 		.4byte	.LASF0
+  92 0030 02       		.uleb128 0x2
+  93 0031 01       		.byte	0x1
+  94 0032 08       		.byte	0x8
+  95 0033 55000000 		.4byte	.LASF1
+  96 0037 02       		.uleb128 0x2
+  97 0038 02       		.byte	0x2
+  98 0039 05       		.byte	0x5
+  99 003a 75000000 		.4byte	.LASF2
+ 100 003e 02       		.uleb128 0x2
+ 101 003f 02       		.byte	0x2
+ 102 0040 07       		.byte	0x7
+ 103 0041 0B010000 		.4byte	.LASF3
+ 104 0045 02       		.uleb128 0x2
+ 105 0046 04       		.byte	0x4
+ 106 0047 05       		.byte	0x5
+ 107 0048 86000000 		.4byte	.LASF4
+ 108 004c 02       		.uleb128 0x2
+ 109 004d 04       		.byte	0x4
+ 110 004e 07       		.byte	0x7
+ 111 004f 20000000 		.4byte	.LASF5
+ 112 0053 02       		.uleb128 0x2
+ 113 0054 08       		.byte	0x8
+ 114 0055 05       		.byte	0x5
+ 115 0056 00000000 		.4byte	.LASF6
+ 116 005a 02       		.uleb128 0x2
+ 117 005b 08       		.byte	0x8
+ 118 005c 07       		.byte	0x7
+ 119 005d 32000000 		.4byte	.LASF7
+ 120 0061 03       		.uleb128 0x3
+ 121 0062 04       		.byte	0x4
+ 122 0063 05       		.byte	0x5
+ 123 0064 696E7400 		.ascii	"int\000"
+ 124 0068 02       		.uleb128 0x2
+ 125 0069 04       		.byte	0x4
+ 126 006a 07       		.byte	0x7
+ 127 006b 0E000000 		.4byte	.LASF8
+ 128 006f 02       		.uleb128 0x2
+ 129 0070 04       		.byte	0x4
+ 130 0071 04       		.byte	0x4
+ 131 0072 2A010000 		.4byte	.LASF9
+ 132 0076 02       		.uleb128 0x2
+ 133 0077 08       		.byte	0x8
+ 134 0078 04       		.byte	0x4
+ 135 0079 7F000000 		.4byte	.LASF10
+ 136 007d 02       		.uleb128 0x2
+ 137 007e 01       		.byte	0x1
+ 138 007f 08       		.byte	0x8
+ 139 0080 63000000 		.4byte	.LASF11
+ 140 0084 04       		.uleb128 0x4
+ 141 0085 04       		.byte	0x4
+ 142 0086 07       		.byte	0x7
+ 143 0087 05       		.uleb128 0x5
+ 144 0088 01       		.byte	0x1
+ 145 0089 1B000000 		.4byte	.LASF15
+ARM GAS  C:\Users\wbz\AppData\Local\Temp\ccWfAxce.s 			page 4
+
+
+ 146 008d 01       		.byte	0x1
+ 147 008e 0E       		.byte	0xe
+ 148 008f 00000000 		.4byte	.LFB29
+ 149 0093 0A000000 		.4byte	.LFE29
+ 150 0097 00000000 		.4byte	.LLST0
+ 151 009b 06       		.uleb128 0x6
+ 152 009c 68000000 		.4byte	.LASF16
+ 153 00a0 02       		.byte	0x2
+ 154 00a1 CE06     		.2byte	0x6ce
+ 155 00a3 A9000000 		.4byte	0xa9
+ 156 00a7 01       		.byte	0x1
+ 157 00a8 01       		.byte	0x1
+ 158 00a9 07       		.uleb128 0x7
+ 159 00aa 61000000 		.4byte	0x61
+ 160 00ae 00       		.byte	0x0
+ 161              		.section	.debug_abbrev
+ 162 0000 01       		.uleb128 0x1
+ 163 0001 11       		.uleb128 0x11
+ 164 0002 01       		.byte	0x1
+ 165 0003 25       		.uleb128 0x25
+ 166 0004 0E       		.uleb128 0xe
+ 167 0005 13       		.uleb128 0x13
+ 168 0006 0B       		.uleb128 0xb
+ 169 0007 03       		.uleb128 0x3
+ 170 0008 0E       		.uleb128 0xe
+ 171 0009 1B       		.uleb128 0x1b
+ 172 000a 0E       		.uleb128 0xe
+ 173 000b 11       		.uleb128 0x11
+ 174 000c 01       		.uleb128 0x1
+ 175 000d 52       		.uleb128 0x52
+ 176 000e 01       		.uleb128 0x1
+ 177 000f 55       		.uleb128 0x55
+ 178 0010 06       		.uleb128 0x6
+ 179 0011 10       		.uleb128 0x10
+ 180 0012 06       		.uleb128 0x6
+ 181 0013 00       		.byte	0x0
+ 182 0014 00       		.byte	0x0
+ 183 0015 02       		.uleb128 0x2
+ 184 0016 24       		.uleb128 0x24
+ 185 0017 00       		.byte	0x0
+ 186 0018 0B       		.uleb128 0xb
+ 187 0019 0B       		.uleb128 0xb
+ 188 001a 3E       		.uleb128 0x3e
+ 189 001b 0B       		.uleb128 0xb
+ 190 001c 03       		.uleb128 0x3
+ 191 001d 0E       		.uleb128 0xe
+ 192 001e 00       		.byte	0x0
+ 193 001f 00       		.byte	0x0
+ 194 0020 03       		.uleb128 0x3
+ 195 0021 24       		.uleb128 0x24
+ 196 0022 00       		.byte	0x0
+ 197 0023 0B       		.uleb128 0xb
+ 198 0024 0B       		.uleb128 0xb
+ 199 0025 3E       		.uleb128 0x3e
+ 200 0026 0B       		.uleb128 0xb
+ 201 0027 03       		.uleb128 0x3
+ 202 0028 08       		.uleb128 0x8
+ARM GAS  C:\Users\wbz\AppData\Local\Temp\ccWfAxce.s 			page 5
+
+
+ 203 0029 00       		.byte	0x0
+ 204 002a 00       		.byte	0x0
+ 205 002b 04       		.uleb128 0x4
+ 206 002c 24       		.uleb128 0x24
+ 207 002d 00       		.byte	0x0
+ 208 002e 0B       		.uleb128 0xb
+ 209 002f 0B       		.uleb128 0xb
+ 210 0030 3E       		.uleb128 0x3e
+ 211 0031 0B       		.uleb128 0xb
+ 212 0032 00       		.byte	0x0
+ 213 0033 00       		.byte	0x0
+ 214 0034 05       		.uleb128 0x5
+ 215 0035 2E       		.uleb128 0x2e
+ 216 0036 00       		.byte	0x0
+ 217 0037 3F       		.uleb128 0x3f
+ 218 0038 0C       		.uleb128 0xc
+ 219 0039 03       		.uleb128 0x3
+ 220 003a 0E       		.uleb128 0xe
+ 221 003b 3A       		.uleb128 0x3a
+ 222 003c 0B       		.uleb128 0xb
+ 223 003d 3B       		.uleb128 0x3b
+ 224 003e 0B       		.uleb128 0xb
+ 225 003f 11       		.uleb128 0x11
+ 226 0040 01       		.uleb128 0x1
+ 227 0041 12       		.uleb128 0x12
+ 228 0042 01       		.uleb128 0x1
+ 229 0043 40       		.uleb128 0x40
+ 230 0044 06       		.uleb128 0x6
+ 231 0045 00       		.byte	0x0
+ 232 0046 00       		.byte	0x0
+ 233 0047 06       		.uleb128 0x6
+ 234 0048 34       		.uleb128 0x34
+ 235 0049 00       		.byte	0x0
+ 236 004a 03       		.uleb128 0x3
+ 237 004b 0E       		.uleb128 0xe
+ 238 004c 3A       		.uleb128 0x3a
+ 239 004d 0B       		.uleb128 0xb
+ 240 004e 3B       		.uleb128 0x3b
+ 241 004f 05       		.uleb128 0x5
+ 242 0050 49       		.uleb128 0x49
+ 243 0051 13       		.uleb128 0x13
+ 244 0052 3F       		.uleb128 0x3f
+ 245 0053 0C       		.uleb128 0xc
+ 246 0054 3C       		.uleb128 0x3c
+ 247 0055 0C       		.uleb128 0xc
+ 248 0056 00       		.byte	0x0
+ 249 0057 00       		.byte	0x0
+ 250 0058 07       		.uleb128 0x7
+ 251 0059 35       		.uleb128 0x35
+ 252 005a 00       		.byte	0x0
+ 253 005b 49       		.uleb128 0x49
+ 254 005c 13       		.uleb128 0x13
+ 255 005d 00       		.byte	0x0
+ 256 005e 00       		.byte	0x0
+ 257 005f 00       		.byte	0x0
+ 258              		.section	.debug_pubnames,"",%progbits
+ 259 0000 17000000 		.4byte	0x17
+ARM GAS  C:\Users\wbz\AppData\Local\Temp\ccWfAxce.s 			page 6
+
+
+ 260 0004 0200     		.2byte	0x2
+ 261 0006 00000000 		.4byte	.Ldebug_info0
+ 262 000a AF000000 		.4byte	0xaf
+ 263 000e 87000000 		.4byte	0x87
+ 264 0012 6D61696E 		.ascii	"main\000"
+ 264      00
+ 265 0017 00000000 		.4byte	0x0
+ 266              		.section	.debug_aranges,"",%progbits
+ 267 0000 1C000000 		.4byte	0x1c
+ 268 0004 0200     		.2byte	0x2
+ 269 0006 00000000 		.4byte	.Ldebug_info0
+ 270 000a 04       		.byte	0x4
+ 271 000b 00       		.byte	0x0
+ 272 000c 0000     		.2byte	0x0
+ 273 000e 0000     		.2byte	0x0
+ 274 0010 00000000 		.4byte	.LFB29
+ 275 0014 0A000000 		.4byte	.LFE29-.LFB29
+ 276 0018 00000000 		.4byte	0x0
+ 277 001c 00000000 		.4byte	0x0
+ 278              		.section	.debug_ranges,"",%progbits
+ 279              	.Ldebug_ranges0:
+ 280 0000 00000000 		.4byte	.Ltext0
+ 281 0004 00000000 		.4byte	.Letext0
+ 282 0008 00000000 		.4byte	.LFB29
+ 283 000c 0A000000 		.4byte	.LFE29
+ 284 0010 00000000 		.4byte	0x0
+ 285 0014 00000000 		.4byte	0x0
+ 286              		.section	.debug_str,"MS",%progbits,1
+ 287              	.LASF6:
+ 288 0000 6C6F6E67 		.ascii	"long long int\000"
+ 288      206C6F6E 
+ 288      6720696E 
+ 288      7400
+ 289              	.LASF8:
+ 290 000e 756E7369 		.ascii	"unsigned int\000"
+ 290      676E6564 
+ 290      20696E74 
+ 290      00
+ 291              	.LASF15:
+ 292 001b 6D61696E 		.ascii	"main\000"
+ 292      00
+ 293              	.LASF5:
+ 294 0020 6C6F6E67 		.ascii	"long unsigned int\000"
+ 294      20756E73 
+ 294      69676E65 
+ 294      6420696E 
+ 294      7400
+ 295              	.LASF7:
+ 296 0032 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 296      206C6F6E 
+ 296      6720756E 
+ 296      7369676E 
+ 296      65642069 
+ 297              	.LASF12:
+ 298 0049 474E5520 		.ascii	"GNU C 4.4.1\000"
+ 298      4320342E 
+ 298      342E3100 
+ARM GAS  C:\Users\wbz\AppData\Local\Temp\ccWfAxce.s 			page 7
+
+
+ 299              	.LASF1:
+ 300 0055 756E7369 		.ascii	"unsigned char\000"
+ 300      676E6564 
+ 300      20636861 
+ 300      7200
+ 301              	.LASF11:
+ 302 0063 63686172 		.ascii	"char\000"
+ 302      00
+ 303              	.LASF16:
+ 304 0068 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 304      52784275 
+ 304      66666572 
+ 304      00
+ 305              	.LASF2:
+ 306 0075 73686F72 		.ascii	"short int\000"
+ 306      7420696E 
+ 306      7400
+ 307              	.LASF10:
+ 308 007f 646F7562 		.ascii	"double\000"
+ 308      6C6500
+ 309              	.LASF4:
+ 310 0086 6C6F6E67 		.ascii	"long int\000"
+ 310      20696E74 
+ 310      00
+ 311              	.LASF14:
+ 312 008f 433A5C55 		.ascii	"C:\\Users\\wbz\\Desktop\\Element14 Posts\\036 - Boo"
+ 312      73657273 
+ 312      5C77627A 
+ 312      5C446573 
+ 312      6B746F70 
+ 313 00bd 74696E67 		.ascii	"ting the PSoC 5LP Device - NS\\Bootloading_PSoC5_LP"
+ 313      20746865 
+ 313      2050536F 
+ 313      4320354C 
+ 313      50204465 
+ 314 00ef 5C426F6F 		.ascii	"\\Bootloading_PSoC5_LP.cydsn\000"
+ 314      746C6F61 
+ 314      64696E67 
+ 314      5F50536F 
+ 314      43355F4C 
+ 315              	.LASF3:
+ 316 010b 73686F72 		.ascii	"short unsigned int\000"
+ 316      7420756E 
+ 316      7369676E 
+ 316      65642069 
+ 316      6E7400
+ 317              	.LASF0:
+ 318 011e 7369676E 		.ascii	"signed char\000"
+ 318      65642063 
+ 318      68617200 
+ 319              	.LASF9:
+ 320 012a 666C6F61 		.ascii	"float\000"
+ 320      7400
+ 321              	.LASF13:
+ 322 0130 2E5C6D61 		.ascii	".\\main.c\000"
+ 322      696E2E63 
+ 322      00
+ARM GAS  C:\Users\wbz\AppData\Local\Temp\ccWfAxce.s 			page 8
+
+
+ 323              		.ident	"GCC: (Sourcery G++ Lite 2010q1-188) 4.4.1"

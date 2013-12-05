@@ -1,0 +1,849 @@
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccEFgso0.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"PSOC4_INT.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.PSOC4_RXISR,"ax",%progbits
+  19              		.align	2
+  20              		.global	PSOC4_RXISR
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	PSOC4_RXISR, %function
+  24              	PSOC4_RXISR:
+  25              	.LFB0:
+  26              		.file 1 ".\\Generated_Source\\PSoC5\\PSOC4_INT.c"
+   1:.\Generated_Source\PSoC5/PSOC4_INT.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC5/PSOC4_INT.c **** * File Name: PSOC4_INT.c
+   3:.\Generated_Source\PSoC5/PSOC4_INT.c **** * Version 2.30
+   4:.\Generated_Source\PSoC5/PSOC4_INT.c **** *
+   5:.\Generated_Source\PSoC5/PSOC4_INT.c **** * Description:
+   6:.\Generated_Source\PSoC5/PSOC4_INT.c **** *  This file provides all Interrupt Service functionality of the UART component
+   7:.\Generated_Source\PSoC5/PSOC4_INT.c **** *
+   8:.\Generated_Source\PSoC5/PSOC4_INT.c **** * Note:
+   9:.\Generated_Source\PSoC5/PSOC4_INT.c **** *  Any unusual or non-standard behavior should be noted here. Other-
+  10:.\Generated_Source\PSoC5/PSOC4_INT.c **** *  wise, this section should remain blank.
+  11:.\Generated_Source\PSoC5/PSOC4_INT.c **** *
+  12:.\Generated_Source\PSoC5/PSOC4_INT.c **** ********************************************************************************
+  13:.\Generated_Source\PSoC5/PSOC4_INT.c **** * Copyright 2008-2012, Cypress Semiconductor Corporation.  All rights reserved.
+  14:.\Generated_Source\PSoC5/PSOC4_INT.c **** * You may use this file only in accordance with the license, terms, conditions,
+  15:.\Generated_Source\PSoC5/PSOC4_INT.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  16:.\Generated_Source\PSoC5/PSOC4_INT.c **** * the software package with which this file was provided.
+  17:.\Generated_Source\PSoC5/PSOC4_INT.c **** *******************************************************************************/
+  18:.\Generated_Source\PSoC5/PSOC4_INT.c **** 
+  19:.\Generated_Source\PSoC5/PSOC4_INT.c **** #include "PSOC4.h"
+  20:.\Generated_Source\PSoC5/PSOC4_INT.c **** #include "CyLib.h"
+  21:.\Generated_Source\PSoC5/PSOC4_INT.c **** 
+  22:.\Generated_Source\PSoC5/PSOC4_INT.c **** 
+  23:.\Generated_Source\PSoC5/PSOC4_INT.c **** /***************************************
+  24:.\Generated_Source\PSoC5/PSOC4_INT.c **** * Custom Declratations
+  25:.\Generated_Source\PSoC5/PSOC4_INT.c **** ***************************************/
+  26:.\Generated_Source\PSoC5/PSOC4_INT.c **** /* `#START CUSTOM_DECLARATIONS` Place your declaration here */
+  27:.\Generated_Source\PSoC5/PSOC4_INT.c **** 
+  28:.\Generated_Source\PSoC5/PSOC4_INT.c **** /* `#END` */
+  29:.\Generated_Source\PSoC5/PSOC4_INT.c **** 
+  30:.\Generated_Source\PSoC5/PSOC4_INT.c **** #if( (PSOC4_RX_ENABLED || PSOC4_HD_ENABLED) && \
+  31:.\Generated_Source\PSoC5/PSOC4_INT.c ****      (PSOC4_RXBUFFERSIZE > PSOC4_FIFO_LENGTH))
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccEFgso0.s 			page 2
+
+
+  32:.\Generated_Source\PSoC5/PSOC4_INT.c **** 
+  33:.\Generated_Source\PSoC5/PSOC4_INT.c **** 
+  34:.\Generated_Source\PSoC5/PSOC4_INT.c ****     /*******************************************************************************
+  35:.\Generated_Source\PSoC5/PSOC4_INT.c ****     * Function Name: PSOC4_RXISR
+  36:.\Generated_Source\PSoC5/PSOC4_INT.c ****     ********************************************************************************
+  37:.\Generated_Source\PSoC5/PSOC4_INT.c ****     *
+  38:.\Generated_Source\PSoC5/PSOC4_INT.c ****     * Summary:
+  39:.\Generated_Source\PSoC5/PSOC4_INT.c ****     *  Interrupt Service Routine for RX portion of the UART
+  40:.\Generated_Source\PSoC5/PSOC4_INT.c ****     *
+  41:.\Generated_Source\PSoC5/PSOC4_INT.c ****     * Parameters:
+  42:.\Generated_Source\PSoC5/PSOC4_INT.c ****     *  None.
+  43:.\Generated_Source\PSoC5/PSOC4_INT.c ****     *
+  44:.\Generated_Source\PSoC5/PSOC4_INT.c ****     * Return:
+  45:.\Generated_Source\PSoC5/PSOC4_INT.c ****     *  None.
+  46:.\Generated_Source\PSoC5/PSOC4_INT.c ****     *
+  47:.\Generated_Source\PSoC5/PSOC4_INT.c ****     * Global Variables:
+  48:.\Generated_Source\PSoC5/PSOC4_INT.c ****     *  PSOC4_rxBuffer - RAM buffer pointer for save received data.
+  49:.\Generated_Source\PSoC5/PSOC4_INT.c ****     *  PSOC4_rxBufferWrite - cyclic index for write to rxBuffer,
+  50:.\Generated_Source\PSoC5/PSOC4_INT.c ****     *     increments after each byte saved to buffer.
+  51:.\Generated_Source\PSoC5/PSOC4_INT.c ****     *  PSOC4_rxBufferRead - cyclic index for read from rxBuffer,
+  52:.\Generated_Source\PSoC5/PSOC4_INT.c ****     *     checked to detect overflow condition.
+  53:.\Generated_Source\PSoC5/PSOC4_INT.c ****     *  PSOC4_rxBufferOverflow - software overflow flag. Set to one
+  54:.\Generated_Source\PSoC5/PSOC4_INT.c ****     *     when PSOC4_rxBufferWrite index overtakes
+  55:.\Generated_Source\PSoC5/PSOC4_INT.c ****     *     PSOC4_rxBufferRead index.
+  56:.\Generated_Source\PSoC5/PSOC4_INT.c ****     *  PSOC4_rxBufferLoopDetect - additional variable to detect overflow.
+  57:.\Generated_Source\PSoC5/PSOC4_INT.c ****     *     Set to one when PSOC4_rxBufferWrite is equal to
+  58:.\Generated_Source\PSoC5/PSOC4_INT.c ****     *    PSOC4_rxBufferRead
+  59:.\Generated_Source\PSoC5/PSOC4_INT.c ****     *  PSOC4_rxAddressMode - this variable contains the Address mode,
+  60:.\Generated_Source\PSoC5/PSOC4_INT.c ****     *     selected in customizer or set by UART_SetRxAddressMode() API.
+  61:.\Generated_Source\PSoC5/PSOC4_INT.c ****     *  PSOC4_rxAddressDetected - set to 1 when correct address received,
+  62:.\Generated_Source\PSoC5/PSOC4_INT.c ****     *     and analysed to store following addressed data bytes to the buffer.
+  63:.\Generated_Source\PSoC5/PSOC4_INT.c ****     *     When not correct address received, set to 0 to skip following data bytes.
+  64:.\Generated_Source\PSoC5/PSOC4_INT.c ****     *
+  65:.\Generated_Source\PSoC5/PSOC4_INT.c ****     *******************************************************************************/
+  66:.\Generated_Source\PSoC5/PSOC4_INT.c ****     CY_ISR(PSOC4_RXISR)
+  67:.\Generated_Source\PSoC5/PSOC4_INT.c ****     {
+  27              		.loc 1 67 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 8
+  30              		@ frame_needed = 1, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+  32 0000 80B4     		push	{r7}
+  33              	.LCFI0:
+  34              		.cfi_def_cfa_offset 4
+  35              		.cfi_offset 7, -4
+  36 0002 83B0     		sub	sp, sp, #12
+  37              	.LCFI1:
+  38              		.cfi_def_cfa_offset 16
+  39 0004 00AF     		add	r7, sp, #0
+  40              	.LCFI2:
+  41              		.cfi_def_cfa_register 7
+  68:.\Generated_Source\PSoC5/PSOC4_INT.c ****         uint8 readData;
+  69:.\Generated_Source\PSoC5/PSOC4_INT.c ****         uint8 increment_pointer = 0u;
+  42              		.loc 1 69 0
+  43 0006 4FF00003 		mov	r3, #0
+  44 000a BB71     		strb	r3, [r7, #6]
+  70:.\Generated_Source\PSoC5/PSOC4_INT.c ****         #if(CY_PSOC3)
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccEFgso0.s 			page 3
+
+
+  71:.\Generated_Source\PSoC5/PSOC4_INT.c ****             uint8 int_en;
+  72:.\Generated_Source\PSoC5/PSOC4_INT.c ****         #endif /* CY_PSOC3 */
+  73:.\Generated_Source\PSoC5/PSOC4_INT.c **** 
+  74:.\Generated_Source\PSoC5/PSOC4_INT.c ****         /* User code required at start of ISR */
+  75:.\Generated_Source\PSoC5/PSOC4_INT.c ****         /* `#START PSOC4_RXISR_START` */
+  76:.\Generated_Source\PSoC5/PSOC4_INT.c **** 
+  77:.\Generated_Source\PSoC5/PSOC4_INT.c ****         /* `#END` */
+  78:.\Generated_Source\PSoC5/PSOC4_INT.c **** 
+  79:.\Generated_Source\PSoC5/PSOC4_INT.c ****         #if(CY_PSOC3)   /* Make sure nested interrupt is enabled */
+  80:.\Generated_Source\PSoC5/PSOC4_INT.c ****             int_en = EA;
+  81:.\Generated_Source\PSoC5/PSOC4_INT.c ****             CyGlobalIntEnable;
+  82:.\Generated_Source\PSoC5/PSOC4_INT.c ****         #endif /* CY_PSOC3 */
+  83:.\Generated_Source\PSoC5/PSOC4_INT.c **** 
+  84:.\Generated_Source\PSoC5/PSOC4_INT.c ****         readData = PSOC4_RXSTATUS_REG;
+  45              		.loc 1 84 0
+  46 000c 46F26753 		movw	r3, #25959
+  47 0010 C4F20003 		movt	r3, 16384
+  48 0014 1B78     		ldrb	r3, [r3, #0]
+  49 0016 FB71     		strb	r3, [r7, #7]
+  85:.\Generated_Source\PSoC5/PSOC4_INT.c **** 
+  86:.\Generated_Source\PSoC5/PSOC4_INT.c ****         if((readData & (PSOC4_RX_STS_BREAK | PSOC4_RX_STS_PAR_ERROR |
+  87:.\Generated_Source\PSoC5/PSOC4_INT.c ****                         PSOC4_RX_STS_STOP_ERROR | PSOC4_RX_STS_OVERRUN)) != 0u)
+  88:.\Generated_Source\PSoC5/PSOC4_INT.c ****         {
+  89:.\Generated_Source\PSoC5/PSOC4_INT.c ****             /* ERROR handling. */
+  90:.\Generated_Source\PSoC5/PSOC4_INT.c ****             /* `#START PSOC4_RXISR_ERROR` */
+  91:.\Generated_Source\PSoC5/PSOC4_INT.c **** 
+  92:.\Generated_Source\PSoC5/PSOC4_INT.c ****             /* `#END` */
+  93:.\Generated_Source\PSoC5/PSOC4_INT.c ****         }
+  94:.\Generated_Source\PSoC5/PSOC4_INT.c **** 
+  95:.\Generated_Source\PSoC5/PSOC4_INT.c ****         while((readData & PSOC4_RX_STS_FIFO_NOTEMPTY) != 0u)
+  50              		.loc 1 95 0
+  51 0018 5EE0     		b	.L2
+  52              	.L6:
+  96:.\Generated_Source\PSoC5/PSOC4_INT.c ****         {
+  97:.\Generated_Source\PSoC5/PSOC4_INT.c **** 
+  98:.\Generated_Source\PSoC5/PSOC4_INT.c ****             #if (PSOC4_RXHW_ADDRESS_ENABLED)
+  99:.\Generated_Source\PSoC5/PSOC4_INT.c ****                 if(PSOC4_rxAddressMode == (uint8)PSOC4__B_UART__AM_SW_DETECT_TO_BUFFER)
+ 100:.\Generated_Source\PSoC5/PSOC4_INT.c ****                 {
+ 101:.\Generated_Source\PSoC5/PSOC4_INT.c ****                     if((readData & PSOC4_RX_STS_MRKSPC) != 0u)
+ 102:.\Generated_Source\PSoC5/PSOC4_INT.c ****                     {
+ 103:.\Generated_Source\PSoC5/PSOC4_INT.c ****                         if ((readData & PSOC4_RX_STS_ADDR_MATCH) != 0u)
+ 104:.\Generated_Source\PSoC5/PSOC4_INT.c ****                         {
+ 105:.\Generated_Source\PSoC5/PSOC4_INT.c ****                             PSOC4_rxAddressDetected = 1u;
+ 106:.\Generated_Source\PSoC5/PSOC4_INT.c ****                         }
+ 107:.\Generated_Source\PSoC5/PSOC4_INT.c ****                         else
+ 108:.\Generated_Source\PSoC5/PSOC4_INT.c ****                         {
+ 109:.\Generated_Source\PSoC5/PSOC4_INT.c ****                             PSOC4_rxAddressDetected = 0u;
+ 110:.\Generated_Source\PSoC5/PSOC4_INT.c ****                         }
+ 111:.\Generated_Source\PSoC5/PSOC4_INT.c ****                     }
+ 112:.\Generated_Source\PSoC5/PSOC4_INT.c **** 
+ 113:.\Generated_Source\PSoC5/PSOC4_INT.c ****                     readData = PSOC4_RXDATA_REG;
+ 114:.\Generated_Source\PSoC5/PSOC4_INT.c ****                     if(PSOC4_rxAddressDetected != 0u)
+ 115:.\Generated_Source\PSoC5/PSOC4_INT.c ****                     {   /* store only addressed data */
+ 116:.\Generated_Source\PSoC5/PSOC4_INT.c ****                         PSOC4_rxBuffer[PSOC4_rxBufferWrite] = readData;
+ 117:.\Generated_Source\PSoC5/PSOC4_INT.c ****                         increment_pointer = 1u;
+ 118:.\Generated_Source\PSoC5/PSOC4_INT.c ****                     }
+ 119:.\Generated_Source\PSoC5/PSOC4_INT.c ****                 }
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccEFgso0.s 			page 4
+
+
+ 120:.\Generated_Source\PSoC5/PSOC4_INT.c ****                 else /* without software addressing */
+ 121:.\Generated_Source\PSoC5/PSOC4_INT.c ****                 {
+ 122:.\Generated_Source\PSoC5/PSOC4_INT.c ****                     PSOC4_rxBuffer[PSOC4_rxBufferWrite] = PSOC4_RXDATA_REG;
+ 123:.\Generated_Source\PSoC5/PSOC4_INT.c ****                     increment_pointer = 1u;
+ 124:.\Generated_Source\PSoC5/PSOC4_INT.c ****                 }
+ 125:.\Generated_Source\PSoC5/PSOC4_INT.c ****             #else  /* without addressing */
+ 126:.\Generated_Source\PSoC5/PSOC4_INT.c ****                 PSOC4_rxBuffer[PSOC4_rxBufferWrite] = PSOC4_RXDATA_REG;
+  53              		.loc 1 126 0
+  54 001a 40F20003 		movw	r3, #:lower16:PSOC4_rxBufferWrite
+  55 001e C0F20003 		movt	r3, #:upper16:PSOC4_rxBufferWrite
+  56 0022 1B78     		ldrb	r3, [r3, #0]
+  57 0024 DBB2     		uxtb	r3, r3
+  58 0026 1A46     		mov	r2, r3
+  59 0028 46F24753 		movw	r3, #25927
+  60 002c C4F20003 		movt	r3, 16384
+  61 0030 1B78     		ldrb	r3, [r3, #0]
+  62 0032 D9B2     		uxtb	r1, r3
+  63 0034 40F20003 		movw	r3, #:lower16:PSOC4_rxBuffer
+  64 0038 C0F20003 		movt	r3, #:upper16:PSOC4_rxBuffer
+  65 003c 9954     		strb	r1, [r3, r2]
+ 127:.\Generated_Source\PSoC5/PSOC4_INT.c ****                 increment_pointer = 1u;
+  66              		.loc 1 127 0
+  67 003e 4FF00103 		mov	r3, #1
+  68 0042 BB71     		strb	r3, [r7, #6]
+ 128:.\Generated_Source\PSoC5/PSOC4_INT.c ****             #endif /* End SW_DETECT_TO_BUFFER */
+ 129:.\Generated_Source\PSoC5/PSOC4_INT.c **** 
+ 130:.\Generated_Source\PSoC5/PSOC4_INT.c ****             /* do not increment buffer pointer when skip not adderessed data */
+ 131:.\Generated_Source\PSoC5/PSOC4_INT.c ****             if( increment_pointer != 0u )
+  69              		.loc 1 131 0
+  70 0044 BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+  71 0046 002B     		cmp	r3, #0
+  72 0048 40D0     		beq	.L3
+ 132:.\Generated_Source\PSoC5/PSOC4_INT.c ****             {
+ 133:.\Generated_Source\PSoC5/PSOC4_INT.c ****                 if(PSOC4_rxBufferLoopDetect != 0u)
+  73              		.loc 1 133 0
+  74 004a 40F20003 		movw	r3, #:lower16:PSOC4_rxBufferLoopDetect
+  75 004e C0F20003 		movt	r3, #:upper16:PSOC4_rxBufferLoopDetect
+  76 0052 1B78     		ldrb	r3, [r3, #0]
+  77 0054 DBB2     		uxtb	r3, r3
+  78 0056 002B     		cmp	r3, #0
+  79 0058 06D0     		beq	.L4
+ 134:.\Generated_Source\PSoC5/PSOC4_INT.c ****                 {   /* Set Software Buffer status Overflow */
+ 135:.\Generated_Source\PSoC5/PSOC4_INT.c ****                     PSOC4_rxBufferOverflow = 1u;
+  80              		.loc 1 135 0
+  81 005a 40F20003 		movw	r3, #:lower16:PSOC4_rxBufferOverflow
+  82 005e C0F20003 		movt	r3, #:upper16:PSOC4_rxBufferOverflow
+  83 0062 4FF00102 		mov	r2, #1
+  84 0066 1A70     		strb	r2, [r3, #0]
+  85              	.L4:
+ 136:.\Generated_Source\PSoC5/PSOC4_INT.c ****                 }
+ 137:.\Generated_Source\PSoC5/PSOC4_INT.c ****                 /* Set next pointer. */
+ 138:.\Generated_Source\PSoC5/PSOC4_INT.c ****                 PSOC4_rxBufferWrite++;
+  86              		.loc 1 138 0
+  87 0068 40F20003 		movw	r3, #:lower16:PSOC4_rxBufferWrite
+  88 006c C0F20003 		movt	r3, #:upper16:PSOC4_rxBufferWrite
+  89 0070 1B78     		ldrb	r3, [r3, #0]
+  90 0072 DBB2     		uxtb	r3, r3
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccEFgso0.s 			page 5
+
+
+  91 0074 03F10103 		add	r3, r3, #1
+  92 0078 DAB2     		uxtb	r2, r3
+  93 007a 40F20003 		movw	r3, #:lower16:PSOC4_rxBufferWrite
+  94 007e C0F20003 		movt	r3, #:upper16:PSOC4_rxBufferWrite
+  95 0082 1A70     		strb	r2, [r3, #0]
+ 139:.\Generated_Source\PSoC5/PSOC4_INT.c **** 
+ 140:.\Generated_Source\PSoC5/PSOC4_INT.c ****                 /* Check pointer for a loop condition */
+ 141:.\Generated_Source\PSoC5/PSOC4_INT.c ****                 if(PSOC4_rxBufferWrite >= PSOC4_RXBUFFERSIZE)
+  96              		.loc 1 141 0
+  97 0084 40F20003 		movw	r3, #:lower16:PSOC4_rxBufferWrite
+  98 0088 C0F20003 		movt	r3, #:upper16:PSOC4_rxBufferWrite
+  99 008c 1B78     		ldrb	r3, [r3, #0]
+ 100 008e DBB2     		uxtb	r3, r3
+ 101 0090 312B     		cmp	r3, #49
+ 102 0092 06D9     		bls	.L5
+ 142:.\Generated_Source\PSoC5/PSOC4_INT.c ****                 {
+ 143:.\Generated_Source\PSoC5/PSOC4_INT.c ****                     PSOC4_rxBufferWrite = 0u;
+ 103              		.loc 1 143 0
+ 104 0094 40F20003 		movw	r3, #:lower16:PSOC4_rxBufferWrite
+ 105 0098 C0F20003 		movt	r3, #:upper16:PSOC4_rxBufferWrite
+ 106 009c 4FF00002 		mov	r2, #0
+ 107 00a0 1A70     		strb	r2, [r3, #0]
+ 108              	.L5:
+ 144:.\Generated_Source\PSoC5/PSOC4_INT.c ****                 }
+ 145:.\Generated_Source\PSoC5/PSOC4_INT.c ****                 /* Detect pre-overload condition and set flag */
+ 146:.\Generated_Source\PSoC5/PSOC4_INT.c ****                 if(PSOC4_rxBufferWrite == PSOC4_rxBufferRead)
+ 109              		.loc 1 146 0
+ 110 00a2 40F20003 		movw	r3, #:lower16:PSOC4_rxBufferWrite
+ 111 00a6 C0F20003 		movt	r3, #:upper16:PSOC4_rxBufferWrite
+ 112 00aa 1B78     		ldrb	r3, [r3, #0]
+ 113 00ac DAB2     		uxtb	r2, r3
+ 114 00ae 40F20003 		movw	r3, #:lower16:PSOC4_rxBufferRead
+ 115 00b2 C0F20003 		movt	r3, #:upper16:PSOC4_rxBufferRead
+ 116 00b6 1B78     		ldrb	r3, [r3, #0]
+ 117 00b8 DBB2     		uxtb	r3, r3
+ 118 00ba 9A42     		cmp	r2, r3
+ 119 00bc 06D1     		bne	.L3
+ 147:.\Generated_Source\PSoC5/PSOC4_INT.c ****                 {
+ 148:.\Generated_Source\PSoC5/PSOC4_INT.c ****                     PSOC4_rxBufferLoopDetect = 1u;
+ 120              		.loc 1 148 0
+ 121 00be 40F20003 		movw	r3, #:lower16:PSOC4_rxBufferLoopDetect
+ 122 00c2 C0F20003 		movt	r3, #:upper16:PSOC4_rxBufferLoopDetect
+ 123 00c6 4FF00102 		mov	r2, #1
+ 124 00ca 1A70     		strb	r2, [r3, #0]
+ 125              	.L3:
+ 149:.\Generated_Source\PSoC5/PSOC4_INT.c ****                     /* When Hardware Flow Control selected */
+ 150:.\Generated_Source\PSoC5/PSOC4_INT.c ****                     #if(PSOC4_FLOW_CONTROL != 0u)
+ 151:.\Generated_Source\PSoC5/PSOC4_INT.c ****                     /* Disable RX interrupt mask, it will be enabled when user read data from the b
+ 152:.\Generated_Source\PSoC5/PSOC4_INT.c ****                         PSOC4_RXSTATUS_MASK_REG  &= (uint8)~PSOC4_RX_STS_FIFO_NOTEMPTY;
+ 153:.\Generated_Source\PSoC5/PSOC4_INT.c ****                         CyIntClearPending(PSOC4_RX_VECT_NUM);
+ 154:.\Generated_Source\PSoC5/PSOC4_INT.c ****                         break; /* Break the reading of the FIFO loop, leave the data there for gene
+ 155:.\Generated_Source\PSoC5/PSOC4_INT.c ****                     #endif /* End PSOC4_FLOW_CONTROL != 0 */
+ 156:.\Generated_Source\PSoC5/PSOC4_INT.c ****                 }
+ 157:.\Generated_Source\PSoC5/PSOC4_INT.c ****             }
+ 158:.\Generated_Source\PSoC5/PSOC4_INT.c **** 
+ 159:.\Generated_Source\PSoC5/PSOC4_INT.c ****             /* Check again if there is data. */
+ 160:.\Generated_Source\PSoC5/PSOC4_INT.c ****             readData = PSOC4_RXSTATUS_REG;
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccEFgso0.s 			page 6
+
+
+ 126              		.loc 1 160 0
+ 127 00cc 46F26753 		movw	r3, #25959
+ 128 00d0 C4F20003 		movt	r3, 16384
+ 129 00d4 1B78     		ldrb	r3, [r3, #0]
+ 130 00d6 FB71     		strb	r3, [r7, #7]
+ 131              	.L2:
+  95:.\Generated_Source\PSoC5/PSOC4_INT.c ****         while((readData & PSOC4_RX_STS_FIFO_NOTEMPTY) != 0u)
+ 132              		.loc 1 95 0 discriminator 1
+ 133 00d8 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 134 00da 03F02003 		and	r3, r3, #32
+ 135 00de 002B     		cmp	r3, #0
+ 136 00e0 9BD1     		bne	.L6
+ 161:.\Generated_Source\PSoC5/PSOC4_INT.c ****         }
+ 162:.\Generated_Source\PSoC5/PSOC4_INT.c **** 
+ 163:.\Generated_Source\PSoC5/PSOC4_INT.c ****         /* User code required at end of ISR (Optional) */
+ 164:.\Generated_Source\PSoC5/PSOC4_INT.c ****         /* `#START PSOC4_RXISR_END` */
+ 165:.\Generated_Source\PSoC5/PSOC4_INT.c **** 
+ 166:.\Generated_Source\PSoC5/PSOC4_INT.c ****         /* `#END` */
+ 167:.\Generated_Source\PSoC5/PSOC4_INT.c **** 
+ 168:.\Generated_Source\PSoC5/PSOC4_INT.c ****         #if(CY_PSOC3)
+ 169:.\Generated_Source\PSoC5/PSOC4_INT.c ****             EA = int_en;
+ 170:.\Generated_Source\PSoC5/PSOC4_INT.c ****         #endif /* CY_PSOC3 */
+ 171:.\Generated_Source\PSoC5/PSOC4_INT.c **** 
+ 172:.\Generated_Source\PSoC5/PSOC4_INT.c ****     }
+ 137              		.loc 1 172 0
+ 138 00e2 07F10C07 		add	r7, r7, #12
+ 139 00e6 BD46     		mov	sp, r7
+ 140 00e8 80BC     		pop	{r7}
+ 141 00ea 7047     		bx	lr
+ 142              		.cfi_endproc
+ 143              	.LFE0:
+ 144              		.size	PSOC4_RXISR, .-PSOC4_RXISR
+ 145              		.text
+ 146              	.Letext0:
+ 147              		.file 2 ".\\Generated_Source\\PSoC5\\cytypes.h"
+ 148              		.file 3 ".\\Generated_Source\\PSoC5\\PSOC4.h"
+ 149              		.section	.debug_info,"",%progbits
+ 150              	.Ldebug_info0:
+ 151 0000 35010000 		.4byte	0x135
+ 152 0004 0200     		.2byte	0x2
+ 153 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 154 000a 04       		.byte	0x4
+ 155 000b 01       		.uleb128 0x1
+ 156 000c 91000000 		.4byte	.LASF22
+ 157 0010 01       		.byte	0x1
+ 158 0011 80010000 		.4byte	.LASF23
+ 159 0015 25000000 		.4byte	.LASF24
+ 160 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 161 001d 00000000 		.4byte	0
+ 162 0021 00000000 		.4byte	0
+ 163 0025 00000000 		.4byte	.Ldebug_line0
+ 164 0029 02       		.uleb128 0x2
+ 165 002a 01       		.byte	0x1
+ 166 002b 06       		.byte	0x6
+ 167 002c 74010000 		.4byte	.LASF0
+ 168 0030 02       		.uleb128 0x2
+ 169 0031 01       		.byte	0x1
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccEFgso0.s 			page 7
+
+
+ 170 0032 08       		.byte	0x8
+ 171 0033 23010000 		.4byte	.LASF1
+ 172 0037 02       		.uleb128 0x2
+ 173 0038 02       		.byte	0x2
+ 174 0039 05       		.byte	0x5
+ 175 003a AE010000 		.4byte	.LASF2
+ 176 003e 02       		.uleb128 0x2
+ 177 003f 02       		.byte	0x2
+ 178 0040 07       		.byte	0x7
+ 179 0041 61010000 		.4byte	.LASF3
+ 180 0045 02       		.uleb128 0x2
+ 181 0046 04       		.byte	0x4
+ 182 0047 05       		.byte	0x5
+ 183 0048 36010000 		.4byte	.LASF4
+ 184 004c 02       		.uleb128 0x2
+ 185 004d 04       		.byte	0x4
+ 186 004e 07       		.byte	0x7
+ 187 004f E0000000 		.4byte	.LASF5
+ 188 0053 02       		.uleb128 0x2
+ 189 0054 08       		.byte	0x8
+ 190 0055 05       		.byte	0x5
+ 191 0056 00000000 		.4byte	.LASF6
+ 192 005a 02       		.uleb128 0x2
+ 193 005b 08       		.byte	0x8
+ 194 005c 07       		.byte	0x7
+ 195 005d F2000000 		.4byte	.LASF7
+ 196 0061 03       		.uleb128 0x3
+ 197 0062 04       		.byte	0x4
+ 198 0063 05       		.byte	0x5
+ 199 0064 696E7400 		.ascii	"int\000"
+ 200 0068 02       		.uleb128 0x2
+ 201 0069 04       		.byte	0x4
+ 202 006a 07       		.byte	0x7
+ 203 006b BD010000 		.4byte	.LASF8
+ 204 006f 04       		.uleb128 0x4
+ 205 0070 DA000000 		.4byte	.LASF12
+ 206 0074 02       		.byte	0x2
+ 207 0075 5B       		.byte	0x5b
+ 208 0076 30000000 		.4byte	0x30
+ 209 007a 02       		.uleb128 0x2
+ 210 007b 04       		.byte	0x4
+ 211 007c 04       		.byte	0x4
+ 212 007d 09010000 		.4byte	.LASF9
+ 213 0081 02       		.uleb128 0x2
+ 214 0082 08       		.byte	0x8
+ 215 0083 04       		.byte	0x4
+ 216 0084 4E010000 		.4byte	.LASF10
+ 217 0088 02       		.uleb128 0x2
+ 218 0089 01       		.byte	0x1
+ 219 008a 08       		.byte	0x8
+ 220 008b 31010000 		.4byte	.LASF11
+ 221 008f 04       		.uleb128 0x4
+ 222 0090 B8010000 		.4byte	.LASF13
+ 223 0094 02       		.byte	0x2
+ 224 0095 F0       		.byte	0xf0
+ 225 0096 9A000000 		.4byte	0x9a
+ 226 009a 05       		.uleb128 0x5
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccEFgso0.s 			page 8
+
+
+ 227 009b 6F000000 		.4byte	0x6f
+ 228 009f 02       		.uleb128 0x2
+ 229 00a0 04       		.byte	0x4
+ 230 00a1 07       		.byte	0x7
+ 231 00a2 A5010000 		.4byte	.LASF14
+ 232 00a6 06       		.uleb128 0x6
+ 233 00a7 01       		.byte	0x1
+ 234 00a8 55010000 		.4byte	.LASF25
+ 235 00ac 01       		.byte	0x1
+ 236 00ad 42       		.byte	0x42
+ 237 00ae 01       		.byte	0x1
+ 238 00af 00000000 		.4byte	.LFB0
+ 239 00b3 EC000000 		.4byte	.LFE0
+ 240 00b7 00000000 		.4byte	.LLST0
+ 241 00bb 01       		.byte	0x1
+ 242 00bc DD000000 		.4byte	0xdd
+ 243 00c0 07       		.uleb128 0x7
+ 244 00c1 CA010000 		.4byte	.LASF15
+ 245 00c5 01       		.byte	0x1
+ 246 00c6 44       		.byte	0x44
+ 247 00c7 6F000000 		.4byte	0x6f
+ 248 00cb 02       		.byte	0x2
+ 249 00cc 91       		.byte	0x91
+ 250 00cd 77       		.sleb128 -9
+ 251 00ce 07       		.uleb128 0x7
+ 252 00cf 7F000000 		.4byte	.LASF16
+ 253 00d3 01       		.byte	0x1
+ 254 00d4 45       		.byte	0x45
+ 255 00d5 6F000000 		.4byte	0x6f
+ 256 00d9 02       		.byte	0x2
+ 257 00da 91       		.byte	0x91
+ 258 00db 76       		.sleb128 -10
+ 259 00dc 00       		.byte	0
+ 260 00dd 08       		.uleb128 0x8
+ 261 00de 6F000000 		.4byte	0x6f
+ 262 00e2 ED000000 		.4byte	0xed
+ 263 00e6 09       		.uleb128 0x9
+ 264 00e7 9F000000 		.4byte	0x9f
+ 265 00eb 31       		.byte	0x31
+ 266 00ec 00       		.byte	0
+ 267 00ed 0A       		.uleb128 0xa
+ 268 00ee 3F010000 		.4byte	.LASF17
+ 269 00f2 03       		.byte	0x3
+ 270 00f3 5201     		.2byte	0x152
+ 271 00f5 FB000000 		.4byte	0xfb
+ 272 00f9 01       		.byte	0x1
+ 273 00fa 01       		.byte	0x1
+ 274 00fb 05       		.uleb128 0x5
+ 275 00fc DD000000 		.4byte	0xdd
+ 276 0100 0A       		.uleb128 0xa
+ 277 0101 D3010000 		.4byte	.LASF18
+ 278 0105 03       		.byte	0x3
+ 279 0106 5301     		.2byte	0x153
+ 280 0108 9A000000 		.4byte	0x9a
+ 281 010c 01       		.byte	0x1
+ 282 010d 01       		.byte	0x1
+ 283 010e 0A       		.uleb128 0xa
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccEFgso0.s 			page 9
+
+
+ 284 010f 0F010000 		.4byte	.LASF19
+ 285 0113 03       		.byte	0x3
+ 286 0114 5401     		.2byte	0x154
+ 287 0116 9A000000 		.4byte	0x9a
+ 288 011a 01       		.byte	0x1
+ 289 011b 01       		.byte	0x1
+ 290 011c 0A       		.uleb128 0xa
+ 291 011d 66000000 		.4byte	.LASF20
+ 292 0121 03       		.byte	0x3
+ 293 0122 5501     		.2byte	0x155
+ 294 0124 9A000000 		.4byte	0x9a
+ 295 0128 01       		.byte	0x1
+ 296 0129 01       		.byte	0x1
+ 297 012a 0A       		.uleb128 0xa
+ 298 012b 0E000000 		.4byte	.LASF21
+ 299 012f 03       		.byte	0x3
+ 300 0130 5601     		.2byte	0x156
+ 301 0132 9A000000 		.4byte	0x9a
+ 302 0136 01       		.byte	0x1
+ 303 0137 01       		.byte	0x1
+ 304 0138 00       		.byte	0
+ 305              		.section	.debug_abbrev,"",%progbits
+ 306              	.Ldebug_abbrev0:
+ 307 0000 01       		.uleb128 0x1
+ 308 0001 11       		.uleb128 0x11
+ 309 0002 01       		.byte	0x1
+ 310 0003 25       		.uleb128 0x25
+ 311 0004 0E       		.uleb128 0xe
+ 312 0005 13       		.uleb128 0x13
+ 313 0006 0B       		.uleb128 0xb
+ 314 0007 03       		.uleb128 0x3
+ 315 0008 0E       		.uleb128 0xe
+ 316 0009 1B       		.uleb128 0x1b
+ 317 000a 0E       		.uleb128 0xe
+ 318 000b 55       		.uleb128 0x55
+ 319 000c 06       		.uleb128 0x6
+ 320 000d 11       		.uleb128 0x11
+ 321 000e 01       		.uleb128 0x1
+ 322 000f 52       		.uleb128 0x52
+ 323 0010 01       		.uleb128 0x1
+ 324 0011 10       		.uleb128 0x10
+ 325 0012 06       		.uleb128 0x6
+ 326 0013 00       		.byte	0
+ 327 0014 00       		.byte	0
+ 328 0015 02       		.uleb128 0x2
+ 329 0016 24       		.uleb128 0x24
+ 330 0017 00       		.byte	0
+ 331 0018 0B       		.uleb128 0xb
+ 332 0019 0B       		.uleb128 0xb
+ 333 001a 3E       		.uleb128 0x3e
+ 334 001b 0B       		.uleb128 0xb
+ 335 001c 03       		.uleb128 0x3
+ 336 001d 0E       		.uleb128 0xe
+ 337 001e 00       		.byte	0
+ 338 001f 00       		.byte	0
+ 339 0020 03       		.uleb128 0x3
+ 340 0021 24       		.uleb128 0x24
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccEFgso0.s 			page 10
+
+
+ 341 0022 00       		.byte	0
+ 342 0023 0B       		.uleb128 0xb
+ 343 0024 0B       		.uleb128 0xb
+ 344 0025 3E       		.uleb128 0x3e
+ 345 0026 0B       		.uleb128 0xb
+ 346 0027 03       		.uleb128 0x3
+ 347 0028 08       		.uleb128 0x8
+ 348 0029 00       		.byte	0
+ 349 002a 00       		.byte	0
+ 350 002b 04       		.uleb128 0x4
+ 351 002c 16       		.uleb128 0x16
+ 352 002d 00       		.byte	0
+ 353 002e 03       		.uleb128 0x3
+ 354 002f 0E       		.uleb128 0xe
+ 355 0030 3A       		.uleb128 0x3a
+ 356 0031 0B       		.uleb128 0xb
+ 357 0032 3B       		.uleb128 0x3b
+ 358 0033 0B       		.uleb128 0xb
+ 359 0034 49       		.uleb128 0x49
+ 360 0035 13       		.uleb128 0x13
+ 361 0036 00       		.byte	0
+ 362 0037 00       		.byte	0
+ 363 0038 05       		.uleb128 0x5
+ 364 0039 35       		.uleb128 0x35
+ 365 003a 00       		.byte	0
+ 366 003b 49       		.uleb128 0x49
+ 367 003c 13       		.uleb128 0x13
+ 368 003d 00       		.byte	0
+ 369 003e 00       		.byte	0
+ 370 003f 06       		.uleb128 0x6
+ 371 0040 2E       		.uleb128 0x2e
+ 372 0041 01       		.byte	0x1
+ 373 0042 3F       		.uleb128 0x3f
+ 374 0043 0C       		.uleb128 0xc
+ 375 0044 03       		.uleb128 0x3
+ 376 0045 0E       		.uleb128 0xe
+ 377 0046 3A       		.uleb128 0x3a
+ 378 0047 0B       		.uleb128 0xb
+ 379 0048 3B       		.uleb128 0x3b
+ 380 0049 0B       		.uleb128 0xb
+ 381 004a 27       		.uleb128 0x27
+ 382 004b 0C       		.uleb128 0xc
+ 383 004c 11       		.uleb128 0x11
+ 384 004d 01       		.uleb128 0x1
+ 385 004e 12       		.uleb128 0x12
+ 386 004f 01       		.uleb128 0x1
+ 387 0050 40       		.uleb128 0x40
+ 388 0051 06       		.uleb128 0x6
+ 389 0052 9742     		.uleb128 0x2117
+ 390 0054 0C       		.uleb128 0xc
+ 391 0055 01       		.uleb128 0x1
+ 392 0056 13       		.uleb128 0x13
+ 393 0057 00       		.byte	0
+ 394 0058 00       		.byte	0
+ 395 0059 07       		.uleb128 0x7
+ 396 005a 34       		.uleb128 0x34
+ 397 005b 00       		.byte	0
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccEFgso0.s 			page 11
+
+
+ 398 005c 03       		.uleb128 0x3
+ 399 005d 0E       		.uleb128 0xe
+ 400 005e 3A       		.uleb128 0x3a
+ 401 005f 0B       		.uleb128 0xb
+ 402 0060 3B       		.uleb128 0x3b
+ 403 0061 0B       		.uleb128 0xb
+ 404 0062 49       		.uleb128 0x49
+ 405 0063 13       		.uleb128 0x13
+ 406 0064 02       		.uleb128 0x2
+ 407 0065 0A       		.uleb128 0xa
+ 408 0066 00       		.byte	0
+ 409 0067 00       		.byte	0
+ 410 0068 08       		.uleb128 0x8
+ 411 0069 01       		.uleb128 0x1
+ 412 006a 01       		.byte	0x1
+ 413 006b 49       		.uleb128 0x49
+ 414 006c 13       		.uleb128 0x13
+ 415 006d 01       		.uleb128 0x1
+ 416 006e 13       		.uleb128 0x13
+ 417 006f 00       		.byte	0
+ 418 0070 00       		.byte	0
+ 419 0071 09       		.uleb128 0x9
+ 420 0072 21       		.uleb128 0x21
+ 421 0073 00       		.byte	0
+ 422 0074 49       		.uleb128 0x49
+ 423 0075 13       		.uleb128 0x13
+ 424 0076 2F       		.uleb128 0x2f
+ 425 0077 0B       		.uleb128 0xb
+ 426 0078 00       		.byte	0
+ 427 0079 00       		.byte	0
+ 428 007a 0A       		.uleb128 0xa
+ 429 007b 34       		.uleb128 0x34
+ 430 007c 00       		.byte	0
+ 431 007d 03       		.uleb128 0x3
+ 432 007e 0E       		.uleb128 0xe
+ 433 007f 3A       		.uleb128 0x3a
+ 434 0080 0B       		.uleb128 0xb
+ 435 0081 3B       		.uleb128 0x3b
+ 436 0082 05       		.uleb128 0x5
+ 437 0083 49       		.uleb128 0x49
+ 438 0084 13       		.uleb128 0x13
+ 439 0085 3F       		.uleb128 0x3f
+ 440 0086 0C       		.uleb128 0xc
+ 441 0087 3C       		.uleb128 0x3c
+ 442 0088 0C       		.uleb128 0xc
+ 443 0089 00       		.byte	0
+ 444 008a 00       		.byte	0
+ 445 008b 00       		.byte	0
+ 446              		.section	.debug_loc,"",%progbits
+ 447              	.Ldebug_loc0:
+ 448              	.LLST0:
+ 449 0000 00000000 		.4byte	.LFB0
+ 450 0004 02000000 		.4byte	.LCFI0
+ 451 0008 0200     		.2byte	0x2
+ 452 000a 7D       		.byte	0x7d
+ 453 000b 00       		.sleb128 0
+ 454 000c 02000000 		.4byte	.LCFI0
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccEFgso0.s 			page 12
+
+
+ 455 0010 04000000 		.4byte	.LCFI1
+ 456 0014 0200     		.2byte	0x2
+ 457 0016 7D       		.byte	0x7d
+ 458 0017 04       		.sleb128 4
+ 459 0018 04000000 		.4byte	.LCFI1
+ 460 001c 06000000 		.4byte	.LCFI2
+ 461 0020 0200     		.2byte	0x2
+ 462 0022 7D       		.byte	0x7d
+ 463 0023 10       		.sleb128 16
+ 464 0024 06000000 		.4byte	.LCFI2
+ 465 0028 EC000000 		.4byte	.LFE0
+ 466 002c 0200     		.2byte	0x2
+ 467 002e 77       		.byte	0x77
+ 468 002f 10       		.sleb128 16
+ 469 0030 00000000 		.4byte	0
+ 470 0034 00000000 		.4byte	0
+ 471              		.section	.debug_aranges,"",%progbits
+ 472 0000 1C000000 		.4byte	0x1c
+ 473 0004 0200     		.2byte	0x2
+ 474 0006 00000000 		.4byte	.Ldebug_info0
+ 475 000a 04       		.byte	0x4
+ 476 000b 00       		.byte	0
+ 477 000c 0000     		.2byte	0
+ 478 000e 0000     		.2byte	0
+ 479 0010 00000000 		.4byte	.LFB0
+ 480 0014 EC000000 		.4byte	.LFE0-.LFB0
+ 481 0018 00000000 		.4byte	0
+ 482 001c 00000000 		.4byte	0
+ 483              		.section	.debug_ranges,"",%progbits
+ 484              	.Ldebug_ranges0:
+ 485 0000 00000000 		.4byte	.LFB0
+ 486 0004 EC000000 		.4byte	.LFE0
+ 487 0008 00000000 		.4byte	0
+ 488 000c 00000000 		.4byte	0
+ 489              		.section	.debug_line,"",%progbits
+ 490              	.Ldebug_line0:
+ 491 0000 8C000000 		.section	.debug_str,"MS",%progbits,1
+ 491      02005300 
+ 491      00000201 
+ 491      FB0E0D00 
+ 491      01010101 
+ 492              	.LASF6:
+ 493 0000 6C6F6E67 		.ascii	"long long int\000"
+ 493      206C6F6E 
+ 493      6720696E 
+ 493      7400
+ 494              	.LASF21:
+ 495 000e 50534F43 		.ascii	"PSOC4_rxBufferOverflow\000"
+ 495      345F7278 
+ 495      42756666 
+ 495      65724F76 
+ 495      6572666C 
+ 496              	.LASF24:
+ 497 0025 433A5C50 		.ascii	"C:\\Projects\\PSoC\\Bootloading_PSoC5_LP\\Bootloadi"
+ 497      726F6A65 
+ 497      6374735C 
+ 497      50536F43 
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccEFgso0.s 			page 13
+
+
+ 497      5C426F6F 
+ 498 0054 6E675F50 		.ascii	"ng_PSoC5_LP.cydsn\000"
+ 498      536F4335 
+ 498      5F4C502E 
+ 498      63796473 
+ 498      6E00
+ 499              	.LASF20:
+ 500 0066 50534F43 		.ascii	"PSOC4_rxBufferLoopDetect\000"
+ 500      345F7278 
+ 500      42756666 
+ 500      65724C6F 
+ 500      6F704465 
+ 501              	.LASF16:
+ 502 007f 696E6372 		.ascii	"increment_pointer\000"
+ 502      656D656E 
+ 502      745F706F 
+ 502      696E7465 
+ 502      7200
+ 503              	.LASF22:
+ 504 0091 474E5520 		.ascii	"GNU C 4.7.3 20130312 (release) [ARM/embedded-4_7-br"
+ 504      4320342E 
+ 504      372E3320 
+ 504      32303133 
+ 504      30333132 
+ 505 00c4 616E6368 		.ascii	"anch revision 196615]\000"
+ 505      20726576 
+ 505      6973696F 
+ 505      6E203139 
+ 505      36363135 
+ 506              	.LASF12:
+ 507 00da 75696E74 		.ascii	"uint8\000"
+ 507      3800
+ 508              	.LASF5:
+ 509 00e0 6C6F6E67 		.ascii	"long unsigned int\000"
+ 509      20756E73 
+ 509      69676E65 
+ 509      6420696E 
+ 509      7400
+ 510              	.LASF7:
+ 511 00f2 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 511      206C6F6E 
+ 511      6720756E 
+ 511      7369676E 
+ 511      65642069 
+ 512              	.LASF9:
+ 513 0109 666C6F61 		.ascii	"float\000"
+ 513      7400
+ 514              	.LASF19:
+ 515 010f 50534F43 		.ascii	"PSOC4_rxBufferWrite\000"
+ 515      345F7278 
+ 515      42756666 
+ 515      65725772 
+ 515      69746500 
+ 516              	.LASF1:
+ 517 0123 756E7369 		.ascii	"unsigned char\000"
+ 517      676E6564 
+ 517      20636861 
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccEFgso0.s 			page 14
+
+
+ 517      7200
+ 518              	.LASF11:
+ 519 0131 63686172 		.ascii	"char\000"
+ 519      00
+ 520              	.LASF4:
+ 521 0136 6C6F6E67 		.ascii	"long int\000"
+ 521      20696E74 
+ 521      00
+ 522              	.LASF17:
+ 523 013f 50534F43 		.ascii	"PSOC4_rxBuffer\000"
+ 523      345F7278 
+ 523      42756666 
+ 523      657200
+ 524              	.LASF10:
+ 525 014e 646F7562 		.ascii	"double\000"
+ 525      6C6500
+ 526              	.LASF25:
+ 527 0155 50534F43 		.ascii	"PSOC4_RXISR\000"
+ 527      345F5258 
+ 527      49535200 
+ 528              	.LASF3:
+ 529 0161 73686F72 		.ascii	"short unsigned int\000"
+ 529      7420756E 
+ 529      7369676E 
+ 529      65642069 
+ 529      6E7400
+ 530              	.LASF0:
+ 531 0174 7369676E 		.ascii	"signed char\000"
+ 531      65642063 
+ 531      68617200 
+ 532              	.LASF23:
+ 533 0180 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\PSOC4_INT.c\000"
+ 533      6E657261 
+ 533      7465645F 
+ 533      536F7572 
+ 533      63655C50 
+ 534              	.LASF14:
+ 535 01a5 73697A65 		.ascii	"sizetype\000"
+ 535      74797065 
+ 535      00
+ 536              	.LASF2:
+ 537 01ae 73686F72 		.ascii	"short int\000"
+ 537      7420696E 
+ 537      7400
+ 538              	.LASF13:
+ 539 01b8 72656738 		.ascii	"reg8\000"
+ 539      00
+ 540              	.LASF8:
+ 541 01bd 756E7369 		.ascii	"unsigned int\000"
+ 541      676E6564 
+ 541      20696E74 
+ 541      00
+ 542              	.LASF15:
+ 543 01ca 72656164 		.ascii	"readData\000"
+ 543      44617461 
+ 543      00
+ 544              	.LASF18:
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccEFgso0.s 			page 15
+
+
+ 545 01d3 50534F43 		.ascii	"PSOC4_rxBufferRead\000"
+ 545      345F7278 
+ 545      42756666 
+ 545      65725265 
+ 545      616400
+ 546              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.7.3 20130312 (release) [ARM/embedded-4_7-br

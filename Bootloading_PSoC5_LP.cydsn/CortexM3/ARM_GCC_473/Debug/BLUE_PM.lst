@@ -1,0 +1,1033 @@
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cc3yrKl4.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"BLUE_PM.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.bss
+  19              		.align	2
+  20              	BLUE_backup:
+  21 0000 000000   		.space	3
+  22 0003 00       		.section	.text.BLUE_SaveConfig,"ax",%progbits
+  23              		.align	2
+  24              		.global	BLUE_SaveConfig
+  25              		.thumb
+  26              		.thumb_func
+  27              		.type	BLUE_SaveConfig, %function
+  28              	BLUE_SaveConfig:
+  29              	.LFB0:
+  30              		.file 1 ".\\Generated_Source\\PSoC5\\BLUE_PM.c"
+   1:.\Generated_Source\PSoC5/BLUE_PM.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC5/BLUE_PM.c **** * File Name: BLUE_PM.c
+   3:.\Generated_Source\PSoC5/BLUE_PM.c **** * Version 2.30
+   4:.\Generated_Source\PSoC5/BLUE_PM.c **** *
+   5:.\Generated_Source\PSoC5/BLUE_PM.c **** * Description:
+   6:.\Generated_Source\PSoC5/BLUE_PM.c **** *  This file provides Sleep/WakeUp APIs functionality.
+   7:.\Generated_Source\PSoC5/BLUE_PM.c **** *
+   8:.\Generated_Source\PSoC5/BLUE_PM.c **** * Note:
+   9:.\Generated_Source\PSoC5/BLUE_PM.c **** *
+  10:.\Generated_Source\PSoC5/BLUE_PM.c **** ********************************************************************************
+  11:.\Generated_Source\PSoC5/BLUE_PM.c **** * Copyright 2008-2012, Cypress Semiconductor Corporation.  All rights reserved.
+  12:.\Generated_Source\PSoC5/BLUE_PM.c **** * You may use this file only in accordance with the license, terms, conditions,
+  13:.\Generated_Source\PSoC5/BLUE_PM.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  14:.\Generated_Source\PSoC5/BLUE_PM.c **** * the software package with which this file was provided.
+  15:.\Generated_Source\PSoC5/BLUE_PM.c **** *******************************************************************************/
+  16:.\Generated_Source\PSoC5/BLUE_PM.c **** 
+  17:.\Generated_Source\PSoC5/BLUE_PM.c **** #include "BLUE.h"
+  18:.\Generated_Source\PSoC5/BLUE_PM.c **** 
+  19:.\Generated_Source\PSoC5/BLUE_PM.c **** 
+  20:.\Generated_Source\PSoC5/BLUE_PM.c **** /***************************************
+  21:.\Generated_Source\PSoC5/BLUE_PM.c **** * Local data allocation
+  22:.\Generated_Source\PSoC5/BLUE_PM.c **** ***************************************/
+  23:.\Generated_Source\PSoC5/BLUE_PM.c **** 
+  24:.\Generated_Source\PSoC5/BLUE_PM.c **** static BLUE_BACKUP_STRUCT  BLUE_backup =
+  25:.\Generated_Source\PSoC5/BLUE_PM.c **** {
+  26:.\Generated_Source\PSoC5/BLUE_PM.c ****     /* enableState - disabled */
+  27:.\Generated_Source\PSoC5/BLUE_PM.c ****     0u,
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cc3yrKl4.s 			page 2
+
+
+  28:.\Generated_Source\PSoC5/BLUE_PM.c **** };
+  29:.\Generated_Source\PSoC5/BLUE_PM.c **** 
+  30:.\Generated_Source\PSoC5/BLUE_PM.c **** 
+  31:.\Generated_Source\PSoC5/BLUE_PM.c **** 
+  32:.\Generated_Source\PSoC5/BLUE_PM.c **** /*******************************************************************************
+  33:.\Generated_Source\PSoC5/BLUE_PM.c **** * Function Name: BLUE_SaveConfig
+  34:.\Generated_Source\PSoC5/BLUE_PM.c **** ********************************************************************************
+  35:.\Generated_Source\PSoC5/BLUE_PM.c **** *
+  36:.\Generated_Source\PSoC5/BLUE_PM.c **** * Summary:
+  37:.\Generated_Source\PSoC5/BLUE_PM.c **** *  Saves the current user configuration.
+  38:.\Generated_Source\PSoC5/BLUE_PM.c **** *
+  39:.\Generated_Source\PSoC5/BLUE_PM.c **** * Parameters:
+  40:.\Generated_Source\PSoC5/BLUE_PM.c **** *  None.
+  41:.\Generated_Source\PSoC5/BLUE_PM.c **** *
+  42:.\Generated_Source\PSoC5/BLUE_PM.c **** * Return:
+  43:.\Generated_Source\PSoC5/BLUE_PM.c **** *  None.
+  44:.\Generated_Source\PSoC5/BLUE_PM.c **** *
+  45:.\Generated_Source\PSoC5/BLUE_PM.c **** * Global Variables:
+  46:.\Generated_Source\PSoC5/BLUE_PM.c **** *  BLUE_backup - modified when non-retention registers are saved.
+  47:.\Generated_Source\PSoC5/BLUE_PM.c **** *
+  48:.\Generated_Source\PSoC5/BLUE_PM.c **** * Reentrant:
+  49:.\Generated_Source\PSoC5/BLUE_PM.c **** *  No.
+  50:.\Generated_Source\PSoC5/BLUE_PM.c **** *
+  51:.\Generated_Source\PSoC5/BLUE_PM.c **** *******************************************************************************/
+  52:.\Generated_Source\PSoC5/BLUE_PM.c **** void BLUE_SaveConfig(void)
+  53:.\Generated_Source\PSoC5/BLUE_PM.c **** {
+  31              		.loc 1 53 0
+  32              		.cfi_startproc
+  33              		@ args = 0, pretend = 0, frame = 0
+  34              		@ frame_needed = 1, uses_anonymous_args = 0
+  35              		@ link register save eliminated.
+  36 0000 80B4     		push	{r7}
+  37              	.LCFI0:
+  38              		.cfi_def_cfa_offset 4
+  39              		.cfi_offset 7, -4
+  40 0002 00AF     		add	r7, sp, #0
+  41              	.LCFI1:
+  42              		.cfi_def_cfa_register 7
+  54:.\Generated_Source\PSoC5/BLUE_PM.c ****     #if (CY_UDB_V0)
+  55:.\Generated_Source\PSoC5/BLUE_PM.c **** 
+  56:.\Generated_Source\PSoC5/BLUE_PM.c ****         #if(BLUE_CONTROL_REG_REMOVED == 0u)
+  57:.\Generated_Source\PSoC5/BLUE_PM.c ****             BLUE_backup.cr = BLUE_CONTROL_REG;
+  58:.\Generated_Source\PSoC5/BLUE_PM.c ****         #endif /* End BLUE_CONTROL_REG_REMOVED */
+  59:.\Generated_Source\PSoC5/BLUE_PM.c **** 
+  60:.\Generated_Source\PSoC5/BLUE_PM.c ****         #if( (BLUE_RX_ENABLED) || (BLUE_HD_ENABLED) )
+  61:.\Generated_Source\PSoC5/BLUE_PM.c ****             BLUE_backup.rx_period = BLUE_RXBITCTR_PERIOD_REG;
+  62:.\Generated_Source\PSoC5/BLUE_PM.c ****             BLUE_backup.rx_mask = BLUE_RXSTATUS_MASK_REG;
+  63:.\Generated_Source\PSoC5/BLUE_PM.c ****             #if (BLUE_RXHW_ADDRESS_ENABLED)
+  64:.\Generated_Source\PSoC5/BLUE_PM.c ****                 BLUE_backup.rx_addr1 = BLUE_RXADDRESS1_REG;
+  65:.\Generated_Source\PSoC5/BLUE_PM.c ****                 BLUE_backup.rx_addr2 = BLUE_RXADDRESS2_REG;
+  66:.\Generated_Source\PSoC5/BLUE_PM.c ****             #endif /* End BLUE_RXHW_ADDRESS_ENABLED */
+  67:.\Generated_Source\PSoC5/BLUE_PM.c ****         #endif /* End BLUE_RX_ENABLED | BLUE_HD_ENABLED*/
+  68:.\Generated_Source\PSoC5/BLUE_PM.c **** 
+  69:.\Generated_Source\PSoC5/BLUE_PM.c ****         #if(BLUE_TX_ENABLED)
+  70:.\Generated_Source\PSoC5/BLUE_PM.c ****             #if(BLUE_TXCLKGEN_DP)
+  71:.\Generated_Source\PSoC5/BLUE_PM.c ****                 BLUE_backup.tx_clk_ctr = BLUE_TXBITCLKGEN_CTR_REG;
+  72:.\Generated_Source\PSoC5/BLUE_PM.c ****                 BLUE_backup.tx_clk_compl = BLUE_TXBITCLKTX_COMPLETE_REG;
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cc3yrKl4.s 			page 3
+
+
+  73:.\Generated_Source\PSoC5/BLUE_PM.c ****             #else
+  74:.\Generated_Source\PSoC5/BLUE_PM.c ****                 BLUE_backup.tx_period = BLUE_TXBITCTR_PERIOD_REG;
+  75:.\Generated_Source\PSoC5/BLUE_PM.c ****             #endif /*End BLUE_TXCLKGEN_DP */
+  76:.\Generated_Source\PSoC5/BLUE_PM.c ****             BLUE_backup.tx_mask = BLUE_TXSTATUS_MASK_REG;
+  77:.\Generated_Source\PSoC5/BLUE_PM.c ****         #endif /*End BLUE_TX_ENABLED */
+  78:.\Generated_Source\PSoC5/BLUE_PM.c **** 
+  79:.\Generated_Source\PSoC5/BLUE_PM.c **** 
+  80:.\Generated_Source\PSoC5/BLUE_PM.c ****     #else /* CY_UDB_V1 */
+  81:.\Generated_Source\PSoC5/BLUE_PM.c **** 
+  82:.\Generated_Source\PSoC5/BLUE_PM.c ****         #if(BLUE_CONTROL_REG_REMOVED == 0u)
+  83:.\Generated_Source\PSoC5/BLUE_PM.c ****             BLUE_backup.cr = BLUE_CONTROL_REG;
+  84:.\Generated_Source\PSoC5/BLUE_PM.c ****         #endif /* End BLUE_CONTROL_REG_REMOVED */
+  85:.\Generated_Source\PSoC5/BLUE_PM.c **** 
+  86:.\Generated_Source\PSoC5/BLUE_PM.c ****     #endif  /* End CY_UDB_V0 */
+  87:.\Generated_Source\PSoC5/BLUE_PM.c **** }
+  43              		.loc 1 87 0
+  44 0004 BD46     		mov	sp, r7
+  45 0006 80BC     		pop	{r7}
+  46 0008 7047     		bx	lr
+  47              		.cfi_endproc
+  48              	.LFE0:
+  49              		.size	BLUE_SaveConfig, .-BLUE_SaveConfig
+  50 000a 00BF     		.section	.text.BLUE_RestoreConfig,"ax",%progbits
+  51              		.align	2
+  52              		.global	BLUE_RestoreConfig
+  53              		.thumb
+  54              		.thumb_func
+  55              		.type	BLUE_RestoreConfig, %function
+  56              	BLUE_RestoreConfig:
+  57              	.LFB1:
+  88:.\Generated_Source\PSoC5/BLUE_PM.c **** 
+  89:.\Generated_Source\PSoC5/BLUE_PM.c **** 
+  90:.\Generated_Source\PSoC5/BLUE_PM.c **** /*******************************************************************************
+  91:.\Generated_Source\PSoC5/BLUE_PM.c **** * Function Name: BLUE_RestoreConfig
+  92:.\Generated_Source\PSoC5/BLUE_PM.c **** ********************************************************************************
+  93:.\Generated_Source\PSoC5/BLUE_PM.c **** *
+  94:.\Generated_Source\PSoC5/BLUE_PM.c **** * Summary:
+  95:.\Generated_Source\PSoC5/BLUE_PM.c **** *  Restores the current user configuration.
+  96:.\Generated_Source\PSoC5/BLUE_PM.c **** *
+  97:.\Generated_Source\PSoC5/BLUE_PM.c **** * Parameters:
+  98:.\Generated_Source\PSoC5/BLUE_PM.c **** *  None.
+  99:.\Generated_Source\PSoC5/BLUE_PM.c **** *
+ 100:.\Generated_Source\PSoC5/BLUE_PM.c **** * Return:
+ 101:.\Generated_Source\PSoC5/BLUE_PM.c **** *  None.
+ 102:.\Generated_Source\PSoC5/BLUE_PM.c **** *
+ 103:.\Generated_Source\PSoC5/BLUE_PM.c **** * Global Variables:
+ 104:.\Generated_Source\PSoC5/BLUE_PM.c **** *  BLUE_backup - used when non-retention registers are restored.
+ 105:.\Generated_Source\PSoC5/BLUE_PM.c **** *
+ 106:.\Generated_Source\PSoC5/BLUE_PM.c **** * Reentrant:
+ 107:.\Generated_Source\PSoC5/BLUE_PM.c **** *  No.
+ 108:.\Generated_Source\PSoC5/BLUE_PM.c **** *
+ 109:.\Generated_Source\PSoC5/BLUE_PM.c **** *******************************************************************************/
+ 110:.\Generated_Source\PSoC5/BLUE_PM.c **** void BLUE_RestoreConfig(void)
+ 111:.\Generated_Source\PSoC5/BLUE_PM.c **** {
+  58              		.loc 1 111 0
+  59              		.cfi_startproc
+  60              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cc3yrKl4.s 			page 4
+
+
+  61              		@ frame_needed = 1, uses_anonymous_args = 0
+  62              		@ link register save eliminated.
+  63 0000 80B4     		push	{r7}
+  64              	.LCFI2:
+  65              		.cfi_def_cfa_offset 4
+  66              		.cfi_offset 7, -4
+  67 0002 00AF     		add	r7, sp, #0
+  68              	.LCFI3:
+  69              		.cfi_def_cfa_register 7
+ 112:.\Generated_Source\PSoC5/BLUE_PM.c **** 
+ 113:.\Generated_Source\PSoC5/BLUE_PM.c ****     #if (CY_UDB_V0)
+ 114:.\Generated_Source\PSoC5/BLUE_PM.c **** 
+ 115:.\Generated_Source\PSoC5/BLUE_PM.c ****         #if(BLUE_CONTROL_REG_REMOVED == 0u)
+ 116:.\Generated_Source\PSoC5/BLUE_PM.c ****             BLUE_CONTROL_REG = BLUE_backup.cr;
+ 117:.\Generated_Source\PSoC5/BLUE_PM.c ****         #endif /* End BLUE_CONTROL_REG_REMOVED */
+ 118:.\Generated_Source\PSoC5/BLUE_PM.c **** 
+ 119:.\Generated_Source\PSoC5/BLUE_PM.c ****         #if( (BLUE_RX_ENABLED) || (BLUE_HD_ENABLED) )
+ 120:.\Generated_Source\PSoC5/BLUE_PM.c ****             BLUE_RXBITCTR_PERIOD_REG = BLUE_backup.rx_period;
+ 121:.\Generated_Source\PSoC5/BLUE_PM.c ****             BLUE_RXSTATUS_MASK_REG = BLUE_backup.rx_mask;
+ 122:.\Generated_Source\PSoC5/BLUE_PM.c ****             #if (BLUE_RXHW_ADDRESS_ENABLED)
+ 123:.\Generated_Source\PSoC5/BLUE_PM.c ****                 BLUE_RXADDRESS1_REG = BLUE_backup.rx_addr1;
+ 124:.\Generated_Source\PSoC5/BLUE_PM.c ****                 BLUE_RXADDRESS2_REG = BLUE_backup.rx_addr2;
+ 125:.\Generated_Source\PSoC5/BLUE_PM.c ****             #endif /* End BLUE_RXHW_ADDRESS_ENABLED */
+ 126:.\Generated_Source\PSoC5/BLUE_PM.c ****         #endif  /* End (BLUE_RX_ENABLED) || (BLUE_HD_ENABLED) */
+ 127:.\Generated_Source\PSoC5/BLUE_PM.c **** 
+ 128:.\Generated_Source\PSoC5/BLUE_PM.c ****         #if(BLUE_TX_ENABLED)
+ 129:.\Generated_Source\PSoC5/BLUE_PM.c ****             #if(BLUE_TXCLKGEN_DP)
+ 130:.\Generated_Source\PSoC5/BLUE_PM.c ****                 BLUE_TXBITCLKGEN_CTR_REG = BLUE_backup.tx_clk_ctr;
+ 131:.\Generated_Source\PSoC5/BLUE_PM.c ****                 BLUE_TXBITCLKTX_COMPLETE_REG = BLUE_backup.tx_clk_compl;
+ 132:.\Generated_Source\PSoC5/BLUE_PM.c ****             #else
+ 133:.\Generated_Source\PSoC5/BLUE_PM.c ****                 BLUE_TXBITCTR_PERIOD_REG = BLUE_backup.tx_period;
+ 134:.\Generated_Source\PSoC5/BLUE_PM.c ****             #endif /*End BLUE_TXCLKGEN_DP */
+ 135:.\Generated_Source\PSoC5/BLUE_PM.c ****             BLUE_TXSTATUS_MASK_REG = BLUE_backup.tx_mask;
+ 136:.\Generated_Source\PSoC5/BLUE_PM.c ****         #endif /*End BLUE_TX_ENABLED */
+ 137:.\Generated_Source\PSoC5/BLUE_PM.c **** 
+ 138:.\Generated_Source\PSoC5/BLUE_PM.c ****     #else /* CY_UDB_V1 */
+ 139:.\Generated_Source\PSoC5/BLUE_PM.c **** 
+ 140:.\Generated_Source\PSoC5/BLUE_PM.c ****         #if(BLUE_CONTROL_REG_REMOVED == 0u)
+ 141:.\Generated_Source\PSoC5/BLUE_PM.c ****             BLUE_CONTROL_REG = BLUE_backup.cr;
+ 142:.\Generated_Source\PSoC5/BLUE_PM.c ****         #endif /* End BLUE_CONTROL_REG_REMOVED */
+ 143:.\Generated_Source\PSoC5/BLUE_PM.c **** 
+ 144:.\Generated_Source\PSoC5/BLUE_PM.c ****     #endif  /* End CY_UDB_V0 */
+ 145:.\Generated_Source\PSoC5/BLUE_PM.c **** }
+  70              		.loc 1 145 0
+  71 0004 BD46     		mov	sp, r7
+  72 0006 80BC     		pop	{r7}
+  73 0008 7047     		bx	lr
+  74              		.cfi_endproc
+  75              	.LFE1:
+  76              		.size	BLUE_RestoreConfig, .-BLUE_RestoreConfig
+  77 000a 00BF     		.section	.text.BLUE_Sleep,"ax",%progbits
+  78              		.align	2
+  79              		.global	BLUE_Sleep
+  80              		.thumb
+  81              		.thumb_func
+  82              		.type	BLUE_Sleep, %function
+  83              	BLUE_Sleep:
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cc3yrKl4.s 			page 5
+
+
+  84              	.LFB2:
+ 146:.\Generated_Source\PSoC5/BLUE_PM.c **** 
+ 147:.\Generated_Source\PSoC5/BLUE_PM.c **** 
+ 148:.\Generated_Source\PSoC5/BLUE_PM.c **** /*******************************************************************************
+ 149:.\Generated_Source\PSoC5/BLUE_PM.c **** * Function Name: BLUE_Sleep
+ 150:.\Generated_Source\PSoC5/BLUE_PM.c **** ********************************************************************************
+ 151:.\Generated_Source\PSoC5/BLUE_PM.c **** *
+ 152:.\Generated_Source\PSoC5/BLUE_PM.c **** * Summary:
+ 153:.\Generated_Source\PSoC5/BLUE_PM.c **** *  Stops and saves the user configuration. Should be called
+ 154:.\Generated_Source\PSoC5/BLUE_PM.c **** *  just prior to entering sleep.
+ 155:.\Generated_Source\PSoC5/BLUE_PM.c **** *
+ 156:.\Generated_Source\PSoC5/BLUE_PM.c **** *
+ 157:.\Generated_Source\PSoC5/BLUE_PM.c **** * Parameters:
+ 158:.\Generated_Source\PSoC5/BLUE_PM.c **** *  None.
+ 159:.\Generated_Source\PSoC5/BLUE_PM.c **** *
+ 160:.\Generated_Source\PSoC5/BLUE_PM.c **** * Return:
+ 161:.\Generated_Source\PSoC5/BLUE_PM.c **** *  None.
+ 162:.\Generated_Source\PSoC5/BLUE_PM.c **** *
+ 163:.\Generated_Source\PSoC5/BLUE_PM.c **** * Global Variables:
+ 164:.\Generated_Source\PSoC5/BLUE_PM.c **** *  BLUE_backup - modified when non-retention registers are saved.
+ 165:.\Generated_Source\PSoC5/BLUE_PM.c **** *
+ 166:.\Generated_Source\PSoC5/BLUE_PM.c **** * Reentrant:
+ 167:.\Generated_Source\PSoC5/BLUE_PM.c **** *  No.
+ 168:.\Generated_Source\PSoC5/BLUE_PM.c **** *
+ 169:.\Generated_Source\PSoC5/BLUE_PM.c **** *******************************************************************************/
+ 170:.\Generated_Source\PSoC5/BLUE_PM.c **** void BLUE_Sleep(void)
+ 171:.\Generated_Source\PSoC5/BLUE_PM.c **** {
+  85              		.loc 1 171 0
+  86              		.cfi_startproc
+  87              		@ args = 0, pretend = 0, frame = 0
+  88              		@ frame_needed = 1, uses_anonymous_args = 0
+  89 0000 80B5     		push	{r7, lr}
+  90              	.LCFI4:
+  91              		.cfi_def_cfa_offset 8
+  92              		.cfi_offset 7, -8
+  93              		.cfi_offset 14, -4
+  94 0002 00AF     		add	r7, sp, #0
+  95              	.LCFI5:
+  96              		.cfi_def_cfa_register 7
+ 172:.\Generated_Source\PSoC5/BLUE_PM.c **** 
+ 173:.\Generated_Source\PSoC5/BLUE_PM.c ****     #if(BLUE_RX_ENABLED || BLUE_HD_ENABLED)
+ 174:.\Generated_Source\PSoC5/BLUE_PM.c ****         if((BLUE_RXSTATUS_ACTL_REG  & BLUE_INT_ENABLE) != 0u)
+  97              		.loc 1 174 0
+  98 0004 46F29853 		movw	r3, #26008
+  99 0008 C4F20003 		movt	r3, 16384
+ 100 000c 1B78     		ldrb	r3, [r3, #0]
+ 101 000e DBB2     		uxtb	r3, r3
+ 102 0010 03F01003 		and	r3, r3, #16
+ 103 0014 002B     		cmp	r3, #0
+ 104 0016 07D0     		beq	.L4
+ 175:.\Generated_Source\PSoC5/BLUE_PM.c ****         {
+ 176:.\Generated_Source\PSoC5/BLUE_PM.c ****             BLUE_backup.enableState = 1u;
+ 105              		.loc 1 176 0
+ 106 0018 40F20003 		movw	r3, #:lower16:BLUE_backup
+ 107 001c C0F20003 		movt	r3, #:upper16:BLUE_backup
+ 108 0020 4FF00102 		mov	r2, #1
+ 109 0024 1A70     		strb	r2, [r3, #0]
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cc3yrKl4.s 			page 6
+
+
+ 110 0026 06E0     		b	.L5
+ 111              	.L4:
+ 177:.\Generated_Source\PSoC5/BLUE_PM.c ****         }
+ 178:.\Generated_Source\PSoC5/BLUE_PM.c ****         else
+ 179:.\Generated_Source\PSoC5/BLUE_PM.c ****         {
+ 180:.\Generated_Source\PSoC5/BLUE_PM.c ****             BLUE_backup.enableState = 0u;
+ 112              		.loc 1 180 0
+ 113 0028 40F20003 		movw	r3, #:lower16:BLUE_backup
+ 114 002c C0F20003 		movt	r3, #:upper16:BLUE_backup
+ 115 0030 4FF00002 		mov	r2, #0
+ 116 0034 1A70     		strb	r2, [r3, #0]
+ 117              	.L5:
+ 181:.\Generated_Source\PSoC5/BLUE_PM.c ****         }
+ 182:.\Generated_Source\PSoC5/BLUE_PM.c ****     #else
+ 183:.\Generated_Source\PSoC5/BLUE_PM.c ****         if((BLUE_TXSTATUS_ACTL_REG  & BLUE_INT_ENABLE) !=0u)
+ 184:.\Generated_Source\PSoC5/BLUE_PM.c ****         {
+ 185:.\Generated_Source\PSoC5/BLUE_PM.c ****             BLUE_backup.enableState = 1u;
+ 186:.\Generated_Source\PSoC5/BLUE_PM.c ****         }
+ 187:.\Generated_Source\PSoC5/BLUE_PM.c ****         else
+ 188:.\Generated_Source\PSoC5/BLUE_PM.c ****         {
+ 189:.\Generated_Source\PSoC5/BLUE_PM.c ****             BLUE_backup.enableState = 0u;
+ 190:.\Generated_Source\PSoC5/BLUE_PM.c ****         }
+ 191:.\Generated_Source\PSoC5/BLUE_PM.c ****     #endif /* End BLUE_RX_ENABLED || BLUE_HD_ENABLED*/
+ 192:.\Generated_Source\PSoC5/BLUE_PM.c **** 
+ 193:.\Generated_Source\PSoC5/BLUE_PM.c ****     BLUE_Stop();
+ 118              		.loc 1 193 0
+ 119 0036 FFF7FEFF 		bl	BLUE_Stop
+ 194:.\Generated_Source\PSoC5/BLUE_PM.c ****     BLUE_SaveConfig();
+ 120              		.loc 1 194 0
+ 121 003a FFF7FEFF 		bl	BLUE_SaveConfig
+ 195:.\Generated_Source\PSoC5/BLUE_PM.c **** }
+ 122              		.loc 1 195 0
+ 123 003e 80BD     		pop	{r7, pc}
+ 124              		.cfi_endproc
+ 125              	.LFE2:
+ 126              		.size	BLUE_Sleep, .-BLUE_Sleep
+ 127              		.section	.text.BLUE_Wakeup,"ax",%progbits
+ 128              		.align	2
+ 129              		.global	BLUE_Wakeup
+ 130              		.thumb
+ 131              		.thumb_func
+ 132              		.type	BLUE_Wakeup, %function
+ 133              	BLUE_Wakeup:
+ 134              	.LFB3:
+ 196:.\Generated_Source\PSoC5/BLUE_PM.c **** 
+ 197:.\Generated_Source\PSoC5/BLUE_PM.c **** 
+ 198:.\Generated_Source\PSoC5/BLUE_PM.c **** /*******************************************************************************
+ 199:.\Generated_Source\PSoC5/BLUE_PM.c **** * Function Name: BLUE_Wakeup
+ 200:.\Generated_Source\PSoC5/BLUE_PM.c **** ********************************************************************************
+ 201:.\Generated_Source\PSoC5/BLUE_PM.c **** *
+ 202:.\Generated_Source\PSoC5/BLUE_PM.c **** * Summary:
+ 203:.\Generated_Source\PSoC5/BLUE_PM.c **** *  Restores and enables the user configuration. Should be called
+ 204:.\Generated_Source\PSoC5/BLUE_PM.c **** *  just after awaking from sleep.
+ 205:.\Generated_Source\PSoC5/BLUE_PM.c **** *
+ 206:.\Generated_Source\PSoC5/BLUE_PM.c **** * Parameters:
+ 207:.\Generated_Source\PSoC5/BLUE_PM.c **** *  None.
+ 208:.\Generated_Source\PSoC5/BLUE_PM.c **** *
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cc3yrKl4.s 			page 7
+
+
+ 209:.\Generated_Source\PSoC5/BLUE_PM.c **** * Return:
+ 210:.\Generated_Source\PSoC5/BLUE_PM.c **** *  None.
+ 211:.\Generated_Source\PSoC5/BLUE_PM.c **** *
+ 212:.\Generated_Source\PSoC5/BLUE_PM.c **** * Global Variables:
+ 213:.\Generated_Source\PSoC5/BLUE_PM.c **** *  BLUE_backup - used when non-retention registers are restored.
+ 214:.\Generated_Source\PSoC5/BLUE_PM.c **** *
+ 215:.\Generated_Source\PSoC5/BLUE_PM.c **** * Reentrant:
+ 216:.\Generated_Source\PSoC5/BLUE_PM.c **** *  No.
+ 217:.\Generated_Source\PSoC5/BLUE_PM.c **** *
+ 218:.\Generated_Source\PSoC5/BLUE_PM.c **** *******************************************************************************/
+ 219:.\Generated_Source\PSoC5/BLUE_PM.c **** void BLUE_Wakeup(void)
+ 220:.\Generated_Source\PSoC5/BLUE_PM.c **** {
+ 135              		.loc 1 220 0
+ 136              		.cfi_startproc
+ 137              		@ args = 0, pretend = 0, frame = 0
+ 138              		@ frame_needed = 1, uses_anonymous_args = 0
+ 139 0000 80B5     		push	{r7, lr}
+ 140              	.LCFI6:
+ 141              		.cfi_def_cfa_offset 8
+ 142              		.cfi_offset 7, -8
+ 143              		.cfi_offset 14, -4
+ 144 0002 00AF     		add	r7, sp, #0
+ 145              	.LCFI7:
+ 146              		.cfi_def_cfa_register 7
+ 221:.\Generated_Source\PSoC5/BLUE_PM.c ****     BLUE_RestoreConfig();
+ 147              		.loc 1 221 0
+ 148 0004 FFF7FEFF 		bl	BLUE_RestoreConfig
+ 222:.\Generated_Source\PSoC5/BLUE_PM.c ****     #if( (BLUE_RX_ENABLED) || (BLUE_HD_ENABLED) )
+ 223:.\Generated_Source\PSoC5/BLUE_PM.c ****         BLUE_ClearRxBuffer();
+ 149              		.loc 1 223 0
+ 150 0008 FFF7FEFF 		bl	BLUE_ClearRxBuffer
+ 224:.\Generated_Source\PSoC5/BLUE_PM.c ****     #endif /* End (BLUE_RX_ENABLED) || (BLUE_HD_ENABLED) */
+ 225:.\Generated_Source\PSoC5/BLUE_PM.c ****     #if(BLUE_TX_ENABLED || BLUE_HD_ENABLED)
+ 226:.\Generated_Source\PSoC5/BLUE_PM.c ****         BLUE_ClearTxBuffer();
+ 151              		.loc 1 226 0
+ 152 000c FFF7FEFF 		bl	BLUE_ClearTxBuffer
+ 227:.\Generated_Source\PSoC5/BLUE_PM.c ****     #endif /* End BLUE_TX_ENABLED || BLUE_HD_ENABLED */
+ 228:.\Generated_Source\PSoC5/BLUE_PM.c **** 
+ 229:.\Generated_Source\PSoC5/BLUE_PM.c ****     if(BLUE_backup.enableState != 0u)
+ 153              		.loc 1 229 0
+ 154 0010 40F20003 		movw	r3, #:lower16:BLUE_backup
+ 155 0014 C0F20003 		movt	r3, #:upper16:BLUE_backup
+ 156 0018 1B78     		ldrb	r3, [r3, #0]	@ zero_extendqisi2
+ 157 001a 002B     		cmp	r3, #0
+ 158 001c 01D0     		beq	.L6
+ 230:.\Generated_Source\PSoC5/BLUE_PM.c ****     {
+ 231:.\Generated_Source\PSoC5/BLUE_PM.c ****         BLUE_Enable();
+ 159              		.loc 1 231 0
+ 160 001e FFF7FEFF 		bl	BLUE_Enable
+ 161              	.L6:
+ 232:.\Generated_Source\PSoC5/BLUE_PM.c ****     }
+ 233:.\Generated_Source\PSoC5/BLUE_PM.c **** }
+ 162              		.loc 1 233 0
+ 163 0022 80BD     		pop	{r7, pc}
+ 164              		.cfi_endproc
+ 165              	.LFE3:
+ 166              		.size	BLUE_Wakeup, .-BLUE_Wakeup
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cc3yrKl4.s 			page 8
+
+
+ 167              		.text
+ 168              	.Letext0:
+ 169              		.file 2 ".\\Generated_Source\\PSoC5\\cytypes.h"
+ 170              		.file 3 ".\\Generated_Source\\PSoC5\\BLUE.h"
+ 171              		.section	.debug_info,"",%progbits
+ 172              	.Ldebug_info0:
+ 173 0000 4E010000 		.4byte	0x14e
+ 174 0004 0200     		.2byte	0x2
+ 175 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 176 000a 04       		.byte	0x4
+ 177 000b 01       		.uleb128 0x1
+ 178 000c 5B000000 		.4byte	.LASF23
+ 179 0010 01       		.byte	0x1
+ 180 0011 D6000000 		.4byte	.LASF24
+ 181 0015 1A000000 		.4byte	.LASF25
+ 182 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 183 001d 00000000 		.4byte	0
+ 184 0021 00000000 		.4byte	0
+ 185 0025 00000000 		.4byte	.Ldebug_line0
+ 186 0029 02       		.uleb128 0x2
+ 187 002a 01       		.byte	0x1
+ 188 002b 06       		.byte	0x6
+ 189 002c 7C010000 		.4byte	.LASF0
+ 190 0030 02       		.uleb128 0x2
+ 191 0031 01       		.byte	0x1
+ 192 0032 08       		.byte	0x8
+ 193 0033 23010000 		.4byte	.LASF1
+ 194 0037 02       		.uleb128 0x2
+ 195 0038 02       		.byte	0x2
+ 196 0039 05       		.byte	0x5
+ 197 003a BF010000 		.4byte	.LASF2
+ 198 003e 02       		.uleb128 0x2
+ 199 003f 02       		.byte	0x2
+ 200 0040 07       		.byte	0x7
+ 201 0041 69010000 		.4byte	.LASF3
+ 202 0045 02       		.uleb128 0x2
+ 203 0046 04       		.byte	0x4
+ 204 0047 05       		.byte	0x5
+ 205 0048 59010000 		.4byte	.LASF4
+ 206 004c 02       		.uleb128 0x2
+ 207 004d 04       		.byte	0x4
+ 208 004e 07       		.byte	0x7
+ 209 004f AA000000 		.4byte	.LASF5
+ 210 0053 02       		.uleb128 0x2
+ 211 0054 08       		.byte	0x8
+ 212 0055 05       		.byte	0x5
+ 213 0056 00000000 		.4byte	.LASF6
+ 214 005a 02       		.uleb128 0x2
+ 215 005b 08       		.byte	0x8
+ 216 005c 07       		.byte	0x7
+ 217 005d 0C010000 		.4byte	.LASF7
+ 218 0061 03       		.uleb128 0x3
+ 219 0062 04       		.byte	0x4
+ 220 0063 05       		.byte	0x5
+ 221 0064 696E7400 		.ascii	"int\000"
+ 222 0068 02       		.uleb128 0x2
+ 223 0069 04       		.byte	0x4
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cc3yrKl4.s 			page 9
+
+
+ 224 006a 07       		.byte	0x7
+ 225 006b CE010000 		.4byte	.LASF8
+ 226 006f 04       		.uleb128 0x4
+ 227 0070 A4000000 		.4byte	.LASF12
+ 228 0074 02       		.byte	0x2
+ 229 0075 5B       		.byte	0x5b
+ 230 0076 30000000 		.4byte	0x30
+ 231 007a 02       		.uleb128 0x2
+ 232 007b 04       		.byte	0x4
+ 233 007c 04       		.byte	0x4
+ 234 007d B9010000 		.4byte	.LASF9
+ 235 0081 02       		.uleb128 0x2
+ 236 0082 08       		.byte	0x8
+ 237 0083 04       		.byte	0x4
+ 238 0084 62010000 		.4byte	.LASF10
+ 239 0088 02       		.uleb128 0x2
+ 240 0089 01       		.byte	0x1
+ 241 008a 08       		.byte	0x8
+ 242 008b 3D010000 		.4byte	.LASF11
+ 243 008f 04       		.uleb128 0x4
+ 244 0090 C9010000 		.4byte	.LASF13
+ 245 0094 02       		.byte	0x2
+ 246 0095 F0       		.byte	0xf0
+ 247 0096 9A000000 		.4byte	0x9a
+ 248 009a 05       		.uleb128 0x5
+ 249 009b 6F000000 		.4byte	0x6f
+ 250 009f 02       		.uleb128 0x2
+ 251 00a0 04       		.byte	0x4
+ 252 00a1 07       		.byte	0x7
+ 253 00a2 DB010000 		.4byte	.LASF14
+ 254 00a6 06       		.uleb128 0x6
+ 255 00a7 F9000000 		.4byte	.LASF26
+ 256 00ab 03       		.byte	0x3
+ 257 00ac 03       		.byte	0x3
+ 258 00ad 45       		.byte	0x45
+ 259 00ae DD000000 		.4byte	0xdd
+ 260 00b2 07       		.uleb128 0x7
+ 261 00b3 0E000000 		.4byte	.LASF15
+ 262 00b7 03       		.byte	0x3
+ 263 00b8 47       		.byte	0x47
+ 264 00b9 6F000000 		.4byte	0x6f
+ 265 00bd 02       		.byte	0x2
+ 266 00be 23       		.byte	0x23
+ 267 00bf 00       		.uleb128 0
+ 268 00c0 07       		.uleb128 0x7
+ 269 00c1 BC000000 		.4byte	.LASF16
+ 270 00c5 03       		.byte	0x3
+ 271 00c6 4D       		.byte	0x4d
+ 272 00c7 6F000000 		.4byte	0x6f
+ 273 00cb 02       		.byte	0x2
+ 274 00cc 23       		.byte	0x23
+ 275 00cd 01       		.uleb128 0x1
+ 276 00ce 07       		.uleb128 0x7
+ 277 00cf 9B010000 		.4byte	.LASF17
+ 278 00d3 03       		.byte	0x3
+ 279 00d4 59       		.byte	0x59
+ 280 00d5 6F000000 		.4byte	0x6f
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cc3yrKl4.s 			page 10
+
+
+ 281 00d9 02       		.byte	0x2
+ 282 00da 23       		.byte	0x23
+ 283 00db 02       		.uleb128 0x2
+ 284 00dc 00       		.byte	0
+ 285 00dd 04       		.uleb128 0x4
+ 286 00de A6010000 		.4byte	.LASF18
+ 287 00e2 03       		.byte	0x3
+ 288 00e3 64       		.byte	0x64
+ 289 00e4 A6000000 		.4byte	0xa6
+ 290 00e8 08       		.uleb128 0x8
+ 291 00e9 01       		.byte	0x1
+ 292 00ea C6000000 		.4byte	.LASF19
+ 293 00ee 01       		.byte	0x1
+ 294 00ef 34       		.byte	0x34
+ 295 00f0 01       		.byte	0x1
+ 296 00f1 00000000 		.4byte	.LFB0
+ 297 00f5 0A000000 		.4byte	.LFE0
+ 298 00f9 00000000 		.4byte	.LLST0
+ 299 00fd 01       		.byte	0x1
+ 300 00fe 08       		.uleb128 0x8
+ 301 00ff 01       		.byte	0x1
+ 302 0100 88010000 		.4byte	.LASF20
+ 303 0104 01       		.byte	0x1
+ 304 0105 6E       		.byte	0x6e
+ 305 0106 01       		.byte	0x1
+ 306 0107 00000000 		.4byte	.LFB1
+ 307 010b 0A000000 		.4byte	.LFE1
+ 308 010f 2C000000 		.4byte	.LLST1
+ 309 0113 01       		.byte	0x1
+ 310 0114 09       		.uleb128 0x9
+ 311 0115 01       		.byte	0x1
+ 312 0116 42010000 		.4byte	.LASF21
+ 313 011a 01       		.byte	0x1
+ 314 011b AA       		.byte	0xaa
+ 315 011c 01       		.byte	0x1
+ 316 011d 00000000 		.4byte	.LFB2
+ 317 0121 40000000 		.4byte	.LFE2
+ 318 0125 58000000 		.4byte	.LLST2
+ 319 0129 01       		.byte	0x1
+ 320 012a 09       		.uleb128 0x9
+ 321 012b 01       		.byte	0x1
+ 322 012c 31010000 		.4byte	.LASF22
+ 323 0130 01       		.byte	0x1
+ 324 0131 DB       		.byte	0xdb
+ 325 0132 01       		.byte	0x1
+ 326 0133 00000000 		.4byte	.LFB3
+ 327 0137 24000000 		.4byte	.LFE3
+ 328 013b 84000000 		.4byte	.LLST3
+ 329 013f 01       		.byte	0x1
+ 330 0140 0A       		.uleb128 0xa
+ 331 0141 4D010000 		.4byte	.LASF27
+ 332 0145 01       		.byte	0x1
+ 333 0146 18       		.byte	0x18
+ 334 0147 DD000000 		.4byte	0xdd
+ 335 014b 05       		.byte	0x5
+ 336 014c 03       		.byte	0x3
+ 337 014d 00000000 		.4byte	BLUE_backup
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cc3yrKl4.s 			page 11
+
+
+ 338 0151 00       		.byte	0
+ 339              		.section	.debug_abbrev,"",%progbits
+ 340              	.Ldebug_abbrev0:
+ 341 0000 01       		.uleb128 0x1
+ 342 0001 11       		.uleb128 0x11
+ 343 0002 01       		.byte	0x1
+ 344 0003 25       		.uleb128 0x25
+ 345 0004 0E       		.uleb128 0xe
+ 346 0005 13       		.uleb128 0x13
+ 347 0006 0B       		.uleb128 0xb
+ 348 0007 03       		.uleb128 0x3
+ 349 0008 0E       		.uleb128 0xe
+ 350 0009 1B       		.uleb128 0x1b
+ 351 000a 0E       		.uleb128 0xe
+ 352 000b 55       		.uleb128 0x55
+ 353 000c 06       		.uleb128 0x6
+ 354 000d 11       		.uleb128 0x11
+ 355 000e 01       		.uleb128 0x1
+ 356 000f 52       		.uleb128 0x52
+ 357 0010 01       		.uleb128 0x1
+ 358 0011 10       		.uleb128 0x10
+ 359 0012 06       		.uleb128 0x6
+ 360 0013 00       		.byte	0
+ 361 0014 00       		.byte	0
+ 362 0015 02       		.uleb128 0x2
+ 363 0016 24       		.uleb128 0x24
+ 364 0017 00       		.byte	0
+ 365 0018 0B       		.uleb128 0xb
+ 366 0019 0B       		.uleb128 0xb
+ 367 001a 3E       		.uleb128 0x3e
+ 368 001b 0B       		.uleb128 0xb
+ 369 001c 03       		.uleb128 0x3
+ 370 001d 0E       		.uleb128 0xe
+ 371 001e 00       		.byte	0
+ 372 001f 00       		.byte	0
+ 373 0020 03       		.uleb128 0x3
+ 374 0021 24       		.uleb128 0x24
+ 375 0022 00       		.byte	0
+ 376 0023 0B       		.uleb128 0xb
+ 377 0024 0B       		.uleb128 0xb
+ 378 0025 3E       		.uleb128 0x3e
+ 379 0026 0B       		.uleb128 0xb
+ 380 0027 03       		.uleb128 0x3
+ 381 0028 08       		.uleb128 0x8
+ 382 0029 00       		.byte	0
+ 383 002a 00       		.byte	0
+ 384 002b 04       		.uleb128 0x4
+ 385 002c 16       		.uleb128 0x16
+ 386 002d 00       		.byte	0
+ 387 002e 03       		.uleb128 0x3
+ 388 002f 0E       		.uleb128 0xe
+ 389 0030 3A       		.uleb128 0x3a
+ 390 0031 0B       		.uleb128 0xb
+ 391 0032 3B       		.uleb128 0x3b
+ 392 0033 0B       		.uleb128 0xb
+ 393 0034 49       		.uleb128 0x49
+ 394 0035 13       		.uleb128 0x13
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cc3yrKl4.s 			page 12
+
+
+ 395 0036 00       		.byte	0
+ 396 0037 00       		.byte	0
+ 397 0038 05       		.uleb128 0x5
+ 398 0039 35       		.uleb128 0x35
+ 399 003a 00       		.byte	0
+ 400 003b 49       		.uleb128 0x49
+ 401 003c 13       		.uleb128 0x13
+ 402 003d 00       		.byte	0
+ 403 003e 00       		.byte	0
+ 404 003f 06       		.uleb128 0x6
+ 405 0040 13       		.uleb128 0x13
+ 406 0041 01       		.byte	0x1
+ 407 0042 03       		.uleb128 0x3
+ 408 0043 0E       		.uleb128 0xe
+ 409 0044 0B       		.uleb128 0xb
+ 410 0045 0B       		.uleb128 0xb
+ 411 0046 3A       		.uleb128 0x3a
+ 412 0047 0B       		.uleb128 0xb
+ 413 0048 3B       		.uleb128 0x3b
+ 414 0049 0B       		.uleb128 0xb
+ 415 004a 01       		.uleb128 0x1
+ 416 004b 13       		.uleb128 0x13
+ 417 004c 00       		.byte	0
+ 418 004d 00       		.byte	0
+ 419 004e 07       		.uleb128 0x7
+ 420 004f 0D       		.uleb128 0xd
+ 421 0050 00       		.byte	0
+ 422 0051 03       		.uleb128 0x3
+ 423 0052 0E       		.uleb128 0xe
+ 424 0053 3A       		.uleb128 0x3a
+ 425 0054 0B       		.uleb128 0xb
+ 426 0055 3B       		.uleb128 0x3b
+ 427 0056 0B       		.uleb128 0xb
+ 428 0057 49       		.uleb128 0x49
+ 429 0058 13       		.uleb128 0x13
+ 430 0059 38       		.uleb128 0x38
+ 431 005a 0A       		.uleb128 0xa
+ 432 005b 00       		.byte	0
+ 433 005c 00       		.byte	0
+ 434 005d 08       		.uleb128 0x8
+ 435 005e 2E       		.uleb128 0x2e
+ 436 005f 00       		.byte	0
+ 437 0060 3F       		.uleb128 0x3f
+ 438 0061 0C       		.uleb128 0xc
+ 439 0062 03       		.uleb128 0x3
+ 440 0063 0E       		.uleb128 0xe
+ 441 0064 3A       		.uleb128 0x3a
+ 442 0065 0B       		.uleb128 0xb
+ 443 0066 3B       		.uleb128 0x3b
+ 444 0067 0B       		.uleb128 0xb
+ 445 0068 27       		.uleb128 0x27
+ 446 0069 0C       		.uleb128 0xc
+ 447 006a 11       		.uleb128 0x11
+ 448 006b 01       		.uleb128 0x1
+ 449 006c 12       		.uleb128 0x12
+ 450 006d 01       		.uleb128 0x1
+ 451 006e 40       		.uleb128 0x40
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cc3yrKl4.s 			page 13
+
+
+ 452 006f 06       		.uleb128 0x6
+ 453 0070 9742     		.uleb128 0x2117
+ 454 0072 0C       		.uleb128 0xc
+ 455 0073 00       		.byte	0
+ 456 0074 00       		.byte	0
+ 457 0075 09       		.uleb128 0x9
+ 458 0076 2E       		.uleb128 0x2e
+ 459 0077 00       		.byte	0
+ 460 0078 3F       		.uleb128 0x3f
+ 461 0079 0C       		.uleb128 0xc
+ 462 007a 03       		.uleb128 0x3
+ 463 007b 0E       		.uleb128 0xe
+ 464 007c 3A       		.uleb128 0x3a
+ 465 007d 0B       		.uleb128 0xb
+ 466 007e 3B       		.uleb128 0x3b
+ 467 007f 0B       		.uleb128 0xb
+ 468 0080 27       		.uleb128 0x27
+ 469 0081 0C       		.uleb128 0xc
+ 470 0082 11       		.uleb128 0x11
+ 471 0083 01       		.uleb128 0x1
+ 472 0084 12       		.uleb128 0x12
+ 473 0085 01       		.uleb128 0x1
+ 474 0086 40       		.uleb128 0x40
+ 475 0087 06       		.uleb128 0x6
+ 476 0088 9642     		.uleb128 0x2116
+ 477 008a 0C       		.uleb128 0xc
+ 478 008b 00       		.byte	0
+ 479 008c 00       		.byte	0
+ 480 008d 0A       		.uleb128 0xa
+ 481 008e 34       		.uleb128 0x34
+ 482 008f 00       		.byte	0
+ 483 0090 03       		.uleb128 0x3
+ 484 0091 0E       		.uleb128 0xe
+ 485 0092 3A       		.uleb128 0x3a
+ 486 0093 0B       		.uleb128 0xb
+ 487 0094 3B       		.uleb128 0x3b
+ 488 0095 0B       		.uleb128 0xb
+ 489 0096 49       		.uleb128 0x49
+ 490 0097 13       		.uleb128 0x13
+ 491 0098 02       		.uleb128 0x2
+ 492 0099 0A       		.uleb128 0xa
+ 493 009a 00       		.byte	0
+ 494 009b 00       		.byte	0
+ 495 009c 00       		.byte	0
+ 496              		.section	.debug_loc,"",%progbits
+ 497              	.Ldebug_loc0:
+ 498              	.LLST0:
+ 499 0000 00000000 		.4byte	.LFB0
+ 500 0004 02000000 		.4byte	.LCFI0
+ 501 0008 0200     		.2byte	0x2
+ 502 000a 7D       		.byte	0x7d
+ 503 000b 00       		.sleb128 0
+ 504 000c 02000000 		.4byte	.LCFI0
+ 505 0010 04000000 		.4byte	.LCFI1
+ 506 0014 0200     		.2byte	0x2
+ 507 0016 7D       		.byte	0x7d
+ 508 0017 04       		.sleb128 4
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cc3yrKl4.s 			page 14
+
+
+ 509 0018 04000000 		.4byte	.LCFI1
+ 510 001c 0A000000 		.4byte	.LFE0
+ 511 0020 0200     		.2byte	0x2
+ 512 0022 77       		.byte	0x77
+ 513 0023 04       		.sleb128 4
+ 514 0024 00000000 		.4byte	0
+ 515 0028 00000000 		.4byte	0
+ 516              	.LLST1:
+ 517 002c 00000000 		.4byte	.LFB1
+ 518 0030 02000000 		.4byte	.LCFI2
+ 519 0034 0200     		.2byte	0x2
+ 520 0036 7D       		.byte	0x7d
+ 521 0037 00       		.sleb128 0
+ 522 0038 02000000 		.4byte	.LCFI2
+ 523 003c 04000000 		.4byte	.LCFI3
+ 524 0040 0200     		.2byte	0x2
+ 525 0042 7D       		.byte	0x7d
+ 526 0043 04       		.sleb128 4
+ 527 0044 04000000 		.4byte	.LCFI3
+ 528 0048 0A000000 		.4byte	.LFE1
+ 529 004c 0200     		.2byte	0x2
+ 530 004e 77       		.byte	0x77
+ 531 004f 04       		.sleb128 4
+ 532 0050 00000000 		.4byte	0
+ 533 0054 00000000 		.4byte	0
+ 534              	.LLST2:
+ 535 0058 00000000 		.4byte	.LFB2
+ 536 005c 02000000 		.4byte	.LCFI4
+ 537 0060 0200     		.2byte	0x2
+ 538 0062 7D       		.byte	0x7d
+ 539 0063 00       		.sleb128 0
+ 540 0064 02000000 		.4byte	.LCFI4
+ 541 0068 04000000 		.4byte	.LCFI5
+ 542 006c 0200     		.2byte	0x2
+ 543 006e 7D       		.byte	0x7d
+ 544 006f 08       		.sleb128 8
+ 545 0070 04000000 		.4byte	.LCFI5
+ 546 0074 40000000 		.4byte	.LFE2
+ 547 0078 0200     		.2byte	0x2
+ 548 007a 77       		.byte	0x77
+ 549 007b 08       		.sleb128 8
+ 550 007c 00000000 		.4byte	0
+ 551 0080 00000000 		.4byte	0
+ 552              	.LLST3:
+ 553 0084 00000000 		.4byte	.LFB3
+ 554 0088 02000000 		.4byte	.LCFI6
+ 555 008c 0200     		.2byte	0x2
+ 556 008e 7D       		.byte	0x7d
+ 557 008f 00       		.sleb128 0
+ 558 0090 02000000 		.4byte	.LCFI6
+ 559 0094 04000000 		.4byte	.LCFI7
+ 560 0098 0200     		.2byte	0x2
+ 561 009a 7D       		.byte	0x7d
+ 562 009b 08       		.sleb128 8
+ 563 009c 04000000 		.4byte	.LCFI7
+ 564 00a0 24000000 		.4byte	.LFE3
+ 565 00a4 0200     		.2byte	0x2
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cc3yrKl4.s 			page 15
+
+
+ 566 00a6 77       		.byte	0x77
+ 567 00a7 08       		.sleb128 8
+ 568 00a8 00000000 		.4byte	0
+ 569 00ac 00000000 		.4byte	0
+ 570              		.section	.debug_aranges,"",%progbits
+ 571 0000 34000000 		.4byte	0x34
+ 572 0004 0200     		.2byte	0x2
+ 573 0006 00000000 		.4byte	.Ldebug_info0
+ 574 000a 04       		.byte	0x4
+ 575 000b 00       		.byte	0
+ 576 000c 0000     		.2byte	0
+ 577 000e 0000     		.2byte	0
+ 578 0010 00000000 		.4byte	.LFB0
+ 579 0014 0A000000 		.4byte	.LFE0-.LFB0
+ 580 0018 00000000 		.4byte	.LFB1
+ 581 001c 0A000000 		.4byte	.LFE1-.LFB1
+ 582 0020 00000000 		.4byte	.LFB2
+ 583 0024 40000000 		.4byte	.LFE2-.LFB2
+ 584 0028 00000000 		.4byte	.LFB3
+ 585 002c 24000000 		.4byte	.LFE3-.LFB3
+ 586 0030 00000000 		.4byte	0
+ 587 0034 00000000 		.4byte	0
+ 588              		.section	.debug_ranges,"",%progbits
+ 589              	.Ldebug_ranges0:
+ 590 0000 00000000 		.4byte	.LFB0
+ 591 0004 0A000000 		.4byte	.LFE0
+ 592 0008 00000000 		.4byte	.LFB1
+ 593 000c 0A000000 		.4byte	.LFE1
+ 594 0010 00000000 		.4byte	.LFB2
+ 595 0014 40000000 		.4byte	.LFE2
+ 596 0018 00000000 		.4byte	.LFB3
+ 597 001c 24000000 		.4byte	.LFE3
+ 598 0020 00000000 		.4byte	0
+ 599 0024 00000000 		.4byte	0
+ 600              		.section	.debug_line,"",%progbits
+ 601              	.Ldebug_line0:
+ 602 0000 A9000000 		.section	.debug_str,"MS",%progbits,1
+ 602      02005000 
+ 602      00000201 
+ 602      FB0E0D00 
+ 602      01010101 
+ 603              	.LASF6:
+ 604 0000 6C6F6E67 		.ascii	"long long int\000"
+ 604      206C6F6E 
+ 604      6720696E 
+ 604      7400
+ 605              	.LASF15:
+ 606 000e 656E6162 		.ascii	"enableState\000"
+ 606      6C655374 
+ 606      61746500 
+ 607              	.LASF25:
+ 608 001a 433A5C50 		.ascii	"C:\\Projects\\PSoC\\Bootloading_PSoC5_LP\\Bootloadi"
+ 608      726F6A65 
+ 608      6374735C 
+ 608      50536F43 
+ 608      5C426F6F 
+ 609 0049 6E675F50 		.ascii	"ng_PSoC5_LP.cydsn\000"
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cc3yrKl4.s 			page 16
+
+
+ 609      536F4335 
+ 609      5F4C502E 
+ 609      63796473 
+ 609      6E00
+ 610              	.LASF23:
+ 611 005b 474E5520 		.ascii	"GNU C 4.7.3 20130312 (release) [ARM/embedded-4_7-br"
+ 611      4320342E 
+ 611      372E3320 
+ 611      32303133 
+ 611      30333132 
+ 612 008e 616E6368 		.ascii	"anch revision 196615]\000"
+ 612      20726576 
+ 612      6973696F 
+ 612      6E203139 
+ 612      36363135 
+ 613              	.LASF12:
+ 614 00a4 75696E74 		.ascii	"uint8\000"
+ 614      3800
+ 615              	.LASF5:
+ 616 00aa 6C6F6E67 		.ascii	"long unsigned int\000"
+ 616      20756E73 
+ 616      69676E65 
+ 616      6420696E 
+ 616      7400
+ 617              	.LASF16:
+ 618 00bc 72785F70 		.ascii	"rx_period\000"
+ 618      6572696F 
+ 618      6400
+ 619              	.LASF19:
+ 620 00c6 424C5545 		.ascii	"BLUE_SaveConfig\000"
+ 620      5F536176 
+ 620      65436F6E 
+ 620      66696700 
+ 621              	.LASF24:
+ 622 00d6 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\BLUE_PM.c\000"
+ 622      6E657261 
+ 622      7465645F 
+ 622      536F7572 
+ 622      63655C50 
+ 623              	.LASF26:
+ 624 00f9 424C5545 		.ascii	"BLUE_backupStruct_\000"
+ 624      5F626163 
+ 624      6B757053 
+ 624      74727563 
+ 624      745F00
+ 625              	.LASF7:
+ 626 010c 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 626      206C6F6E 
+ 626      6720756E 
+ 626      7369676E 
+ 626      65642069 
+ 627              	.LASF1:
+ 628 0123 756E7369 		.ascii	"unsigned char\000"
+ 628      676E6564 
+ 628      20636861 
+ 628      7200
+ 629              	.LASF22:
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cc3yrKl4.s 			page 17
+
+
+ 630 0131 424C5545 		.ascii	"BLUE_Wakeup\000"
+ 630      5F57616B 
+ 630      65757000 
+ 631              	.LASF11:
+ 632 013d 63686172 		.ascii	"char\000"
+ 632      00
+ 633              	.LASF21:
+ 634 0142 424C5545 		.ascii	"BLUE_Sleep\000"
+ 634      5F536C65 
+ 634      657000
+ 635              	.LASF27:
+ 636 014d 424C5545 		.ascii	"BLUE_backup\000"
+ 636      5F626163 
+ 636      6B757000 
+ 637              	.LASF4:
+ 638 0159 6C6F6E67 		.ascii	"long int\000"
+ 638      20696E74 
+ 638      00
+ 639              	.LASF10:
+ 640 0162 646F7562 		.ascii	"double\000"
+ 640      6C6500
+ 641              	.LASF3:
+ 642 0169 73686F72 		.ascii	"short unsigned int\000"
+ 642      7420756E 
+ 642      7369676E 
+ 642      65642069 
+ 642      6E7400
+ 643              	.LASF0:
+ 644 017c 7369676E 		.ascii	"signed char\000"
+ 644      65642063 
+ 644      68617200 
+ 645              	.LASF20:
+ 646 0188 424C5545 		.ascii	"BLUE_RestoreConfig\000"
+ 646      5F526573 
+ 646      746F7265 
+ 646      436F6E66 
+ 646      696700
+ 647              	.LASF17:
+ 648 019b 74785F63 		.ascii	"tx_clk_ctr\000"
+ 648      6C6B5F63 
+ 648      747200
+ 649              	.LASF18:
+ 650 01a6 424C5545 		.ascii	"BLUE_BACKUP_STRUCT\000"
+ 650      5F424143 
+ 650      4B55505F 
+ 650      53545255 
+ 650      435400
+ 651              	.LASF9:
+ 652 01b9 666C6F61 		.ascii	"float\000"
+ 652      7400
+ 653              	.LASF2:
+ 654 01bf 73686F72 		.ascii	"short int\000"
+ 654      7420696E 
+ 654      7400
+ 655              	.LASF13:
+ 656 01c9 72656738 		.ascii	"reg8\000"
+ 656      00
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cc3yrKl4.s 			page 18
+
+
+ 657              	.LASF8:
+ 658 01ce 756E7369 		.ascii	"unsigned int\000"
+ 658      676E6564 
+ 658      20696E74 
+ 658      00
+ 659              	.LASF14:
+ 660 01db 73697A65 		.ascii	"sizetype\000"
+ 660      74797065 
+ 660      00
+ 661              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.7.3 20130312 (release) [ARM/embedded-4_7-br
