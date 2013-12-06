@@ -1,0 +1,4047 @@
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpMcttb.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 6
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"ADC_ACCELEROMETER.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.global	ADC_ACCELEROMETER_initVar
+  18              		.bss
+  19              		.type	ADC_ACCELEROMETER_initVar, %object
+  20              		.size	ADC_ACCELEROMETER_initVar, 1
+  21              	ADC_ACCELEROMETER_initVar:
+  22 0000 00       		.space	1
+  23              		.comm	ADC_ACCELEROMETER_offset,6,4
+  24              		.comm	ADC_ACCELEROMETER_countsPer10Volt,12,4
+  25              		.section	.rodata
+  26              		.align	2
+  27              		.type	ADC_ACCELEROMETER_channelsConfig, %object
+  28              		.size	ADC_ACCELEROMETER_channelsConfig, 12
+  29              	ADC_ACCELEROMETER_channelsConfig:
+  30 0000 00040000 		.word	1024
+  31 0004 00140000 		.word	5120
+  32 0008 00140000 		.word	5120
+  33              		.section	.text.ADC_ACCELEROMETER_Start,"ax",%progbits
+  34              		.align	2
+  35              		.global	ADC_ACCELEROMETER_Start
+  36              		.code	16
+  37              		.thumb_func
+  38              		.type	ADC_ACCELEROMETER_Start, %function
+  39              	ADC_ACCELEROMETER_Start:
+  40              	.LFB0:
+  41              		.file 1 ".\\Generated_Source\\PSoC4\\ADC_ACCELEROMETER.c"
+   1:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * File Name: ADC_ACCELEROMETER.c
+   3:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Version 1.10
+   4:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *
+   5:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Description:
+   6:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  This file provides the source code to the API for the Sequencing Successive
+   7:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  Approximation ADC Component Component.
+   8:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *
+   9:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Note:
+  10:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *
+  11:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** ********************************************************************************
+  12:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Copyright 2008-2013, Cypress Semiconductor Corporation.  All rights reserved.
+  13:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * You may use this file only in accordance with the license, terms, conditions,
+  14:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  15:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * the software package with which this file was provided.
+  16:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *******************************************************************************/
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpMcttb.s 			page 2
+
+
+  17:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+  18:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** #include "CyLib.h"
+  19:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** #include "ADC_ACCELEROMETER.h"
+  20:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+  21:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+  22:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** /***************************************
+  23:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Global data allocation
+  24:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** ***************************************/
+  25:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** uint8 ADC_ACCELEROMETER_initVar = 0u;
+  26:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** volatile int16 ADC_ACCELEROMETER_offset[ADC_ACCELEROMETER_TOTAL_CHANNELS_NUM];
+  27:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** volatile int32 ADC_ACCELEROMETER_countsPer10Volt[ADC_ACCELEROMETER_TOTAL_CHANNELS_NUM];   /* Gain c
+  28:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+  29:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+  30:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** /***************************************
+  31:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Local data allocation
+  32:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** ***************************************/
+  33:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** /* Channels configuration generated by customiser */
+  34:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** static const uint32 CYCODE ADC_ACCELEROMETER_channelsConfig[] = { 0x00000400u, 0x00001400u, 0x00001
+  35:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+  36:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+  37:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** /*******************************************************************************
+  38:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Function Name: ADC_ACCELEROMETER_Start
+  39:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** ********************************************************************************
+  40:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *
+  41:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Summary:
+  42:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  Performs all required initialization for this component
+  43:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  and enables the power. The power will be set to the appropriate
+  44:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  power based on the clock frequency.
+  45:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *
+  46:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Parameters:
+  47:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  None.
+  48:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *
+  49:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Return:
+  50:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  None.
+  51:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *
+  52:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Global variables:
+  53:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  The ADC_ACCELEROMETER_initVar variable is used to indicate when/if initial
+  54:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  configuration of this component has happened. The variable is initialized to
+  55:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  zero and set to 1 the first time ADC_Start() is called. This allows for
+  56:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  component Re-Start without re-initialization in all subsequent calls to the
+  57:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  ADC_ACCELEROMETER_Start() routine.
+  58:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  If re-initialization of the component is required the variable should be set
+  59:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  to zero before call of ADC_ACCELEROMETER_Start() routine, or the user may call
+  60:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  ADC_ACCELEROMETER_Init() and ADC_ACCELEROMETER_Enable() as done in the
+  61:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  ADC_ACCELEROMETER_Start() routine.
+  62:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *
+  63:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *******************************************************************************/
+  64:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** void ADC_ACCELEROMETER_Start(void)
+  65:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** {
+  42              		.loc 1 65 0
+  43              		.cfi_startproc
+  44 0000 80B5     		push	{r7, lr}
+  45              	.LCFI0:
+  46              		.cfi_def_cfa_offset 8
+  47              		.cfi_offset 7, -8
+  48              		.cfi_offset 14, -4
+  49 0002 00AF     		add	r7, sp, #0
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpMcttb.s 			page 3
+
+
+  50              	.LCFI1:
+  51              		.cfi_def_cfa_register 7
+  66:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     /* If not Initialized then initialize all required hardware and software */
+  67:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     if(ADC_ACCELEROMETER_initVar == 0u)
+  52              		.loc 1 67 0
+  53 0004 064B     		ldr	r3, .L3
+  54 0006 1B78     		ldrb	r3, [r3]
+  55 0008 002B     		cmp	r3, #0
+  56 000a 04D1     		bne	.L2
+  68:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     {
+  69:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         ADC_ACCELEROMETER_Init();
+  57              		.loc 1 69 0
+  58 000c FFF7FEFF 		bl	ADC_ACCELEROMETER_Init
+  70:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         ADC_ACCELEROMETER_initVar = 1u;
+  59              		.loc 1 70 0
+  60 0010 034B     		ldr	r3, .L3
+  61 0012 0122     		mov	r2, #1
+  62 0014 1A70     		strb	r2, [r3]
+  63              	.L2:
+  71:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     }
+  72:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     ADC_ACCELEROMETER_Enable();
+  64              		.loc 1 72 0
+  65 0016 FFF7FEFF 		bl	ADC_ACCELEROMETER_Enable
+  73:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** }
+  66              		.loc 1 73 0
+  67 001a BD46     		mov	sp, r7
+  68              		@ sp needed for prologue
+  69 001c 80BD     		pop	{r7, pc}
+  70              	.L4:
+  71 001e C046     		.align	2
+  72              	.L3:
+  73 0020 00000000 		.word	ADC_ACCELEROMETER_initVar
+  74              		.cfi_endproc
+  75              	.LFE0:
+  76              		.size	ADC_ACCELEROMETER_Start, .-ADC_ACCELEROMETER_Start
+  77              		.global	__aeabi_idiv
+  78              		.section	.text.ADC_ACCELEROMETER_Init,"ax",%progbits
+  79              		.align	2
+  80              		.global	ADC_ACCELEROMETER_Init
+  81              		.code	16
+  82              		.thumb_func
+  83              		.type	ADC_ACCELEROMETER_Init, %function
+  84              	ADC_ACCELEROMETER_Init:
+  85              	.LFB1:
+  74:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+  75:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+  76:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** /*******************************************************************************
+  77:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Function Name: ADC_ACCELEROMETER_Init
+  78:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** ********************************************************************************
+  79:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *
+  80:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Summary:
+  81:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  Initialize component's parameters to the parameters set by user in the
+  82:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  customizer of the component placed onto schematic. Usually called in
+  83:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  ADC_ACCELEROMETER_Start().
+  84:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *
+  85:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Parameters:
+  86:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  None.
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpMcttb.s 			page 4
+
+
+  87:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *
+  88:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Return:
+  89:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  None.
+  90:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *
+  91:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Global variables:
+  92:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  The ADC_ACCELEROMETER_offset variable is initialized.
+  93:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *
+  94:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *******************************************************************************/
+  95:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** void ADC_ACCELEROMETER_Init(void)
+  96:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** {
+  86              		.loc 1 96 0
+  87              		.cfi_startproc
+  88 0000 90B5     		push	{r4, r7, lr}
+  89              	.LCFI2:
+  90              		.cfi_def_cfa_offset 12
+  91              		.cfi_offset 4, -12
+  92              		.cfi_offset 7, -8
+  93              		.cfi_offset 14, -4
+  94 0002 85B0     		sub	sp, sp, #20
+  95              	.LCFI3:
+  96              		.cfi_def_cfa_offset 32
+  97 0004 00AF     		add	r7, sp, #0
+  98              	.LCFI4:
+  99              		.cfi_def_cfa_register 7
+  97:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     uint32 chNum;
+  98:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     uint32 tmpRegVal;
+  99:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     int32 counts;
+ 100:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 101:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     #if(ADC_ACCELEROMETER_TOTAL_CHANNELS_NUM > 1u)
+ 102:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         static const uint8 CYCODE ADC_ACCELEROMETER_InputsPlacement[] =
+ 103:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         {
+ 104:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****             (uint8)(ADC_ACCELEROMETER_cy_psoc4_sarmux_8__CH_0_PORT << 4u) |
+ 105:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****             (uint8)ADC_ACCELEROMETER_cy_psoc4_sarmux_8__CH_0_PIN
+ 106:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****             ,(uint8)(ADC_ACCELEROMETER_cy_psoc4_sarmux_8__CH_1_PORT << 4u) |
+ 107:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****              (uint8)ADC_ACCELEROMETER_cy_psoc4_sarmux_8__CH_1_PIN
+ 108:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****             #if(ADC_ACCELEROMETER_TOTAL_CHANNELS_NUM > 2u)
+ 109:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****                 ,(uint8)(ADC_ACCELEROMETER_cy_psoc4_sarmux_8__CH_2_PORT << 4u) |
+ 110:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****                  (uint8)ADC_ACCELEROMETER_cy_psoc4_sarmux_8__CH_2_PIN
+ 111:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****             #endif /* End ADC_ACCELEROMETER_TOTAL_CHANNELS_NUM > 2u */
+ 112:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****             #if(ADC_ACCELEROMETER_TOTAL_CHANNELS_NUM > 3u)
+ 113:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****                 ,(uint8)(ADC_ACCELEROMETER_cy_psoc4_sarmux_8__CH_3_PORT << 4u) |
+ 114:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****                  (uint8)ADC_ACCELEROMETER_cy_psoc4_sarmux_8__CH_3_PIN
+ 115:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****             #endif /* End ADC_ACCELEROMETER_TOTAL_CHANNELS_NUM > 3u */
+ 116:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****             #if(ADC_ACCELEROMETER_TOTAL_CHANNELS_NUM > 4u)
+ 117:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****                 ,(uint8)(ADC_ACCELEROMETER_cy_psoc4_sarmux_8__CH_4_PORT << 4u) |
+ 118:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****                  (uint8)ADC_ACCELEROMETER_cy_psoc4_sarmux_8__CH_4_PIN
+ 119:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****             #endif /* End ADC_ACCELEROMETER_TOTAL_CHANNELS_NUM > 4u */
+ 120:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****             #if(ADC_ACCELEROMETER_TOTAL_CHANNELS_NUM > 5u)
+ 121:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****                 ,(uint8)(ADC_ACCELEROMETER_cy_psoc4_sarmux_8__CH_5_PORT << 4u) |
+ 122:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****                  (uint8)ADC_ACCELEROMETER_cy_psoc4_sarmux_8__CH_5_PIN
+ 123:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****             #endif /* End ADC_ACCELEROMETER_TOTAL_CHANNELS_NUM > 5u */
+ 124:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****             #if(ADC_ACCELEROMETER_TOTAL_CHANNELS_NUM > 6u)
+ 125:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****                 ,(uint8)(ADC_ACCELEROMETER_cy_psoc4_sarmux_8__CH_6_PORT << 4u) |
+ 126:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****                  (uint8)ADC_ACCELEROMETER_cy_psoc4_sarmux_8__CH_6_PIN
+ 127:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****             #endif /* End ADC_ACCELEROMETER_TOTAL_CHANNELS_NUM > 6u */
+ 128:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****             #if(ADC_ACCELEROMETER_TOTAL_CHANNELS_NUM > 7u)
+ 129:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****                 ,(uint8)(ADC_ACCELEROMETER_cy_psoc4_sarmux_8__CH_7_PORT << 4u) |
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpMcttb.s 			page 5
+
+
+ 130:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****                  (uint8)ADC_ACCELEROMETER_cy_psoc4_sarmux_8__CH_7_PIN
+ 131:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****             #endif /* End ADC_ACCELEROMETER_TOTAL_CHANNELS_NUM > 7u */
+ 132:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****             #if(ADC_ACCELEROMETER_TOTAL_CHANNELS_NUM > 8u)
+ 133:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****                 ,(uint8)(ADC_ACCELEROMETER_cy_psoc4_sarmux_8__CH_8_PORT << 4u) |
+ 134:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****                  (uint8)ADC_ACCELEROMETER_cy_psoc4_sarmux_8__CH_8_PIN
+ 135:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****             #endif /* End ADC_ACCELEROMETER_TOTAL_CHANNELS_NUM > 8u */
+ 136:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         };
+ 137:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     #endif /* End ADC_ACCELEROMETER_TOTAL_CHANNELS_NUM > 1u */
+ 138:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 139:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     #if(ADC_ACCELEROMETER_IRQ_REMOVE == 0u)
+ 140:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         /* Start and set interrupt vector */
+ 141:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         CyIntSetPriority(ADC_ACCELEROMETER_INTC_NUMBER, ADC_ACCELEROMETER_INTC_PRIOR_NUMBER);
+ 100              		.loc 1 141 0
+ 101 0006 0E20     		mov	r0, #14
+ 102 0008 0321     		mov	r1, #3
+ 103 000a FFF7FEFF 		bl	CyIntSetPriority
+ 142:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         (void)CyIntSetVector(ADC_ACCELEROMETER_INTC_NUMBER, &ADC_ACCELEROMETER_ISR);
+ 104              		.loc 1 142 0
+ 105 000e 5A4B     		ldr	r3, .L14
+ 106 0010 0E20     		mov	r0, #14
+ 107 0012 191C     		mov	r1, r3
+ 108 0014 FFF7FEFF 		bl	CyIntSetVector
+ 143:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     #endif   /* End ADC_ACCELEROMETER_IRQ_REMOVE */
+ 144:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 145:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     /* Init SAR and MUX registers */
+ 146:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     ADC_ACCELEROMETER_SAR_CHAN_EN_REG = ADC_ACCELEROMETER_DEFAULT_EN_CHANNELS;
+ 109              		.loc 1 146 0
+ 110 0018 584B     		ldr	r3, .L14+4
+ 111 001a 0722     		mov	r2, #7
+ 112 001c 1A60     		str	r2, [r3]
+ 147:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     ADC_ACCELEROMETER_SAR_CTRL_REG = ADC_ACCELEROMETER_DEFAULT_CTRL_REG_CFG;
+ 113              		.loc 1 147 0
+ 114 001e 584B     		ldr	r3, .L14+8
+ 115 0020 584A     		ldr	r2, .L14+12
+ 116 0022 1A60     		str	r2, [r3]
+ 148:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     ADC_ACCELEROMETER_SAR_SAMPLE_CTRL_REG = ADC_ACCELEROMETER_DEFAULT_SAMPLE_CTRL_REG_CFG;
+ 117              		.loc 1 148 0
+ 118 0024 584B     		ldr	r3, .L14+16
+ 119 0026 594A     		ldr	r2, .L14+20
+ 120 0028 1A60     		str	r2, [r3]
+ 149:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     ADC_ACCELEROMETER_SAR_RANGE_THRES_REG = ADC_ACCELEROMETER_DEFAULT_RANGE_THRES_REG_CFG;
+ 121              		.loc 1 149 0
+ 122 002a 594B     		ldr	r3, .L14+24
+ 123 002c 594A     		ldr	r2, .L14+28
+ 124 002e 1A60     		str	r2, [r3]
+ 150:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     ADC_ACCELEROMETER_SAR_RANGE_COND_REG  = ADC_ACCELEROMETER_COMPARE_MODE;
+ 125              		.loc 1 150 0
+ 126 0030 594B     		ldr	r3, .L14+32
+ 127 0032 0022     		mov	r2, #0
+ 128 0034 1A60     		str	r2, [r3]
+ 151:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     ADC_ACCELEROMETER_SAR_SAMPLE_TIME01_REG = ADC_ACCELEROMETER_DEFAULT_SAMPLE_TIME01_REG_CFG;
+ 129              		.loc 1 151 0
+ 130 0036 594B     		ldr	r3, .L14+36
+ 131 0038 594A     		ldr	r2, .L14+40
+ 132 003a 1A60     		str	r2, [r3]
+ 152:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     ADC_ACCELEROMETER_SAR_SAMPLE_TIME23_REG = ADC_ACCELEROMETER_DEFAULT_SAMPLE_TIME23_REG_CFG;
+ 133              		.loc 1 152 0
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpMcttb.s 			page 6
+
+
+ 134 003c 594B     		ldr	r3, .L14+44
+ 135 003e 584A     		ldr	r2, .L14+40
+ 136 0040 1A60     		str	r2, [r3]
+ 153:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     /* Connect Vm to VSSA when even one channel is single-ended or multiple channels configured */
+ 154:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     #if(ADC_ACCELEROMETER_DEFAULT_MUX_SWITCH0 != 0u)
+ 155:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         ADC_ACCELEROMETER_MUX_SWITCH0_REG |= ADC_ACCELEROMETER_DEFAULT_MUX_SWITCH0; 
+ 137              		.loc 1 155 0
+ 138 0042 594B     		ldr	r3, .L14+48
+ 139 0044 584A     		ldr	r2, .L14+48
+ 140 0046 1268     		ldr	r2, [r2]
+ 141 0048 8021     		mov	r1, #128
+ 142 004a 4902     		lsl	r1, r1, #9
+ 143 004c 0A43     		orr	r2, r1
+ 144 004e 1A60     		str	r2, [r3]
+ 156:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         /* Set MUX_HW_CTRL_VSSA in MUX_SWITCH_HW_CTRL when multiple channels enabled */
+ 157:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         #if(ADC_ACCELEROMETER_TOTAL_CHANNELS_NUM > 1u)
+ 158:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****             ADC_ACCELEROMETER_MUX_SWITCH_HW_CTRL_REG |= ADC_ACCELEROMETER_DEFAULT_MUX_SWITCH0; 
+ 145              		.loc 1 158 0
+ 146 0050 564B     		ldr	r3, .L14+52
+ 147 0052 564A     		ldr	r2, .L14+52
+ 148 0054 1268     		ldr	r2, [r2]
+ 149 0056 8021     		mov	r1, #128
+ 150 0058 4902     		lsl	r1, r1, #9
+ 151 005a 0A43     		orr	r2, r1
+ 152 005c 1A60     		str	r2, [r3]
+ 159:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         #endif /* ADC_ACCELEROMETER_TOTAL_CHANNELS_NUM > 1u */
+ 160:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     #endif /*ADC_ACCELEROMETER_CHANNELS_MODE !=0 */    
+ 161:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 162:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     ADC_ACCELEROMETER_SAR_SATURATE_INTR_MASK_REG = 0u;
+ 153              		.loc 1 162 0
+ 154 005e 544B     		ldr	r3, .L14+56
+ 155 0060 0022     		mov	r2, #0
+ 156 0062 1A60     		str	r2, [r3]
+ 163:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     ADC_ACCELEROMETER_SAR_RANGE_INTR_MASK_REG = 0u;
+ 157              		.loc 1 163 0
+ 158 0064 534B     		ldr	r3, .L14+60
+ 159 0066 0022     		mov	r2, #0
+ 160 0068 1A60     		str	r2, [r3]
+ 164:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     ADC_ACCELEROMETER_SAR_INTR_MASK_REG = ADC_ACCELEROMETER_SAR_INTR_MASK;
+ 161              		.loc 1 164 0
+ 162 006a 534B     		ldr	r3, .L14+64
+ 163 006c 0122     		mov	r2, #1
+ 164 006e 1A60     		str	r2, [r3]
+ 165:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     ADC_ACCELEROMETER_ANA_TRIM_REG = ADC_ACCELEROMETER_TRIM_COEF;
+ 165              		.loc 1 165 0
+ 166 0070 524B     		ldr	r3, .L14+68
+ 167 0072 0222     		mov	r2, #2
+ 168 0074 1A60     		str	r2, [r3]
+ 166:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     
+ 167:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     /* Read and modify default configuration based on characterization */
+ 168:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     tmpRegVal = ADC_ACCELEROMETER_SAR_DFT_CTRL_REG;
+ 169              		.loc 1 168 0
+ 170 0076 524B     		ldr	r3, .L14+72
+ 171 0078 1B68     		ldr	r3, [r3]
+ 172 007a 7B60     		str	r3, [r7, #4]
+ 169:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     #if(ADC_ACCELEROMETER_NOMINAL_CLOCK_FREQ > (ADC_ACCELEROMETER_MAX_FREQUENCY / 2))
+ 170:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         tmpRegVal &= (uint32)~ADC_ACCELEROMETER_DCEN;
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpMcttb.s 			page 7
+
+
+ 171:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         tmpRegVal |= ADC_ACCELEROMETER_SEL_CSEL_DFT_CHAR;
+ 172:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     #else  /* clock speed < 9 Mhz */  
+ 173:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         tmpRegVal |= ADC_ACCELEROMETER_DLY_INC;
+ 173              		.loc 1 173 0
+ 174 007c 7B68     		ldr	r3, [r7, #4]
+ 175 007e 0122     		mov	r2, #1
+ 176 0080 1343     		orr	r3, r2
+ 177 0082 7B60     		str	r3, [r7, #4]
+ 174:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     #endif /* clock speed > 9 Mhz */
+ 175:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     ADC_ACCELEROMETER_SAR_DFT_CTRL_REG = tmpRegVal;
+ 178              		.loc 1 175 0
+ 179 0084 4E4B     		ldr	r3, .L14+72
+ 180 0086 7A68     		ldr	r2, [r7, #4]
+ 181 0088 1A60     		str	r2, [r3]
+ 176:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     
+ 177:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     #if(ADC_ACCELEROMETER_MAX_RESOLUTION != ADC_ACCELEROMETER_RESOLUTION_12)
+ 178:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         ADC_ACCELEROMETER_WOUNDING_REG = ADC_ACCELEROMETER_ALT_WOUNDING;
+ 179:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     #endif /* ADC_ACCELEROMETER_MAX_RESOLUTION != ADC_ACCELEROMETER_RESOLUTION_12 */
+ 180:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 181:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     for(chNum = 0u; chNum < ADC_ACCELEROMETER_TOTAL_CHANNELS_NUM; chNum++)
+ 182              		.loc 1 181 0
+ 183 008a 0023     		mov	r3, #0
+ 184 008c FB60     		str	r3, [r7, #12]
+ 185 008e 6DE0     		b	.L6
+ 186              	.L13:
+ 182:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     {
+ 183:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         tmpRegVal = (ADC_ACCELEROMETER_channelsConfig[chNum] & ADC_ACCELEROMETER_CHANNEL_CONFIG_MAS
+ 187              		.loc 1 183 0
+ 188 0090 4C4B     		ldr	r3, .L14+76
+ 189 0092 FA68     		ldr	r2, [r7, #12]
+ 190 0094 9200     		lsl	r2, r2, #2
+ 191 0096 D258     		ldr	r2, [r2, r3]
+ 192 0098 DC23     		mov	r3, #220
+ 193 009a 9B01     		lsl	r3, r3, #6
+ 194 009c 1340     		and	r3, r2
+ 195 009e 7B60     		str	r3, [r7, #4]
+ 184:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         #if(ADC_ACCELEROMETER_TOTAL_CHANNELS_NUM > 1u)
+ 185:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****             tmpRegVal |= ADC_ACCELEROMETER_InputsPlacement[chNum];
+ 196              		.loc 1 185 0
+ 197 00a0 494A     		ldr	r2, .L14+80
+ 198 00a2 FB68     		ldr	r3, [r7, #12]
+ 199 00a4 D318     		add	r3, r2, r3
+ 200 00a6 1B78     		ldrb	r3, [r3]
+ 201 00a8 7A68     		ldr	r2, [r7, #4]
+ 202 00aa 1343     		orr	r3, r2
+ 203 00ac 7B60     		str	r3, [r7, #4]
+ 186:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         #endif /* End ADC_ACCELEROMETER_TOTAL_CHANNELS_NUM > 1u */
+ 187:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         /* When the part is wounded to 10-bit then the SUB_RESOLUTION bit 
+ 188:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         *  will be ignored and the RESOLUTION bit selects between 10-bit 
+ 189:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         *  (0) and 8-bit (1) resolution.
+ 190:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         */
+ 191:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         #if((ADC_ACCELEROMETER_MAX_RESOLUTION != ADC_ACCELEROMETER_RESOLUTION_12) && \
+ 192:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****             (ADC_ACCELEROMETER_ALT_WOUNDING == ADC_ACCELEROMETER_WOUNDING_10BIT))
+ 193:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****             tmpRegVal &= (uint32)(~ADC_ACCELEROMETER_ALT_RESOLUTION_ON);
+ 194:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         #endif /* ADC_ACCELEROMETER_MAX_RESOLUTION != ADC_ACCELEROMETER_RESOLUTION_12 */
+ 195:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 196:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         #if(ADC_ACCELEROMETER_INJ_CHANNEL_ENABLED)
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpMcttb.s 			page 8
+
+
+ 197:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         if(chNum < ADC_ACCELEROMETER_SEQUENCED_CHANNELS_NUM)
+ 198:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         #endif /* ADC_ACCELEROMETER_INJ_CHANNEL_ENABLED */
+ 199:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         {
+ 200:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****             CY_SET_REG32((reg32 *)(ADC_ACCELEROMETER_SAR_CHAN_CONFIG_IND + (uint32)(chNum << 2)), t
+ 204              		.loc 1 200 0
+ 205 00ae FB68     		ldr	r3, [r7, #12]
+ 206 00b0 9B00     		lsl	r3, r3, #2
+ 207 00b2 464A     		ldr	r2, .L14+84
+ 208 00b4 9B18     		add	r3, r3, r2
+ 209 00b6 7A68     		ldr	r2, [r7, #4]
+ 210 00b8 1A60     		str	r2, [r3]
+ 201:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 202:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****             if((ADC_ACCELEROMETER_channelsConfig[chNum] & ADC_ACCELEROMETER_IS_SATURATE_EN_MASK) !=
+ 211              		.loc 1 202 0
+ 212 00ba 424B     		ldr	r3, .L14+76
+ 213 00bc FA68     		ldr	r2, [r7, #12]
+ 214 00be 9200     		lsl	r2, r2, #2
+ 215 00c0 D258     		ldr	r2, [r2, r3]
+ 216 00c2 0123     		mov	r3, #1
+ 217 00c4 1340     		and	r3, r2
+ 218 00c6 0AD0     		beq	.L7
+ 203:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****             {
+ 204:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****                 ADC_ACCELEROMETER_SAR_SATURATE_INTR_MASK_REG |= (uint16)((uint16)1 << chNum);
+ 219              		.loc 1 204 0
+ 220 00c8 394B     		ldr	r3, .L14+56
+ 221 00ca 394A     		ldr	r2, .L14+56
+ 222 00cc 1168     		ldr	r1, [r2]
+ 223 00ce FA68     		ldr	r2, [r7, #12]
+ 224 00d0 0120     		mov	r0, #1
+ 225 00d2 041C     		mov	r4, r0
+ 226 00d4 9440     		lsl	r4, r4, r2
+ 227 00d6 221C     		mov	r2, r4
+ 228 00d8 92B2     		uxth	r2, r2
+ 229 00da 0A43     		orr	r2, r1
+ 230 00dc 1A60     		str	r2, [r3]
+ 231              	.L7:
+ 205:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****             }
+ 206:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 207:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****             if((ADC_ACCELEROMETER_channelsConfig[chNum] & ADC_ACCELEROMETER_IS_RANGE_CTRL_EN_MASK) 
+ 232              		.loc 1 207 0
+ 233 00de 394B     		ldr	r3, .L14+76
+ 234 00e0 FA68     		ldr	r2, [r7, #12]
+ 235 00e2 9200     		lsl	r2, r2, #2
+ 236 00e4 D258     		ldr	r2, [r2, r3]
+ 237 00e6 0223     		mov	r3, #2
+ 238 00e8 1340     		and	r3, r2
+ 239 00ea 0AD0     		beq	.L8
+ 208:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****             {
+ 209:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****                 ADC_ACCELEROMETER_SAR_RANGE_INTR_MASK_REG |= (uint16)((uint16)1 << chNum);
+ 240              		.loc 1 209 0
+ 241 00ec 314B     		ldr	r3, .L14+60
+ 242 00ee 314A     		ldr	r2, .L14+60
+ 243 00f0 1168     		ldr	r1, [r2]
+ 244 00f2 FA68     		ldr	r2, [r7, #12]
+ 245 00f4 0120     		mov	r0, #1
+ 246 00f6 041C     		mov	r4, r0
+ 247 00f8 9440     		lsl	r4, r4, r2
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpMcttb.s 			page 9
+
+
+ 248 00fa 221C     		mov	r2, r4
+ 249 00fc 92B2     		uxth	r2, r2
+ 250 00fe 0A43     		orr	r2, r1
+ 251 0100 1A60     		str	r2, [r3]
+ 252              	.L8:
+ 210:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****             }
+ 211:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         }
+ 212:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         #if(ADC_ACCELEROMETER_INJ_CHANNEL_ENABLED)
+ 213:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****             else
+ 214:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****             {
+ 215:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****                 CY_SET_REG32(ADC_ACCELEROMETER_SAR_INJ_CHAN_CONFIG_PTR, tmpRegVal | ADC_ACCELEROMET
+ 216:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 217:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****                 if((ADC_ACCELEROMETER_channelsConfig[chNum] & ADC_ACCELEROMETER_IS_SATURATE_EN_MASK
+ 218:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****                 {
+ 219:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****                     ADC_ACCELEROMETER_SAR_INTR_MASK_REG |= ADC_ACCELEROMETER_INJ_SATURATE_MASK;
+ 220:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****                 }
+ 221:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 222:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****                 if((ADC_ACCELEROMETER_channelsConfig[chNum] & ADC_ACCELEROMETER_IS_RANGE_CTRL_EN_MA
+ 223:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****                 {
+ 224:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****                     ADC_ACCELEROMETER_SAR_INTR_MASK_REG |= ADC_ACCELEROMETER_INJ_RANGE_MASK;
+ 225:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****                 }
+ 226:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****             }
+ 227:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         #endif /* ADC_ACCELEROMETER_INJ_CHANNEL_ENABLED */
+ 228:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 229:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         if((ADC_ACCELEROMETER_channelsConfig[chNum] & ADC_ACCELEROMETER_ALT_RESOLUTION_ON) != 0u)
+ 253              		.loc 1 229 0
+ 254 0102 304B     		ldr	r3, .L14+76
+ 255 0104 FA68     		ldr	r2, [r7, #12]
+ 256 0106 9200     		lsl	r2, r2, #2
+ 257 0108 D258     		ldr	r2, [r2, r3]
+ 258 010a 8023     		mov	r3, #128
+ 259 010c 9B00     		lsl	r3, r3, #2
+ 260 010e 1340     		and	r3, r2
+ 261 0110 03D0     		beq	.L9
+ 230:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         {
+ 231:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****                counts = (int32)ADC_ACCELEROMETER_DEFAULT_MAX_WRK_ALT;
+ 262              		.loc 1 231 0
+ 263 0112 8023     		mov	r3, #128
+ 264 0114 5B00     		lsl	r3, r3, #1
+ 265 0116 BB60     		str	r3, [r7, #8]
+ 266 0118 02E0     		b	.L10
+ 267              	.L9:
+ 232:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         }
+ 233:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         else
+ 234:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         {
+ 235:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****                counts = (int32)ADC_ACCELEROMETER_SAR_WRK_MAX_12BIT;
+ 268              		.loc 1 235 0
+ 269 011a 8023     		mov	r3, #128
+ 270 011c 5B01     		lsl	r3, r3, #5
+ 271 011e BB60     		str	r3, [r7, #8]
+ 272              	.L10:
+ 236:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         }
+ 237:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 238:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         if((ADC_ACCELEROMETER_channelsConfig[chNum] & ADC_ACCELEROMETER_DIFFERENTIAL_EN) == 0u)
+ 273              		.loc 1 238 0
+ 274 0120 284B     		ldr	r3, .L14+76
+ 275 0122 FA68     		ldr	r2, [r7, #12]
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpMcttb.s 			page 10
+
+
+ 276 0124 9200     		lsl	r2, r2, #2
+ 277 0126 D258     		ldr	r2, [r2, r3]
+ 278 0128 8023     		mov	r3, #128
+ 279 012a 5B00     		lsl	r3, r3, #1
+ 280 012c 1340     		and	r3, r2
+ 281 012e 05D1     		bne	.L11
+ 239:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         {  
+ 240:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****             #if((ADC_ACCELEROMETER_DEFAULT_SE_RESULT_FORMAT_SEL == ADC_ACCELEROMETER__FSIGNED) && \
+ 241:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****                 (ADC_ACCELEROMETER_DEFAULT_NEG_INPUT_SEL == ADC_ACCELEROMETER__VREF))
+ 242:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****                 /* Set offset to the minus half scale to convert results to unsigned format */
+ 243:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****                 ADC_ACCELEROMETER_offset[chNum] = (int16)(counts / -2);
+ 244:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****             #else    
+ 245:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****                 ADC_ACCELEROMETER_offset[chNum] = 0;
+ 282              		.loc 1 245 0
+ 283 0130 274B     		ldr	r3, .L14+88
+ 284 0132 FA68     		ldr	r2, [r7, #12]
+ 285 0134 5200     		lsl	r2, r2, #1
+ 286 0136 0021     		mov	r1, #0
+ 287 0138 D152     		strh	r1, [r2, r3]
+ 288 013a 04E0     		b	.L12
+ 289              	.L11:
+ 246:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****             #endif /* end DEFAULT_SE_RESULT_FORMAT_SEL == ADC_ACCELEROMETER__FSIGNED */    
+ 247:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         }
+ 248:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         else    /* Differential channel */
+ 249:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         {
+ 250:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****             #if(ADC_ACCELEROMETER_DEFAULT_DIFF_RESULT_FORMAT_SEL == ADC_ACCELEROMETER__FUNSIGNED)
+ 251:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****                 /* Set offset to the half scale to convert results to signed format */
+ 252:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****                 ADC_ACCELEROMETER_offset[chNum] = (int16)(counts / 2);
+ 253:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****             #else    
+ 254:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****                 ADC_ACCELEROMETER_offset[chNum] = 0;
+ 290              		.loc 1 254 0
+ 291 013c 244B     		ldr	r3, .L14+88
+ 292 013e FA68     		ldr	r2, [r7, #12]
+ 293 0140 5200     		lsl	r2, r2, #1
+ 294 0142 0021     		mov	r1, #0
+ 295 0144 D152     		strh	r1, [r2, r3]
+ 296              	.L12:
+ 255:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****             #endif /* end ADC_ACCELEROMETER_DEFAULT_DIFF_RESULT_FORMAT_SEL == ADC_ACCELEROMETER__FU
+ 256:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         }
+ 257:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         /* Calculate gain in counts per 10 volts with rounding */
+ 258:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         ADC_ACCELEROMETER_countsPer10Volt[chNum] = (int16)(((counts * ADC_ACCELEROMETER_10MV_COUNTS
+ 297              		.loc 1 258 0
+ 298 0146 BB68     		ldr	r3, [r7, #8]
+ 299 0148 224A     		ldr	r2, .L14+92
+ 300 014a 5343     		mul	r3, r2
+ 301 014c 224A     		ldr	r2, .L14+96
+ 302 014e 9B18     		add	r3, r3, r2
+ 259:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****                             ADC_ACCELEROMETER_DEFAULT_VREF_MV_VALUE) / (ADC_ACCELEROMETER_DEFAULT_V
+ 303              		.loc 1 259 0
+ 304 0150 181C     		mov	r0, r3
+ 305 0152 2249     		ldr	r1, .L14+100
+ 306 0154 FFF7FEFF 		bl	__aeabi_idiv
+ 307 0158 031C     		mov	r3, r0
+ 258:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         ADC_ACCELEROMETER_countsPer10Volt[chNum] = (int16)(((counts * ADC_ACCELEROMETER_10MV_COUNTS
+ 308              		.loc 1 258 0
+ 309 015a 9BB2     		uxth	r3, r3
+ 310 015c 19B2     		sxth	r1, r3
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpMcttb.s 			page 11
+
+
+ 311 015e 204B     		ldr	r3, .L14+104
+ 312 0160 FA68     		ldr	r2, [r7, #12]
+ 313 0162 9200     		lsl	r2, r2, #2
+ 314 0164 D150     		str	r1, [r2, r3]
+ 181:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     for(chNum = 0u; chNum < ADC_ACCELEROMETER_TOTAL_CHANNELS_NUM; chNum++)
+ 315              		.loc 1 181 0
+ 316 0166 FB68     		ldr	r3, [r7, #12]
+ 317 0168 0133     		add	r3, r3, #1
+ 318 016a FB60     		str	r3, [r7, #12]
+ 319              	.L6:
+ 181:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     for(chNum = 0u; chNum < ADC_ACCELEROMETER_TOTAL_CHANNELS_NUM; chNum++)
+ 320              		.loc 1 181 0 is_stmt 0 discriminator 1
+ 321 016c FB68     		ldr	r3, [r7, #12]
+ 322 016e 022B     		cmp	r3, #2
+ 323 0170 8ED9     		bls	.L13
+ 260:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     }
+ 261:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** }
+ 324              		.loc 1 261 0 is_stmt 1
+ 325 0172 BD46     		mov	sp, r7
+ 326 0174 05B0     		add	sp, sp, #20
+ 327              		@ sp needed for prologue
+ 328 0176 90BD     		pop	{r4, r7, pc}
+ 329              	.L15:
+ 330              		.align	2
+ 331              	.L14:
+ 332 0178 00000000 		.word	ADC_ACCELEROMETER_ISR
+ 333 017c 20001A40 		.word	1075445792
+ 334 0180 00001A40 		.word	1075445760
+ 335 0184 70200013 		.word	318775408
+ 336 0188 04001A40 		.word	1075445764
+ 337 018c 8C000080 		.word	-2147483508
+ 338 0190 18001A40 		.word	1075445784
+ 339 0194 0000FF07 		.word	134152192
+ 340 0198 1C001A40 		.word	1075445788
+ 341 019c 10001A40 		.word	1075445776
+ 342 01a0 04000400 		.word	262148
+ 343 01a4 14001A40 		.word	1075445780
+ 344 01a8 00031A40 		.word	1075446528
+ 345 01ac 40031A40 		.word	1075446592
+ 346 01b0 28021A40 		.word	1075446312
+ 347 01b4 38021A40 		.word	1075446328
+ 348 01b8 18021A40 		.word	1075446296
+ 349 01bc 000F1A40 		.word	1075449600
+ 350 01c0 30001A40 		.word	1075445808
+ 351 01c4 00000000 		.word	ADC_ACCELEROMETER_channelsConfig
+ 352 01c8 0C000000 		.word	ADC_ACCELEROMETER_InputsPlacement.4648
+ 353 01cc 80001A40 		.word	1075445888
+ 354 01d0 00000000 		.word	ADC_ACCELEROMETER_offset
+ 355 01d4 10270000 		.word	10000
+ 356 01d8 E40C0000 		.word	3300
+ 357 01dc C8190000 		.word	6600
+ 358 01e0 00000000 		.word	ADC_ACCELEROMETER_countsPer10Volt
+ 359              		.cfi_endproc
+ 360              	.LFE1:
+ 361              		.size	ADC_ACCELEROMETER_Init, .-ADC_ACCELEROMETER_Init
+ 362              		.section	.text.ADC_ACCELEROMETER_Enable,"ax",%progbits
+ 363              		.align	2
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpMcttb.s 			page 12
+
+
+ 364              		.global	ADC_ACCELEROMETER_Enable
+ 365              		.code	16
+ 366              		.thumb_func
+ 367              		.type	ADC_ACCELEROMETER_Enable, %function
+ 368              	ADC_ACCELEROMETER_Enable:
+ 369              	.LFB2:
+ 262:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 263:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** /*******************************************************************************
+ 264:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Function Name: ADC_SAR_1_Enable
+ 265:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** ********************************************************************************
+ 266:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *
+ 267:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Summary:
+ 268:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  Enables the clock and analog power for SAR ADC.
+ 269:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *
+ 270:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Parameters:
+ 271:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  None.
+ 272:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *
+ 273:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Return:
+ 274:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  None.
+ 275:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *
+ 276:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *******************************************************************************/
+ 277:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** void ADC_ACCELEROMETER_Enable(void)
+ 278:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** {
+ 370              		.loc 1 278 0
+ 371              		.cfi_startproc
+ 372 0000 80B5     		push	{r7, lr}
+ 373              	.LCFI5:
+ 374              		.cfi_def_cfa_offset 8
+ 375              		.cfi_offset 7, -8
+ 376              		.cfi_offset 14, -4
+ 377 0002 00AF     		add	r7, sp, #0
+ 378              	.LCFI6:
+ 379              		.cfi_def_cfa_register 7
+ 279:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     ADC_ACCELEROMETER_SAR_CTRL_REG |= ADC_ACCELEROMETER_ENABLE;
+ 380              		.loc 1 279 0
+ 381 0004 054B     		ldr	r3, .L17
+ 382 0006 054A     		ldr	r2, .L17
+ 383 0008 1268     		ldr	r2, [r2]
+ 384 000a 8021     		mov	r1, #128
+ 385 000c 0906     		lsl	r1, r1, #24
+ 386 000e 0A43     		orr	r2, r1
+ 387 0010 1A60     		str	r2, [r3]
+ 280:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     /* The block is ready to use 10 us after the enable signal is set high. */
+ 281:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     CyDelayUs(ADC_ACCELEROMETER_10US_DELAY);
+ 388              		.loc 1 281 0
+ 389 0012 0A20     		mov	r0, #10
+ 390 0014 FFF7FEFF 		bl	CyDelayUs
+ 282:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** }
+ 391              		.loc 1 282 0
+ 392 0018 BD46     		mov	sp, r7
+ 393              		@ sp needed for prologue
+ 394 001a 80BD     		pop	{r7, pc}
+ 395              	.L18:
+ 396              		.align	2
+ 397              	.L17:
+ 398 001c 00001A40 		.word	1075445760
+ 399              		.cfi_endproc
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpMcttb.s 			page 13
+
+
+ 400              	.LFE2:
+ 401              		.size	ADC_ACCELEROMETER_Enable, .-ADC_ACCELEROMETER_Enable
+ 402              		.section	.text.ADC_ACCELEROMETER_Stop,"ax",%progbits
+ 403              		.align	2
+ 404              		.global	ADC_ACCELEROMETER_Stop
+ 405              		.code	16
+ 406              		.thumb_func
+ 407              		.type	ADC_ACCELEROMETER_Stop, %function
+ 408              	ADC_ACCELEROMETER_Stop:
+ 409              	.LFB3:
+ 283:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 284:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 285:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** /*******************************************************************************
+ 286:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Function Name: ADC_ACCELEROMETER_Stop
+ 287:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** ********************************************************************************
+ 288:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *
+ 289:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Summary:
+ 290:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  This function stops ADC conversions and puts the ADC into its lowest power
+ 291:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  mode.
+ 292:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *
+ 293:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Parameters:
+ 294:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  None.
+ 295:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *
+ 296:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Return:
+ 297:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  None.
+ 298:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *
+ 299:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *******************************************************************************/
+ 300:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** void ADC_ACCELEROMETER_Stop(void)
+ 301:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** {
+ 410              		.loc 1 301 0
+ 411              		.cfi_startproc
+ 412 0000 80B5     		push	{r7, lr}
+ 413              	.LCFI7:
+ 414              		.cfi_def_cfa_offset 8
+ 415              		.cfi_offset 7, -8
+ 416              		.cfi_offset 14, -4
+ 417 0002 00AF     		add	r7, sp, #0
+ 418              	.LCFI8:
+ 419              		.cfi_def_cfa_register 7
+ 302:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     ADC_ACCELEROMETER_SAR_CTRL_REG &= (uint32)~ADC_ACCELEROMETER_ENABLE;
+ 420              		.loc 1 302 0
+ 421 0004 034B     		ldr	r3, .L20
+ 422 0006 034A     		ldr	r2, .L20
+ 423 0008 1268     		ldr	r2, [r2]
+ 424 000a 5200     		lsl	r2, r2, #1
+ 425 000c 5208     		lsr	r2, r2, #1
+ 426 000e 1A60     		str	r2, [r3]
+ 303:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** }
+ 427              		.loc 1 303 0
+ 428 0010 BD46     		mov	sp, r7
+ 429              		@ sp needed for prologue
+ 430 0012 80BD     		pop	{r7, pc}
+ 431              	.L21:
+ 432              		.align	2
+ 433              	.L20:
+ 434 0014 00001A40 		.word	1075445760
+ 435              		.cfi_endproc
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpMcttb.s 			page 14
+
+
+ 436              	.LFE3:
+ 437              		.size	ADC_ACCELEROMETER_Stop, .-ADC_ACCELEROMETER_Stop
+ 438              		.section	.text.ADC_ACCELEROMETER_StartConvert,"ax",%progbits
+ 439              		.align	2
+ 440              		.global	ADC_ACCELEROMETER_StartConvert
+ 441              		.code	16
+ 442              		.thumb_func
+ 443              		.type	ADC_ACCELEROMETER_StartConvert, %function
+ 444              	ADC_ACCELEROMETER_StartConvert:
+ 445              	.LFB4:
+ 304:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 305:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 306:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** /*******************************************************************************
+ 307:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Function Name: ADC_ACCELEROMETER_StartConvert
+ 308:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** ********************************************************************************
+ 309:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *
+ 310:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Summary:
+ 311:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  Description:
+ 312:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  For free running mode, this API starts the conversion process and it
+ 313:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  runs continuously.
+ 314:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *
+ 315:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  In a triggered mode, this routine triggers every conversion by
+ 316:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  writing into the FW_TRIGGER bit in SAR_START_CTRL reg. In triggered mode,
+ 317:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  every conversion has to start by this API.
+ 318:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *
+ 319:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Parameters:
+ 320:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  None.
+ 321:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *
+ 322:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Return:
+ 323:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  None.
+ 324:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *
+ 325:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *******************************************************************************/
+ 326:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** void ADC_ACCELEROMETER_StartConvert(void)
+ 327:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** {
+ 446              		.loc 1 327 0
+ 447              		.cfi_startproc
+ 448 0000 80B5     		push	{r7, lr}
+ 449              	.LCFI9:
+ 450              		.cfi_def_cfa_offset 8
+ 451              		.cfi_offset 7, -8
+ 452              		.cfi_offset 14, -4
+ 453 0002 00AF     		add	r7, sp, #0
+ 454              	.LCFI10:
+ 455              		.cfi_def_cfa_register 7
+ 328:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     #if(ADC_ACCELEROMETER_DEFAULT_SAMPLE_MODE_SEL == ADC_ACCELEROMETER__FREERUNNING)
+ 329:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         ADC_ACCELEROMETER_SAR_SAMPLE_CTRL_REG |= ADC_ACCELEROMETER_CONTINUOUS_EN;
+ 456              		.loc 1 329 0
+ 457 0004 044B     		ldr	r3, .L23
+ 458 0006 044A     		ldr	r2, .L23
+ 459 0008 1268     		ldr	r2, [r2]
+ 460 000a 8021     		mov	r1, #128
+ 461 000c 4902     		lsl	r1, r1, #9
+ 462 000e 0A43     		orr	r2, r1
+ 463 0010 1A60     		str	r2, [r3]
+ 330:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     #else /* Firmware trigger */
+ 331:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         ADC_ACCELEROMETER_SAR_START_CTRL_REG = ADC_ACCELEROMETER_FW_TRIGGER;
+ 332:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     #endif /* End ADC_ACCELEROMETER_DEFAULT_SAMPLE_MODE == ADC_ACCELEROMETER__FREERUNNING */
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpMcttb.s 			page 15
+
+
+ 333:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 334:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** }
+ 464              		.loc 1 334 0
+ 465 0012 BD46     		mov	sp, r7
+ 466              		@ sp needed for prologue
+ 467 0014 80BD     		pop	{r7, pc}
+ 468              	.L24:
+ 469 0016 C046     		.align	2
+ 470              	.L23:
+ 471 0018 04001A40 		.word	1075445764
+ 472              		.cfi_endproc
+ 473              	.LFE4:
+ 474              		.size	ADC_ACCELEROMETER_StartConvert, .-ADC_ACCELEROMETER_StartConvert
+ 475              		.section	.text.ADC_ACCELEROMETER_StopConvert,"ax",%progbits
+ 476              		.align	2
+ 477              		.global	ADC_ACCELEROMETER_StopConvert
+ 478              		.code	16
+ 479              		.thumb_func
+ 480              		.type	ADC_ACCELEROMETER_StopConvert, %function
+ 481              	ADC_ACCELEROMETER_StopConvert:
+ 482              	.LFB5:
+ 335:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 336:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 337:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** /*******************************************************************************
+ 338:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Function Name: ADC_ACCELEROMETER_StopConvert
+ 339:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** ********************************************************************************
+ 340:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *
+ 341:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Summary:
+ 342:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  Forces the ADC to stop all conversions.
+ 343:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *
+ 344:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Parameters:
+ 345:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  None.
+ 346:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *
+ 347:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Return:
+ 348:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  None.
+ 349:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *
+ 350:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *******************************************************************************/
+ 351:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** void ADC_ACCELEROMETER_StopConvert(void)
+ 352:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** {
+ 483              		.loc 1 352 0
+ 484              		.cfi_startproc
+ 485 0000 80B5     		push	{r7, lr}
+ 486              	.LCFI11:
+ 487              		.cfi_def_cfa_offset 8
+ 488              		.cfi_offset 7, -8
+ 489              		.cfi_offset 14, -4
+ 490 0002 00AF     		add	r7, sp, #0
+ 491              	.LCFI12:
+ 492              		.cfi_def_cfa_register 7
+ 353:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     #if(ADC_ACCELEROMETER_DEFAULT_SAMPLE_MODE_SEL == ADC_ACCELEROMETER__FREERUNNING)
+ 354:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         ADC_ACCELEROMETER_SAR_SAMPLE_CTRL_REG &= (uint32)(~ADC_ACCELEROMETER_CONTINUOUS_EN);
+ 493              		.loc 1 354 0
+ 494 0004 034B     		ldr	r3, .L26
+ 495 0006 034A     		ldr	r2, .L26
+ 496 0008 1168     		ldr	r1, [r2]
+ 497 000a 034A     		ldr	r2, .L26+4
+ 498 000c 0A40     		and	r2, r1
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpMcttb.s 			page 16
+
+
+ 499 000e 1A60     		str	r2, [r3]
+ 355:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     #endif /* ADC_ACCELEROMETER_DEFAULT_SAMPLE_MODE == ADC_ACCELEROMETER__FREERUNNING */
+ 356:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** }
+ 500              		.loc 1 356 0
+ 501 0010 BD46     		mov	sp, r7
+ 502              		@ sp needed for prologue
+ 503 0012 80BD     		pop	{r7, pc}
+ 504              	.L27:
+ 505              		.align	2
+ 506              	.L26:
+ 507 0014 04001A40 		.word	1075445764
+ 508 0018 FFFFFEFF 		.word	-65537
+ 509              		.cfi_endproc
+ 510              	.LFE5:
+ 511              		.size	ADC_ACCELEROMETER_StopConvert, .-ADC_ACCELEROMETER_StopConvert
+ 512              		.section	.text.ADC_ACCELEROMETER_IsEndConversion,"ax",%progbits
+ 513              		.align	2
+ 514              		.global	ADC_ACCELEROMETER_IsEndConversion
+ 515              		.code	16
+ 516              		.thumb_func
+ 517              		.type	ADC_ACCELEROMETER_IsEndConversion, %function
+ 518              	ADC_ACCELEROMETER_IsEndConversion:
+ 519              	.LFB6:
+ 357:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 358:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 359:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** /*******************************************************************************
+ 360:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Function Name: ADC_ACCELEROMETER_IsEndConversion
+ 361:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** ********************************************************************************
+ 362:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *
+ 363:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Summary:
+ 364:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  Description: Checks for ADC end of conversion for the case one
+ 365:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  channel and end of scan for the case of multiple channels. It acts
+ 366:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  as a software version of the EOC. This function provides the
+ 367:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  programmer with two options. In one mode this function
+ 368:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  immediately returns with the conversion status. In the other mode,
+ 369:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  the function does not return (blocking) until the conversion has
+ 370:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  completed.
+ 371:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *
+ 372:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Parameters:
+ 373:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  ADC_RETURN_STATUS        -> Immediately returns conversion result status
+ 374:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  ADC_WAIT_FOR_RESULT      -> Does not return until ADC complete
+ 375:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  ADC_RETURN_STATUS_INJ    -> Immediately returns conversion result status
+ 376:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *                              for injection channel
+ 377:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  ADC_WAIT_FOR_RESULT_INJ  -> Does not return until ADC completes injection
+ 378:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *                              channel conversion
+ 379:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *
+ 380:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Return:
+ 381:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  If a non-zero value is returned, the last conversion or scan has completed.
+ 382:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  If the returned value is zero, the ADC is still in the process of a scan.
+ 383:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *
+ 384:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *******************************************************************************/
+ 385:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** uint32 ADC_ACCELEROMETER_IsEndConversion(uint32 retMode)
+ 386:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** {
+ 520              		.loc 1 386 0
+ 521              		.cfi_startproc
+ 522 0000 80B5     		push	{r7, lr}
+ 523              	.LCFI13:
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpMcttb.s 			page 17
+
+
+ 524              		.cfi_def_cfa_offset 8
+ 525              		.cfi_offset 7, -8
+ 526              		.cfi_offset 14, -4
+ 527 0002 84B0     		sub	sp, sp, #16
+ 528              	.LCFI14:
+ 529              		.cfi_def_cfa_offset 24
+ 530 0004 00AF     		add	r7, sp, #0
+ 531              	.LCFI15:
+ 532              		.cfi_def_cfa_register 7
+ 533 0006 7860     		str	r0, [r7, #4]
+ 387:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     uint32 status = 0u;
+ 534              		.loc 1 387 0
+ 535 0008 0023     		mov	r3, #0
+ 536 000a FB60     		str	r3, [r7, #12]
+ 388:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 389:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     if((retMode & (ADC_ACCELEROMETER_RETURN_STATUS | ADC_ACCELEROMETER_WAIT_FOR_RESULT)) != 0u)
+ 537              		.loc 1 389 0
+ 538 000c 7A68     		ldr	r2, [r7, #4]
+ 539 000e 0323     		mov	r3, #3
+ 540 0010 1340     		and	r3, r2
+ 541 0012 11D0     		beq	.L29
+ 542              	.L31:
+ 390:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     {
+ 391:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         do
+ 392:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         {
+ 393:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****             status = ADC_ACCELEROMETER_SAR_INTR_REG & ADC_ACCELEROMETER_EOS_MASK;
+ 543              		.loc 1 393 0 discriminator 1
+ 544 0014 0B4B     		ldr	r3, .L33
+ 545 0016 1A68     		ldr	r2, [r3]
+ 546 0018 0123     		mov	r3, #1
+ 547 001a 1340     		and	r3, r2
+ 548 001c FB60     		str	r3, [r7, #12]
+ 394:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         }while((status == 0u) && ((retMode & ADC_ACCELEROMETER_WAIT_FOR_RESULT) != 0u));
+ 549              		.loc 1 394 0 discriminator 1
+ 550 001e FB68     		ldr	r3, [r7, #12]
+ 551 0020 002B     		cmp	r3, #0
+ 552 0022 03D1     		bne	.L30
+ 553 0024 7A68     		ldr	r2, [r7, #4]
+ 554 0026 0223     		mov	r3, #2
+ 555 0028 1340     		and	r3, r2
+ 556 002a F3D1     		bne	.L31
+ 557              	.L30:
+ 395:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 396:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         if(status != 0u)
+ 558              		.loc 1 396 0
+ 559 002c FB68     		ldr	r3, [r7, #12]
+ 560 002e 002B     		cmp	r3, #0
+ 561 0030 02D0     		beq	.L29
+ 397:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         {
+ 398:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****             /* Clear EOS bit */
+ 399:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****             ADC_ACCELEROMETER_SAR_INTR_REG = ADC_ACCELEROMETER_EOS_MASK;
+ 562              		.loc 1 399 0
+ 563 0032 044B     		ldr	r3, .L33
+ 564 0034 0122     		mov	r2, #1
+ 565 0036 1A60     		str	r2, [r3]
+ 566              	.L29:
+ 400:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         }
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpMcttb.s 			page 18
+
+
+ 401:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     }
+ 402:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 403:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     #if(ADC_ACCELEROMETER_INJ_CHANNEL_ENABLED)
+ 404:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         if((retMode & (ADC_ACCELEROMETER_RETURN_STATUS_INJ | ADC_ACCELEROMETER_WAIT_FOR_RESULT_INJ)
+ 405:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         {
+ 406:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****             do
+ 407:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****             {
+ 408:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****                 status |= ADC_ACCELEROMETER_SAR_INTR_REG & ADC_ACCELEROMETER_INJ_EOC_MASK;
+ 409:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****             }while(((status & ADC_ACCELEROMETER_INJ_EOC_MASK) != 0u) &&
+ 410:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****                    ((retMode & ADC_ACCELEROMETER_WAIT_FOR_RESULT_INJ) != 0u));
+ 411:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 412:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****             if((status & ADC_ACCELEROMETER_INJ_EOC_MASK) != 0u)
+ 413:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****             {
+ 414:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****                 /* Clear Injection EOS bit */
+ 415:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****                 ADC_ACCELEROMETER_SAR_INTR_REG = ADC_ACCELEROMETER_INJ_EOC_MASK;
+ 416:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****             }
+ 417:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         }
+ 418:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     #endif /* ADC_ACCELEROMETER_INJ_CHANNEL_ENABLED */
+ 419:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 420:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     return (status);
+ 567              		.loc 1 420 0
+ 568 0038 FB68     		ldr	r3, [r7, #12]
+ 421:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** }
+ 569              		.loc 1 421 0
+ 570 003a 181C     		mov	r0, r3
+ 571 003c BD46     		mov	sp, r7
+ 572 003e 04B0     		add	sp, sp, #16
+ 573              		@ sp needed for prologue
+ 574 0040 80BD     		pop	{r7, pc}
+ 575              	.L34:
+ 576 0042 C046     		.align	2
+ 577              	.L33:
+ 578 0044 10021A40 		.word	1075446288
+ 579              		.cfi_endproc
+ 580              	.LFE6:
+ 581              		.size	ADC_ACCELEROMETER_IsEndConversion, .-ADC_ACCELEROMETER_IsEndConversion
+ 582              		.section	.text.ADC_ACCELEROMETER_GetResult16,"ax",%progbits
+ 583              		.align	2
+ 584              		.global	ADC_ACCELEROMETER_GetResult16
+ 585              		.code	16
+ 586              		.thumb_func
+ 587              		.type	ADC_ACCELEROMETER_GetResult16, %function
+ 588              	ADC_ACCELEROMETER_GetResult16:
+ 589              	.LFB7:
+ 422:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 423:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 424:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** /*******************************************************************************
+ 425:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Function Name: ADC_ACCELEROMETER_GetResult16
+ 426:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** ********************************************************************************
+ 427:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *
+ 428:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Summary:
+ 429:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  Gets the data available in the SAR DATA register.
+ 430:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *
+ 431:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Parameters:
+ 432:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  chan: The ADC channel in which to return the result. The first channel
+ 433:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  is 0 and the injection channel if enabled is the number of valid channels.
+ 434:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpMcttb.s 			page 19
+
+
+ 435:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Return:
+ 436:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  Returns converted data as a signed 16-bit integer
+ 437:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *
+ 438:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *******************************************************************************/
+ 439:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** int16 ADC_ACCELEROMETER_GetResult16(uint32 chan)
+ 440:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** {
+ 590              		.loc 1 440 0
+ 591              		.cfi_startproc
+ 592 0000 80B5     		push	{r7, lr}
+ 593              	.LCFI16:
+ 594              		.cfi_def_cfa_offset 8
+ 595              		.cfi_offset 7, -8
+ 596              		.cfi_offset 14, -4
+ 597 0002 84B0     		sub	sp, sp, #16
+ 598              	.LCFI17:
+ 599              		.cfi_def_cfa_offset 24
+ 600 0004 00AF     		add	r7, sp, #0
+ 601              	.LCFI18:
+ 602              		.cfi_def_cfa_register 7
+ 603 0006 7860     		str	r0, [r7, #4]
+ 441:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     uint32 result;
+ 442:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 443:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     /* Halt CPU in debug mode if channel is out of valid range */
+ 444:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     CYASSERT(chan < ADC_ACCELEROMETER_TOTAL_CHANNELS_NUM);
+ 604              		.loc 1 444 0
+ 605 0008 7B68     		ldr	r3, [r7, #4]
+ 606 000a 022B     		cmp	r3, #2
+ 607 000c 02D9     		bls	.L36
+ 608              		.loc 1 444 0 is_stmt 0 discriminator 1
+ 609 000e 0020     		mov	r0, #0
+ 610 0010 FFF7FEFF 		bl	CyHalt
+ 611              	.L36:
+ 445:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 446:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     if(chan < ADC_ACCELEROMETER_SEQUENCED_CHANNELS_NUM)
+ 612              		.loc 1 446 0 is_stmt 1
+ 613 0014 7B68     		ldr	r3, [r7, #4]
+ 614 0016 022B     		cmp	r3, #2
+ 615 0018 08D8     		bhi	.L37
+ 447:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     {
+ 448:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         result = CY_GET_REG32((reg32 *)(ADC_ACCELEROMETER_SAR_CHAN_RESULT_IND + (uint32)(chan << 2u
+ 616              		.loc 1 448 0
+ 617 001a 7B68     		ldr	r3, [r7, #4]
+ 618 001c 9B00     		lsl	r3, r3, #2
+ 619 001e 084A     		ldr	r2, .L40
+ 620 0020 9B18     		add	r3, r3, r2
+ 621 0022 1B68     		ldr	r3, [r3]
+ 622 0024 1B04     		lsl	r3, r3, #16
+ 623 0026 1B0C     		lsr	r3, r3, #16
+ 624 0028 FB60     		str	r3, [r7, #12]
+ 625 002a 01E0     		b	.L38
+ 626              	.L37:
+ 449:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****                 ADC_ACCELEROMETER_RESULT_MASK;
+ 450:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     }
+ 451:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     else
+ 452:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     {
+ 453:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         #if(ADC_ACCELEROMETER_INJ_CHANNEL_ENABLED)
+ 454:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****             result = ADC_ACCELEROMETER_SAR_INJ_RESULT_REG & ADC_ACCELEROMETER_RESULT_MASK;
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpMcttb.s 			page 20
+
+
+ 455:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         #else
+ 456:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****             result = 0u;
+ 627              		.loc 1 456 0
+ 628 002c 0023     		mov	r3, #0
+ 629 002e FB60     		str	r3, [r7, #12]
+ 630              	.L38:
+ 457:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         #endif /* ADC_ACCELEROMETER_INJ_CHANNEL_ENABLED */
+ 458:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     }
+ 459:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 460:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     return ( (int16)result );
+ 631              		.loc 1 460 0
+ 632 0030 FB68     		ldr	r3, [r7, #12]
+ 633 0032 9BB2     		uxth	r3, r3
+ 634 0034 1BB2     		sxth	r3, r3
+ 461:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** }
+ 635              		.loc 1 461 0
+ 636 0036 181C     		mov	r0, r3
+ 637 0038 BD46     		mov	sp, r7
+ 638 003a 04B0     		add	sp, sp, #16
+ 639              		@ sp needed for prologue
+ 640 003c 80BD     		pop	{r7, pc}
+ 641              	.L41:
+ 642 003e C046     		.align	2
+ 643              	.L40:
+ 644 0040 80011A40 		.word	1075446144
+ 645              		.cfi_endproc
+ 646              	.LFE7:
+ 647              		.size	ADC_ACCELEROMETER_GetResult16, .-ADC_ACCELEROMETER_GetResult16
+ 648              		.section	.text.ADC_ACCELEROMETER_SetChanMask,"ax",%progbits
+ 649              		.align	2
+ 650              		.global	ADC_ACCELEROMETER_SetChanMask
+ 651              		.code	16
+ 652              		.thumb_func
+ 653              		.type	ADC_ACCELEROMETER_SetChanMask, %function
+ 654              	ADC_ACCELEROMETER_SetChanMask:
+ 655              	.LFB8:
+ 462:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 463:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 464:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** /*******************************************************************************
+ 465:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Function Name: ADC_ACCELEROMETER_SetChanMask
+ 466:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** ********************************************************************************
+ 467:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *
+ 468:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Summary:
+ 469:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  Sets the channel enable mask.
+ 470:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *
+ 471:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Parameters:
+ 472:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  mask: Sets which channels that will be
+ 473:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  scanned. Setting bits for channels that do not exist will have no
+ 474:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  effect. For example, if only 6 channels were enabled, setting a
+ 475:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  mask of 0x0103 would only enable the last two channels (0 and 1).
+ 476:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  This API will not enable the injection channel.
+ 477:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  Examples: If the component is setup to sequence through 8
+ 478:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  channels, a mask of 0x000F would enable channels 0, 1, 2, and 3.
+ 479:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *
+ 480:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Return:
+ 481:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  None.
+ 482:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpMcttb.s 			page 21
+
+
+ 483:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *******************************************************************************/
+ 484:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** void ADC_ACCELEROMETER_SetChanMask(uint32 mask)
+ 485:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** {
+ 656              		.loc 1 485 0
+ 657              		.cfi_startproc
+ 658 0000 80B5     		push	{r7, lr}
+ 659              	.LCFI19:
+ 660              		.cfi_def_cfa_offset 8
+ 661              		.cfi_offset 7, -8
+ 662              		.cfi_offset 14, -4
+ 663 0002 82B0     		sub	sp, sp, #8
+ 664              	.LCFI20:
+ 665              		.cfi_def_cfa_offset 16
+ 666 0004 00AF     		add	r7, sp, #0
+ 667              	.LCFI21:
+ 668              		.cfi_def_cfa_register 7
+ 669 0006 7860     		str	r0, [r7, #4]
+ 486:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     ADC_ACCELEROMETER_SAR_CHAN_EN_REG = mask & ADC_ACCELEROMETER_MAX_CHANNELS_EN_MASK;
+ 670              		.loc 1 486 0
+ 671 0008 034B     		ldr	r3, .L43
+ 672 000a 7968     		ldr	r1, [r7, #4]
+ 673 000c 0722     		mov	r2, #7
+ 674 000e 0A40     		and	r2, r1
+ 675 0010 1A60     		str	r2, [r3]
+ 487:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** }
+ 676              		.loc 1 487 0
+ 677 0012 BD46     		mov	sp, r7
+ 678 0014 02B0     		add	sp, sp, #8
+ 679              		@ sp needed for prologue
+ 680 0016 80BD     		pop	{r7, pc}
+ 681              	.L44:
+ 682              		.align	2
+ 683              	.L43:
+ 684 0018 20001A40 		.word	1075445792
+ 685              		.cfi_endproc
+ 686              	.LFE8:
+ 687              		.size	ADC_ACCELEROMETER_SetChanMask, .-ADC_ACCELEROMETER_SetChanMask
+ 688              		.section	.text.ADC_ACCELEROMETER_SetLowLimit,"ax",%progbits
+ 689              		.align	2
+ 690              		.global	ADC_ACCELEROMETER_SetLowLimit
+ 691              		.code	16
+ 692              		.thumb_func
+ 693              		.type	ADC_ACCELEROMETER_SetLowLimit, %function
+ 694              	ADC_ACCELEROMETER_SetLowLimit:
+ 695              	.LFB9:
+ 488:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 489:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** #if(ADC_ACCELEROMETER_INJ_CHANNEL_ENABLED)
+ 490:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 491:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 492:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     /*******************************************************************************
+ 493:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     * Function Name: ADC_ACCELEROMETER_EnableInjection
+ 494:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     ********************************************************************************
+ 495:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     *
+ 496:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     * Summary:
+ 497:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     *  Enables the injection channel for the next scan only.
+ 498:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     *
+ 499:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     * Parameters:
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpMcttb.s 			page 22
+
+
+ 500:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     *  None.
+ 501:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     *
+ 502:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     * Return:
+ 503:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     *  None.
+ 504:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     *
+ 505:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     *******************************************************************************/
+ 506:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     void ADC_ACCELEROMETER_EnableInjection(void)
+ 507:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     {
+ 508:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         ADC_ACCELEROMETER_SAR_INJ_CHAN_CONFIG_REG |= ADC_ACCELEROMETER_INJ_CHAN_EN;
+ 509:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     }
+ 510:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 511:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** #endif /* ADC_ACCELEROMETER_INJ_CHANNEL_ENABLED */
+ 512:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 513:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 514:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** /*******************************************************************************
+ 515:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Function Name: ADC_ACCELEROMETER_SetLowLimit
+ 516:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** ********************************************************************************
+ 517:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *
+ 518:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Summary:
+ 519:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  Sets the low limit parameter for a limit condition.
+ 520:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *
+ 521:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Parameters:
+ 522:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  lowLimit: The low limit for a limit condition.
+ 523:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *
+ 524:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Return:
+ 525:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  None.
+ 526:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *
+ 527:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *******************************************************************************/
+ 528:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** void ADC_ACCELEROMETER_SetLowLimit(uint32 lowLimit)
+ 529:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** {
+ 696              		.loc 1 529 0
+ 697              		.cfi_startproc
+ 698 0000 80B5     		push	{r7, lr}
+ 699              	.LCFI22:
+ 700              		.cfi_def_cfa_offset 8
+ 701              		.cfi_offset 7, -8
+ 702              		.cfi_offset 14, -4
+ 703 0002 82B0     		sub	sp, sp, #8
+ 704              	.LCFI23:
+ 705              		.cfi_def_cfa_offset 16
+ 706 0004 00AF     		add	r7, sp, #0
+ 707              	.LCFI24:
+ 708              		.cfi_def_cfa_register 7
+ 709 0006 7860     		str	r0, [r7, #4]
+ 530:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     ADC_ACCELEROMETER_SAR_RANGE_THRES_REG &= (uint32)(~ADC_ACCELEROMETER_RANGE_LOW_MASK);
+ 710              		.loc 1 530 0
+ 711 0008 084B     		ldr	r3, .L46
+ 712 000a 084A     		ldr	r2, .L46
+ 713 000c 1268     		ldr	r2, [r2]
+ 714 000e 120C     		lsr	r2, r2, #16
+ 715 0010 1204     		lsl	r2, r2, #16
+ 716 0012 1A60     		str	r2, [r3]
+ 531:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     ADC_ACCELEROMETER_SAR_RANGE_THRES_REG |= lowLimit & ADC_ACCELEROMETER_RANGE_LOW_MASK;
+ 717              		.loc 1 531 0
+ 718 0014 054B     		ldr	r3, .L46
+ 719 0016 054A     		ldr	r2, .L46
+ 720 0018 1168     		ldr	r1, [r2]
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpMcttb.s 			page 23
+
+
+ 721 001a 7A68     		ldr	r2, [r7, #4]
+ 722 001c 1204     		lsl	r2, r2, #16
+ 723 001e 120C     		lsr	r2, r2, #16
+ 724 0020 0A43     		orr	r2, r1
+ 725 0022 1A60     		str	r2, [r3]
+ 532:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** }
+ 726              		.loc 1 532 0
+ 727 0024 BD46     		mov	sp, r7
+ 728 0026 02B0     		add	sp, sp, #8
+ 729              		@ sp needed for prologue
+ 730 0028 80BD     		pop	{r7, pc}
+ 731              	.L47:
+ 732 002a C046     		.align	2
+ 733              	.L46:
+ 734 002c 18001A40 		.word	1075445784
+ 735              		.cfi_endproc
+ 736              	.LFE9:
+ 737              		.size	ADC_ACCELEROMETER_SetLowLimit, .-ADC_ACCELEROMETER_SetLowLimit
+ 738              		.section	.text.ADC_ACCELEROMETER_SetHighLimit,"ax",%progbits
+ 739              		.align	2
+ 740              		.global	ADC_ACCELEROMETER_SetHighLimit
+ 741              		.code	16
+ 742              		.thumb_func
+ 743              		.type	ADC_ACCELEROMETER_SetHighLimit, %function
+ 744              	ADC_ACCELEROMETER_SetHighLimit:
+ 745              	.LFB10:
+ 533:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 534:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 535:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** /*******************************************************************************
+ 536:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Function Name: ADC_ACCELEROMETER_SetHighLimit
+ 537:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** ********************************************************************************
+ 538:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *
+ 539:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Summary:
+ 540:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  Sets the low limit parameter for a limit condition.
+ 541:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *
+ 542:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Parameters:
+ 543:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  highLimit: The high limit for a limit condition.
+ 544:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *
+ 545:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Return:
+ 546:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  None.
+ 547:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *
+ 548:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *******************************************************************************/
+ 549:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** void ADC_ACCELEROMETER_SetHighLimit(uint32 highLimit)
+ 550:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** {
+ 746              		.loc 1 550 0
+ 747              		.cfi_startproc
+ 748 0000 80B5     		push	{r7, lr}
+ 749              	.LCFI25:
+ 750              		.cfi_def_cfa_offset 8
+ 751              		.cfi_offset 7, -8
+ 752              		.cfi_offset 14, -4
+ 753 0002 82B0     		sub	sp, sp, #8
+ 754              	.LCFI26:
+ 755              		.cfi_def_cfa_offset 16
+ 756 0004 00AF     		add	r7, sp, #0
+ 757              	.LCFI27:
+ 758              		.cfi_def_cfa_register 7
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpMcttb.s 			page 24
+
+
+ 759 0006 7860     		str	r0, [r7, #4]
+ 551:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     ADC_ACCELEROMETER_SAR_RANGE_THRES_REG &= (uint32)(~ADC_ACCELEROMETER_RANGE_HIGH_MASK);
+ 760              		.loc 1 551 0
+ 761 0008 074B     		ldr	r3, .L49
+ 762 000a 074A     		ldr	r2, .L49
+ 763 000c 1268     		ldr	r2, [r2]
+ 764 000e 1204     		lsl	r2, r2, #16
+ 765 0010 120C     		lsr	r2, r2, #16
+ 766 0012 1A60     		str	r2, [r3]
+ 552:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     ADC_ACCELEROMETER_SAR_RANGE_THRES_REG |= (uint32)(highLimit << ADC_ACCELEROMETER_RANGE_HIGH_OFF
+ 767              		.loc 1 552 0
+ 768 0014 044B     		ldr	r3, .L49
+ 769 0016 044A     		ldr	r2, .L49
+ 770 0018 1168     		ldr	r1, [r2]
+ 771 001a 7A68     		ldr	r2, [r7, #4]
+ 772 001c 1204     		lsl	r2, r2, #16
+ 773 001e 0A43     		orr	r2, r1
+ 774 0020 1A60     		str	r2, [r3]
+ 553:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** }
+ 775              		.loc 1 553 0
+ 776 0022 BD46     		mov	sp, r7
+ 777 0024 02B0     		add	sp, sp, #8
+ 778              		@ sp needed for prologue
+ 779 0026 80BD     		pop	{r7, pc}
+ 780              	.L50:
+ 781              		.align	2
+ 782              	.L49:
+ 783 0028 18001A40 		.word	1075445784
+ 784              		.cfi_endproc
+ 785              	.LFE10:
+ 786              		.size	ADC_ACCELEROMETER_SetHighLimit, .-ADC_ACCELEROMETER_SetHighLimit
+ 787              		.section	.text.ADC_ACCELEROMETER_SetLimitMask,"ax",%progbits
+ 788              		.align	2
+ 789              		.global	ADC_ACCELEROMETER_SetLimitMask
+ 790              		.code	16
+ 791              		.thumb_func
+ 792              		.type	ADC_ACCELEROMETER_SetLimitMask, %function
+ 793              	ADC_ACCELEROMETER_SetLimitMask:
+ 794              	.LFB11:
+ 554:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 555:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 556:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** /*******************************************************************************
+ 557:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Function Name: ADC_ACCELEROMETER_SetLimitMask
+ 558:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** ********************************************************************************
+ 559:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *
+ 560:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Summary:
+ 561:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  Sets the channel limit condition mask.
+ 562:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *
+ 563:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Parameters:
+ 564:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  mask: Sets which channels that may cause a
+ 565:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  limit condition interrupt. Setting bits for channels that do not exist
+ 566:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  will have no effect. For example, if only 6 channels were enabled,
+ 567:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  setting a mask of 0x0103 would only enable the last two channels (0 and 1).
+ 568:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *
+ 569:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Return:
+ 570:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  None.
+ 571:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpMcttb.s 			page 25
+
+
+ 572:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *******************************************************************************/
+ 573:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** void ADC_ACCELEROMETER_SetLimitMask(uint32 mask)
+ 574:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** {
+ 795              		.loc 1 574 0
+ 796              		.cfi_startproc
+ 797 0000 80B5     		push	{r7, lr}
+ 798              	.LCFI28:
+ 799              		.cfi_def_cfa_offset 8
+ 800              		.cfi_offset 7, -8
+ 801              		.cfi_offset 14, -4
+ 802 0002 82B0     		sub	sp, sp, #8
+ 803              	.LCFI29:
+ 804              		.cfi_def_cfa_offset 16
+ 805 0004 00AF     		add	r7, sp, #0
+ 806              	.LCFI30:
+ 807              		.cfi_def_cfa_register 7
+ 808 0006 7860     		str	r0, [r7, #4]
+ 575:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     ADC_ACCELEROMETER_SAR_RANGE_INTR_MASK_REG = mask & ADC_ACCELEROMETER_MAX_CHANNELS_EN_MASK;
+ 809              		.loc 1 575 0
+ 810 0008 034B     		ldr	r3, .L52
+ 811 000a 7968     		ldr	r1, [r7, #4]
+ 812 000c 0722     		mov	r2, #7
+ 813 000e 0A40     		and	r2, r1
+ 814 0010 1A60     		str	r2, [r3]
+ 576:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** }
+ 815              		.loc 1 576 0
+ 816 0012 BD46     		mov	sp, r7
+ 817 0014 02B0     		add	sp, sp, #8
+ 818              		@ sp needed for prologue
+ 819 0016 80BD     		pop	{r7, pc}
+ 820              	.L53:
+ 821              		.align	2
+ 822              	.L52:
+ 823 0018 38021A40 		.word	1075446328
+ 824              		.cfi_endproc
+ 825              	.LFE11:
+ 826              		.size	ADC_ACCELEROMETER_SetLimitMask, .-ADC_ACCELEROMETER_SetLimitMask
+ 827              		.section	.text.ADC_ACCELEROMETER_SetSatMask,"ax",%progbits
+ 828              		.align	2
+ 829              		.global	ADC_ACCELEROMETER_SetSatMask
+ 830              		.code	16
+ 831              		.thumb_func
+ 832              		.type	ADC_ACCELEROMETER_SetSatMask, %function
+ 833              	ADC_ACCELEROMETER_SetSatMask:
+ 834              	.LFB12:
+ 577:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 578:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 579:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** /*******************************************************************************
+ 580:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Function Name: ADC_ACCELEROMETER_SetSatMask
+ 581:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** ********************************************************************************
+ 582:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *
+ 583:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Summary:
+ 584:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  Sets the channel saturation event mask.
+ 585:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *
+ 586:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Parameters:
+ 587:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  mask: Sets which channels that may cause a
+ 588:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  saturation event interrupt. Setting bits for channels that do not exist
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpMcttb.s 			page 26
+
+
+ 589:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  will have no effect. For example, if only 8 channels were enabled,
+ 590:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  setting a mask of 0x01C0 would only enable two channels (6 and 7).
+ 591:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *
+ 592:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Return:
+ 593:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  None.
+ 594:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *
+ 595:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *******************************************************************************/
+ 596:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** void ADC_ACCELEROMETER_SetSatMask(uint32 mask)
+ 597:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** {
+ 835              		.loc 1 597 0
+ 836              		.cfi_startproc
+ 837 0000 80B5     		push	{r7, lr}
+ 838              	.LCFI31:
+ 839              		.cfi_def_cfa_offset 8
+ 840              		.cfi_offset 7, -8
+ 841              		.cfi_offset 14, -4
+ 842 0002 82B0     		sub	sp, sp, #8
+ 843              	.LCFI32:
+ 844              		.cfi_def_cfa_offset 16
+ 845 0004 00AF     		add	r7, sp, #0
+ 846              	.LCFI33:
+ 847              		.cfi_def_cfa_register 7
+ 848 0006 7860     		str	r0, [r7, #4]
+ 598:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     ADC_ACCELEROMETER_SAR_SATURATE_INTR_MASK_REG = mask & ADC_ACCELEROMETER_MAX_CHANNELS_EN_MASK;
+ 849              		.loc 1 598 0
+ 850 0008 034B     		ldr	r3, .L55
+ 851 000a 7968     		ldr	r1, [r7, #4]
+ 852 000c 0722     		mov	r2, #7
+ 853 000e 0A40     		and	r2, r1
+ 854 0010 1A60     		str	r2, [r3]
+ 599:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** }
+ 855              		.loc 1 599 0
+ 856 0012 BD46     		mov	sp, r7
+ 857 0014 02B0     		add	sp, sp, #8
+ 858              		@ sp needed for prologue
+ 859 0016 80BD     		pop	{r7, pc}
+ 860              	.L56:
+ 861              		.align	2
+ 862              	.L55:
+ 863 0018 28021A40 		.word	1075446312
+ 864              		.cfi_endproc
+ 865              	.LFE12:
+ 866              		.size	ADC_ACCELEROMETER_SetSatMask, .-ADC_ACCELEROMETER_SetSatMask
+ 867              		.section	.text.ADC_ACCELEROMETER_SetOffset,"ax",%progbits
+ 868              		.align	2
+ 869              		.global	ADC_ACCELEROMETER_SetOffset
+ 870              		.code	16
+ 871              		.thumb_func
+ 872              		.type	ADC_ACCELEROMETER_SetOffset, %function
+ 873              	ADC_ACCELEROMETER_SetOffset:
+ 874              	.LFB13:
+ 600:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 601:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 602:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** /*******************************************************************************
+ 603:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Function Name: ADC_ACCELEROMETER_SetOffset
+ 604:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** ********************************************************************************
+ 605:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpMcttb.s 			page 27
+
+
+ 606:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Summary:
+ 607:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *   Description: Sets the ADC offset which is used by the functions
+ 608:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *   ADC_CountsTo_uVolts, ADC_CountsTo_mVolts and ADC_CountsTo_Volts
+ 609:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *   to substract the offset from the given reading
+ 610:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *   before calculating the voltage conversion.
+ 611:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *
+ 612:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Parameters:
+ 613:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  chan: ADC channel number.
+ 614:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  offset: This value is a measured value when the
+ 615:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *          inputs are shorted or connected to the same input voltage.
+ 616:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *
+ 617:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Return:
+ 618:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  None.
+ 619:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *
+ 620:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Global variables:
+ 621:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  ADC_ACCELEROMETER_Offset:  Modified to set the user provided offset.
+ 622:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *
+ 623:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *******************************************************************************/
+ 624:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** void ADC_ACCELEROMETER_SetOffset(uint32 chan, int16 offset)
+ 625:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** {
+ 875              		.loc 1 625 0
+ 876              		.cfi_startproc
+ 877 0000 80B5     		push	{r7, lr}
+ 878              	.LCFI34:
+ 879              		.cfi_def_cfa_offset 8
+ 880              		.cfi_offset 7, -8
+ 881              		.cfi_offset 14, -4
+ 882 0002 82B0     		sub	sp, sp, #8
+ 883              	.LCFI35:
+ 884              		.cfi_def_cfa_offset 16
+ 885 0004 00AF     		add	r7, sp, #0
+ 886              	.LCFI36:
+ 887              		.cfi_def_cfa_register 7
+ 888 0006 7860     		str	r0, [r7, #4]
+ 889 0008 0A1C     		mov	r2, r1
+ 890 000a BB1C     		add	r3, r7, #2
+ 891 000c 1A80     		strh	r2, [r3]
+ 626:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     /* Halt CPU in debug mode if channel is out of valid range */
+ 627:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     CYASSERT(chan < ADC_ACCELEROMETER_TOTAL_CHANNELS_NUM);
+ 892              		.loc 1 627 0
+ 893 000e 7B68     		ldr	r3, [r7, #4]
+ 894 0010 022B     		cmp	r3, #2
+ 895 0012 02D9     		bls	.L58
+ 896              		.loc 1 627 0 is_stmt 0 discriminator 1
+ 897 0014 0020     		mov	r0, #0
+ 898 0016 FFF7FEFF 		bl	CyHalt
+ 899              	.L58:
+ 628:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 629:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     ADC_ACCELEROMETER_offset[chan] = offset;
+ 900              		.loc 1 629 0 is_stmt 1
+ 901 001a 044B     		ldr	r3, .L59
+ 902 001c 7A68     		ldr	r2, [r7, #4]
+ 903 001e 5200     		lsl	r2, r2, #1
+ 904 0020 B91C     		add	r1, r7, #2
+ 905 0022 0988     		ldrh	r1, [r1]
+ 906 0024 D152     		strh	r1, [r2, r3]
+ 630:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** }
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpMcttb.s 			page 28
+
+
+ 907              		.loc 1 630 0
+ 908 0026 BD46     		mov	sp, r7
+ 909 0028 02B0     		add	sp, sp, #8
+ 910              		@ sp needed for prologue
+ 911 002a 80BD     		pop	{r7, pc}
+ 912              	.L60:
+ 913              		.align	2
+ 914              	.L59:
+ 915 002c 00000000 		.word	ADC_ACCELEROMETER_offset
+ 916              		.cfi_endproc
+ 917              	.LFE13:
+ 918              		.size	ADC_ACCELEROMETER_SetOffset, .-ADC_ACCELEROMETER_SetOffset
+ 919              		.section	.text.ADC_ACCELEROMETER_SetGain,"ax",%progbits
+ 920              		.align	2
+ 921              		.global	ADC_ACCELEROMETER_SetGain
+ 922              		.code	16
+ 923              		.thumb_func
+ 924              		.type	ADC_ACCELEROMETER_SetGain, %function
+ 925              	ADC_ACCELEROMETER_SetGain:
+ 926              	.LFB14:
+ 631:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 632:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 633:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** /*******************************************************************************
+ 634:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Function Name: ADC_ACCELEROMETER_SetGain
+ 635:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** ********************************************************************************
+ 636:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *
+ 637:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Summary:
+ 638:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  Description: Sets the ADC gain in counts per 10 volt for the voltage
+ 639:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  conversion functions below. This value is set by default by the
+ 640:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  reference and input range settings. It should only be used to further
+ 641:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  calibrate the ADC with a known input or if an external reference is
+ 642:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  used. Affects the ADC_CountsTo_uVolts, ADC_CountsTo_mVolts
+ 643:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  and ADC_CountsTo_Volts functions by supplying the correct
+ 644:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  conversion between ADC counts and voltage.
+ 645:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *
+ 646:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Parameters:
+ 647:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  chan: ADC channel number.
+ 648:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  adcGain: ADC gain in counts per 10 volts.
+ 649:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *
+ 650:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Return:
+ 651:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  None.
+ 652:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *
+ 653:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** * Global variables:
+ 654:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *  ADC_ACCELEROMETER_CountsPer10Volt:  modified to set the ADC gain in counts 
+ 655:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *   per 10 volt.
+ 656:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *
+ 657:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** *******************************************************************************/
+ 658:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** void ADC_ACCELEROMETER_SetGain(uint32 chan, int32 adcGain)
+ 659:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** {
+ 927              		.loc 1 659 0
+ 928              		.cfi_startproc
+ 929 0000 80B5     		push	{r7, lr}
+ 930              	.LCFI37:
+ 931              		.cfi_def_cfa_offset 8
+ 932              		.cfi_offset 7, -8
+ 933              		.cfi_offset 14, -4
+ 934 0002 82B0     		sub	sp, sp, #8
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpMcttb.s 			page 29
+
+
+ 935              	.LCFI38:
+ 936              		.cfi_def_cfa_offset 16
+ 937 0004 00AF     		add	r7, sp, #0
+ 938              	.LCFI39:
+ 939              		.cfi_def_cfa_register 7
+ 940 0006 7860     		str	r0, [r7, #4]
+ 941 0008 3960     		str	r1, [r7]
+ 660:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     /* Halt CPU in debug mode if channel is out of valid range */
+ 661:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     CYASSERT(chan < ADC_ACCELEROMETER_TOTAL_CHANNELS_NUM);
+ 942              		.loc 1 661 0
+ 943 000a 7B68     		ldr	r3, [r7, #4]
+ 944 000c 022B     		cmp	r3, #2
+ 945 000e 02D9     		bls	.L62
+ 946              		.loc 1 661 0 is_stmt 0 discriminator 1
+ 947 0010 0020     		mov	r0, #0
+ 948 0012 FFF7FEFF 		bl	CyHalt
+ 949              	.L62:
+ 662:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 663:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     ADC_ACCELEROMETER_countsPer10Volt[chan] = adcGain;
+ 950              		.loc 1 663 0 is_stmt 1
+ 951 0016 044B     		ldr	r3, .L63
+ 952 0018 7A68     		ldr	r2, [r7, #4]
+ 953 001a 9200     		lsl	r2, r2, #2
+ 954 001c 3968     		ldr	r1, [r7]
+ 955 001e D150     		str	r1, [r2, r3]
+ 664:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** }
+ 956              		.loc 1 664 0
+ 957 0020 BD46     		mov	sp, r7
+ 958 0022 02B0     		add	sp, sp, #8
+ 959              		@ sp needed for prologue
+ 960 0024 80BD     		pop	{r7, pc}
+ 961              	.L64:
+ 962 0026 C046     		.align	2
+ 963              	.L63:
+ 964 0028 00000000 		.word	ADC_ACCELEROMETER_countsPer10Volt
+ 965              		.cfi_endproc
+ 966              	.LFE14:
+ 967              		.size	ADC_ACCELEROMETER_SetGain, .-ADC_ACCELEROMETER_SetGain
+ 968              		.section	.text.ADC_ACCELEROMETER_CountsTo_mVolts,"ax",%progbits
+ 969              		.align	2
+ 970              		.global	ADC_ACCELEROMETER_CountsTo_mVolts
+ 971              		.code	16
+ 972              		.thumb_func
+ 973              		.type	ADC_ACCELEROMETER_CountsTo_mVolts, %function
+ 974              	ADC_ACCELEROMETER_CountsTo_mVolts:
+ 975              	.LFB15:
+ 665:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 666:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 667:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** #if(ADC_ACCELEROMETER_DEFAULT_JUSTIFICATION_SEL == ADC_ACCELEROMETER__RIGHT)
+ 668:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 669:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 670:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     /*******************************************************************************
+ 671:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     * Function Name: ADC_ACCELEROMETER_CountsTo_mVolts
+ 672:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     ********************************************************************************
+ 673:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     *
+ 674:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     * Summary:
+ 675:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     *  This function converts ADC counts to mVolts
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpMcttb.s 			page 30
+
+
+ 676:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     *  This function is not available when left data format justification selected.
+ 677:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     *
+ 678:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     * Parameters:
+ 679:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     *  chan: The ADC channel number.
+ 680:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     *  adcCounts: Result from the ADC conversion
+ 681:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     *
+ 682:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     * Return:
+ 683:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     *  Results in mVolts
+ 684:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     *
+ 685:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     * Global variables:
+ 686:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     *  ADC_ACCELEROMETER_countsPer10Volt:  used to convert ADC counts to mVolts.
+ 687:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     *  ADC_ACCELEROMETER_Offset:  Used as the offset while converting ADC counts 
+ 688:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     *   to mVolts.
+ 689:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     *
+ 690:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     *******************************************************************************/
+ 691:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     int16 ADC_ACCELEROMETER_CountsTo_mVolts(uint32 chan, int16 adcCounts)
+ 692:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     {
+ 976              		.loc 1 692 0
+ 977              		.cfi_startproc
+ 978 0000 80B5     		push	{r7, lr}
+ 979              	.LCFI40:
+ 980              		.cfi_def_cfa_offset 8
+ 981              		.cfi_offset 7, -8
+ 982              		.cfi_offset 14, -4
+ 983 0002 84B0     		sub	sp, sp, #16
+ 984              	.LCFI41:
+ 985              		.cfi_def_cfa_offset 24
+ 986 0004 00AF     		add	r7, sp, #0
+ 987              	.LCFI42:
+ 988              		.cfi_def_cfa_register 7
+ 989 0006 7860     		str	r0, [r7, #4]
+ 990 0008 0A1C     		mov	r2, r1
+ 991 000a BB1C     		add	r3, r7, #2
+ 992 000c 1A80     		strh	r2, [r3]
+ 693:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         int16 mVolts;
+ 694:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 695:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         /* Halt CPU in debug mode if channel is out of valid range */
+ 696:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         CYASSERT(chan < ADC_ACCELEROMETER_TOTAL_CHANNELS_NUM);
+ 993              		.loc 1 696 0
+ 994 000e 7B68     		ldr	r3, [r7, #4]
+ 995 0010 022B     		cmp	r3, #2
+ 996 0012 02D9     		bls	.L66
+ 997              		.loc 1 696 0 is_stmt 0 discriminator 1
+ 998 0014 0020     		mov	r0, #0
+ 999 0016 FFF7FEFF 		bl	CyHalt
+ 1000              	.L66:
+ 697:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 698:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         /* Divide the adcCount when accumulate averaging mode selected */
+ 699:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         #if(ADC_ACCELEROMETER_DEFAULT_AVG_MODE == ADC_ACCELEROMETER__ACCUMULATE)
+ 700:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****             if((ADC_ACCELEROMETER_channelsConfig[chan] & ADC_ACCELEROMETER_AVERAGING_EN) != 0u)
+ 701:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****             {
+ 702:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****                 adcCounts /= ADC_ACCELEROMETER_DEFAULT_AVG_SAMPLES_DIV;
+ 703:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****             }    
+ 704:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         #endif /* ADC_ACCELEROMETER_DEFAULT_AVG_MODE == ADC_ACCELEROMETER__ACCUMULATE */
+ 705:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 706:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         /* Subtract ADC offset */
+ 707:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         adcCounts -= ADC_ACCELEROMETER_offset[chan];
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpMcttb.s 			page 31
+
+
+ 1001              		.loc 1 707 0 is_stmt 1
+ 1002 001a BB1C     		add	r3, r7, #2
+ 1003 001c 1A88     		ldrh	r2, [r3]
+ 1004 001e 1E4B     		ldr	r3, .L72
+ 1005 0020 7968     		ldr	r1, [r7, #4]
+ 1006 0022 4900     		lsl	r1, r1, #1
+ 1007 0024 CB5A     		ldrh	r3, [r1, r3]
+ 1008 0026 9BB2     		uxth	r3, r3
+ 1009 0028 9BB2     		uxth	r3, r3
+ 1010 002a D31A     		sub	r3, r2, r3
+ 1011 002c 9AB2     		uxth	r2, r3
+ 1012 002e BB1C     		add	r3, r7, #2
+ 1013 0030 1A80     		strh	r2, [r3]
+ 708:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 709:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         mVolts = (int16)((((int32)adcCounts * ADC_ACCELEROMETER_10MV_COUNTS) + ( (adcCounts > 0) ? 
+ 1014              		.loc 1 709 0
+ 1015 0032 BB1C     		add	r3, r7, #2
+ 1016 0034 0021     		mov	r1, #0
+ 1017 0036 5B5E     		ldrsh	r3, [r3, r1]
+ 1018 0038 184A     		ldr	r2, .L72+4
+ 1019 003a 5A43     		mul	r2, r3
+ 710:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****                  (ADC_ACCELEROMETER_countsPer10Volt[chan] / 2) : (-(ADC_ACCELEROMETER_countsPer10Vo
+ 1020              		.loc 1 710 0
+ 1021 003c BB1C     		add	r3, r7, #2
+ 1022 003e 0021     		mov	r1, #0
+ 1023 0040 5B5E     		ldrsh	r3, [r3, r1]
+ 1024 0042 002B     		cmp	r3, #0
+ 1025 0044 08DD     		ble	.L67
+ 1026              		.loc 1 710 0 is_stmt 0 discriminator 1
+ 1027 0046 164B     		ldr	r3, .L72+8
+ 1028 0048 7968     		ldr	r1, [r7, #4]
+ 1029 004a 8900     		lsl	r1, r1, #2
+ 1030 004c CB58     		ldr	r3, [r1, r3]
+ 1031 004e 002B     		cmp	r3, #0
+ 1032 0050 00DA     		bge	.L68
+ 1033 0052 0133     		add	r3, r3, #1
+ 1034              	.L68:
+ 1035 0054 5B10     		asr	r3, r3, #1
+ 1036 0056 08E0     		b	.L69
+ 1037              	.L67:
+ 1038              		.loc 1 710 0 discriminator 2
+ 1039 0058 114B     		ldr	r3, .L72+8
+ 1040 005a 7968     		ldr	r1, [r7, #4]
+ 1041 005c 8900     		lsl	r1, r1, #2
+ 1042 005e CB58     		ldr	r3, [r1, r3]
+ 1043 0060 002B     		cmp	r3, #0
+ 1044 0062 00DA     		bge	.L70
+ 1045 0064 0133     		add	r3, r3, #1
+ 1046              	.L70:
+ 1047 0066 5B10     		asr	r3, r3, #1
+ 1048 0068 5B42     		neg	r3, r3
+ 1049              	.L69:
+ 709:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         mVolts = (int16)((((int32)adcCounts * ADC_ACCELEROMETER_10MV_COUNTS) + ( (adcCounts > 0) ? 
+ 1050              		.loc 1 709 0 is_stmt 1
+ 1051 006a D218     		add	r2, r2, r3
+ 711:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****                  / ADC_ACCELEROMETER_countsPer10Volt[chan]);
+ 1052              		.loc 1 711 0
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpMcttb.s 			page 32
+
+
+ 1053 006c 0C4B     		ldr	r3, .L72+8
+ 1054 006e 7968     		ldr	r1, [r7, #4]
+ 1055 0070 8900     		lsl	r1, r1, #2
+ 1056 0072 CB58     		ldr	r3, [r1, r3]
+ 1057 0074 101C     		mov	r0, r2
+ 1058 0076 191C     		mov	r1, r3
+ 1059 0078 FFF7FEFF 		bl	__aeabi_idiv
+ 1060 007c 031C     		mov	r3, r0
+ 1061 007e 1A1C     		mov	r2, r3
+ 709:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         mVolts = (int16)((((int32)adcCounts * ADC_ACCELEROMETER_10MV_COUNTS) + ( (adcCounts > 0) ? 
+ 1062              		.loc 1 709 0
+ 1063 0080 3B1C     		mov	r3, r7
+ 1064 0082 0E33     		add	r3, r3, #14
+ 1065 0084 1A80     		strh	r2, [r3]
+ 712:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 713:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         return( mVolts );
+ 1066              		.loc 1 713 0
+ 1067 0086 3B1C     		mov	r3, r7
+ 1068 0088 0E33     		add	r3, r3, #14
+ 1069 008a 1B88     		ldrh	r3, [r3]
+ 1070 008c 1BB2     		sxth	r3, r3
+ 714:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     }
+ 1071              		.loc 1 714 0
+ 1072 008e 181C     		mov	r0, r3
+ 1073 0090 BD46     		mov	sp, r7
+ 1074 0092 04B0     		add	sp, sp, #16
+ 1075              		@ sp needed for prologue
+ 1076 0094 80BD     		pop	{r7, pc}
+ 1077              	.L73:
+ 1078 0096 C046     		.align	2
+ 1079              	.L72:
+ 1080 0098 00000000 		.word	ADC_ACCELEROMETER_offset
+ 1081 009c 10270000 		.word	10000
+ 1082 00a0 00000000 		.word	ADC_ACCELEROMETER_countsPer10Volt
+ 1083              		.cfi_endproc
+ 1084              	.LFE15:
+ 1085              		.size	ADC_ACCELEROMETER_CountsTo_mVolts, .-ADC_ACCELEROMETER_CountsTo_mVolts
+ 1086              		.global	__aeabi_lmul
+ 1087              		.global	__aeabi_ldivmod
+ 1088              		.section	.text.ADC_ACCELEROMETER_CountsTo_uVolts,"ax",%progbits
+ 1089              		.align	2
+ 1090              		.global	ADC_ACCELEROMETER_CountsTo_uVolts
+ 1091              		.code	16
+ 1092              		.thumb_func
+ 1093              		.type	ADC_ACCELEROMETER_CountsTo_uVolts, %function
+ 1094              	ADC_ACCELEROMETER_CountsTo_uVolts:
+ 1095              	.LFB16:
+ 715:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 716:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 717:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     /*******************************************************************************
+ 718:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     * Function Name: ADC_ACCELEROMETER_CountsTo_uVolts
+ 719:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     ********************************************************************************
+ 720:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     *
+ 721:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     * Summary:
+ 722:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     *  This function converts ADC counts to micro Volts
+ 723:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     *  This function is not available when left data format justification selected.
+ 724:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     *
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpMcttb.s 			page 33
+
+
+ 725:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     * Parameters:
+ 726:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     *  chan: The ADC channel number.
+ 727:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     *  adcCounts: Result from the ADC conversion
+ 728:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     *
+ 729:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     * Return:
+ 730:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     *  Results in uVolts
+ 731:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     *
+ 732:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     * Global variables:
+ 733:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     *  ADC_ACCELEROMETER_countsPer10Volt:  used to convert ADC counts to uVolts.
+ 734:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     *  ADC_ACCELEROMETER_Offset:  Used as the offset while converting ADC counts 
+ 735:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     *   to mVolts.
+ 736:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     *
+ 737:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     * Theory: 
+ 738:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     *  Care must be taken to not exceed the maximum value for a 31 bit signed
+ 739:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     *  number in the conversion to uVolts and at the same time not loose 
+ 740:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     *  resolution.
+ 741:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     *  To convert adcCounts to microVolts it is required to be multiplied
+ 742:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     *  on 10 million and later divide on gain in counts per 10V. 
+ 743:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     *
+ 744:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     *******************************************************************************/
+ 745:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     int32 ADC_ACCELEROMETER_CountsTo_uVolts(uint32 chan, int16 adcCounts)
+ 746:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     {
+ 1096              		.loc 1 746 0
+ 1097              		.cfi_startproc
+ 1098 0000 B0B5     		push	{r4, r5, r7, lr}
+ 1099              	.LCFI43:
+ 1100              		.cfi_def_cfa_offset 16
+ 1101              		.cfi_offset 4, -16
+ 1102              		.cfi_offset 5, -12
+ 1103              		.cfi_offset 7, -8
+ 1104              		.cfi_offset 14, -4
+ 1105 0002 86B0     		sub	sp, sp, #24
+ 1106              	.LCFI44:
+ 1107              		.cfi_def_cfa_offset 40
+ 1108 0004 00AF     		add	r7, sp, #0
+ 1109              	.LCFI45:
+ 1110              		.cfi_def_cfa_register 7
+ 1111 0006 F860     		str	r0, [r7, #12]
+ 1112 0008 0A1C     		mov	r2, r1
+ 1113 000a 3B1C     		mov	r3, r7
+ 1114 000c 0A33     		add	r3, r3, #10
+ 1115 000e 1A80     		strh	r2, [r3]
+ 747:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         int64 uVolts;
+ 748:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 749:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         /* Halt CPU in debug mode if channel is out of valid range */
+ 750:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         CYASSERT(chan < ADC_ACCELEROMETER_TOTAL_CHANNELS_NUM);
+ 1116              		.loc 1 750 0
+ 1117 0010 FB68     		ldr	r3, [r7, #12]
+ 1118 0012 022B     		cmp	r3, #2
+ 1119 0014 02D9     		bls	.L75
+ 1120              		.loc 1 750 0 is_stmt 0 discriminator 1
+ 1121 0016 0020     		mov	r0, #0
+ 1122 0018 FFF7FEFF 		bl	CyHalt
+ 1123              	.L75:
+ 751:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 752:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         /* Divide the adcCount when accumulate averaging mode selected */
+ 753:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         #if(ADC_ACCELEROMETER_DEFAULT_AVG_MODE == ADC_ACCELEROMETER__ACCUMULATE)
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpMcttb.s 			page 34
+
+
+ 754:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****             if((ADC_ACCELEROMETER_channelsConfig[chan] & ADC_ACCELEROMETER_AVERAGING_EN) != 0u)
+ 755:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****             {
+ 756:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****                 adcCounts /= ADC_ACCELEROMETER_DEFAULT_AVG_SAMPLES_DIV;
+ 757:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****             }    
+ 758:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         #endif /* ADC_ACCELEROMETER_DEFAULT_AVG_MODE == ADC_ACCELEROMETER__ACCUMULATE */
+ 759:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 760:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         /* Subtract ADC offset */
+ 761:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         adcCounts -= ADC_ACCELEROMETER_offset[chan];
+ 1124              		.loc 1 761 0 is_stmt 1
+ 1125 001c 3B1C     		mov	r3, r7
+ 1126 001e 0A33     		add	r3, r3, #10
+ 1127 0020 1A88     		ldrh	r2, [r3]
+ 1128 0022 1B4B     		ldr	r3, .L77+8
+ 1129 0024 F968     		ldr	r1, [r7, #12]
+ 1130 0026 4900     		lsl	r1, r1, #1
+ 1131 0028 CB5A     		ldrh	r3, [r1, r3]
+ 1132 002a 9BB2     		uxth	r3, r3
+ 1133 002c 9BB2     		uxth	r3, r3
+ 1134 002e D31A     		sub	r3, r2, r3
+ 1135 0030 9AB2     		uxth	r2, r3
+ 1136 0032 3B1C     		mov	r3, r7
+ 1137 0034 0A33     		add	r3, r3, #10
+ 1138 0036 1A80     		strh	r2, [r3]
+ 762:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 763:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         uVolts = ((int64)adcCounts * ADC_ACCELEROMETER_10UV_COUNTS) / ADC_ACCELEROMETER_countsPer10
+ 1139              		.loc 1 763 0
+ 1140 0038 3B1C     		mov	r3, r7
+ 1141 003a 0A33     		add	r3, r3, #10
+ 1142 003c 0022     		mov	r2, #0
+ 1143 003e 9B5E     		ldrsh	r3, [r3, r2]
+ 1144 0040 1A1C     		mov	r2, r3
+ 1145 0042 3A60     		str	r2, [r7]
+ 1146 0044 DB17     		asr	r3, r3, #31
+ 1147 0046 7B60     		str	r3, [r7, #4]
+ 1148 0048 3868     		ldr	r0, [r7]
+ 1149 004a 7968     		ldr	r1, [r7, #4]
+ 1150 004c 0F4B     		ldr	r3, .L77+4
+ 1151 004e 0E4A     		ldr	r2, .L77
+ 1152 0050 FFF7FEFF 		bl	__aeabi_lmul
+ 1153 0054 021C     		mov	r2, r0
+ 1154 0056 0B1C     		mov	r3, r1
+ 1155 0058 0E49     		ldr	r1, .L77+12
+ 1156 005a F868     		ldr	r0, [r7, #12]
+ 1157 005c 8000     		lsl	r0, r0, #2
+ 1158 005e 4158     		ldr	r1, [r0, r1]
+ 1159 0060 0C1C     		mov	r4, r1
+ 1160 0062 C917     		asr	r1, r1, #31
+ 1161 0064 0D1C     		mov	r5, r1
+ 1162 0066 101C     		mov	r0, r2
+ 1163 0068 191C     		mov	r1, r3
+ 1164 006a 221C     		mov	r2, r4
+ 1165 006c 2B1C     		mov	r3, r5
+ 1166 006e FFF7FEFF 		bl	__aeabi_ldivmod
+ 1167 0072 031C     		mov	r3, r0
+ 1168 0074 0C1C     		mov	r4, r1
+ 1169 0076 3B61     		str	r3, [r7, #16]
+ 1170 0078 7C61     		str	r4, [r7, #20]
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpMcttb.s 			page 35
+
+
+ 764:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 765:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         return( (int32)uVolts );
+ 1171              		.loc 1 765 0
+ 1172 007a 3B69     		ldr	r3, [r7, #16]
+ 766:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     }
+ 1173              		.loc 1 766 0
+ 1174 007c 181C     		mov	r0, r3
+ 1175 007e BD46     		mov	sp, r7
+ 1176 0080 06B0     		add	sp, sp, #24
+ 1177              		@ sp needed for prologue
+ 1178 0082 B0BD     		pop	{r4, r5, r7, pc}
+ 1179              	.L78:
+ 1180 0084 C046C046 		.align	3
+ 1181              	.L77:
+ 1182 0088 80969800 		.word	10000000
+ 1183 008c 00000000 		.word	0
+ 1184 0090 00000000 		.word	ADC_ACCELEROMETER_offset
+ 1185 0094 00000000 		.word	ADC_ACCELEROMETER_countsPer10Volt
+ 1186              		.cfi_endproc
+ 1187              	.LFE16:
+ 1188              		.size	ADC_ACCELEROMETER_CountsTo_uVolts, .-ADC_ACCELEROMETER_CountsTo_uVolts
+ 1189              		.global	__aeabi_i2f
+ 1190              		.global	__aeabi_fmul
+ 1191              		.global	__aeabi_fdiv
+ 1192              		.section	.text.ADC_ACCELEROMETER_CountsTo_Volts,"ax",%progbits
+ 1193              		.align	2
+ 1194              		.global	ADC_ACCELEROMETER_CountsTo_Volts
+ 1195              		.code	16
+ 1196              		.thumb_func
+ 1197              		.type	ADC_ACCELEROMETER_CountsTo_Volts, %function
+ 1198              	ADC_ACCELEROMETER_CountsTo_Volts:
+ 1199              	.LFB17:
+ 767:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 768:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 769:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     /*******************************************************************************
+ 770:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     * Function Name: ADC_ACCELEROMETER_CountsTo_Volts
+ 771:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     ********************************************************************************
+ 772:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     *
+ 773:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     * Summary:
+ 774:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     *  Converts the ADC output to Volts as a floating point number.
+ 775:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     *  This function is not available when left data format justification selected.
+ 776:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     *
+ 777:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     * Parameters:
+ 778:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     *  chan: The ADC channel number.
+ 779:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     *  Result from the ADC conversion
+ 780:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     *
+ 781:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     * Return:
+ 782:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     *  Results in Volts
+ 783:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     *
+ 784:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     * Global variables:
+ 785:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     *  ADC_ACCELEROMETER_countsPer10Volt:  used to convert ADC counts to Volts.
+ 786:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     *  ADC_ACCELEROMETER_Offset:  Used as the offset while converting ADC counts 
+ 787:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     *   to mVolts.
+ 788:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     *
+ 789:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     *******************************************************************************/
+ 790:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     float32 ADC_ACCELEROMETER_CountsTo_Volts(uint32 chan, int16 adcCounts)
+ 791:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     {
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpMcttb.s 			page 36
+
+
+ 1200              		.loc 1 791 0
+ 1201              		.cfi_startproc
+ 1202 0000 90B5     		push	{r4, r7, lr}
+ 1203              	.LCFI46:
+ 1204              		.cfi_def_cfa_offset 12
+ 1205              		.cfi_offset 4, -12
+ 1206              		.cfi_offset 7, -8
+ 1207              		.cfi_offset 14, -4
+ 1208 0002 85B0     		sub	sp, sp, #20
+ 1209              	.LCFI47:
+ 1210              		.cfi_def_cfa_offset 32
+ 1211 0004 00AF     		add	r7, sp, #0
+ 1212              	.LCFI48:
+ 1213              		.cfi_def_cfa_register 7
+ 1214 0006 7860     		str	r0, [r7, #4]
+ 1215 0008 0A1C     		mov	r2, r1
+ 1216 000a BB1C     		add	r3, r7, #2
+ 1217 000c 1A80     		strh	r2, [r3]
+ 792:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         float32 volts;
+ 793:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 794:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         /* Halt CPU in debug mode if channel is out of valid range */
+ 795:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         CYASSERT(chan < ADC_ACCELEROMETER_TOTAL_CHANNELS_NUM);
+ 1218              		.loc 1 795 0
+ 1219 000e 7B68     		ldr	r3, [r7, #4]
+ 1220 0010 022B     		cmp	r3, #2
+ 1221 0012 02D9     		bls	.L80
+ 1222              		.loc 1 795 0 is_stmt 0 discriminator 1
+ 1223 0014 0020     		mov	r0, #0
+ 1224 0016 FFF7FEFF 		bl	CyHalt
+ 1225              	.L80:
+ 796:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 797:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         /* Divide the adcCount when accumulate averaging mode selected */
+ 798:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         #if(ADC_ACCELEROMETER_DEFAULT_AVG_MODE == ADC_ACCELEROMETER__ACCUMULATE)
+ 799:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****             if((ADC_ACCELEROMETER_channelsConfig[chan] & ADC_ACCELEROMETER_AVERAGING_EN) != 0u)
+ 800:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****             {
+ 801:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****                 adcCounts /= ADC_ACCELEROMETER_DEFAULT_AVG_SAMPLES_DIV;
+ 802:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****             }    
+ 803:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         #endif /* ADC_ACCELEROMETER_DEFAULT_AVG_MODE == ADC_ACCELEROMETER__ACCUMULATE */
+ 804:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 805:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         /* Subtract ADC offset */
+ 806:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         adcCounts -= ADC_ACCELEROMETER_offset[chan];
+ 1226              		.loc 1 806 0 is_stmt 1
+ 1227 001a BB1C     		add	r3, r7, #2
+ 1228 001c 1A88     		ldrh	r2, [r3]
+ 1229 001e 154B     		ldr	r3, .L82
+ 1230 0020 7968     		ldr	r1, [r7, #4]
+ 1231 0022 4900     		lsl	r1, r1, #1
+ 1232 0024 CB5A     		ldrh	r3, [r1, r3]
+ 1233 0026 9BB2     		uxth	r3, r3
+ 1234 0028 9BB2     		uxth	r3, r3
+ 1235 002a D31A     		sub	r3, r2, r3
+ 1236 002c 9AB2     		uxth	r2, r3
+ 1237 002e BB1C     		add	r3, r7, #2
+ 1238 0030 1A80     		strh	r2, [r3]
+ 807:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 808:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         volts = ((float32)adcCounts * ADC_ACCELEROMETER_10V_COUNTS) / (float32)ADC_ACCELEROMETER_co
+ 1239              		.loc 1 808 0
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpMcttb.s 			page 37
+
+
+ 1240 0032 BB1C     		add	r3, r7, #2
+ 1241 0034 0022     		mov	r2, #0
+ 1242 0036 9B5E     		ldrsh	r3, [r3, r2]
+ 1243 0038 181C     		mov	r0, r3
+ 1244 003a FFF7FEFF 		bl	__aeabi_i2f
+ 1245 003e 031C     		add	r3, r0, #0
+ 1246 0040 181C     		add	r0, r3, #0
+ 1247 0042 0D49     		ldr	r1, .L82+4
+ 1248 0044 FFF7FEFF 		bl	__aeabi_fmul
+ 1249 0048 031C     		add	r3, r0, #0
+ 1250 004a 1C1C     		add	r4, r3, #0
+ 1251 004c 0B4B     		ldr	r3, .L82+8
+ 1252 004e 7A68     		ldr	r2, [r7, #4]
+ 1253 0050 9200     		lsl	r2, r2, #2
+ 1254 0052 D358     		ldr	r3, [r2, r3]
+ 1255 0054 181C     		mov	r0, r3
+ 1256 0056 FFF7FEFF 		bl	__aeabi_i2f
+ 1257 005a 031C     		add	r3, r0, #0
+ 1258 005c 201C     		add	r0, r4, #0
+ 1259 005e 191C     		add	r1, r3, #0
+ 1260 0060 FFF7FEFF 		bl	__aeabi_fdiv
+ 1261 0064 031C     		add	r3, r0, #0
+ 1262 0066 FB60     		str	r3, [r7, #12]
+ 809:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c **** 
+ 810:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****         return( volts );
+ 1263              		.loc 1 810 0
+ 1264 0068 FB68     		ldr	r3, [r7, #12]
+ 811:.\Generated_Source\PSoC4/ADC_ACCELEROMETER.c ****     }
+ 1265              		.loc 1 811 0
+ 1266 006a 181C     		add	r0, r3, #0
+ 1267 006c BD46     		mov	sp, r7
+ 1268 006e 05B0     		add	sp, sp, #20
+ 1269              		@ sp needed for prologue
+ 1270 0070 90BD     		pop	{r4, r7, pc}
+ 1271              	.L83:
+ 1272 0072 C046     		.align	2
+ 1273              	.L82:
+ 1274 0074 00000000 		.word	ADC_ACCELEROMETER_offset
+ 1275 0078 00002041 		.word	1092616192
+ 1276 007c 00000000 		.word	ADC_ACCELEROMETER_countsPer10Volt
+ 1277              		.cfi_endproc
+ 1278              	.LFE17:
+ 1279              		.size	ADC_ACCELEROMETER_CountsTo_Volts, .-ADC_ACCELEROMETER_CountsTo_Volts
+ 1280              		.section	.rodata
+ 1281              		.align	2
+ 1282              		.type	ADC_ACCELEROMETER_InputsPlacement.4648, %object
+ 1283              		.size	ADC_ACCELEROMETER_InputsPlacement.4648, 3
+ 1284              	ADC_ACCELEROMETER_InputsPlacement.4648:
+ 1285 000c 03       		.byte	3
+ 1286 000d 01       		.byte	1
+ 1287 000e 00       		.byte	0
+ 1288 000f 00       		.text
+ 1289              	.Letext0:
+ 1290              		.file 2 ".\\Generated_Source\\PSoC4\\cytypes.h"
+ 1291              		.section	.debug_info,"",%progbits
+ 1292              	.Ldebug_info0:
+ 1293 0000 F6040000 		.4byte	0x4f6
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpMcttb.s 			page 38
+
+
+ 1294 0004 0200     		.2byte	0x2
+ 1295 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 1296 000a 04       		.byte	0x4
+ 1297 000b 01       		.uleb128 0x1
+ 1298 000c 87020000 		.4byte	.LASF60
+ 1299 0010 01       		.byte	0x1
+ 1300 0011 61000000 		.4byte	.LASF61
+ 1301 0015 50020000 		.4byte	.LASF62
+ 1302 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 1303 001d 00000000 		.4byte	0
+ 1304 0021 00000000 		.4byte	0
+ 1305 0025 00000000 		.4byte	.Ldebug_line0
+ 1306 0029 02       		.uleb128 0x2
+ 1307 002a 01       		.byte	0x1
+ 1308 002b 06       		.byte	0x6
+ 1309 002c 55000000 		.4byte	.LASF0
+ 1310 0030 02       		.uleb128 0x2
+ 1311 0031 01       		.byte	0x1
+ 1312 0032 08       		.byte	0x8
+ 1313 0033 E8020000 		.4byte	.LASF1
+ 1314 0037 02       		.uleb128 0x2
+ 1315 0038 02       		.byte	0x2
+ 1316 0039 05       		.byte	0x5
+ 1317 003a 18030000 		.4byte	.LASF2
+ 1318 003e 02       		.uleb128 0x2
+ 1319 003f 02       		.byte	0x2
+ 1320 0040 07       		.byte	0x7
+ 1321 0041 4E010000 		.4byte	.LASF3
+ 1322 0045 02       		.uleb128 0x2
+ 1323 0046 04       		.byte	0x4
+ 1324 0047 05       		.byte	0x5
+ 1325 0048 94000000 		.4byte	.LASF4
+ 1326 004c 02       		.uleb128 0x2
+ 1327 004d 04       		.byte	0x4
+ 1328 004e 07       		.byte	0x7
+ 1329 004f 13010000 		.4byte	.LASF5
+ 1330 0053 02       		.uleb128 0x2
+ 1331 0054 08       		.byte	0x8
+ 1332 0055 05       		.byte	0x5
+ 1333 0056 47000000 		.4byte	.LASF6
+ 1334 005a 02       		.uleb128 0x2
+ 1335 005b 08       		.byte	0x8
+ 1336 005c 07       		.byte	0x7
+ 1337 005d 16000000 		.4byte	.LASF7
+ 1338 0061 03       		.uleb128 0x3
+ 1339 0062 04       		.byte	0x4
+ 1340 0063 05       		.byte	0x5
+ 1341 0064 696E7400 		.ascii	"int\000"
+ 1342 0068 02       		.uleb128 0x2
+ 1343 0069 04       		.byte	0x4
+ 1344 006a 07       		.byte	0x7
+ 1345 006b FF000000 		.4byte	.LASF8
+ 1346 006f 04       		.uleb128 0x4
+ 1347 0070 9D000000 		.4byte	.LASF9
+ 1348 0074 02       		.byte	0x2
+ 1349 0075 5B       		.byte	0x5b
+ 1350 0076 30000000 		.4byte	0x30
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpMcttb.s 			page 39
+
+
+ 1351 007a 04       		.uleb128 0x4
+ 1352 007b 00000000 		.4byte	.LASF10
+ 1353 007f 02       		.byte	0x2
+ 1354 0080 5C       		.byte	0x5c
+ 1355 0081 3E000000 		.4byte	0x3e
+ 1356 0085 04       		.uleb128 0x4
+ 1357 0086 AA000000 		.4byte	.LASF11
+ 1358 008a 02       		.byte	0x2
+ 1359 008b 5D       		.byte	0x5d
+ 1360 008c 4C000000 		.4byte	0x4c
+ 1361 0090 04       		.uleb128 0x4
+ 1362 0091 18040000 		.4byte	.LASF12
+ 1363 0095 02       		.byte	0x2
+ 1364 0096 5F       		.byte	0x5f
+ 1365 0097 37000000 		.4byte	0x37
+ 1366 009b 04       		.uleb128 0x4
+ 1367 009c 8E000000 		.4byte	.LASF13
+ 1368 00a0 02       		.byte	0x2
+ 1369 00a1 60       		.byte	0x60
+ 1370 00a2 45000000 		.4byte	0x45
+ 1371 00a6 04       		.uleb128 0x4
+ 1372 00a7 CE010000 		.4byte	.LASF14
+ 1373 00ab 02       		.byte	0x2
+ 1374 00ac 61       		.byte	0x61
+ 1375 00ad B1000000 		.4byte	0xb1
+ 1376 00b1 02       		.uleb128 0x2
+ 1377 00b2 04       		.byte	0x4
+ 1378 00b3 04       		.byte	0x4
+ 1379 00b4 22020000 		.4byte	.LASF15
+ 1380 00b8 02       		.uleb128 0x2
+ 1381 00b9 08       		.byte	0x8
+ 1382 00ba 04       		.byte	0x4
+ 1383 00bb A3000000 		.4byte	.LASF16
+ 1384 00bf 04       		.uleb128 0x4
+ 1385 00c0 1C020000 		.4byte	.LASF17
+ 1386 00c4 02       		.byte	0x2
+ 1387 00c5 66       		.byte	0x66
+ 1388 00c6 53000000 		.4byte	0x53
+ 1389 00ca 02       		.uleb128 0x2
+ 1390 00cb 01       		.byte	0x1
+ 1391 00cc 08       		.byte	0x8
+ 1392 00cd 6C030000 		.4byte	.LASF18
+ 1393 00d1 04       		.uleb128 0x4
+ 1394 00d2 A9010000 		.4byte	.LASF19
+ 1395 00d6 02       		.byte	0x2
+ 1396 00d7 F2       		.byte	0xf2
+ 1397 00d8 DC000000 		.4byte	0xdc
+ 1398 00dc 05       		.uleb128 0x5
+ 1399 00dd 85000000 		.4byte	0x85
+ 1400 00e1 02       		.uleb128 0x2
+ 1401 00e2 04       		.byte	0x4
+ 1402 00e3 07       		.byte	0x7
+ 1403 00e4 D6010000 		.4byte	.LASF20
+ 1404 00e8 06       		.uleb128 0x6
+ 1405 00e9 01       		.byte	0x1
+ 1406 00ea D0020000 		.4byte	.LASF25
+ 1407 00ee 01       		.byte	0x1
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpMcttb.s 			page 40
+
+
+ 1408 00ef 40       		.byte	0x40
+ 1409 00f0 01       		.byte	0x1
+ 1410 00f1 00000000 		.4byte	.LFB0
+ 1411 00f5 24000000 		.4byte	.LFE0
+ 1412 00f9 00000000 		.4byte	.LLST0
+ 1413 00fd 01       		.byte	0x1
+ 1414 00fe 07       		.uleb128 0x7
+ 1415 00ff 01       		.byte	0x1
+ 1416 0100 3F040000 		.4byte	.LASF36
+ 1417 0104 01       		.byte	0x1
+ 1418 0105 5F       		.byte	0x5f
+ 1419 0106 01       		.byte	0x1
+ 1420 0107 00000000 		.4byte	.LFB1
+ 1421 010b E4010000 		.4byte	.LFE1
+ 1422 010f 2C000000 		.4byte	.LLST1
+ 1423 0113 01       		.byte	0x1
+ 1424 0114 54010000 		.4byte	0x154
+ 1425 0118 08       		.uleb128 0x8
+ 1426 0119 61030000 		.4byte	.LASF21
+ 1427 011d 01       		.byte	0x1
+ 1428 011e 61       		.byte	0x61
+ 1429 011f 85000000 		.4byte	0x85
+ 1430 0123 02       		.byte	0x2
+ 1431 0124 91       		.byte	0x91
+ 1432 0125 6C       		.sleb128 -20
+ 1433 0126 08       		.uleb128 0x8
+ 1434 0127 44010000 		.4byte	.LASF22
+ 1435 012b 01       		.byte	0x1
+ 1436 012c 62       		.byte	0x62
+ 1437 012d 85000000 		.4byte	0x85
+ 1438 0131 02       		.byte	0x2
+ 1439 0132 91       		.byte	0x91
+ 1440 0133 64       		.sleb128 -28
+ 1441 0134 08       		.uleb128 0x8
+ 1442 0135 0F000000 		.4byte	.LASF23
+ 1443 0139 01       		.byte	0x1
+ 1444 013a 63       		.byte	0x63
+ 1445 013b 9B000000 		.4byte	0x9b
+ 1446 013f 02       		.byte	0x2
+ 1447 0140 91       		.byte	0x91
+ 1448 0141 68       		.sleb128 -24
+ 1449 0142 08       		.uleb128 0x8
+ 1450 0143 D8030000 		.4byte	.LASF24
+ 1451 0147 01       		.byte	0x1
+ 1452 0148 66       		.byte	0x66
+ 1453 0149 64010000 		.4byte	0x164
+ 1454 014d 05       		.byte	0x5
+ 1455 014e 03       		.byte	0x3
+ 1456 014f 0C000000 		.4byte	ADC_ACCELEROMETER_InputsPlacement.4648
+ 1457 0153 00       		.byte	0
+ 1458 0154 09       		.uleb128 0x9
+ 1459 0155 6F000000 		.4byte	0x6f
+ 1460 0159 64010000 		.4byte	0x164
+ 1461 015d 0A       		.uleb128 0xa
+ 1462 015e E1000000 		.4byte	0xe1
+ 1463 0162 02       		.byte	0x2
+ 1464 0163 00       		.byte	0
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpMcttb.s 			page 41
+
+
+ 1465 0164 0B       		.uleb128 0xb
+ 1466 0165 54010000 		.4byte	0x154
+ 1467 0169 0C       		.uleb128 0xc
+ 1468 016a 01       		.byte	0x1
+ 1469 016b 9C030000 		.4byte	.LASF26
+ 1470 016f 01       		.byte	0x1
+ 1471 0170 1501     		.2byte	0x115
+ 1472 0172 01       		.byte	0x1
+ 1473 0173 00000000 		.4byte	.LFB2
+ 1474 0177 20000000 		.4byte	.LFE2
+ 1475 017b 64000000 		.4byte	.LLST2
+ 1476 017f 01       		.byte	0x1
+ 1477 0180 0D       		.uleb128 0xd
+ 1478 0181 01       		.byte	0x1
+ 1479 0182 05020000 		.4byte	.LASF27
+ 1480 0186 01       		.byte	0x1
+ 1481 0187 2C01     		.2byte	0x12c
+ 1482 0189 01       		.byte	0x1
+ 1483 018a 00000000 		.4byte	.LFB3
+ 1484 018e 18000000 		.4byte	.LFE3
+ 1485 0192 90000000 		.4byte	.LLST3
+ 1486 0196 01       		.byte	0x1
+ 1487 0197 0D       		.uleb128 0xd
+ 1488 0198 01       		.byte	0x1
+ 1489 0199 83010000 		.4byte	.LASF28
+ 1490 019d 01       		.byte	0x1
+ 1491 019e 4601     		.2byte	0x146
+ 1492 01a0 01       		.byte	0x1
+ 1493 01a1 00000000 		.4byte	.LFB4
+ 1494 01a5 1C000000 		.4byte	.LFE4
+ 1495 01a9 BC000000 		.4byte	.LLST4
+ 1496 01ad 01       		.byte	0x1
+ 1497 01ae 0D       		.uleb128 0xd
+ 1498 01af 01       		.byte	0x1
+ 1499 01b0 43030000 		.4byte	.LASF29
+ 1500 01b4 01       		.byte	0x1
+ 1501 01b5 5F01     		.2byte	0x15f
+ 1502 01b7 01       		.byte	0x1
+ 1503 01b8 00000000 		.4byte	.LFB5
+ 1504 01bc 1C000000 		.4byte	.LFE5
+ 1505 01c0 E8000000 		.4byte	.LLST5
+ 1506 01c4 01       		.byte	0x1
+ 1507 01c5 0E       		.uleb128 0xe
+ 1508 01c6 01       		.byte	0x1
+ 1509 01c7 DD000000 		.4byte	.LASF31
+ 1510 01cb 01       		.byte	0x1
+ 1511 01cc 8101     		.2byte	0x181
+ 1512 01ce 01       		.byte	0x1
+ 1513 01cf 85000000 		.4byte	0x85
+ 1514 01d3 00000000 		.4byte	.LFB6
+ 1515 01d7 48000000 		.4byte	.LFE6
+ 1516 01db 14010000 		.4byte	.LLST6
+ 1517 01df 01       		.byte	0x1
+ 1518 01e0 03020000 		.4byte	0x203
+ 1519 01e4 0F       		.uleb128 0xf
+ 1520 01e5 D5000000 		.4byte	.LASF33
+ 1521 01e9 01       		.byte	0x1
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpMcttb.s 			page 42
+
+
+ 1522 01ea 8101     		.2byte	0x181
+ 1523 01ec 85000000 		.4byte	0x85
+ 1524 01f0 02       		.byte	0x2
+ 1525 01f1 91       		.byte	0x91
+ 1526 01f2 6C       		.sleb128 -20
+ 1527 01f3 10       		.uleb128 0x10
+ 1528 01f4 D1030000 		.4byte	.LASF30
+ 1529 01f8 01       		.byte	0x1
+ 1530 01f9 8301     		.2byte	0x183
+ 1531 01fb 85000000 		.4byte	0x85
+ 1532 01ff 02       		.byte	0x2
+ 1533 0200 91       		.byte	0x91
+ 1534 0201 74       		.sleb128 -12
+ 1535 0202 00       		.byte	0
+ 1536 0203 11       		.uleb128 0x11
+ 1537 0204 01       		.byte	0x1
+ 1538 0205 28020000 		.4byte	.LASF32
+ 1539 0209 01       		.byte	0x1
+ 1540 020a B701     		.2byte	0x1b7
+ 1541 020c 01       		.byte	0x1
+ 1542 020d 90000000 		.4byte	0x90
+ 1543 0211 00000000 		.4byte	.LFB7
+ 1544 0215 44000000 		.4byte	.LFE7
+ 1545 0219 4C010000 		.4byte	.LLST7
+ 1546 021d 01       		.byte	0x1
+ 1547 021e 41020000 		.4byte	0x241
+ 1548 0222 0F       		.uleb128 0xf
+ 1549 0223 67030000 		.4byte	.LASF34
+ 1550 0227 01       		.byte	0x1
+ 1551 0228 B701     		.2byte	0x1b7
+ 1552 022a 85000000 		.4byte	0x85
+ 1553 022e 02       		.byte	0x2
+ 1554 022f 91       		.byte	0x91
+ 1555 0230 6C       		.sleb128 -20
+ 1556 0231 10       		.uleb128 0x10
+ 1557 0232 96040000 		.4byte	.LASF35
+ 1558 0236 01       		.byte	0x1
+ 1559 0237 B901     		.2byte	0x1b9
+ 1560 0239 85000000 		.4byte	0x85
+ 1561 023d 02       		.byte	0x2
+ 1562 023e 91       		.byte	0x91
+ 1563 023f 74       		.sleb128 -12
+ 1564 0240 00       		.byte	0
+ 1565 0241 12       		.uleb128 0x12
+ 1566 0242 01       		.byte	0x1
+ 1567 0243 FA030000 		.4byte	.LASF37
+ 1568 0247 01       		.byte	0x1
+ 1569 0248 E401     		.2byte	0x1e4
+ 1570 024a 01       		.byte	0x1
+ 1571 024b 00000000 		.4byte	.LFB8
+ 1572 024f 1C000000 		.4byte	.LFE8
+ 1573 0253 84010000 		.4byte	.LLST8
+ 1574 0257 01       		.byte	0x1
+ 1575 0258 6C020000 		.4byte	0x26c
+ 1576 025c 0F       		.uleb128 0xf
+ 1577 025d B1000000 		.4byte	.LASF38
+ 1578 0261 01       		.byte	0x1
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpMcttb.s 			page 43
+
+
+ 1579 0262 E401     		.2byte	0x1e4
+ 1580 0264 85000000 		.4byte	0x85
+ 1581 0268 02       		.byte	0x2
+ 1582 0269 91       		.byte	0x91
+ 1583 026a 74       		.sleb128 -12
+ 1584 026b 00       		.byte	0
+ 1585 026c 12       		.uleb128 0x12
+ 1586 026d 01       		.byte	0x1
+ 1587 026e 56040000 		.4byte	.LASF39
+ 1588 0272 01       		.byte	0x1
+ 1589 0273 1002     		.2byte	0x210
+ 1590 0275 01       		.byte	0x1
+ 1591 0276 00000000 		.4byte	.LFB9
+ 1592 027a 30000000 		.4byte	.LFE9
+ 1593 027e BC010000 		.4byte	.LLST9
+ 1594 0282 01       		.byte	0x1
+ 1595 0283 97020000 		.4byte	0x297
+ 1596 0287 0F       		.uleb128 0xf
+ 1597 0288 DF010000 		.4byte	.LASF40
+ 1598 028c 01       		.byte	0x1
+ 1599 028d 1002     		.2byte	0x210
+ 1600 028f 85000000 		.4byte	0x85
+ 1601 0293 02       		.byte	0x2
+ 1602 0294 91       		.byte	0x91
+ 1603 0295 74       		.sleb128 -12
+ 1604 0296 00       		.byte	0
+ 1605 0297 12       		.uleb128 0x12
+ 1606 0298 01       		.byte	0x1
+ 1607 0299 AF010000 		.4byte	.LASF41
+ 1608 029d 01       		.byte	0x1
+ 1609 029e 2502     		.2byte	0x225
+ 1610 02a0 01       		.byte	0x1
+ 1611 02a1 00000000 		.4byte	.LFB10
+ 1612 02a5 2C000000 		.4byte	.LFE10
+ 1613 02a9 F4010000 		.4byte	.LLST10
+ 1614 02ad 01       		.byte	0x1
+ 1615 02ae C2020000 		.4byte	0x2c2
+ 1616 02b2 0F       		.uleb128 0xf
+ 1617 02b3 46020000 		.4byte	.LASF42
+ 1618 02b7 01       		.byte	0x1
+ 1619 02b8 2502     		.2byte	0x225
+ 1620 02ba 85000000 		.4byte	0x85
+ 1621 02be 02       		.byte	0x2
+ 1622 02bf 91       		.byte	0x91
+ 1623 02c0 74       		.sleb128 -12
+ 1624 02c1 00       		.byte	0
+ 1625 02c2 12       		.uleb128 0x12
+ 1626 02c3 01       		.byte	0x1
+ 1627 02c4 B6000000 		.4byte	.LASF43
+ 1628 02c8 01       		.byte	0x1
+ 1629 02c9 3D02     		.2byte	0x23d
+ 1630 02cb 01       		.byte	0x1
+ 1631 02cc 00000000 		.4byte	.LFB11
+ 1632 02d0 1C000000 		.4byte	.LFE11
+ 1633 02d4 2C020000 		.4byte	.LLST11
+ 1634 02d8 01       		.byte	0x1
+ 1635 02d9 ED020000 		.4byte	0x2ed
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpMcttb.s 			page 44
+
+
+ 1636 02dd 0F       		.uleb128 0xf
+ 1637 02de B1000000 		.4byte	.LASF38
+ 1638 02e2 01       		.byte	0x1
+ 1639 02e3 3D02     		.2byte	0x23d
+ 1640 02e5 85000000 		.4byte	0x85
+ 1641 02e9 02       		.byte	0x2
+ 1642 02ea 91       		.byte	0x91
+ 1643 02eb 74       		.sleb128 -12
+ 1644 02ec 00       		.byte	0
+ 1645 02ed 12       		.uleb128 0x12
+ 1646 02ee 01       		.byte	0x1
+ 1647 02ef E8010000 		.4byte	.LASF44
+ 1648 02f3 01       		.byte	0x1
+ 1649 02f4 5402     		.2byte	0x254
+ 1650 02f6 01       		.byte	0x1
+ 1651 02f7 00000000 		.4byte	.LFB12
+ 1652 02fb 1C000000 		.4byte	.LFE12
+ 1653 02ff 64020000 		.4byte	.LLST12
+ 1654 0303 01       		.byte	0x1
+ 1655 0304 18030000 		.4byte	0x318
+ 1656 0308 0F       		.uleb128 0xf
+ 1657 0309 B1000000 		.4byte	.LASF38
+ 1658 030d 01       		.byte	0x1
+ 1659 030e 5402     		.2byte	0x254
+ 1660 0310 85000000 		.4byte	0x85
+ 1661 0314 02       		.byte	0x2
+ 1662 0315 91       		.byte	0x91
+ 1663 0316 74       		.sleb128 -12
+ 1664 0317 00       		.byte	0
+ 1665 0318 13       		.uleb128 0x13
+ 1666 0319 01       		.byte	0x1
+ 1667 031a B5030000 		.4byte	.LASF45
+ 1668 031e 01       		.byte	0x1
+ 1669 031f 7002     		.2byte	0x270
+ 1670 0321 01       		.byte	0x1
+ 1671 0322 00000000 		.4byte	.LFB13
+ 1672 0326 30000000 		.4byte	.LFE13
+ 1673 032a 9C020000 		.4byte	.LLST13
+ 1674 032e 01       		.byte	0x1
+ 1675 032f 52030000 		.4byte	0x352
+ 1676 0333 0F       		.uleb128 0xf
+ 1677 0334 67030000 		.4byte	.LASF34
+ 1678 0338 01       		.byte	0x1
+ 1679 0339 7002     		.2byte	0x270
+ 1680 033b 85000000 		.4byte	0x85
+ 1681 033f 02       		.byte	0x2
+ 1682 0340 91       		.byte	0x91
+ 1683 0341 74       		.sleb128 -12
+ 1684 0342 0F       		.uleb128 0xf
+ 1685 0343 71030000 		.4byte	.LASF46
+ 1686 0347 01       		.byte	0x1
+ 1687 0348 7002     		.2byte	0x270
+ 1688 034a 90000000 		.4byte	0x90
+ 1689 034e 02       		.byte	0x2
+ 1690 034f 91       		.byte	0x91
+ 1691 0350 72       		.sleb128 -14
+ 1692 0351 00       		.byte	0
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpMcttb.s 			page 45
+
+
+ 1693 0352 13       		.uleb128 0x13
+ 1694 0353 01       		.byte	0x1
+ 1695 0354 2D000000 		.4byte	.LASF47
+ 1696 0358 01       		.byte	0x1
+ 1697 0359 9202     		.2byte	0x292
+ 1698 035b 01       		.byte	0x1
+ 1699 035c 00000000 		.4byte	.LFB14
+ 1700 0360 2C000000 		.4byte	.LFE14
+ 1701 0364 D4020000 		.4byte	.LLST14
+ 1702 0368 01       		.byte	0x1
+ 1703 0369 8C030000 		.4byte	0x38c
+ 1704 036d 0F       		.uleb128 0xf
+ 1705 036e 67030000 		.4byte	.LASF34
+ 1706 0372 01       		.byte	0x1
+ 1707 0373 9202     		.2byte	0x292
+ 1708 0375 85000000 		.4byte	0x85
+ 1709 0379 02       		.byte	0x2
+ 1710 037a 91       		.byte	0x91
+ 1711 037b 74       		.sleb128 -12
+ 1712 037c 0F       		.uleb128 0xf
+ 1713 037d 07000000 		.4byte	.LASF48
+ 1714 0381 01       		.byte	0x1
+ 1715 0382 9202     		.2byte	0x292
+ 1716 0384 9B000000 		.4byte	0x9b
+ 1717 0388 02       		.byte	0x2
+ 1718 0389 91       		.byte	0x91
+ 1719 038a 70       		.sleb128 -16
+ 1720 038b 00       		.byte	0
+ 1721 038c 11       		.uleb128 0x11
+ 1722 038d 01       		.byte	0x1
+ 1723 038e 61010000 		.4byte	.LASF49
+ 1724 0392 01       		.byte	0x1
+ 1725 0393 B302     		.2byte	0x2b3
+ 1726 0395 01       		.byte	0x1
+ 1727 0396 90000000 		.4byte	0x90
+ 1728 039a 00000000 		.4byte	.LFB15
+ 1729 039e A4000000 		.4byte	.LFE15
+ 1730 03a2 0C030000 		.4byte	.LLST15
+ 1731 03a6 01       		.byte	0x1
+ 1732 03a7 D9030000 		.4byte	0x3d9
+ 1733 03ab 0F       		.uleb128 0xf
+ 1734 03ac 67030000 		.4byte	.LASF34
+ 1735 03b0 01       		.byte	0x1
+ 1736 03b1 B302     		.2byte	0x2b3
+ 1737 03b3 85000000 		.4byte	0x85
+ 1738 03b7 02       		.byte	0x2
+ 1739 03b8 91       		.byte	0x91
+ 1740 03b9 6C       		.sleb128 -20
+ 1741 03ba 0F       		.uleb128 0xf
+ 1742 03bb 92030000 		.4byte	.LASF50
+ 1743 03bf 01       		.byte	0x1
+ 1744 03c0 B302     		.2byte	0x2b3
+ 1745 03c2 90000000 		.4byte	0x90
+ 1746 03c6 02       		.byte	0x2
+ 1747 03c7 91       		.byte	0x91
+ 1748 03c8 6A       		.sleb128 -22
+ 1749 03c9 10       		.uleb128 0x10
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpMcttb.s 			page 46
+
+
+ 1750 03ca A2010000 		.4byte	.LASF51
+ 1751 03ce 01       		.byte	0x1
+ 1752 03cf B502     		.2byte	0x2b5
+ 1753 03d1 90000000 		.4byte	0x90
+ 1754 03d5 02       		.byte	0x2
+ 1755 03d6 91       		.byte	0x91
+ 1756 03d7 76       		.sleb128 -10
+ 1757 03d8 00       		.byte	0
+ 1758 03d9 11       		.uleb128 0x11
+ 1759 03da 01       		.byte	0x1
+ 1760 03db 74040000 		.4byte	.LASF52
+ 1761 03df 01       		.byte	0x1
+ 1762 03e0 E902     		.2byte	0x2e9
+ 1763 03e2 01       		.byte	0x1
+ 1764 03e3 9B000000 		.4byte	0x9b
+ 1765 03e7 00000000 		.4byte	.LFB16
+ 1766 03eb 98000000 		.4byte	.LFE16
+ 1767 03ef 44030000 		.4byte	.LLST16
+ 1768 03f3 01       		.byte	0x1
+ 1769 03f4 26040000 		.4byte	0x426
+ 1770 03f8 0F       		.uleb128 0xf
+ 1771 03f9 67030000 		.4byte	.LASF34
+ 1772 03fd 01       		.byte	0x1
+ 1773 03fe E902     		.2byte	0x2e9
+ 1774 0400 85000000 		.4byte	0x85
+ 1775 0404 02       		.byte	0x2
+ 1776 0405 91       		.byte	0x91
+ 1777 0406 64       		.sleb128 -28
+ 1778 0407 0F       		.uleb128 0xf
+ 1779 0408 92030000 		.4byte	.LASF50
+ 1780 040c 01       		.byte	0x1
+ 1781 040d E902     		.2byte	0x2e9
+ 1782 040f 90000000 		.4byte	0x90
+ 1783 0413 02       		.byte	0x2
+ 1784 0414 91       		.byte	0x91
+ 1785 0415 62       		.sleb128 -30
+ 1786 0416 10       		.uleb128 0x10
+ 1787 0417 0C010000 		.4byte	.LASF53
+ 1788 041b 01       		.byte	0x1
+ 1789 041c EB02     		.2byte	0x2eb
+ 1790 041e BF000000 		.4byte	0xbf
+ 1791 0422 02       		.byte	0x2
+ 1792 0423 91       		.byte	0x91
+ 1793 0424 68       		.sleb128 -24
+ 1794 0425 00       		.byte	0
+ 1795 0426 11       		.uleb128 0x11
+ 1796 0427 01       		.byte	0x1
+ 1797 0428 1E040000 		.4byte	.LASF54
+ 1798 042c 01       		.byte	0x1
+ 1799 042d 1603     		.2byte	0x316
+ 1800 042f 01       		.byte	0x1
+ 1801 0430 A6000000 		.4byte	0xa6
+ 1802 0434 00000000 		.4byte	.LFB17
+ 1803 0438 80000000 		.4byte	.LFE17
+ 1804 043c 7C030000 		.4byte	.LLST17
+ 1805 0440 01       		.byte	0x1
+ 1806 0441 73040000 		.4byte	0x473
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpMcttb.s 			page 47
+
+
+ 1807 0445 0F       		.uleb128 0xf
+ 1808 0446 67030000 		.4byte	.LASF34
+ 1809 044a 01       		.byte	0x1
+ 1810 044b 1603     		.2byte	0x316
+ 1811 044d 85000000 		.4byte	0x85
+ 1812 0451 02       		.byte	0x2
+ 1813 0452 91       		.byte	0x91
+ 1814 0453 64       		.sleb128 -28
+ 1815 0454 0F       		.uleb128 0xf
+ 1816 0455 92030000 		.4byte	.LASF50
+ 1817 0459 01       		.byte	0x1
+ 1818 045a 1603     		.2byte	0x316
+ 1819 045c 90000000 		.4byte	0x90
+ 1820 0460 02       		.byte	0x2
+ 1821 0461 91       		.byte	0x91
+ 1822 0462 62       		.sleb128 -30
+ 1823 0463 10       		.uleb128 0x10
+ 1824 0464 3E010000 		.4byte	.LASF55
+ 1825 0468 01       		.byte	0x1
+ 1826 0469 1803     		.2byte	0x318
+ 1827 046b A6000000 		.4byte	0xa6
+ 1828 046f 02       		.byte	0x2
+ 1829 0470 91       		.byte	0x91
+ 1830 0471 6C       		.sleb128 -20
+ 1831 0472 00       		.byte	0
+ 1832 0473 09       		.uleb128 0x9
+ 1833 0474 85000000 		.4byte	0x85
+ 1834 0478 83040000 		.4byte	0x483
+ 1835 047c 0A       		.uleb128 0xa
+ 1836 047d E1000000 		.4byte	0xe1
+ 1837 0481 02       		.byte	0x2
+ 1838 0482 00       		.byte	0
+ 1839 0483 08       		.uleb128 0x8
+ 1840 0484 22030000 		.4byte	.LASF56
+ 1841 0488 01       		.byte	0x1
+ 1842 0489 22       		.byte	0x22
+ 1843 048a 94040000 		.4byte	0x494
+ 1844 048e 05       		.byte	0x5
+ 1845 048f 03       		.byte	0x3
+ 1846 0490 00000000 		.4byte	ADC_ACCELEROMETER_channelsConfig
+ 1847 0494 0B       		.uleb128 0xb
+ 1848 0495 73040000 		.4byte	0x473
+ 1849 0499 14       		.uleb128 0x14
+ 1850 049a 78030000 		.4byte	.LASF57
+ 1851 049e 01       		.byte	0x1
+ 1852 049f 19       		.byte	0x19
+ 1853 04a0 6F000000 		.4byte	0x6f
+ 1854 04a4 01       		.byte	0x1
+ 1855 04a5 05       		.byte	0x5
+ 1856 04a6 03       		.byte	0x3
+ 1857 04a7 00000000 		.4byte	ADC_ACCELEROMETER_initVar
+ 1858 04ab 09       		.uleb128 0x9
+ 1859 04ac 90000000 		.4byte	0x90
+ 1860 04b0 BB040000 		.4byte	0x4bb
+ 1861 04b4 0A       		.uleb128 0xa
+ 1862 04b5 E1000000 		.4byte	0xe1
+ 1863 04b9 02       		.byte	0x2
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpMcttb.s 			page 48
+
+
+ 1864 04ba 00       		.byte	0
+ 1865 04bb 14       		.uleb128 0x14
+ 1866 04bc 25010000 		.4byte	.LASF58
+ 1867 04c0 01       		.byte	0x1
+ 1868 04c1 1A       		.byte	0x1a
+ 1869 04c2 CD040000 		.4byte	0x4cd
+ 1870 04c6 01       		.byte	0x1
+ 1871 04c7 05       		.byte	0x5
+ 1872 04c8 03       		.byte	0x3
+ 1873 04c9 00000000 		.4byte	ADC_ACCELEROMETER_offset
+ 1874 04cd 05       		.uleb128 0x5
+ 1875 04ce AB040000 		.4byte	0x4ab
+ 1876 04d2 09       		.uleb128 0x9
+ 1877 04d3 9B000000 		.4byte	0x9b
+ 1878 04d7 E2040000 		.4byte	0x4e2
+ 1879 04db 0A       		.uleb128 0xa
+ 1880 04dc E1000000 		.4byte	0xe1
+ 1881 04e0 02       		.byte	0x2
+ 1882 04e1 00       		.byte	0
+ 1883 04e2 14       		.uleb128 0x14
+ 1884 04e3 F6020000 		.4byte	.LASF59
+ 1885 04e7 01       		.byte	0x1
+ 1886 04e8 1B       		.byte	0x1b
+ 1887 04e9 F4040000 		.4byte	0x4f4
+ 1888 04ed 01       		.byte	0x1
+ 1889 04ee 05       		.byte	0x5
+ 1890 04ef 03       		.byte	0x3
+ 1891 04f0 00000000 		.4byte	ADC_ACCELEROMETER_countsPer10Volt
+ 1892 04f4 05       		.uleb128 0x5
+ 1893 04f5 D2040000 		.4byte	0x4d2
+ 1894 04f9 00       		.byte	0
+ 1895              		.section	.debug_abbrev,"",%progbits
+ 1896              	.Ldebug_abbrev0:
+ 1897 0000 01       		.uleb128 0x1
+ 1898 0001 11       		.uleb128 0x11
+ 1899 0002 01       		.byte	0x1
+ 1900 0003 25       		.uleb128 0x25
+ 1901 0004 0E       		.uleb128 0xe
+ 1902 0005 13       		.uleb128 0x13
+ 1903 0006 0B       		.uleb128 0xb
+ 1904 0007 03       		.uleb128 0x3
+ 1905 0008 0E       		.uleb128 0xe
+ 1906 0009 1B       		.uleb128 0x1b
+ 1907 000a 0E       		.uleb128 0xe
+ 1908 000b 55       		.uleb128 0x55
+ 1909 000c 06       		.uleb128 0x6
+ 1910 000d 11       		.uleb128 0x11
+ 1911 000e 01       		.uleb128 0x1
+ 1912 000f 52       		.uleb128 0x52
+ 1913 0010 01       		.uleb128 0x1
+ 1914 0011 10       		.uleb128 0x10
+ 1915 0012 06       		.uleb128 0x6
+ 1916 0013 00       		.byte	0
+ 1917 0014 00       		.byte	0
+ 1918 0015 02       		.uleb128 0x2
+ 1919 0016 24       		.uleb128 0x24
+ 1920 0017 00       		.byte	0
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpMcttb.s 			page 49
+
+
+ 1921 0018 0B       		.uleb128 0xb
+ 1922 0019 0B       		.uleb128 0xb
+ 1923 001a 3E       		.uleb128 0x3e
+ 1924 001b 0B       		.uleb128 0xb
+ 1925 001c 03       		.uleb128 0x3
+ 1926 001d 0E       		.uleb128 0xe
+ 1927 001e 00       		.byte	0
+ 1928 001f 00       		.byte	0
+ 1929 0020 03       		.uleb128 0x3
+ 1930 0021 24       		.uleb128 0x24
+ 1931 0022 00       		.byte	0
+ 1932 0023 0B       		.uleb128 0xb
+ 1933 0024 0B       		.uleb128 0xb
+ 1934 0025 3E       		.uleb128 0x3e
+ 1935 0026 0B       		.uleb128 0xb
+ 1936 0027 03       		.uleb128 0x3
+ 1937 0028 08       		.uleb128 0x8
+ 1938 0029 00       		.byte	0
+ 1939 002a 00       		.byte	0
+ 1940 002b 04       		.uleb128 0x4
+ 1941 002c 16       		.uleb128 0x16
+ 1942 002d 00       		.byte	0
+ 1943 002e 03       		.uleb128 0x3
+ 1944 002f 0E       		.uleb128 0xe
+ 1945 0030 3A       		.uleb128 0x3a
+ 1946 0031 0B       		.uleb128 0xb
+ 1947 0032 3B       		.uleb128 0x3b
+ 1948 0033 0B       		.uleb128 0xb
+ 1949 0034 49       		.uleb128 0x49
+ 1950 0035 13       		.uleb128 0x13
+ 1951 0036 00       		.byte	0
+ 1952 0037 00       		.byte	0
+ 1953 0038 05       		.uleb128 0x5
+ 1954 0039 35       		.uleb128 0x35
+ 1955 003a 00       		.byte	0
+ 1956 003b 49       		.uleb128 0x49
+ 1957 003c 13       		.uleb128 0x13
+ 1958 003d 00       		.byte	0
+ 1959 003e 00       		.byte	0
+ 1960 003f 06       		.uleb128 0x6
+ 1961 0040 2E       		.uleb128 0x2e
+ 1962 0041 00       		.byte	0
+ 1963 0042 3F       		.uleb128 0x3f
+ 1964 0043 0C       		.uleb128 0xc
+ 1965 0044 03       		.uleb128 0x3
+ 1966 0045 0E       		.uleb128 0xe
+ 1967 0046 3A       		.uleb128 0x3a
+ 1968 0047 0B       		.uleb128 0xb
+ 1969 0048 3B       		.uleb128 0x3b
+ 1970 0049 0B       		.uleb128 0xb
+ 1971 004a 27       		.uleb128 0x27
+ 1972 004b 0C       		.uleb128 0xc
+ 1973 004c 11       		.uleb128 0x11
+ 1974 004d 01       		.uleb128 0x1
+ 1975 004e 12       		.uleb128 0x12
+ 1976 004f 01       		.uleb128 0x1
+ 1977 0050 40       		.uleb128 0x40
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpMcttb.s 			page 50
+
+
+ 1978 0051 06       		.uleb128 0x6
+ 1979 0052 9642     		.uleb128 0x2116
+ 1980 0054 0C       		.uleb128 0xc
+ 1981 0055 00       		.byte	0
+ 1982 0056 00       		.byte	0
+ 1983 0057 07       		.uleb128 0x7
+ 1984 0058 2E       		.uleb128 0x2e
+ 1985 0059 01       		.byte	0x1
+ 1986 005a 3F       		.uleb128 0x3f
+ 1987 005b 0C       		.uleb128 0xc
+ 1988 005c 03       		.uleb128 0x3
+ 1989 005d 0E       		.uleb128 0xe
+ 1990 005e 3A       		.uleb128 0x3a
+ 1991 005f 0B       		.uleb128 0xb
+ 1992 0060 3B       		.uleb128 0x3b
+ 1993 0061 0B       		.uleb128 0xb
+ 1994 0062 27       		.uleb128 0x27
+ 1995 0063 0C       		.uleb128 0xc
+ 1996 0064 11       		.uleb128 0x11
+ 1997 0065 01       		.uleb128 0x1
+ 1998 0066 12       		.uleb128 0x12
+ 1999 0067 01       		.uleb128 0x1
+ 2000 0068 40       		.uleb128 0x40
+ 2001 0069 06       		.uleb128 0x6
+ 2002 006a 9642     		.uleb128 0x2116
+ 2003 006c 0C       		.uleb128 0xc
+ 2004 006d 01       		.uleb128 0x1
+ 2005 006e 13       		.uleb128 0x13
+ 2006 006f 00       		.byte	0
+ 2007 0070 00       		.byte	0
+ 2008 0071 08       		.uleb128 0x8
+ 2009 0072 34       		.uleb128 0x34
+ 2010 0073 00       		.byte	0
+ 2011 0074 03       		.uleb128 0x3
+ 2012 0075 0E       		.uleb128 0xe
+ 2013 0076 3A       		.uleb128 0x3a
+ 2014 0077 0B       		.uleb128 0xb
+ 2015 0078 3B       		.uleb128 0x3b
+ 2016 0079 0B       		.uleb128 0xb
+ 2017 007a 49       		.uleb128 0x49
+ 2018 007b 13       		.uleb128 0x13
+ 2019 007c 02       		.uleb128 0x2
+ 2020 007d 0A       		.uleb128 0xa
+ 2021 007e 00       		.byte	0
+ 2022 007f 00       		.byte	0
+ 2023 0080 09       		.uleb128 0x9
+ 2024 0081 01       		.uleb128 0x1
+ 2025 0082 01       		.byte	0x1
+ 2026 0083 49       		.uleb128 0x49
+ 2027 0084 13       		.uleb128 0x13
+ 2028 0085 01       		.uleb128 0x1
+ 2029 0086 13       		.uleb128 0x13
+ 2030 0087 00       		.byte	0
+ 2031 0088 00       		.byte	0
+ 2032 0089 0A       		.uleb128 0xa
+ 2033 008a 21       		.uleb128 0x21
+ 2034 008b 00       		.byte	0
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpMcttb.s 			page 51
+
+
+ 2035 008c 49       		.uleb128 0x49
+ 2036 008d 13       		.uleb128 0x13
+ 2037 008e 2F       		.uleb128 0x2f
+ 2038 008f 0B       		.uleb128 0xb
+ 2039 0090 00       		.byte	0
+ 2040 0091 00       		.byte	0
+ 2041 0092 0B       		.uleb128 0xb
+ 2042 0093 26       		.uleb128 0x26
+ 2043 0094 00       		.byte	0
+ 2044 0095 49       		.uleb128 0x49
+ 2045 0096 13       		.uleb128 0x13
+ 2046 0097 00       		.byte	0
+ 2047 0098 00       		.byte	0
+ 2048 0099 0C       		.uleb128 0xc
+ 2049 009a 2E       		.uleb128 0x2e
+ 2050 009b 00       		.byte	0
+ 2051 009c 3F       		.uleb128 0x3f
+ 2052 009d 0C       		.uleb128 0xc
+ 2053 009e 03       		.uleb128 0x3
+ 2054 009f 0E       		.uleb128 0xe
+ 2055 00a0 3A       		.uleb128 0x3a
+ 2056 00a1 0B       		.uleb128 0xb
+ 2057 00a2 3B       		.uleb128 0x3b
+ 2058 00a3 05       		.uleb128 0x5
+ 2059 00a4 27       		.uleb128 0x27
+ 2060 00a5 0C       		.uleb128 0xc
+ 2061 00a6 11       		.uleb128 0x11
+ 2062 00a7 01       		.uleb128 0x1
+ 2063 00a8 12       		.uleb128 0x12
+ 2064 00a9 01       		.uleb128 0x1
+ 2065 00aa 40       		.uleb128 0x40
+ 2066 00ab 06       		.uleb128 0x6
+ 2067 00ac 9642     		.uleb128 0x2116
+ 2068 00ae 0C       		.uleb128 0xc
+ 2069 00af 00       		.byte	0
+ 2070 00b0 00       		.byte	0
+ 2071 00b1 0D       		.uleb128 0xd
+ 2072 00b2 2E       		.uleb128 0x2e
+ 2073 00b3 00       		.byte	0
+ 2074 00b4 3F       		.uleb128 0x3f
+ 2075 00b5 0C       		.uleb128 0xc
+ 2076 00b6 03       		.uleb128 0x3
+ 2077 00b7 0E       		.uleb128 0xe
+ 2078 00b8 3A       		.uleb128 0x3a
+ 2079 00b9 0B       		.uleb128 0xb
+ 2080 00ba 3B       		.uleb128 0x3b
+ 2081 00bb 05       		.uleb128 0x5
+ 2082 00bc 27       		.uleb128 0x27
+ 2083 00bd 0C       		.uleb128 0xc
+ 2084 00be 11       		.uleb128 0x11
+ 2085 00bf 01       		.uleb128 0x1
+ 2086 00c0 12       		.uleb128 0x12
+ 2087 00c1 01       		.uleb128 0x1
+ 2088 00c2 40       		.uleb128 0x40
+ 2089 00c3 06       		.uleb128 0x6
+ 2090 00c4 9742     		.uleb128 0x2117
+ 2091 00c6 0C       		.uleb128 0xc
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpMcttb.s 			page 52
+
+
+ 2092 00c7 00       		.byte	0
+ 2093 00c8 00       		.byte	0
+ 2094 00c9 0E       		.uleb128 0xe
+ 2095 00ca 2E       		.uleb128 0x2e
+ 2096 00cb 01       		.byte	0x1
+ 2097 00cc 3F       		.uleb128 0x3f
+ 2098 00cd 0C       		.uleb128 0xc
+ 2099 00ce 03       		.uleb128 0x3
+ 2100 00cf 0E       		.uleb128 0xe
+ 2101 00d0 3A       		.uleb128 0x3a
+ 2102 00d1 0B       		.uleb128 0xb
+ 2103 00d2 3B       		.uleb128 0x3b
+ 2104 00d3 05       		.uleb128 0x5
+ 2105 00d4 27       		.uleb128 0x27
+ 2106 00d5 0C       		.uleb128 0xc
+ 2107 00d6 49       		.uleb128 0x49
+ 2108 00d7 13       		.uleb128 0x13
+ 2109 00d8 11       		.uleb128 0x11
+ 2110 00d9 01       		.uleb128 0x1
+ 2111 00da 12       		.uleb128 0x12
+ 2112 00db 01       		.uleb128 0x1
+ 2113 00dc 40       		.uleb128 0x40
+ 2114 00dd 06       		.uleb128 0x6
+ 2115 00de 9742     		.uleb128 0x2117
+ 2116 00e0 0C       		.uleb128 0xc
+ 2117 00e1 01       		.uleb128 0x1
+ 2118 00e2 13       		.uleb128 0x13
+ 2119 00e3 00       		.byte	0
+ 2120 00e4 00       		.byte	0
+ 2121 00e5 0F       		.uleb128 0xf
+ 2122 00e6 05       		.uleb128 0x5
+ 2123 00e7 00       		.byte	0
+ 2124 00e8 03       		.uleb128 0x3
+ 2125 00e9 0E       		.uleb128 0xe
+ 2126 00ea 3A       		.uleb128 0x3a
+ 2127 00eb 0B       		.uleb128 0xb
+ 2128 00ec 3B       		.uleb128 0x3b
+ 2129 00ed 05       		.uleb128 0x5
+ 2130 00ee 49       		.uleb128 0x49
+ 2131 00ef 13       		.uleb128 0x13
+ 2132 00f0 02       		.uleb128 0x2
+ 2133 00f1 0A       		.uleb128 0xa
+ 2134 00f2 00       		.byte	0
+ 2135 00f3 00       		.byte	0
+ 2136 00f4 10       		.uleb128 0x10
+ 2137 00f5 34       		.uleb128 0x34
+ 2138 00f6 00       		.byte	0
+ 2139 00f7 03       		.uleb128 0x3
+ 2140 00f8 0E       		.uleb128 0xe
+ 2141 00f9 3A       		.uleb128 0x3a
+ 2142 00fa 0B       		.uleb128 0xb
+ 2143 00fb 3B       		.uleb128 0x3b
+ 2144 00fc 05       		.uleb128 0x5
+ 2145 00fd 49       		.uleb128 0x49
+ 2146 00fe 13       		.uleb128 0x13
+ 2147 00ff 02       		.uleb128 0x2
+ 2148 0100 0A       		.uleb128 0xa
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpMcttb.s 			page 53
+
+
+ 2149 0101 00       		.byte	0
+ 2150 0102 00       		.byte	0
+ 2151 0103 11       		.uleb128 0x11
+ 2152 0104 2E       		.uleb128 0x2e
+ 2153 0105 01       		.byte	0x1
+ 2154 0106 3F       		.uleb128 0x3f
+ 2155 0107 0C       		.uleb128 0xc
+ 2156 0108 03       		.uleb128 0x3
+ 2157 0109 0E       		.uleb128 0xe
+ 2158 010a 3A       		.uleb128 0x3a
+ 2159 010b 0B       		.uleb128 0xb
+ 2160 010c 3B       		.uleb128 0x3b
+ 2161 010d 05       		.uleb128 0x5
+ 2162 010e 27       		.uleb128 0x27
+ 2163 010f 0C       		.uleb128 0xc
+ 2164 0110 49       		.uleb128 0x49
+ 2165 0111 13       		.uleb128 0x13
+ 2166 0112 11       		.uleb128 0x11
+ 2167 0113 01       		.uleb128 0x1
+ 2168 0114 12       		.uleb128 0x12
+ 2169 0115 01       		.uleb128 0x1
+ 2170 0116 40       		.uleb128 0x40
+ 2171 0117 06       		.uleb128 0x6
+ 2172 0118 9642     		.uleb128 0x2116
+ 2173 011a 0C       		.uleb128 0xc
+ 2174 011b 01       		.uleb128 0x1
+ 2175 011c 13       		.uleb128 0x13
+ 2176 011d 00       		.byte	0
+ 2177 011e 00       		.byte	0
+ 2178 011f 12       		.uleb128 0x12
+ 2179 0120 2E       		.uleb128 0x2e
+ 2180 0121 01       		.byte	0x1
+ 2181 0122 3F       		.uleb128 0x3f
+ 2182 0123 0C       		.uleb128 0xc
+ 2183 0124 03       		.uleb128 0x3
+ 2184 0125 0E       		.uleb128 0xe
+ 2185 0126 3A       		.uleb128 0x3a
+ 2186 0127 0B       		.uleb128 0xb
+ 2187 0128 3B       		.uleb128 0x3b
+ 2188 0129 05       		.uleb128 0x5
+ 2189 012a 27       		.uleb128 0x27
+ 2190 012b 0C       		.uleb128 0xc
+ 2191 012c 11       		.uleb128 0x11
+ 2192 012d 01       		.uleb128 0x1
+ 2193 012e 12       		.uleb128 0x12
+ 2194 012f 01       		.uleb128 0x1
+ 2195 0130 40       		.uleb128 0x40
+ 2196 0131 06       		.uleb128 0x6
+ 2197 0132 9742     		.uleb128 0x2117
+ 2198 0134 0C       		.uleb128 0xc
+ 2199 0135 01       		.uleb128 0x1
+ 2200 0136 13       		.uleb128 0x13
+ 2201 0137 00       		.byte	0
+ 2202 0138 00       		.byte	0
+ 2203 0139 13       		.uleb128 0x13
+ 2204 013a 2E       		.uleb128 0x2e
+ 2205 013b 01       		.byte	0x1
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpMcttb.s 			page 54
+
+
+ 2206 013c 3F       		.uleb128 0x3f
+ 2207 013d 0C       		.uleb128 0xc
+ 2208 013e 03       		.uleb128 0x3
+ 2209 013f 0E       		.uleb128 0xe
+ 2210 0140 3A       		.uleb128 0x3a
+ 2211 0141 0B       		.uleb128 0xb
+ 2212 0142 3B       		.uleb128 0x3b
+ 2213 0143 05       		.uleb128 0x5
+ 2214 0144 27       		.uleb128 0x27
+ 2215 0145 0C       		.uleb128 0xc
+ 2216 0146 11       		.uleb128 0x11
+ 2217 0147 01       		.uleb128 0x1
+ 2218 0148 12       		.uleb128 0x12
+ 2219 0149 01       		.uleb128 0x1
+ 2220 014a 40       		.uleb128 0x40
+ 2221 014b 06       		.uleb128 0x6
+ 2222 014c 9642     		.uleb128 0x2116
+ 2223 014e 0C       		.uleb128 0xc
+ 2224 014f 01       		.uleb128 0x1
+ 2225 0150 13       		.uleb128 0x13
+ 2226 0151 00       		.byte	0
+ 2227 0152 00       		.byte	0
+ 2228 0153 14       		.uleb128 0x14
+ 2229 0154 34       		.uleb128 0x34
+ 2230 0155 00       		.byte	0
+ 2231 0156 03       		.uleb128 0x3
+ 2232 0157 0E       		.uleb128 0xe
+ 2233 0158 3A       		.uleb128 0x3a
+ 2234 0159 0B       		.uleb128 0xb
+ 2235 015a 3B       		.uleb128 0x3b
+ 2236 015b 0B       		.uleb128 0xb
+ 2237 015c 49       		.uleb128 0x49
+ 2238 015d 13       		.uleb128 0x13
+ 2239 015e 3F       		.uleb128 0x3f
+ 2240 015f 0C       		.uleb128 0xc
+ 2241 0160 02       		.uleb128 0x2
+ 2242 0161 0A       		.uleb128 0xa
+ 2243 0162 00       		.byte	0
+ 2244 0163 00       		.byte	0
+ 2245 0164 00       		.byte	0
+ 2246              		.section	.debug_loc,"",%progbits
+ 2247              	.Ldebug_loc0:
+ 2248              	.LLST0:
+ 2249 0000 00000000 		.4byte	.LFB0
+ 2250 0004 02000000 		.4byte	.LCFI0
+ 2251 0008 0200     		.2byte	0x2
+ 2252 000a 7D       		.byte	0x7d
+ 2253 000b 00       		.sleb128 0
+ 2254 000c 02000000 		.4byte	.LCFI0
+ 2255 0010 04000000 		.4byte	.LCFI1
+ 2256 0014 0200     		.2byte	0x2
+ 2257 0016 7D       		.byte	0x7d
+ 2258 0017 08       		.sleb128 8
+ 2259 0018 04000000 		.4byte	.LCFI1
+ 2260 001c 24000000 		.4byte	.LFE0
+ 2261 0020 0200     		.2byte	0x2
+ 2262 0022 77       		.byte	0x77
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpMcttb.s 			page 55
+
+
+ 2263 0023 08       		.sleb128 8
+ 2264 0024 00000000 		.4byte	0
+ 2265 0028 00000000 		.4byte	0
+ 2266              	.LLST1:
+ 2267 002c 00000000 		.4byte	.LFB1
+ 2268 0030 02000000 		.4byte	.LCFI2
+ 2269 0034 0200     		.2byte	0x2
+ 2270 0036 7D       		.byte	0x7d
+ 2271 0037 00       		.sleb128 0
+ 2272 0038 02000000 		.4byte	.LCFI2
+ 2273 003c 04000000 		.4byte	.LCFI3
+ 2274 0040 0200     		.2byte	0x2
+ 2275 0042 7D       		.byte	0x7d
+ 2276 0043 0C       		.sleb128 12
+ 2277 0044 04000000 		.4byte	.LCFI3
+ 2278 0048 06000000 		.4byte	.LCFI4
+ 2279 004c 0200     		.2byte	0x2
+ 2280 004e 7D       		.byte	0x7d
+ 2281 004f 20       		.sleb128 32
+ 2282 0050 06000000 		.4byte	.LCFI4
+ 2283 0054 E4010000 		.4byte	.LFE1
+ 2284 0058 0200     		.2byte	0x2
+ 2285 005a 77       		.byte	0x77
+ 2286 005b 20       		.sleb128 32
+ 2287 005c 00000000 		.4byte	0
+ 2288 0060 00000000 		.4byte	0
+ 2289              	.LLST2:
+ 2290 0064 00000000 		.4byte	.LFB2
+ 2291 0068 02000000 		.4byte	.LCFI5
+ 2292 006c 0200     		.2byte	0x2
+ 2293 006e 7D       		.byte	0x7d
+ 2294 006f 00       		.sleb128 0
+ 2295 0070 02000000 		.4byte	.LCFI5
+ 2296 0074 04000000 		.4byte	.LCFI6
+ 2297 0078 0200     		.2byte	0x2
+ 2298 007a 7D       		.byte	0x7d
+ 2299 007b 08       		.sleb128 8
+ 2300 007c 04000000 		.4byte	.LCFI6
+ 2301 0080 20000000 		.4byte	.LFE2
+ 2302 0084 0200     		.2byte	0x2
+ 2303 0086 77       		.byte	0x77
+ 2304 0087 08       		.sleb128 8
+ 2305 0088 00000000 		.4byte	0
+ 2306 008c 00000000 		.4byte	0
+ 2307              	.LLST3:
+ 2308 0090 00000000 		.4byte	.LFB3
+ 2309 0094 02000000 		.4byte	.LCFI7
+ 2310 0098 0200     		.2byte	0x2
+ 2311 009a 7D       		.byte	0x7d
+ 2312 009b 00       		.sleb128 0
+ 2313 009c 02000000 		.4byte	.LCFI7
+ 2314 00a0 04000000 		.4byte	.LCFI8
+ 2315 00a4 0200     		.2byte	0x2
+ 2316 00a6 7D       		.byte	0x7d
+ 2317 00a7 08       		.sleb128 8
+ 2318 00a8 04000000 		.4byte	.LCFI8
+ 2319 00ac 18000000 		.4byte	.LFE3
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpMcttb.s 			page 56
+
+
+ 2320 00b0 0200     		.2byte	0x2
+ 2321 00b2 77       		.byte	0x77
+ 2322 00b3 08       		.sleb128 8
+ 2323 00b4 00000000 		.4byte	0
+ 2324 00b8 00000000 		.4byte	0
+ 2325              	.LLST4:
+ 2326 00bc 00000000 		.4byte	.LFB4
+ 2327 00c0 02000000 		.4byte	.LCFI9
+ 2328 00c4 0200     		.2byte	0x2
+ 2329 00c6 7D       		.byte	0x7d
+ 2330 00c7 00       		.sleb128 0
+ 2331 00c8 02000000 		.4byte	.LCFI9
+ 2332 00cc 04000000 		.4byte	.LCFI10
+ 2333 00d0 0200     		.2byte	0x2
+ 2334 00d2 7D       		.byte	0x7d
+ 2335 00d3 08       		.sleb128 8
+ 2336 00d4 04000000 		.4byte	.LCFI10
+ 2337 00d8 1C000000 		.4byte	.LFE4
+ 2338 00dc 0200     		.2byte	0x2
+ 2339 00de 77       		.byte	0x77
+ 2340 00df 08       		.sleb128 8
+ 2341 00e0 00000000 		.4byte	0
+ 2342 00e4 00000000 		.4byte	0
+ 2343              	.LLST5:
+ 2344 00e8 00000000 		.4byte	.LFB5
+ 2345 00ec 02000000 		.4byte	.LCFI11
+ 2346 00f0 0200     		.2byte	0x2
+ 2347 00f2 7D       		.byte	0x7d
+ 2348 00f3 00       		.sleb128 0
+ 2349 00f4 02000000 		.4byte	.LCFI11
+ 2350 00f8 04000000 		.4byte	.LCFI12
+ 2351 00fc 0200     		.2byte	0x2
+ 2352 00fe 7D       		.byte	0x7d
+ 2353 00ff 08       		.sleb128 8
+ 2354 0100 04000000 		.4byte	.LCFI12
+ 2355 0104 1C000000 		.4byte	.LFE5
+ 2356 0108 0200     		.2byte	0x2
+ 2357 010a 77       		.byte	0x77
+ 2358 010b 08       		.sleb128 8
+ 2359 010c 00000000 		.4byte	0
+ 2360 0110 00000000 		.4byte	0
+ 2361              	.LLST6:
+ 2362 0114 00000000 		.4byte	.LFB6
+ 2363 0118 02000000 		.4byte	.LCFI13
+ 2364 011c 0200     		.2byte	0x2
+ 2365 011e 7D       		.byte	0x7d
+ 2366 011f 00       		.sleb128 0
+ 2367 0120 02000000 		.4byte	.LCFI13
+ 2368 0124 04000000 		.4byte	.LCFI14
+ 2369 0128 0200     		.2byte	0x2
+ 2370 012a 7D       		.byte	0x7d
+ 2371 012b 08       		.sleb128 8
+ 2372 012c 04000000 		.4byte	.LCFI14
+ 2373 0130 06000000 		.4byte	.LCFI15
+ 2374 0134 0200     		.2byte	0x2
+ 2375 0136 7D       		.byte	0x7d
+ 2376 0137 18       		.sleb128 24
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpMcttb.s 			page 57
+
+
+ 2377 0138 06000000 		.4byte	.LCFI15
+ 2378 013c 48000000 		.4byte	.LFE6
+ 2379 0140 0200     		.2byte	0x2
+ 2380 0142 77       		.byte	0x77
+ 2381 0143 18       		.sleb128 24
+ 2382 0144 00000000 		.4byte	0
+ 2383 0148 00000000 		.4byte	0
+ 2384              	.LLST7:
+ 2385 014c 00000000 		.4byte	.LFB7
+ 2386 0150 02000000 		.4byte	.LCFI16
+ 2387 0154 0200     		.2byte	0x2
+ 2388 0156 7D       		.byte	0x7d
+ 2389 0157 00       		.sleb128 0
+ 2390 0158 02000000 		.4byte	.LCFI16
+ 2391 015c 04000000 		.4byte	.LCFI17
+ 2392 0160 0200     		.2byte	0x2
+ 2393 0162 7D       		.byte	0x7d
+ 2394 0163 08       		.sleb128 8
+ 2395 0164 04000000 		.4byte	.LCFI17
+ 2396 0168 06000000 		.4byte	.LCFI18
+ 2397 016c 0200     		.2byte	0x2
+ 2398 016e 7D       		.byte	0x7d
+ 2399 016f 18       		.sleb128 24
+ 2400 0170 06000000 		.4byte	.LCFI18
+ 2401 0174 44000000 		.4byte	.LFE7
+ 2402 0178 0200     		.2byte	0x2
+ 2403 017a 77       		.byte	0x77
+ 2404 017b 18       		.sleb128 24
+ 2405 017c 00000000 		.4byte	0
+ 2406 0180 00000000 		.4byte	0
+ 2407              	.LLST8:
+ 2408 0184 00000000 		.4byte	.LFB8
+ 2409 0188 02000000 		.4byte	.LCFI19
+ 2410 018c 0200     		.2byte	0x2
+ 2411 018e 7D       		.byte	0x7d
+ 2412 018f 00       		.sleb128 0
+ 2413 0190 02000000 		.4byte	.LCFI19
+ 2414 0194 04000000 		.4byte	.LCFI20
+ 2415 0198 0200     		.2byte	0x2
+ 2416 019a 7D       		.byte	0x7d
+ 2417 019b 08       		.sleb128 8
+ 2418 019c 04000000 		.4byte	.LCFI20
+ 2419 01a0 06000000 		.4byte	.LCFI21
+ 2420 01a4 0200     		.2byte	0x2
+ 2421 01a6 7D       		.byte	0x7d
+ 2422 01a7 10       		.sleb128 16
+ 2423 01a8 06000000 		.4byte	.LCFI21
+ 2424 01ac 1C000000 		.4byte	.LFE8
+ 2425 01b0 0200     		.2byte	0x2
+ 2426 01b2 77       		.byte	0x77
+ 2427 01b3 10       		.sleb128 16
+ 2428 01b4 00000000 		.4byte	0
+ 2429 01b8 00000000 		.4byte	0
+ 2430              	.LLST9:
+ 2431 01bc 00000000 		.4byte	.LFB9
+ 2432 01c0 02000000 		.4byte	.LCFI22
+ 2433 01c4 0200     		.2byte	0x2
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpMcttb.s 			page 58
+
+
+ 2434 01c6 7D       		.byte	0x7d
+ 2435 01c7 00       		.sleb128 0
+ 2436 01c8 02000000 		.4byte	.LCFI22
+ 2437 01cc 04000000 		.4byte	.LCFI23
+ 2438 01d0 0200     		.2byte	0x2
+ 2439 01d2 7D       		.byte	0x7d
+ 2440 01d3 08       		.sleb128 8
+ 2441 01d4 04000000 		.4byte	.LCFI23
+ 2442 01d8 06000000 		.4byte	.LCFI24
+ 2443 01dc 0200     		.2byte	0x2
+ 2444 01de 7D       		.byte	0x7d
+ 2445 01df 10       		.sleb128 16
+ 2446 01e0 06000000 		.4byte	.LCFI24
+ 2447 01e4 30000000 		.4byte	.LFE9
+ 2448 01e8 0200     		.2byte	0x2
+ 2449 01ea 77       		.byte	0x77
+ 2450 01eb 10       		.sleb128 16
+ 2451 01ec 00000000 		.4byte	0
+ 2452 01f0 00000000 		.4byte	0
+ 2453              	.LLST10:
+ 2454 01f4 00000000 		.4byte	.LFB10
+ 2455 01f8 02000000 		.4byte	.LCFI25
+ 2456 01fc 0200     		.2byte	0x2
+ 2457 01fe 7D       		.byte	0x7d
+ 2458 01ff 00       		.sleb128 0
+ 2459 0200 02000000 		.4byte	.LCFI25
+ 2460 0204 04000000 		.4byte	.LCFI26
+ 2461 0208 0200     		.2byte	0x2
+ 2462 020a 7D       		.byte	0x7d
+ 2463 020b 08       		.sleb128 8
+ 2464 020c 04000000 		.4byte	.LCFI26
+ 2465 0210 06000000 		.4byte	.LCFI27
+ 2466 0214 0200     		.2byte	0x2
+ 2467 0216 7D       		.byte	0x7d
+ 2468 0217 10       		.sleb128 16
+ 2469 0218 06000000 		.4byte	.LCFI27
+ 2470 021c 2C000000 		.4byte	.LFE10
+ 2471 0220 0200     		.2byte	0x2
+ 2472 0222 77       		.byte	0x77
+ 2473 0223 10       		.sleb128 16
+ 2474 0224 00000000 		.4byte	0
+ 2475 0228 00000000 		.4byte	0
+ 2476              	.LLST11:
+ 2477 022c 00000000 		.4byte	.LFB11
+ 2478 0230 02000000 		.4byte	.LCFI28
+ 2479 0234 0200     		.2byte	0x2
+ 2480 0236 7D       		.byte	0x7d
+ 2481 0237 00       		.sleb128 0
+ 2482 0238 02000000 		.4byte	.LCFI28
+ 2483 023c 04000000 		.4byte	.LCFI29
+ 2484 0240 0200     		.2byte	0x2
+ 2485 0242 7D       		.byte	0x7d
+ 2486 0243 08       		.sleb128 8
+ 2487 0244 04000000 		.4byte	.LCFI29
+ 2488 0248 06000000 		.4byte	.LCFI30
+ 2489 024c 0200     		.2byte	0x2
+ 2490 024e 7D       		.byte	0x7d
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpMcttb.s 			page 59
+
+
+ 2491 024f 10       		.sleb128 16
+ 2492 0250 06000000 		.4byte	.LCFI30
+ 2493 0254 1C000000 		.4byte	.LFE11
+ 2494 0258 0200     		.2byte	0x2
+ 2495 025a 77       		.byte	0x77
+ 2496 025b 10       		.sleb128 16
+ 2497 025c 00000000 		.4byte	0
+ 2498 0260 00000000 		.4byte	0
+ 2499              	.LLST12:
+ 2500 0264 00000000 		.4byte	.LFB12
+ 2501 0268 02000000 		.4byte	.LCFI31
+ 2502 026c 0200     		.2byte	0x2
+ 2503 026e 7D       		.byte	0x7d
+ 2504 026f 00       		.sleb128 0
+ 2505 0270 02000000 		.4byte	.LCFI31
+ 2506 0274 04000000 		.4byte	.LCFI32
+ 2507 0278 0200     		.2byte	0x2
+ 2508 027a 7D       		.byte	0x7d
+ 2509 027b 08       		.sleb128 8
+ 2510 027c 04000000 		.4byte	.LCFI32
+ 2511 0280 06000000 		.4byte	.LCFI33
+ 2512 0284 0200     		.2byte	0x2
+ 2513 0286 7D       		.byte	0x7d
+ 2514 0287 10       		.sleb128 16
+ 2515 0288 06000000 		.4byte	.LCFI33
+ 2516 028c 1C000000 		.4byte	.LFE12
+ 2517 0290 0200     		.2byte	0x2
+ 2518 0292 77       		.byte	0x77
+ 2519 0293 10       		.sleb128 16
+ 2520 0294 00000000 		.4byte	0
+ 2521 0298 00000000 		.4byte	0
+ 2522              	.LLST13:
+ 2523 029c 00000000 		.4byte	.LFB13
+ 2524 02a0 02000000 		.4byte	.LCFI34
+ 2525 02a4 0200     		.2byte	0x2
+ 2526 02a6 7D       		.byte	0x7d
+ 2527 02a7 00       		.sleb128 0
+ 2528 02a8 02000000 		.4byte	.LCFI34
+ 2529 02ac 04000000 		.4byte	.LCFI35
+ 2530 02b0 0200     		.2byte	0x2
+ 2531 02b2 7D       		.byte	0x7d
+ 2532 02b3 08       		.sleb128 8
+ 2533 02b4 04000000 		.4byte	.LCFI35
+ 2534 02b8 06000000 		.4byte	.LCFI36
+ 2535 02bc 0200     		.2byte	0x2
+ 2536 02be 7D       		.byte	0x7d
+ 2537 02bf 10       		.sleb128 16
+ 2538 02c0 06000000 		.4byte	.LCFI36
+ 2539 02c4 30000000 		.4byte	.LFE13
+ 2540 02c8 0200     		.2byte	0x2
+ 2541 02ca 77       		.byte	0x77
+ 2542 02cb 10       		.sleb128 16
+ 2543 02cc 00000000 		.4byte	0
+ 2544 02d0 00000000 		.4byte	0
+ 2545              	.LLST14:
+ 2546 02d4 00000000 		.4byte	.LFB14
+ 2547 02d8 02000000 		.4byte	.LCFI37
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpMcttb.s 			page 60
+
+
+ 2548 02dc 0200     		.2byte	0x2
+ 2549 02de 7D       		.byte	0x7d
+ 2550 02df 00       		.sleb128 0
+ 2551 02e0 02000000 		.4byte	.LCFI37
+ 2552 02e4 04000000 		.4byte	.LCFI38
+ 2553 02e8 0200     		.2byte	0x2
+ 2554 02ea 7D       		.byte	0x7d
+ 2555 02eb 08       		.sleb128 8
+ 2556 02ec 04000000 		.4byte	.LCFI38
+ 2557 02f0 06000000 		.4byte	.LCFI39
+ 2558 02f4 0200     		.2byte	0x2
+ 2559 02f6 7D       		.byte	0x7d
+ 2560 02f7 10       		.sleb128 16
+ 2561 02f8 06000000 		.4byte	.LCFI39
+ 2562 02fc 2C000000 		.4byte	.LFE14
+ 2563 0300 0200     		.2byte	0x2
+ 2564 0302 77       		.byte	0x77
+ 2565 0303 10       		.sleb128 16
+ 2566 0304 00000000 		.4byte	0
+ 2567 0308 00000000 		.4byte	0
+ 2568              	.LLST15:
+ 2569 030c 00000000 		.4byte	.LFB15
+ 2570 0310 02000000 		.4byte	.LCFI40
+ 2571 0314 0200     		.2byte	0x2
+ 2572 0316 7D       		.byte	0x7d
+ 2573 0317 00       		.sleb128 0
+ 2574 0318 02000000 		.4byte	.LCFI40
+ 2575 031c 04000000 		.4byte	.LCFI41
+ 2576 0320 0200     		.2byte	0x2
+ 2577 0322 7D       		.byte	0x7d
+ 2578 0323 08       		.sleb128 8
+ 2579 0324 04000000 		.4byte	.LCFI41
+ 2580 0328 06000000 		.4byte	.LCFI42
+ 2581 032c 0200     		.2byte	0x2
+ 2582 032e 7D       		.byte	0x7d
+ 2583 032f 18       		.sleb128 24
+ 2584 0330 06000000 		.4byte	.LCFI42
+ 2585 0334 A4000000 		.4byte	.LFE15
+ 2586 0338 0200     		.2byte	0x2
+ 2587 033a 77       		.byte	0x77
+ 2588 033b 18       		.sleb128 24
+ 2589 033c 00000000 		.4byte	0
+ 2590 0340 00000000 		.4byte	0
+ 2591              	.LLST16:
+ 2592 0344 00000000 		.4byte	.LFB16
+ 2593 0348 02000000 		.4byte	.LCFI43
+ 2594 034c 0200     		.2byte	0x2
+ 2595 034e 7D       		.byte	0x7d
+ 2596 034f 00       		.sleb128 0
+ 2597 0350 02000000 		.4byte	.LCFI43
+ 2598 0354 04000000 		.4byte	.LCFI44
+ 2599 0358 0200     		.2byte	0x2
+ 2600 035a 7D       		.byte	0x7d
+ 2601 035b 10       		.sleb128 16
+ 2602 035c 04000000 		.4byte	.LCFI44
+ 2603 0360 06000000 		.4byte	.LCFI45
+ 2604 0364 0200     		.2byte	0x2
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpMcttb.s 			page 61
+
+
+ 2605 0366 7D       		.byte	0x7d
+ 2606 0367 28       		.sleb128 40
+ 2607 0368 06000000 		.4byte	.LCFI45
+ 2608 036c 98000000 		.4byte	.LFE16
+ 2609 0370 0200     		.2byte	0x2
+ 2610 0372 77       		.byte	0x77
+ 2611 0373 28       		.sleb128 40
+ 2612 0374 00000000 		.4byte	0
+ 2613 0378 00000000 		.4byte	0
+ 2614              	.LLST17:
+ 2615 037c 00000000 		.4byte	.LFB17
+ 2616 0380 02000000 		.4byte	.LCFI46
+ 2617 0384 0200     		.2byte	0x2
+ 2618 0386 7D       		.byte	0x7d
+ 2619 0387 00       		.sleb128 0
+ 2620 0388 02000000 		.4byte	.LCFI46
+ 2621 038c 04000000 		.4byte	.LCFI47
+ 2622 0390 0200     		.2byte	0x2
+ 2623 0392 7D       		.byte	0x7d
+ 2624 0393 0C       		.sleb128 12
+ 2625 0394 04000000 		.4byte	.LCFI47
+ 2626 0398 06000000 		.4byte	.LCFI48
+ 2627 039c 0200     		.2byte	0x2
+ 2628 039e 7D       		.byte	0x7d
+ 2629 039f 20       		.sleb128 32
+ 2630 03a0 06000000 		.4byte	.LCFI48
+ 2631 03a4 80000000 		.4byte	.LFE17
+ 2632 03a8 0200     		.2byte	0x2
+ 2633 03aa 77       		.byte	0x77
+ 2634 03ab 20       		.sleb128 32
+ 2635 03ac 00000000 		.4byte	0
+ 2636 03b0 00000000 		.4byte	0
+ 2637              		.section	.debug_aranges,"",%progbits
+ 2638 0000 A4000000 		.4byte	0xa4
+ 2639 0004 0200     		.2byte	0x2
+ 2640 0006 00000000 		.4byte	.Ldebug_info0
+ 2641 000a 04       		.byte	0x4
+ 2642 000b 00       		.byte	0
+ 2643 000c 0000     		.2byte	0
+ 2644 000e 0000     		.2byte	0
+ 2645 0010 00000000 		.4byte	.LFB0
+ 2646 0014 24000000 		.4byte	.LFE0-.LFB0
+ 2647 0018 00000000 		.4byte	.LFB1
+ 2648 001c E4010000 		.4byte	.LFE1-.LFB1
+ 2649 0020 00000000 		.4byte	.LFB2
+ 2650 0024 20000000 		.4byte	.LFE2-.LFB2
+ 2651 0028 00000000 		.4byte	.LFB3
+ 2652 002c 18000000 		.4byte	.LFE3-.LFB3
+ 2653 0030 00000000 		.4byte	.LFB4
+ 2654 0034 1C000000 		.4byte	.LFE4-.LFB4
+ 2655 0038 00000000 		.4byte	.LFB5
+ 2656 003c 1C000000 		.4byte	.LFE5-.LFB5
+ 2657 0040 00000000 		.4byte	.LFB6
+ 2658 0044 48000000 		.4byte	.LFE6-.LFB6
+ 2659 0048 00000000 		.4byte	.LFB7
+ 2660 004c 44000000 		.4byte	.LFE7-.LFB7
+ 2661 0050 00000000 		.4byte	.LFB8
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpMcttb.s 			page 62
+
+
+ 2662 0054 1C000000 		.4byte	.LFE8-.LFB8
+ 2663 0058 00000000 		.4byte	.LFB9
+ 2664 005c 30000000 		.4byte	.LFE9-.LFB9
+ 2665 0060 00000000 		.4byte	.LFB10
+ 2666 0064 2C000000 		.4byte	.LFE10-.LFB10
+ 2667 0068 00000000 		.4byte	.LFB11
+ 2668 006c 1C000000 		.4byte	.LFE11-.LFB11
+ 2669 0070 00000000 		.4byte	.LFB12
+ 2670 0074 1C000000 		.4byte	.LFE12-.LFB12
+ 2671 0078 00000000 		.4byte	.LFB13
+ 2672 007c 30000000 		.4byte	.LFE13-.LFB13
+ 2673 0080 00000000 		.4byte	.LFB14
+ 2674 0084 2C000000 		.4byte	.LFE14-.LFB14
+ 2675 0088 00000000 		.4byte	.LFB15
+ 2676 008c A4000000 		.4byte	.LFE15-.LFB15
+ 2677 0090 00000000 		.4byte	.LFB16
+ 2678 0094 98000000 		.4byte	.LFE16-.LFB16
+ 2679 0098 00000000 		.4byte	.LFB17
+ 2680 009c 80000000 		.4byte	.LFE17-.LFB17
+ 2681 00a0 00000000 		.4byte	0
+ 2682 00a4 00000000 		.4byte	0
+ 2683              		.section	.debug_ranges,"",%progbits
+ 2684              	.Ldebug_ranges0:
+ 2685 0000 00000000 		.4byte	.LFB0
+ 2686 0004 24000000 		.4byte	.LFE0
+ 2687 0008 00000000 		.4byte	.LFB1
+ 2688 000c E4010000 		.4byte	.LFE1
+ 2689 0010 00000000 		.4byte	.LFB2
+ 2690 0014 20000000 		.4byte	.LFE2
+ 2691 0018 00000000 		.4byte	.LFB3
+ 2692 001c 18000000 		.4byte	.LFE3
+ 2693 0020 00000000 		.4byte	.LFB4
+ 2694 0024 1C000000 		.4byte	.LFE4
+ 2695 0028 00000000 		.4byte	.LFB5
+ 2696 002c 1C000000 		.4byte	.LFE5
+ 2697 0030 00000000 		.4byte	.LFB6
+ 2698 0034 48000000 		.4byte	.LFE6
+ 2699 0038 00000000 		.4byte	.LFB7
+ 2700 003c 44000000 		.4byte	.LFE7
+ 2701 0040 00000000 		.4byte	.LFB8
+ 2702 0044 1C000000 		.4byte	.LFE8
+ 2703 0048 00000000 		.4byte	.LFB9
+ 2704 004c 30000000 		.4byte	.LFE9
+ 2705 0050 00000000 		.4byte	.LFB10
+ 2706 0054 2C000000 		.4byte	.LFE10
+ 2707 0058 00000000 		.4byte	.LFB11
+ 2708 005c 1C000000 		.4byte	.LFE11
+ 2709 0060 00000000 		.4byte	.LFB12
+ 2710 0064 1C000000 		.4byte	.LFE12
+ 2711 0068 00000000 		.4byte	.LFB13
+ 2712 006c 30000000 		.4byte	.LFE13
+ 2713 0070 00000000 		.4byte	.LFB14
+ 2714 0074 2C000000 		.4byte	.LFE14
+ 2715 0078 00000000 		.4byte	.LFB15
+ 2716 007c A4000000 		.4byte	.LFE15
+ 2717 0080 00000000 		.4byte	.LFB16
+ 2718 0084 98000000 		.4byte	.LFE16
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpMcttb.s 			page 63
+
+
+ 2719 0088 00000000 		.4byte	.LFB17
+ 2720 008c 80000000 		.4byte	.LFE17
+ 2721 0090 00000000 		.4byte	0
+ 2722 0094 00000000 		.4byte	0
+ 2723              		.section	.debug_line,"",%progbits
+ 2724              	.Ldebug_line0:
+ 2725 0000 39020000 		.section	.debug_str,"MS",%progbits,1
+ 2725      02005000 
+ 2725      00000201 
+ 2725      FB0E0D00 
+ 2725      01010101 
+ 2726              	.LASF10:
+ 2727 0000 75696E74 		.ascii	"uint16\000"
+ 2727      313600
+ 2728              	.LASF48:
+ 2729 0007 61646347 		.ascii	"adcGain\000"
+ 2729      61696E00 
+ 2730              	.LASF23:
+ 2731 000f 636F756E 		.ascii	"counts\000"
+ 2731      747300
+ 2732              	.LASF7:
+ 2733 0016 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 2733      206C6F6E 
+ 2733      6720756E 
+ 2733      7369676E 
+ 2733      65642069 
+ 2734              	.LASF47:
+ 2735 002d 4144435F 		.ascii	"ADC_ACCELEROMETER_SetGain\000"
+ 2735      41434345 
+ 2735      4C45524F 
+ 2735      4D455445 
+ 2735      525F5365 
+ 2736              	.LASF6:
+ 2737 0047 6C6F6E67 		.ascii	"long long int\000"
+ 2737      206C6F6E 
+ 2737      6720696E 
+ 2737      7400
+ 2738              	.LASF0:
+ 2739 0055 7369676E 		.ascii	"signed char\000"
+ 2739      65642063 
+ 2739      68617200 
+ 2740              	.LASF61:
+ 2741 0061 2E5C4765 		.ascii	".\\Generated_Source\\PSoC4\\ADC_ACCELEROMETER.c\000"
+ 2741      6E657261 
+ 2741      7465645F 
+ 2741      536F7572 
+ 2741      63655C50 
+ 2742              	.LASF13:
+ 2743 008e 696E7433 		.ascii	"int32\000"
+ 2743      3200
+ 2744              	.LASF4:
+ 2745 0094 6C6F6E67 		.ascii	"long int\000"
+ 2745      20696E74 
+ 2745      00
+ 2746              	.LASF9:
+ 2747 009d 75696E74 		.ascii	"uint8\000"
+ 2747      3800
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpMcttb.s 			page 64
+
+
+ 2748              	.LASF16:
+ 2749 00a3 646F7562 		.ascii	"double\000"
+ 2749      6C6500
+ 2750              	.LASF11:
+ 2751 00aa 75696E74 		.ascii	"uint32\000"
+ 2751      333200
+ 2752              	.LASF38:
+ 2753 00b1 6D61736B 		.ascii	"mask\000"
+ 2753      00
+ 2754              	.LASF43:
+ 2755 00b6 4144435F 		.ascii	"ADC_ACCELEROMETER_SetLimitMask\000"
+ 2755      41434345 
+ 2755      4C45524F 
+ 2755      4D455445 
+ 2755      525F5365 
+ 2756              	.LASF33:
+ 2757 00d5 7265744D 		.ascii	"retMode\000"
+ 2757      6F646500 
+ 2758              	.LASF31:
+ 2759 00dd 4144435F 		.ascii	"ADC_ACCELEROMETER_IsEndConversion\000"
+ 2759      41434345 
+ 2759      4C45524F 
+ 2759      4D455445 
+ 2759      525F4973 
+ 2760              	.LASF8:
+ 2761 00ff 756E7369 		.ascii	"unsigned int\000"
+ 2761      676E6564 
+ 2761      20696E74 
+ 2761      00
+ 2762              	.LASF53:
+ 2763 010c 75566F6C 		.ascii	"uVolts\000"
+ 2763      747300
+ 2764              	.LASF5:
+ 2765 0113 6C6F6E67 		.ascii	"long unsigned int\000"
+ 2765      20756E73 
+ 2765      69676E65 
+ 2765      6420696E 
+ 2765      7400
+ 2766              	.LASF58:
+ 2767 0125 4144435F 		.ascii	"ADC_ACCELEROMETER_offset\000"
+ 2767      41434345 
+ 2767      4C45524F 
+ 2767      4D455445 
+ 2767      525F6F66 
+ 2768              	.LASF55:
+ 2769 013e 766F6C74 		.ascii	"volts\000"
+ 2769      7300
+ 2770              	.LASF22:
+ 2771 0144 746D7052 		.ascii	"tmpRegVal\000"
+ 2771      65675661 
+ 2771      6C00
+ 2772              	.LASF3:
+ 2773 014e 73686F72 		.ascii	"short unsigned int\000"
+ 2773      7420756E 
+ 2773      7369676E 
+ 2773      65642069 
+ 2773      6E7400
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpMcttb.s 			page 65
+
+
+ 2774              	.LASF49:
+ 2775 0161 4144435F 		.ascii	"ADC_ACCELEROMETER_CountsTo_mVolts\000"
+ 2775      41434345 
+ 2775      4C45524F 
+ 2775      4D455445 
+ 2775      525F436F 
+ 2776              	.LASF28:
+ 2777 0183 4144435F 		.ascii	"ADC_ACCELEROMETER_StartConvert\000"
+ 2777      41434345 
+ 2777      4C45524F 
+ 2777      4D455445 
+ 2777      525F5374 
+ 2778              	.LASF51:
+ 2779 01a2 6D566F6C 		.ascii	"mVolts\000"
+ 2779      747300
+ 2780              	.LASF19:
+ 2781 01a9 72656733 		.ascii	"reg32\000"
+ 2781      3200
+ 2782              	.LASF41:
+ 2783 01af 4144435F 		.ascii	"ADC_ACCELEROMETER_SetHighLimit\000"
+ 2783      41434345 
+ 2783      4C45524F 
+ 2783      4D455445 
+ 2783      525F5365 
+ 2784              	.LASF14:
+ 2785 01ce 666C6F61 		.ascii	"float32\000"
+ 2785      74333200 
+ 2786              	.LASF20:
+ 2787 01d6 73697A65 		.ascii	"sizetype\000"
+ 2787      74797065 
+ 2787      00
+ 2788              	.LASF40:
+ 2789 01df 6C6F774C 		.ascii	"lowLimit\000"
+ 2789      696D6974 
+ 2789      00
+ 2790              	.LASF44:
+ 2791 01e8 4144435F 		.ascii	"ADC_ACCELEROMETER_SetSatMask\000"
+ 2791      41434345 
+ 2791      4C45524F 
+ 2791      4D455445 
+ 2791      525F5365 
+ 2792              	.LASF27:
+ 2793 0205 4144435F 		.ascii	"ADC_ACCELEROMETER_Stop\000"
+ 2793      41434345 
+ 2793      4C45524F 
+ 2793      4D455445 
+ 2793      525F5374 
+ 2794              	.LASF17:
+ 2795 021c 696E7436 		.ascii	"int64\000"
+ 2795      3400
+ 2796              	.LASF15:
+ 2797 0222 666C6F61 		.ascii	"float\000"
+ 2797      7400
+ 2798              	.LASF32:
+ 2799 0228 4144435F 		.ascii	"ADC_ACCELEROMETER_GetResult16\000"
+ 2799      41434345 
+ 2799      4C45524F 
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpMcttb.s 			page 66
+
+
+ 2799      4D455445 
+ 2799      525F4765 
+ 2800              	.LASF42:
+ 2801 0246 68696768 		.ascii	"highLimit\000"
+ 2801      4C696D69 
+ 2801      7400
+ 2802              	.LASF62:
+ 2803 0250 433A5C50 		.ascii	"C:\\Projects\\PSoC\\Bootloading_PSoC5_LP\\PSoc4_Mai"
+ 2803      726F6A65 
+ 2803      6374735C 
+ 2803      50536F43 
+ 2803      5C426F6F 
+ 2804 027f 6E2E6379 		.ascii	"n.cydsn\000"
+ 2804      64736E00 
+ 2805              	.LASF60:
+ 2806 0287 474E5520 		.ascii	"GNU C 4.7.3 20130312 (release) [ARM/embedded-4_7-br"
+ 2806      4320342E 
+ 2806      372E3320 
+ 2806      32303133 
+ 2806      30333132 
+ 2807 02ba 616E6368 		.ascii	"anch revision 196615]\000"
+ 2807      20726576 
+ 2807      6973696F 
+ 2807      6E203139 
+ 2807      36363135 
+ 2808              	.LASF25:
+ 2809 02d0 4144435F 		.ascii	"ADC_ACCELEROMETER_Start\000"
+ 2809      41434345 
+ 2809      4C45524F 
+ 2809      4D455445 
+ 2809      525F5374 
+ 2810              	.LASF1:
+ 2811 02e8 756E7369 		.ascii	"unsigned char\000"
+ 2811      676E6564 
+ 2811      20636861 
+ 2811      7200
+ 2812              	.LASF59:
+ 2813 02f6 4144435F 		.ascii	"ADC_ACCELEROMETER_countsPer10Volt\000"
+ 2813      41434345 
+ 2813      4C45524F 
+ 2813      4D455445 
+ 2813      525F636F 
+ 2814              	.LASF2:
+ 2815 0318 73686F72 		.ascii	"short int\000"
+ 2815      7420696E 
+ 2815      7400
+ 2816              	.LASF56:
+ 2817 0322 4144435F 		.ascii	"ADC_ACCELEROMETER_channelsConfig\000"
+ 2817      41434345 
+ 2817      4C45524F 
+ 2817      4D455445 
+ 2817      525F6368 
+ 2818              	.LASF29:
+ 2819 0343 4144435F 		.ascii	"ADC_ACCELEROMETER_StopConvert\000"
+ 2819      41434345 
+ 2819      4C45524F 
+ 2819      4D455445 
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpMcttb.s 			page 67
+
+
+ 2819      525F5374 
+ 2820              	.LASF21:
+ 2821 0361 63684E75 		.ascii	"chNum\000"
+ 2821      6D00
+ 2822              	.LASF34:
+ 2823 0367 6368616E 		.ascii	"chan\000"
+ 2823      00
+ 2824              	.LASF18:
+ 2825 036c 63686172 		.ascii	"char\000"
+ 2825      00
+ 2826              	.LASF46:
+ 2827 0371 6F666673 		.ascii	"offset\000"
+ 2827      657400
+ 2828              	.LASF57:
+ 2829 0378 4144435F 		.ascii	"ADC_ACCELEROMETER_initVar\000"
+ 2829      41434345 
+ 2829      4C45524F 
+ 2829      4D455445 
+ 2829      525F696E 
+ 2830              	.LASF50:
+ 2831 0392 61646343 		.ascii	"adcCounts\000"
+ 2831      6F756E74 
+ 2831      7300
+ 2832              	.LASF26:
+ 2833 039c 4144435F 		.ascii	"ADC_ACCELEROMETER_Enable\000"
+ 2833      41434345 
+ 2833      4C45524F 
+ 2833      4D455445 
+ 2833      525F456E 
+ 2834              	.LASF45:
+ 2835 03b5 4144435F 		.ascii	"ADC_ACCELEROMETER_SetOffset\000"
+ 2835      41434345 
+ 2835      4C45524F 
+ 2835      4D455445 
+ 2835      525F5365 
+ 2836              	.LASF30:
+ 2837 03d1 73746174 		.ascii	"status\000"
+ 2837      757300
+ 2838              	.LASF24:
+ 2839 03d8 4144435F 		.ascii	"ADC_ACCELEROMETER_InputsPlacement\000"
+ 2839      41434345 
+ 2839      4C45524F 
+ 2839      4D455445 
+ 2839      525F496E 
+ 2840              	.LASF37:
+ 2841 03fa 4144435F 		.ascii	"ADC_ACCELEROMETER_SetChanMask\000"
+ 2841      41434345 
+ 2841      4C45524F 
+ 2841      4D455445 
+ 2841      525F5365 
+ 2842              	.LASF12:
+ 2843 0418 696E7431 		.ascii	"int16\000"
+ 2843      3600
+ 2844              	.LASF54:
+ 2845 041e 4144435F 		.ascii	"ADC_ACCELEROMETER_CountsTo_Volts\000"
+ 2845      41434345 
+ 2845      4C45524F 
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpMcttb.s 			page 68
+
+
+ 2845      4D455445 
+ 2845      525F436F 
+ 2846              	.LASF36:
+ 2847 043f 4144435F 		.ascii	"ADC_ACCELEROMETER_Init\000"
+ 2847      41434345 
+ 2847      4C45524F 
+ 2847      4D455445 
+ 2847      525F496E 
+ 2848              	.LASF39:
+ 2849 0456 4144435F 		.ascii	"ADC_ACCELEROMETER_SetLowLimit\000"
+ 2849      41434345 
+ 2849      4C45524F 
+ 2849      4D455445 
+ 2849      525F5365 
+ 2850              	.LASF52:
+ 2851 0474 4144435F 		.ascii	"ADC_ACCELEROMETER_CountsTo_uVolts\000"
+ 2851      41434345 
+ 2851      4C45524F 
+ 2851      4D455445 
+ 2851      525F436F 
+ 2852              	.LASF35:
+ 2853 0496 72657375 		.ascii	"result\000"
+ 2853      6C7400
+ 2854              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.7.3 20130312 (release) [ARM/embedded-4_7-br

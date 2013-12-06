@@ -1,0 +1,15 @@
+# PSoc4_Main
+# 2013-12-06 01:47:13Z
+
+# IO_2@[IOP=(3)][IoId=(2)] is reserved: SWDDebugEnabled
+dont_use_io iocell 3 2
+# IO_3@[IOP=(3)][IoId=(3)] is reserved: SWDDebugEnabled
+dont_use_io iocell 3 3
+set_location "ClockGenBlock" m0s8clockgenblockcell -1 -1 0
+set_io "Pin_1(0)" iocell 0 7
+set_io "Vin(0)" iocell 2 3
+set_io "Vin_Y(0)" iocell 2 1
+set_io "Vin_Z(0)" iocell 2 0
+set_location "\ADC_ACCELEROMETER:cy_psoc4_sar\" p4sarcell -1 -1 0
+set_io "\PSOC5:rx(0)\" iocell 3 0
+set_io "\PSOC5:tx(0)\" iocell 3 1

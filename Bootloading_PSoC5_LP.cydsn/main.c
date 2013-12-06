@@ -1,11 +1,10 @@
 /* ========================================
  *
- * Copyright YOUR COMPANY, THE YEAR
+ * Copyright Soynerdito, THE YEAR
  * All Rights Reserved
  * UNPUBLISHED, LICENSED SOFTWARE.
  *
- * CONFIDENTIAL AND PROPRIETARY INFORMATION
- * WHICH IS THE PROPERTY OF your company.
+ * Open source
  *
  * ========================================
 */

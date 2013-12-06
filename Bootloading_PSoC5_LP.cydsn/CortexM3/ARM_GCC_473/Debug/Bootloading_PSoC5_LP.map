@@ -2030,32 +2030,32 @@ END GROUP
  .debug_abbrev  0x00001806      0x11f .\CortexM3\ARM_GCC_473\Debug\Bootloading_PSoC5_LP.a(emFile_1_Clock_1.o)
  .debug_abbrev  0x00001925       0x92 .\CortexM3\ARM_GCC_473\Debug\Bootloading_PSoC5_LP.a(emFile_1_SPI0_CS.o)
 
-.debug_line     0x00000000     0x298f
+.debug_line     0x00000000     0x298e
  *(.debug_line)
- .debug_line    0x00000000      0x210 .\CortexM3\ARM_GCC_473\Debug\main.o
- .debug_line    0x00000210      0x142 .\CortexM3\ARM_GCC_473\Debug\FS_ConfigIO.o
- .debug_line    0x00000352       0x8a .\CortexM3\ARM_GCC_473\Debug\FS_X_OS.o
- .debug_line    0x000003dc      0x1af .\CortexM3\ARM_GCC_473\Debug\Cm3Start.o
- .debug_line    0x0000058b       0x55 .\CortexM3\ARM_GCC_473\Debug\cybootloader.o
- .debug_line    0x000005e0       0x53 .\CortexM3\ARM_GCC_473\Debug\cymetadata.o
- .debug_line    0x00000633      0x22a .\CortexM3\ARM_GCC_473\Debug\Bootloading_PSoC5_LP.a(cyfitter_cfg.o)
- .debug_line    0x0000085d      0x190 .\CortexM3\ARM_GCC_473\Debug\Bootloading_PSoC5_LP.a(PWM_1.o)
- .debug_line    0x000009ed       0x68 .\CortexM3\ARM_GCC_473\Debug\Bootloading_PSoC5_LP.a(CyBootAsmGnu.o)
- .debug_line    0x00000a55      0x73b .\CortexM3\ARM_GCC_473\Debug\Bootloading_PSoC5_LP.a(CyLib.o)
- .debug_line    0x00001190      0x347 .\CortexM3\ARM_GCC_473\Debug\Bootloading_PSoC5_LP.a(cyPm.o)
- .debug_line    0x000014d7      0x1ff .\CortexM3\ARM_GCC_473\Debug\Bootloading_PSoC5_LP.a(GPS.o)
- .debug_line    0x000016d6       0x8c .\CortexM3\ARM_GCC_473\Debug\Bootloading_PSoC5_LP.a(GPS_INT.o)
- .debug_line    0x00001762      0x1a3 .\CortexM3\ARM_GCC_473\Debug\Bootloading_PSoC5_LP.a(GPS_IntClock.o)
- .debug_line    0x00001905      0x33c .\CortexM3\ARM_GCC_473\Debug\Bootloading_PSoC5_LP.a(PSOC4.o)
- .debug_line    0x00001c41       0x90 .\CortexM3\ARM_GCC_473\Debug\Bootloading_PSoC5_LP.a(PSOC4_INT.o)
- .debug_line    0x00001cd1      0x1a5 .\CortexM3\ARM_GCC_473\Debug\Bootloading_PSoC5_LP.a(PSOC4_IntClock.o)
- .debug_line    0x00001e76      0x1a7 .\CortexM3\ARM_GCC_473\Debug\Bootloading_PSoC5_LP.a(CyFlash.o)
- .debug_line    0x0000201d      0x1a7 .\CortexM3\ARM_GCC_473\Debug\Bootloading_PSoC5_LP.a(CySpc.o)
- .debug_line    0x000021c4       0xba .\CortexM3\ARM_GCC_473\Debug\Bootloading_PSoC5_LP.a(emFile_1_ConfigMMC_SPI.o)
- .debug_line    0x0000227e      0x252 .\CortexM3\ARM_GCC_473\Debug\Bootloading_PSoC5_LP.a(emFile_1_MMC_HW_SPI.o)
- .debug_line    0x000024d0      0x277 .\CortexM3\ARM_GCC_473\Debug\Bootloading_PSoC5_LP.a(emFile_1_SPI0.o)
- .debug_line    0x00002747      0x1a7 .\CortexM3\ARM_GCC_473\Debug\Bootloading_PSoC5_LP.a(emFile_1_Clock_1.o)
- .debug_line    0x000028ee       0xa1 .\CortexM3\ARM_GCC_473\Debug\Bootloading_PSoC5_LP.a(emFile_1_SPI0_CS.o)
+ .debug_line    0x00000000      0x20f .\CortexM3\ARM_GCC_473\Debug\main.o
+ .debug_line    0x0000020f      0x142 .\CortexM3\ARM_GCC_473\Debug\FS_ConfigIO.o
+ .debug_line    0x00000351       0x8a .\CortexM3\ARM_GCC_473\Debug\FS_X_OS.o
+ .debug_line    0x000003db      0x1af .\CortexM3\ARM_GCC_473\Debug\Cm3Start.o
+ .debug_line    0x0000058a       0x55 .\CortexM3\ARM_GCC_473\Debug\cybootloader.o
+ .debug_line    0x000005df       0x53 .\CortexM3\ARM_GCC_473\Debug\cymetadata.o
+ .debug_line    0x00000632      0x22a .\CortexM3\ARM_GCC_473\Debug\Bootloading_PSoC5_LP.a(cyfitter_cfg.o)
+ .debug_line    0x0000085c      0x190 .\CortexM3\ARM_GCC_473\Debug\Bootloading_PSoC5_LP.a(PWM_1.o)
+ .debug_line    0x000009ec       0x68 .\CortexM3\ARM_GCC_473\Debug\Bootloading_PSoC5_LP.a(CyBootAsmGnu.o)
+ .debug_line    0x00000a54      0x73b .\CortexM3\ARM_GCC_473\Debug\Bootloading_PSoC5_LP.a(CyLib.o)
+ .debug_line    0x0000118f      0x347 .\CortexM3\ARM_GCC_473\Debug\Bootloading_PSoC5_LP.a(cyPm.o)
+ .debug_line    0x000014d6      0x1ff .\CortexM3\ARM_GCC_473\Debug\Bootloading_PSoC5_LP.a(GPS.o)
+ .debug_line    0x000016d5       0x8c .\CortexM3\ARM_GCC_473\Debug\Bootloading_PSoC5_LP.a(GPS_INT.o)
+ .debug_line    0x00001761      0x1a3 .\CortexM3\ARM_GCC_473\Debug\Bootloading_PSoC5_LP.a(GPS_IntClock.o)
+ .debug_line    0x00001904      0x33c .\CortexM3\ARM_GCC_473\Debug\Bootloading_PSoC5_LP.a(PSOC4.o)
+ .debug_line    0x00001c40       0x90 .\CortexM3\ARM_GCC_473\Debug\Bootloading_PSoC5_LP.a(PSOC4_INT.o)
+ .debug_line    0x00001cd0      0x1a5 .\CortexM3\ARM_GCC_473\Debug\Bootloading_PSoC5_LP.a(PSOC4_IntClock.o)
+ .debug_line    0x00001e75      0x1a7 .\CortexM3\ARM_GCC_473\Debug\Bootloading_PSoC5_LP.a(CyFlash.o)
+ .debug_line    0x0000201c      0x1a7 .\CortexM3\ARM_GCC_473\Debug\Bootloading_PSoC5_LP.a(CySpc.o)
+ .debug_line    0x000021c3       0xba .\CortexM3\ARM_GCC_473\Debug\Bootloading_PSoC5_LP.a(emFile_1_ConfigMMC_SPI.o)
+ .debug_line    0x0000227d      0x252 .\CortexM3\ARM_GCC_473\Debug\Bootloading_PSoC5_LP.a(emFile_1_MMC_HW_SPI.o)
+ .debug_line    0x000024cf      0x277 .\CortexM3\ARM_GCC_473\Debug\Bootloading_PSoC5_LP.a(emFile_1_SPI0.o)
+ .debug_line    0x00002746      0x1a7 .\CortexM3\ARM_GCC_473\Debug\Bootloading_PSoC5_LP.a(emFile_1_Clock_1.o)
+ .debug_line    0x000028ed       0xa1 .\CortexM3\ARM_GCC_473\Debug\Bootloading_PSoC5_LP.a(emFile_1_SPI0_CS.o)
 
 .debug_frame    0x00000000     0x2188
  *(.debug_frame)

@@ -13,48 +13,116 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Bootloading_PSoC5_LP\Bootloading_PSoC5_LP">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Generated_Source">
 <ExpandedNodeIds>
 <v>Bootloading_PSoC5_LP</v>
-<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP</v>
-<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Source Files</v>
 <v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Generated_Source</v>
 <v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Generated_Source\PSoC5</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\TopDesign.cysch</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\PSoc4_Main.cydwr</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Header Files</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Header Files\device.h</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Source Files</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Source Files\main.c</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\ADC_ACCELEROMETER</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\ADC_ACCELEROMETER\ADC_ACCELEROMETER.c</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\ADC_ACCELEROMETER\ADC_ACCELEROMETER.h</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\ADC_ACCELEROMETER\ADC_ACCELEROMETER_INT.c</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\ADC_ACCELEROMETER\ADC_ACCELEROMETER_PM.c</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\ADC_ACCELEROMETER_intClock</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\ADC_ACCELEROMETER_intClock\ADC_ACCELEROMETER_intClock.c</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\ADC_ACCELEROMETER_intClock\ADC_ACCELEROMETER_intClock.h</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\ADC_ACCELEROMETER_IRQ</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\ADC_ACCELEROMETER_IRQ\ADC_ACCELEROMETER_IRQ.c</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\ADC_ACCELEROMETER_IRQ\ADC_ACCELEROMETER_IRQ.h</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\Buzz</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\Buzz\Buzz.c</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\Buzz\Buzz.h</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\Buzz\Buzz_PM.c</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\Clock_1</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\Clock_1\Clock_1.c</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\Clock_1\Clock_1.h</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\cy_boot</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\cy_boot\cm0gcc.ld</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\cy_boot\Cm0Iar.icf</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\cy_boot\Cm0RealView.scat</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\cy_boot\Cm0Start.c</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\cy_boot\core_cm0.h</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\cy_boot\core_cm0_psoc4.h</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\cy_boot\core_cmFunc.h</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\cy_boot\core_cmInstr.h</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\cy_boot\CyBootAsmGnu.s</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\cy_boot\CyBootAsmIar.s</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\cy_boot\CyBootAsmRv.s</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\cy_boot\CyFlash.c</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\cy_boot\CyFlash.h</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\cy_boot\CyLib.c</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\cy_boot\CyLib.h</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\cy_boot\cypins.h</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\cy_boot\cyPm.c</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\cy_boot\cyPm.h</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\cy_boot\cytypes.h</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\cy_boot\cyutils.c</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\Pin_1</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\Pin_1\Pin_1.c</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\Pin_1\Pin_1.h</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\Pin_1\Pin_1_aliases.h</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\PSOC5</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\PSOC5\PSOC5.c</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\PSOC5\PSOC5.h</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\PSOC5\PSOC5_BOOT.c</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\PSOC5\PSOC5_PINS.h</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\PSOC5\PSOC5_PM.c</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\PSOC5\PSOC5_PVT.h</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\PSOC5\PSOC5_SPI_UART.c</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\PSOC5\PSOC5_SPI_UART.h</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\PSOC5\PSOC5_SPI_UART_INT.c</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\PSOC5\PSOC5_SPI_UART_PVT.h</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\PSOC5\PSOC5_UART.c</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\PSOC5\PSOC5_UART_BOOT.c</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\PSOC5_rx</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\PSOC5_rx\PSOC5_rx.c</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\PSOC5_rx\PSOC5_rx.h</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\PSOC5_rx\PSOC5_rx_aliases.h</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\PSOC5_SCBCLK</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\PSOC5_SCBCLK\PSOC5_SCBCLK.c</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\PSOC5_SCBCLK\PSOC5_SCBCLK.h</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\PSOC5_tx</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\PSOC5_tx\PSOC5_tx.c</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\PSOC5_tx\PSOC5_tx.h</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\PSOC5_tx\PSOC5_tx_aliases.h</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\Vin</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\Vin\Vin.c</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\Vin\Vin.h</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\Vin\Vin_aliases.h</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\Vin_Y</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\Vin_Y\Vin_Y.c</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\Vin_Y\Vin_Y.h</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\Vin_Y\Vin_Y_aliases.h</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\Vin_Z</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\Vin_Z\Vin_Z.c</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\Vin_Z\Vin_Z.h</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\Vin_Z\Vin_Z_aliases.h</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\cydevice_trm.h</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\cydevicegnu_trm.inc</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\cydeviceiar_trm.inc</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\cydevicerv_trm.inc</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\cydisabledsheets.h</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\cyfitter.h</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\cyfitter_cfg.c</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\cyfitter_cfg.h</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\cyfittergnu.inc</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\cyfitteriar.inc</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\cyfitterrv.inc</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\cymetadata.c</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\project.h</v>
 </ExpandedNodeIds>
 <VisibleNodeIds>
 <v>Bootloading_PSoC5_LP</v>
 <v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP</v>
-<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\TopDesign.cysch</v>
-<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Bootloading_PSoC5_LP.cydwr</v>
-<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Header Files</v>
-<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Source Files</v>
-<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Source Files\FS_ConfigIO.c</v>
-<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Source Files\FS_X_OS.c</v>
-<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Source Files\main.c</v>
-<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Generated_Source</v>
-<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Generated_Source\PSoC5</v>
-<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Generated_Source\PSoC5\Bootloadable_1</v>
-<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Generated_Source\PSoC5\Clock_1</v>
-<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Generated_Source\PSoC5\cy_boot</v>
-<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Generated_Source\PSoC5\emFile_1</v>
-<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Generated_Source\PSoC5\emFile_1_Clock_1</v>
-<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Generated_Source\PSoC5\emFile_1_miso0</v>
-<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Generated_Source\PSoC5\emFile_1_mosi0</v>
-<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Generated_Source\PSoC5\emFile_1_sclk0</v>
-<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Generated_Source\PSoC5\emFile_1_SPI0</v>
-<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Generated_Source\PSoC5\emFile_1_SPI0_CS</v>
-<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Generated_Source\PSoC5\GPS</v>
-<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Generated_Source\PSoC5\GPS_IntClock</v>
-<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Generated_Source\PSoC5\GPS_RX</v>
-<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Generated_Source\PSoC5\PSOC4</v>
-<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Generated_Source\PSoC5\PSOC4_IntClock</v>
-<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Generated_Source\PSoC5\PWM_1</v>
-<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Generated_Source\PSoC5\STATUS_LED</v>
-<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Generated_Source\PSoC5\cybootloader.c</v>
-<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Generated_Source\PSoC5\cybootloader.icf</v>
-<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Generated_Source\PSoC5\cydevice.h</v>
-<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Generated_Source\PSoC5\cydevice_trm.h</v>
-<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Generated_Source\PSoC5\cydevicegnu.inc</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\TopDesign\TopDesign.cysch">
@@ -63,12 +131,18 @@
 <v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP</v>
 <v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\TopDesign</v>
 <v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\TopDesign\TopDesign.cysch</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\TopDesign</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\TopDesign\TopDesign.cysch</v>
 </ExpandedNodeIds>
 <VisibleNodeIds>
 <v>Bootloading_PSoC5_LP</v>
 <v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP</v>
 <v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\TopDesign</v>
 <v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\TopDesign\TopDesign.cysch</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\TopDesign</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\TopDesign\TopDesign.cysch</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
@@ -126,6 +200,47 @@
 <v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Bootloading_PSoC5_LP.map</v>
 <v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Bootloading_PSoC5_LP.rpt</v>
 <v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Bootloading_PSoC5_LP_timing.html</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\CortexM0</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\CortexM0\ARM_GCC_473</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\CortexM0\ARM_GCC_473\Debug</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\CortexM0\ARM_GCC_473\Debug\Listing Files</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\CortexM0\ARM_GCC_473\Debug\Listing Files\ADC_ACCELEROMETER.lst</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\CortexM0\ARM_GCC_473\Debug\Listing Files\ADC_ACCELEROMETER_INT.lst</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\CortexM0\ARM_GCC_473\Debug\Listing Files\ADC_ACCELEROMETER_intClock.lst</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\CortexM0\ARM_GCC_473\Debug\Listing Files\ADC_ACCELEROMETER_IRQ.lst</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\CortexM0\ARM_GCC_473\Debug\Listing Files\ADC_ACCELEROMETER_PM.lst</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\CortexM0\ARM_GCC_473\Debug\Listing Files\Buzz.lst</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\CortexM0\ARM_GCC_473\Debug\Listing Files\Buzz_PM.lst</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\CortexM0\ARM_GCC_473\Debug\Listing Files\Clock_1.lst</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\CortexM0\ARM_GCC_473\Debug\Listing Files\Cm0Start.lst</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\CortexM0\ARM_GCC_473\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\CortexM0\ARM_GCC_473\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\CortexM0\ARM_GCC_473\Debug\Listing Files\CyFlash.lst</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\CortexM0\ARM_GCC_473\Debug\Listing Files\CyLib.lst</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\CortexM0\ARM_GCC_473\Debug\Listing Files\cymetadata.lst</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\CortexM0\ARM_GCC_473\Debug\Listing Files\cyPm.lst</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\CortexM0\ARM_GCC_473\Debug\Listing Files\cyutils.lst</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\CortexM0\ARM_GCC_473\Debug\Listing Files\main.lst</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\CortexM0\ARM_GCC_473\Debug\Listing Files\Pin_1.lst</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\CortexM0\ARM_GCC_473\Debug\Listing Files\PSOC5.lst</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\CortexM0\ARM_GCC_473\Debug\Listing Files\PSOC5_BOOT.lst</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\CortexM0\ARM_GCC_473\Debug\Listing Files\PSOC5_PM.lst</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\CortexM0\ARM_GCC_473\Debug\Listing Files\PSOC5_rx.lst</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\CortexM0\ARM_GCC_473\Debug\Listing Files\PSOC5_SCBCLK.lst</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\CortexM0\ARM_GCC_473\Debug\Listing Files\PSOC5_SPI_UART.lst</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\CortexM0\ARM_GCC_473\Debug\Listing Files\PSOC5_SPI_UART_INT.lst</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\CortexM0\ARM_GCC_473\Debug\Listing Files\PSOC5_tx.lst</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\CortexM0\ARM_GCC_473\Debug\Listing Files\PSOC5_UART.lst</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\CortexM0\ARM_GCC_473\Debug\Listing Files\PSOC5_UART_BOOT.lst</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\CortexM0\ARM_GCC_473\Debug\Listing Files\Vin.lst</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\CortexM0\ARM_GCC_473\Debug\Listing Files\Vin_Y.lst</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\CortexM0\ARM_GCC_473\Debug\Listing Files\Vin_Z.lst</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\CortexM0\ARM_GCC_473\Debug\PSoc4_Main.elf</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\CortexM0\ARM_GCC_473\Debug\PSoc4_Main.hex</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\CortexM0\ARM_GCC_473\Debug\PSoc4_Main.map</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\PSoc4_Main.rpt</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\PSoc4_Main_timing.html</v>
 </ExpandedNodeIds>
 <VisibleNodeIds>
 <v>Bootloading_PSoC5_LP</v>
@@ -182,6 +297,16 @@
 <v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\emFile_v1_20</v>
 <v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\PWM_v3_0</v>
 <v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\UART_v2_30</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\PSoC 4 Architecture TRM</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\CY8C42 Family Datasheet</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\System Reference Guide v4_0</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\ADC_SAR_SEQ_P4_v1_10</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\cy_clock_v2_10</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\cy_constant_v1_0</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\cy_pins_v1_90</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\PWM_v3_0</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\SCB_P4_v1_10</v>
 </ExpandedNodeIds>
 <VisibleNodeIds>
 <v>Bootloading_PSoC5_LP</v>
@@ -196,6 +321,16 @@
 <v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\emFile_v1_20</v>
 <v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\PWM_v3_0</v>
 <v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\UART_v2_30</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\PSoC 4 Architecture TRM</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\CY8C42 Family Datasheet</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\System Reference Guide v4_0</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\ADC_SAR_SEQ_P4_v1_10</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\cy_clock_v2_10</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\cy_constant_v1_0</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\cy_pins_v1_90</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\PWM_v3_0</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\SCB_P4_v1_10</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStatesV2>
