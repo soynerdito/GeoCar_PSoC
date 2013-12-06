@@ -1,5 +1,5 @@
 # Bootloading_PSoC5_LP
-# 2013-12-03 05:10:39Z
+# 2013-12-05 03:27:22Z
 
 set_location "ClockBlock" clockblockcell -1 -1 0
 set_io "GPS_RX(0)" iocell 3 6

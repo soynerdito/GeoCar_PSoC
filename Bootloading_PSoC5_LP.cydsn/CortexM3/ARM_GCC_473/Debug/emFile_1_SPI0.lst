@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
   21:.\Generated_Source\PSoC5/emFile_1_SPI0.c ****     volatile uint8 emFile_1_SPI0_txBuffer[emFile_1_SPI0_TX_BUFFER_SIZE] = {0u};
   22:.\Generated_Source\PSoC5/emFile_1_SPI0.c ****     volatile uint8 emFile_1_SPI0_txBufferFull;
   23:.\Generated_Source\PSoC5/emFile_1_SPI0.c ****     volatile uint8 emFile_1_SPI0_txBufferRead;
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 2
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 2
 
 
   24:.\Generated_Source\PSoC5/emFile_1_SPI0.c ****     volatile uint8 emFile_1_SPI0_txBufferWrite;
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
   66:.\Generated_Source\PSoC5/emFile_1_SPI0.c ****     emFile_1_SPI0_COUNTER_PERIOD_REG = emFile_1_SPI0_BITCTR_INIT;
   47              		.loc 1 66 0
   48 0004 46F28143 		movw	r3, #25729
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 3
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 3
 
 
   49 0008 C4F20003 		movt	r3, 16384
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
   67 0038 1A70     		strb	r2, [r3, #0]
  103:.\Generated_Source\PSoC5/emFile_1_SPI0.c **** }
   68              		.loc 1 103 0
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 4
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 4
 
 
   69 003a 80BD     		pop	{r7, pc}
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
  101 000e 46F29143 		movw	r3, #25745
  102 0012 C4F20003 		movt	r3, 16384
  103 0016 46F29142 		movw	r2, #25745
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 5
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 5
 
 
  104 001a C4F20002 		movt	r2, 16384
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
  147              		.global	emFile_1_SPI0_Start
  148              		.thumb
  149              		.thumb_func
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 6
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 6
 
 
  150              		.type	emFile_1_SPI0_Start, %function
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
  168:.\Generated_Source\PSoC5/emFile_1_SPI0.c ****         emFile_1_SPI0_initVar = 1u;
  173              		.loc 1 168 0
  174 0016 40F20003 		movw	r3, #:lower16:emFile_1_SPI0_initVar
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 7
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 7
 
 
  175 001a C0F20003 		movt	r3, #:upper16:emFile_1_SPI0_initVar
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
  204              	.LCFI8:
  205              		.cfi_def_cfa_offset 16
  206 0004 00AF     		add	r7, sp, #0
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 8
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 8
 
 
  207              	.LCFI9:
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
  247              		.size	emFile_1_SPI0_Stop, .-emFile_1_SPI0_Stop
  248 005e 00BF     		.section	.text.emFile_1_SPI0_EnableTxInt,"ax",%progbits
  249              		.align	2
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 9
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 9
 
 
  250              		.global	emFile_1_SPI0_EnableTxInt
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
  279              		.thumb_func
  280              		.type	emFile_1_SPI0_EnableRxInt, %function
  281              	emFile_1_SPI0_EnableRxInt:
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 10
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 10
 
 
  282              	.LFB5:
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
  259:.\Generated_Source\PSoC5/emFile_1_SPI0.c **** 
  260:.\Generated_Source\PSoC5/emFile_1_SPI0.c **** /*******************************************************************************
  261:.\Generated_Source\PSoC5/emFile_1_SPI0.c **** * Function Name: emFile_1_SPI0_DisableTxInt
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 11
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 11
 
 
  262:.\Generated_Source\PSoC5/emFile_1_SPI0.c **** ********************************************************************************
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
  289:.\Generated_Source\PSoC5/emFile_1_SPI0.c **** * Summary:
  290:.\Generated_Source\PSoC5/emFile_1_SPI0.c **** *  Disable internal Rx interrupt generation.
  291:.\Generated_Source\PSoC5/emFile_1_SPI0.c **** *
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 12
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 12
 
 
  292:.\Generated_Source\PSoC5/emFile_1_SPI0.c **** * Parameters:
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
  319:.\Generated_Source\PSoC5/emFile_1_SPI0.c **** *  header file).
  320:.\Generated_Source\PSoC5/emFile_1_SPI0.c **** *
  321:.\Generated_Source\PSoC5/emFile_1_SPI0.c **** * Return:
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 13
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 13
 
 
  322:.\Generated_Source\PSoC5/emFile_1_SPI0.c **** *  None.
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
  338:.\Generated_Source\PSoC5/emFile_1_SPI0.c **** * Summary:
  339:.\Generated_Source\PSoC5/emFile_1_SPI0.c **** *  Configure which status bits trigger an interrupt event.
  340:.\Generated_Source\PSoC5/emFile_1_SPI0.c **** *
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 14
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 14
 
 
  341:.\Generated_Source\PSoC5/emFile_1_SPI0.c **** * Parameters:
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
  357:.\Generated_Source\PSoC5/emFile_1_SPI0.c **** 
  358:.\Generated_Source\PSoC5/emFile_1_SPI0.c **** /*******************************************************************************
  359:.\Generated_Source\PSoC5/emFile_1_SPI0.c **** * Function Name: emFile_1_SPI0_ReadTxStatus
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 15
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 15
 
 
  360:.\Generated_Source\PSoC5/emFile_1_SPI0.c **** ********************************************************************************
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
  399:.\Generated_Source\PSoC5/emFile_1_SPI0.c ****     #else
  400:.\Generated_Source\PSoC5/emFile_1_SPI0.c **** 
  401:.\Generated_Source\PSoC5/emFile_1_SPI0.c ****         tmpStatus = emFile_1_SPI0_TX_STATUS_REG;
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 16
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 16
 
 
  455              		.loc 1 401 0
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
  432:.\Generated_Source\PSoC5/emFile_1_SPI0.c **** *
  433:.\Generated_Source\PSoC5/emFile_1_SPI0.c **** * Reentrant:
  434:.\Generated_Source\PSoC5/emFile_1_SPI0.c **** *  No.
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 17
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 17
 
 
  435:.\Generated_Source\PSoC5/emFile_1_SPI0.c **** *
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
  510              		.section	.text.emFile_1_SPI0_WriteTxData,"ax",%progbits
  511              		.align	2
  512              		.global	emFile_1_SPI0_WriteTxData
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 18
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 18
 
 
  513              		.thumb
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
  529              		.cfi_def_cfa_offset 16
  530 0004 00AF     		add	r7, sp, #0
  531              	.LCFI32:
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 19
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 19
 
 
  532              		.cfi_def_cfa_register 7
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
  547:.\Generated_Source\PSoC5/emFile_1_SPI0.c **** 
  548:.\Generated_Source\PSoC5/emFile_1_SPI0.c ****             emFile_1_SPI0_txBuffer[emFile_1_SPI0_txBufferWrite] = txData;
  549:.\Generated_Source\PSoC5/emFile_1_SPI0.c **** 
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 20
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 20
 
 
  550:.\Generated_Source\PSoC5/emFile_1_SPI0.c ****             emFile_1_SPI0_TX_STATUS_MASK_REG |= emFile_1_SPI0_STS_TX_FIFO_NOT_FULL;
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
  572:.\Generated_Source\PSoC5/emFile_1_SPI0.c **** *
  573:.\Generated_Source\PSoC5/emFile_1_SPI0.c **** * Summary:
  574:.\Generated_Source\PSoC5/emFile_1_SPI0.c **** *  Read the next byte of data received across the SPI.
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 21
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 21
 
 
  575:.\Generated_Source\PSoC5/emFile_1_SPI0.c **** *
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
  614:.\Generated_Source\PSoC5/emFile_1_SPI0.c ****             if(0u == emFile_1_SPI0_rxBufferFull)
  615:.\Generated_Source\PSoC5/emFile_1_SPI0.c ****             {
  616:.\Generated_Source\PSoC5/emFile_1_SPI0.c ****                 emFile_1_SPI0_rxBufferRead++;
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 22
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 22
 
 
  617:.\Generated_Source\PSoC5/emFile_1_SPI0.c ****                 if(emFile_1_SPI0_rxBufferRead >= emFile_1_SPI0_RX_BUFFER_SIZE)
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
  647:.\Generated_Source\PSoC5/emFile_1_SPI0.c **** *  Returns the number of bytes/words of data currently held in the RX buffer.
  648:.\Generated_Source\PSoC5/emFile_1_SPI0.c **** *  If RX Software Buffer not used then function return 0 if FIFO empty or 1 if
  649:.\Generated_Source\PSoC5/emFile_1_SPI0.c **** *  FIFO not empty. In another case function return size of RX Software Buffer.
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 23
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 23
 
 
  650:.\Generated_Source\PSoC5/emFile_1_SPI0.c **** *
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
  689:.\Generated_Source\PSoC5/emFile_1_SPI0.c ****         emFile_1_SPI0_EnableRxInt();
  690:.\Generated_Source\PSoC5/emFile_1_SPI0.c **** 
  691:.\Generated_Source\PSoC5/emFile_1_SPI0.c ****     #else
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 24
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 24
 
 
  692:.\Generated_Source\PSoC5/emFile_1_SPI0.c **** 
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
  710:.\Generated_Source\PSoC5/emFile_1_SPI0.c **** *  Software Buffer.
  711:.\Generated_Source\PSoC5/emFile_1_SPI0.c **** *
  712:.\Generated_Source\PSoC5/emFile_1_SPI0.c **** * Parameters:
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 25
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 25
 
 
  713:.\Generated_Source\PSoC5/emFile_1_SPI0.c **** *  None.
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
  752:.\Generated_Source\PSoC5/emFile_1_SPI0.c **** 
  753:.\Generated_Source\PSoC5/emFile_1_SPI0.c ****         size = emFile_1_SPI0_TX_STATUS_REG;
  672              		.loc 1 753 0
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 26
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 26
 
 
  673 0006 46F26243 		movw	r3, #25698
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
  709              		.cfi_endproc
  710              	.LFE15:
  711              		.size	emFile_1_SPI0_GetTxBufferSize, .-emFile_1_SPI0_GetTxBufferSize
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 27
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 27
 
 
  712 004a 00BF     		.section	.text.emFile_1_SPI0_ClearRxBuffer,"ax",%progbits
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
  729 0002 00AF     		add	r7, sp, #0
  730              	.LCFI43:
  731              		.cfi_def_cfa_register 7
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 28
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 28
 
 
  809:.\Generated_Source\PSoC5/emFile_1_SPI0.c ****     /* Clear Hardware RX FIFO */
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
  831:.\Generated_Source\PSoC5/emFile_1_SPI0.c **** *
  832:.\Generated_Source\PSoC5/emFile_1_SPI0.c **** * Summary:
  833:.\Generated_Source\PSoC5/emFile_1_SPI0.c **** *  Clear the TX RAM buffer by setting the read and write pointers both to zero.
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 29
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 29
 
 
  834:.\Generated_Source\PSoC5/emFile_1_SPI0.c **** *
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
  782              		.loc 1 868 0
  783 000e 46F29143 		movw	r3, #25745
  784 0012 C4F20003 		movt	r3, 16384
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 30
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 30
 
 
  785 0016 46F29142 		movw	r2, #25745
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
  816              		.thumb
  817              		.thumb_func
  818              		.type	emFile_1_SPI0_PutArray, %function
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 31
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 31
 
 
  819              	emFile_1_SPI0_PutArray:
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
  944:.\Generated_Source\PSoC5/emFile_1_SPI0.c **** *  Write available data from ROM/RAM to the TX buffer while space is available
  945:.\Generated_Source\PSoC5/emFile_1_SPI0.c **** *  in the TX buffer. Keep trying until all data is passed to the TX buffer.
  946:.\Generated_Source\PSoC5/emFile_1_SPI0.c **** *
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 32
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 32
 
 
  947:.\Generated_Source\PSoC5/emFile_1_SPI0.c **** * Parameters:
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
  849 001a 1B78     		ldrb	r3, [r3, #0]	@ zero_extendqisi2
  850 001c 1846     		mov	r0, r3
  851 001e FFF7FEFF 		bl	emFile_1_SPI0_WriteTxData
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 33
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 33
 
 
  973:.\Generated_Source\PSoC5/emFile_1_SPI0.c ****         bufIndex++;
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
  880              		.loc 1 997 0
  881              		.cfi_startproc
  882              		@ args = 0, pretend = 0, frame = 8
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 34
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 34
 
 
  883              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
 1009:.\Generated_Source\PSoC5/emFile_1_SPI0.c ****     emFile_1_SPI0_AUX_CONTROL_DP0_REG &= ((uint8) ~emFile_1_SPI0_TX_FIFO_CLR);
  925              		.loc 1 1009 0
  926 004a 46F29143 		movw	r3, #25745
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 35
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 35
 
 
  927 004e C4F20003 		movt	r3, 16384
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
 1037:.\Generated_Source\PSoC5/emFile_1_SPI0.c **** *
 1038:.\Generated_Source\PSoC5/emFile_1_SPI0.c **** * Theory:
 1039:.\Generated_Source\PSoC5/emFile_1_SPI0.c **** *  Enable the internal interrupt output -or- the interrupt component itself.
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 36
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 36
 
 
 1040:.\Generated_Source\PSoC5/emFile_1_SPI0.c **** *
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
 1065:.\Generated_Source\PSoC5/emFile_1_SPI0.c **** *******************************************************************************/
 1066:.\Generated_Source\PSoC5/emFile_1_SPI0.c **** void emFile_1_SPI0_DisableInt(void) 
 1067:.\Generated_Source\PSoC5/emFile_1_SPI0.c **** {
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 37
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 37
 
 
  983              		.loc 1 1067 0
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
  1012              		.loc 1 1092 0
  1013              		.cfi_startproc
  1014              		@ args = 0, pretend = 0, frame = 8
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 38
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 38
 
 
  1015              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
 1105:.\Generated_Source\PSoC5/emFile_1_SPI0.c **** * Parameters:
 1106:.\Generated_Source\PSoC5/emFile_1_SPI0.c **** *  None.
 1107:.\Generated_Source\PSoC5/emFile_1_SPI0.c **** *
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 39
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 39
 
 
 1108:.\Generated_Source\PSoC5/emFile_1_SPI0.c **** * Return:
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
  1073 0006 46F26343 		movw	r3, #25699
  1074 000a C4F20003 		movt	r3, 16384
  1075 000e 1B78     		ldrb	r3, [r3, #0]
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 40
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 40
 
 
  1076 0010 FB71     		strb	r3, [r7, #7]
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
  1123 0031 01       		.byte	0x1
  1124 0032 08       		.byte	0x8
  1125 0033 C5010000 		.4byte	.LASF1
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 41
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 41
 
 
  1126 0037 02       		.uleb128 0x2
@@ -2458,7 +2458,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
  1180 009a 05       		.uleb128 0x5
  1181 009b 6F000000 		.4byte	0x6f
  1182 009f 02       		.uleb128 0x2
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 42
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 42
 
 
  1183 00a0 04       		.byte	0x4
@@ -2518,7 +2518,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
  1237 0115 08       		.uleb128 0x8
  1238 0116 A6020000 		.4byte	.LASF19
  1239 011a 01       		.byte	0x1
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 43
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 43
 
 
  1240 011b C2       		.byte	0xc2
@@ -2578,7 +2578,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
  1294 0190 78010000 		.4byte	.LLST8
  1295 0194 01       		.byte	0x1
  1296 0195 A9010000 		.4byte	0x1a9
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 44
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 44
 
 
  1297 0199 0C       		.uleb128 0xc
@@ -2638,7 +2638,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
  1351 020a B501     		.2byte	0x1b5
  1352 020c 01       		.byte	0x1
  1353 020d 6F000000 		.4byte	0x6f
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 45
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 45
 
 
  1354 0211 00000000 		.4byte	.LFB11
@@ -2698,7 +2698,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
  1408 028b 00       		.byte	0
  1409 028c 0D       		.uleb128 0xd
  1410 028d 01       		.byte	0x1
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 46
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 46
 
 
  1411 028e 67000000 		.4byte	.LASF34
@@ -2758,7 +2758,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
  1465 0308 5E03     		.2byte	0x35e
  1466 030a 01       		.byte	0x1
  1467 030b 00000000 		.4byte	.LFB17
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 47
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 47
 
 
  1468 030f 56000000 		.4byte	.LFE17
@@ -2818,7 +2818,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
  1522 0380 0F       		.uleb128 0xf
  1523 0381 01       		.byte	0x1
  1524 0382 98000000 		.4byte	.LASF43
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 48
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 48
 
 
  1525 0386 01       		.byte	0x1
@@ -2878,7 +2878,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
  1579 0401 91       		.byte	0x91
  1580 0402 77       		.sleb128 -9
  1581 0403 00       		.byte	0
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 49
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 49
 
 
  1582 0404 0D       		.uleb128 0xd
@@ -2938,7 +2938,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
  1636 0003 25       		.uleb128 0x25
  1637 0004 0E       		.uleb128 0xe
  1638 0005 13       		.uleb128 0x13
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 50
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 50
 
 
  1639 0006 0B       		.uleb128 0xb
@@ -2998,7 +2998,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
  1693 003c 13       		.uleb128 0x13
  1694 003d 00       		.byte	0
  1695 003e 00       		.byte	0
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 51
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 51
 
 
  1696 003f 06       		.uleb128 0x6
@@ -3058,7 +3058,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
  1750 0077 0B       		.uleb128 0xb
  1751 0078 3B       		.uleb128 0x3b
  1752 0079 0B       		.uleb128 0xb
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 52
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 52
 
 
  1753 007a 49       		.uleb128 0x49
@@ -3118,7 +3118,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
  1807 00b2 01       		.byte	0x1
  1808 00b3 3F       		.uleb128 0x3f
  1809 00b4 0C       		.uleb128 0xc
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 53
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 53
 
 
  1810 00b5 03       		.uleb128 0x3
@@ -3178,7 +3178,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
  1864 00ec 40       		.uleb128 0x40
  1865 00ed 06       		.uleb128 0x6
  1866 00ee 9742     		.uleb128 0x2117
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 54
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 54
 
 
  1867 00f0 0C       		.uleb128 0xc
@@ -3238,7 +3238,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
  1921 0127 11       		.uleb128 0x11
  1922 0128 26       		.uleb128 0x26
  1923 0129 00       		.byte	0
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 55
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 55
 
 
  1924 012a 49       		.uleb128 0x49
@@ -3298,7 +3298,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
  1978 0010 04000000 		.4byte	.LCFI1
  1979 0014 0200     		.2byte	0x2
  1980 0016 7D       		.byte	0x7d
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 56
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 56
 
 
  1981 0017 08       		.sleb128 8
@@ -3358,7 +3358,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
  2035 009b 00       		.sleb128 0
  2036 009c 02000000 		.4byte	.LCFI7
  2037 00a0 04000000 		.4byte	.LCFI8
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 57
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 57
 
 
  2038 00a4 0200     		.2byte	0x2
@@ -3418,7 +3418,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
  2092 0128 0200     		.2byte	0x2
  2093 012a 7D       		.byte	0x7d
  2094 012b 00       		.sleb128 0
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 58
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 58
 
 
  2095 012c 02000000 		.4byte	.LCFI14
@@ -3478,7 +3478,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
  2149 01b0 00000000 		.4byte	.LFB9
  2150 01b4 02000000 		.4byte	.LCFI21
  2151 01b8 0200     		.2byte	0x2
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 59
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 59
 
 
  2152 01ba 7D       		.byte	0x7d
@@ -3538,7 +3538,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
  2206 023c 06000000 		.4byte	.LCFI29
  2207 0240 0200     		.2byte	0x2
  2208 0242 7D       		.byte	0x7d
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 60
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 60
 
 
  2209 0243 10       		.sleb128 16
@@ -3598,7 +3598,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
  2263              	.LLST14:
  2264 02c8 00000000 		.4byte	.LFB14
  2265 02cc 02000000 		.4byte	.LCFI36
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 61
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 61
 
 
  2266 02d0 0200     		.2byte	0x2
@@ -3658,7 +3658,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
  2320 0350 04000000 		.4byte	.LCFI43
  2321 0354 2A000000 		.4byte	.LFE16
  2322 0358 0200     		.2byte	0x2
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 62
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 62
 
 
  2323 035a 77       		.byte	0x77
@@ -3718,7 +3718,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
  2377 03de 7D       		.byte	0x7d
  2378 03df 00       		.sleb128 0
  2379 03e0 02000000 		.4byte	.LCFI50
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 63
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 63
 
 
  2380 03e4 04000000 		.4byte	.LCFI51
@@ -3778,7 +3778,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
  2434 0468 02000000 		.4byte	.LCFI57
  2435 046c 0200     		.2byte	0x2
  2436 046e 7D       		.byte	0x7d
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 64
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 64
 
 
  2437 046f 00       		.sleb128 0
@@ -3838,7 +3838,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
  2491 0024 2A000000 		.4byte	.LFE2-.LFB2
  2492 0028 00000000 		.4byte	.LFB3
  2493 002c 5E000000 		.4byte	.LFE3-.LFB3
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 65
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 65
 
 
  2494 0030 00000000 		.4byte	.LFB4
@@ -3898,7 +3898,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
  2548 0028 00000000 		.4byte	.LFB5
  2549 002c 0A000000 		.4byte	.LFE5
  2550 0030 00000000 		.4byte	.LFB6
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 66
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 66
 
 
  2551 0034 0A000000 		.4byte	.LFE6
@@ -3958,7 +3958,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
  2594      305F5365 
  2594      74527849 
  2595              	.LASF44:
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 67
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 67
 
 
  2596 0042 656D4669 		.ascii	"emFile_1_SPI0_EnableInt\000"
@@ -4018,7 +4018,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
  2618 0109 656D4669 		.ascii	"emFile_1_SPI0_Stop\000"
  2618      6C655F31 
  2618      5F535049 
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 68
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 68
 
 
  2618      305F5374 
@@ -4078,7 +4078,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
  2640      20636861 
  2640      7200
  2641              	.LASF30:
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 69
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 69
 
 
  2642 01d3 656D4669 		.ascii	"emFile_1_SPI0_WriteTxData\000"
@@ -4138,7 +4138,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
  2662      74657272 
  2662      75707473 
  2662      00
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 70
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 70
 
 
  2663              	.LASF6:
@@ -4198,7 +4198,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 1
  2683      305F5075 
  2683      74417272 
  2684              	.LASF37:
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpJr7Zz.s 			page 71
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccpB3gBc.s 			page 71
 
 
  2685 0395 656D4669 		.ascii	"emFile_1_SPI0_ClearRxBuffer\000"

@@ -1,4 +1,4 @@
---------------- Build Started: 12/03/2013 01:10:12 Project: Bootloading_PSoC5_LP, Configuration: ARM GCC 4.7.3 Debug ---------------
+--------------- Build Started: 12/04/2013 23:26:56 Project: Bootloading_PSoC5_LP, Configuration: ARM GCC 4.7.3 Debug ---------------
 cydsfit.exe "-.appdatapath" "C:\Users\javier\AppData\Local\Cypress Semiconductor\PSoC Creator\3.0" "-.fdsnotice" "-.fdswarpdepfile=warp_dependencies.txt" "-.fdselabdepfile=elab_dependencies.txt" "-.fdsbldfile=generated_files.txt" "-p" "C:\Projects\PSoC\Bootloading_PSoC5_LP\Bootloading_PSoC5_LP.cydsn\Bootloading_PSoC5_LP.cyprj" "-d" "CY8C5868LTI-LP039" "-s" "C:\Projects\PSoC\Bootloading_PSoC5_LP\Bootloading_PSoC5_LP.cydsn\Generated_Source\PSoC5" "--" "-yv2" "-v3" "-ygs" "-q10" "-o2" "-.fftcfgtype=LE"
 Elaborating Design...
 HDL Generation ...
@@ -18,6 +18,7 @@ Dependency Generation ...
 Clean Temporary Files ...
 arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC5 -Wno-main -mcpu=cortex-m3 -mthumb -I ..\emFile_V322b\Code\Include\PSoC5\emf32nOS -I ..\emFile_V322b\Code\Include\PSoC5\ -Wall -g -D DEBUG -Wa,-alh=.\CortexM3\ARM_GCC_473\Debug\main.lst -ffunction-sections -c .\main.c -o .\CortexM3\ARM_GCC_473\Debug\main.o
 arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC5 -Wno-main -mcpu=cortex-m3 -mthumb -I ..\emFile_V322b\Code\Include\PSoC5\emf32nOS -I ..\emFile_V322b\Code\Include\PSoC5\ -Wall -g -D DEBUG -Wa,-alh=.\CortexM3\ARM_GCC_473\Debug\FS_ConfigIO.lst -ffunction-sections -c .\FS_ConfigIO.c -o .\CortexM3\ARM_GCC_473\Debug\FS_ConfigIO.o
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC5 -Wno-main -mcpu=cortex-m3 -mthumb -I ..\emFile_V322b\Code\Include\PSoC5\emf32nOS -I ..\emFile_V322b\Code\Include\PSoC5\ -Wall -g -D DEBUG -Wa,-alh=.\CortexM3\ARM_GCC_473\Debug\FS_X_OS.lst -ffunction-sections -c .\FS_X_OS.c -o .\CortexM3\ARM_GCC_473\Debug\FS_X_OS.o
 arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC5 -Wno-main -mcpu=cortex-m3 -mthumb -I ..\emFile_V322b\Code\Include\PSoC5\emf32nOS -I ..\emFile_V322b\Code\Include\PSoC5\ -Wall -g -D DEBUG -Wa,-alh=.\CortexM3\ARM_GCC_473\Debug\cyfitter_cfg.lst -ffunction-sections -c .\Generated_Source\PSoC5\cyfitter_cfg.c -o .\CortexM3\ARM_GCC_473\Debug\cyfitter_cfg.o
 arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC5 -Wno-main -mcpu=cortex-m3 -mthumb -I ..\emFile_V322b\Code\Include\PSoC5\emf32nOS -I ..\emFile_V322b\Code\Include\PSoC5\ -Wall -g -D DEBUG -Wa,-alh=.\CortexM3\ARM_GCC_473\Debug\Bootloadable_1.lst -ffunction-sections -c .\Generated_Source\PSoC5\Bootloadable_1.c -o .\CortexM3\ARM_GCC_473\Debug\Bootloadable_1.o
 arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC5 -Wno-main -mcpu=cortex-m3 -mthumb -I ..\emFile_V322b\Code\Include\PSoC5\emf32nOS -I ..\emFile_V322b\Code\Include\PSoC5\ -Wall -g -D DEBUG -Wa,-alh=.\CortexM3\ARM_GCC_473\Debug\PWM_1.lst -ffunction-sections -c .\Generated_Source\PSoC5\PWM_1.c -o .\CortexM3\ARM_GCC_473\Debug\PWM_1.o
@@ -63,4 +64,4 @@ cyelftool.exe -B C:\Projects\PSoC\Bootloading_PSoC5_LP\Bootloading_PSoC5_LP.cyds
 cyelftool.exe -S C:\Projects\PSoC\Bootloading_PSoC5_LP\Bootloading_PSoC5_LP.cydsn\CortexM3\ARM_GCC_473\Debug\Bootloading_PSoC5_LP.elf
 Flash used: 28656 of 262144 bytes (10.9 %).
 SRAM used: 25389 of 65536 bytes (38.7 %).
---------------- Build Succeeded: 12/03/2013 01:11:09 ---------------
+--------------- Build Succeeded: 12/04/2013 23:27:53 ---------------

@@ -172,6 +172,26 @@
 <file name="..\emFile_V322b\Code\Include\PSoC5\emf32nOS\FS_Conf.h" />
 <file name=".\FS_ConfigIO.c" />
 <file name=".\device.h" />
+<file name=".\CortexM3\ARM_GCC_473\Debug\FS_X_OS.o">
+<dep name="..\emFile_V322b\Code\Include\PSoC5\FAT.h" />
+<dep name="..\emFile_V322b\Code\Include\PSoC5\FS.h" />
+<dep name="..\emFile_V322b\Code\Include\PSoC5\FS_ConfDefaults.h" />
+<dep name="..\emFile_V322b\Code\Include\PSoC5\FS_Debug.h" />
+<dep name="..\emFile_V322b\Code\Include\PSoC5\FS_Dev.h" />
+<dep name="..\emFile_V322b\Code\Include\PSoC5\FS_Int.h" />
+<dep name="..\emFile_V322b\Code\Include\PSoC5\FS_OS.h" />
+<dep name="..\emFile_V322b\Code\Include\PSoC5\FS_Storage.h" />
+<dep name="..\emFile_V322b\Code\Include\PSoC5\FS_Types.h" />
+<dep name="..\emFile_V322b\Code\Include\PSoC5\Global.h" />
+<dep name="..\emFile_V322b\Code\Include\PSoC5\SEGGER.h" />
+<dep name="..\emFile_V322b\Code\Include\PSoC5\emf32nOS\FS_Conf.h" />
+<dep name=".\FS_X_OS.c" />
+</file>
+<file name="..\emFile_V322b\Code\Include\PSoC5\FAT.h" />
+<file name="..\emFile_V322b\Code\Include\PSoC5\FS_Debug.h" />
+<file name="..\emFile_V322b\Code\Include\PSoC5\FS_Int.h" />
+<file name="..\emFile_V322b\Code\Include\PSoC5\FS_OS.h" />
+<file name=".\FS_X_OS.c" />
 <file name=".\CortexM3\ARM_GCC_473\Debug\main.o">
 <dep name=".\Generated_Source\PSoC5\Bootloadable_1.h" />
 <dep name=".\Generated_Source\PSoC5\Clock_1.h" />
@@ -818,26 +838,6 @@
 <dep name=".\Generated_Source\PSoC5\BLUE_PM.c" />
 </file>
 <file name=".\Generated_Source\PSoC5\BLUE_PM.c" />
-<file name=".\CortexM3\ARM_GCC_473\Debug\FS_X_OS.o">
-<dep name="..\emFile_V322b\Code\Include\PSoC5\FAT.h" />
-<dep name="..\emFile_V322b\Code\Include\PSoC5\FS.h" />
-<dep name="..\emFile_V322b\Code\Include\PSoC5\FS_ConfDefaults.h" />
-<dep name="..\emFile_V322b\Code\Include\PSoC5\FS_Debug.h" />
-<dep name="..\emFile_V322b\Code\Include\PSoC5\FS_Dev.h" />
-<dep name="..\emFile_V322b\Code\Include\PSoC5\FS_Int.h" />
-<dep name="..\emFile_V322b\Code\Include\PSoC5\FS_OS.h" />
-<dep name="..\emFile_V322b\Code\Include\PSoC5\FS_Storage.h" />
-<dep name="..\emFile_V322b\Code\Include\PSoC5\FS_Types.h" />
-<dep name="..\emFile_V322b\Code\Include\PSoC5\Global.h" />
-<dep name="..\emFile_V322b\Code\Include\PSoC5\SEGGER.h" />
-<dep name="..\emFile_V322b\Code\Include\PSoC5\emf32nOS\FS_Conf.h" />
-<dep name=".\FS_X_OS.c" />
-</file>
-<file name="..\emFile_V322b\Code\Include\PSoC5\FAT.h" />
-<file name="..\emFile_V322b\Code\Include\PSoC5\FS_Debug.h" />
-<file name="..\emFile_V322b\Code\Include\PSoC5\FS_Int.h" />
-<file name="..\emFile_V322b\Code\Include\PSoC5\FS_OS.h" />
-<file name=".\FS_X_OS.c" />
 <file name=".\Generated_Source\PSoC5\UART_1.h" />
 <file name=".\Generated_Source\PSoC5\UART_1_IntClock.h" />
 <file name=".\CortexM3\ARM_GCC_473\Debug\UART_1.o">
@@ -1710,14 +1710,14 @@
 <v>C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\lib\common\stdlogic\rtlpkg.vif</v>
 <v>C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\lib\common\stdlogic\cy_psoc3.vif</v>
 </warp_dep>
-<deps_time v="130305210537286126" />
+<deps_time v="130306876576457537" />
 <top_block v="TopDesign" />
 <last_generation v="0" />
 </CyGuid_925cc1e1-309e-4e08-b0a1-09a83c35b157>
 </dataGuid>
 <dataGuid v="769d31ea-68b1-4f0c-b90a-7c10a43ee563">
 <CyGuid_769d31ea-68b1-4f0c-b90a-7c10a43ee563 type_name="CyDesigner.Common.ProjMgmt.Model.CyLinkCustomData" version="1">
-<deps_time v="130305210675624038" />
+<deps_time v="130306876713165356" />
 </CyGuid_769d31ea-68b1-4f0c-b90a-7c10a43ee563>
 </dataGuid>
 <dataGuid v="504337dd-7d07-4bc7-9057-90e60cf6c469">

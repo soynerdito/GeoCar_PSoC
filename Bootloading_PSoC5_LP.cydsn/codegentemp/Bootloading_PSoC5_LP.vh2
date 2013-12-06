@@ -2,7 +2,7 @@
 --	Conversion of Bootloading_PSoC5_LP.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Tue Dec 03 01:10:32 2013
+--	Wed Dec 04 23:27:15 2013
 --
 
 USE cypress.cypress.all;

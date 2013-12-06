@@ -13,7 +13,7 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Bootloading_PSoC5_LP.cydwr">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Bootloading_PSoC5_LP\Bootloading_PSoC5_LP">
 <ExpandedNodeIds>
 <v>Bootloading_PSoC5_LP</v>
 <v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP</v>
@@ -208,7 +208,6 @@
 <name v=".\Bootloading_PSoC5_LP.cydsn\TopDesign\TopDesign.cysch" />
 <name v=".\Bootloading_PSoC5_LP.cydsn\Bootloading_PSoC5_LP.cydwr" />
 <name v=".\Bootloading_PSoC5_LP.cydsn\main.c" />
-<name v=".\Bootloading_PSoC5_LP.cydsn\FS_ConfigIO.c" />
 </OpenDocs>
 <config v="" />
 <AutoUpdate v="true" />

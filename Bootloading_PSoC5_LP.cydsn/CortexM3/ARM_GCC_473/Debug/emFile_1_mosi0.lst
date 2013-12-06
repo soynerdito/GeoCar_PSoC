@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccYaXexd.s 			page 1
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccX8wx6X.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccYaXexd.s 			page 1
   29:.\Generated_Source\PSoC5/emFile_1_mosi0.c **** * Summary:
   30:.\Generated_Source\PSoC5/emFile_1_mosi0.c **** *  Assign a new value to the digital port's data output register.  
   31:.\Generated_Source\PSoC5/emFile_1_mosi0.c **** *
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccYaXexd.s 			page 2
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccX8wx6X.s 			page 2
 
 
   32:.\Generated_Source\PSoC5/emFile_1_mosi0.c **** * Parameters:  
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccYaXexd.s 			page 1
   69 003e 00BF     		.section	.text.emFile_1_mosi0_SetDriveMode,"ax",%progbits
   70              		.align	2
   71              		.global	emFile_1_mosi0_SetDriveMode
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccYaXexd.s 			page 3
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccX8wx6X.s 			page 3
 
 
   72              		.thumb
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccYaXexd.s 			page 1
  107 002e 0A43     		orrs	r2, r2, r1
  108 0030 D2B2     		uxtb	r2, r2
  109 0032 D2B2     		uxtb	r2, r2
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccYaXexd.s 			page 4
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccX8wx6X.s 			page 4
 
 
  110 0034 1A70     		strb	r2, [r3, #0]
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccYaXexd.s 			page 1
  140 0004 45F20113 		movw	r3, #20737
  141 0008 C4F20003 		movt	r3, 16384
  142 000c 1B78     		ldrb	r3, [r3, #0]
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccYaXexd.s 			page 5
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccX8wx6X.s 			page 5
 
 
  143 000e DBB2     		uxtb	r3, r3
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccYaXexd.s 			page 1
  177 000c 1B78     		ldrb	r3, [r3, #0]
  178 000e DBB2     		uxtb	r3, r3
  179 0010 03F00103 		and	r3, r3, #1
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccYaXexd.s 			page 6
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccX8wx6X.s 			page 6
 
 
  180 0014 DBB2     		uxtb	r3, r3
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccYaXexd.s 			page 1
  233 0055 05       		.byte	0x5
  234 0056 D8000000 		.4byte	.LASF6
  235 005a 02       		.uleb128 0x2
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccYaXexd.s 			page 7
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccX8wx6X.s 			page 7
 
 
  236 005b 08       		.byte	0x8
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccYaXexd.s 			page 1
  290 00c7 08       		.uleb128 0x8
  291 00c8 21000000 		.4byte	.LASF23
  292 00cc 01       		.byte	0x1
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccYaXexd.s 			page 8
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccX8wx6X.s 			page 8
 
 
  293 00cd 29       		.byte	0x29
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccYaXexd.s 			page 1
  347 0003 25       		.uleb128 0x25
  348 0004 0E       		.uleb128 0xe
  349 0005 13       		.uleb128 0x13
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccYaXexd.s 			page 9
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccX8wx6X.s 			page 9
 
 
  350 0006 0B       		.uleb128 0xb
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccYaXexd.s 			page 1
  404 003c 13       		.uleb128 0x13
  405 003d 00       		.byte	0
  406 003e 00       		.byte	0
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccYaXexd.s 			page 10
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccX8wx6X.s 			page 10
 
 
  407 003f 06       		.uleb128 0x6
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccYaXexd.s 			page 1
  461 0076 00       		.byte	0
  462 0077 09       		.uleb128 0x9
  463 0078 2E       		.uleb128 0x2e
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccYaXexd.s 			page 11
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccX8wx6X.s 			page 11
 
 
  464 0079 00       		.byte	0
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccYaXexd.s 			page 1
  518 0043 00       		.sleb128 0
  519 0044 02000000 		.4byte	.LCFI3
  520 0048 04000000 		.4byte	.LCFI4
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccYaXexd.s 			page 12
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccX8wx6X.s 			page 12
 
 
  521 004c 0200     		.2byte	0x2
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccYaXexd.s 			page 1
  575 0006 00000000 		.4byte	.Ldebug_info0
  576 000a 04       		.byte	0x4
  577 000b 00       		.byte	0
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccYaXexd.s 			page 13
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccX8wx6X.s 			page 13
 
 
  578 000c 0000     		.2byte	0
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccYaXexd.s 			page 1
  616 0046 756E7369 		.ascii	"unsigned char\000"
  616      676E6564 
  616      20636861 
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccYaXexd.s 			page 14
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccX8wx6X.s 			page 14
 
 
  616      7200
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccYaXexd.s 			page 1
  641              	.LASF20:
  642 00fb 474E5520 		.ascii	"GNU C 4.7.3 20130312 (release) [ARM/embedded-4_7-br"
  642      4320342E 
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccYaXexd.s 			page 15
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccX8wx6X.s 			page 15
 
 
  642      372E3320 
