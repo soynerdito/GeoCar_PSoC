@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccYjlEfN.s 			page 1
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccMTWxRv.s 			page 1
 
 
    1              		.cpu cortex-m0
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccYjlEfN.s 			page 1
   25:.\Generated_Source\PSoC4/Buzz_PM.c **** ********************************************************************************
   26:.\Generated_Source\PSoC4/Buzz_PM.c **** *
   27:.\Generated_Source\PSoC4/Buzz_PM.c **** * Summary:
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccYjlEfN.s 			page 2
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccMTWxRv.s 			page 2
 
 
   28:.\Generated_Source\PSoC4/Buzz_PM.c **** *  Saves the current user configuration of the component.
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccYjlEfN.s 			page 1
   60:.\Generated_Source\PSoC4/Buzz_PM.c ****              Buzz_backup.PWMKillCounterPeriod = Buzz_ReadKillTime();
   61:.\Generated_Source\PSoC4/Buzz_PM.c ****         #endif /* (Buzz_KillModeMinTime) */
   62:.\Generated_Source\PSoC4/Buzz_PM.c ****         
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccYjlEfN.s 			page 3
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccMTWxRv.s 			page 3
 
 
   63:.\Generated_Source\PSoC4/Buzz_PM.c ****         #if(Buzz_UseControl)
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccYjlEfN.s 			page 1
   79 0000 80B5     		push	{r7, lr}
   80              	.LCFI2:
   81              		.cfi_def_cfa_offset 8
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccYjlEfN.s 			page 4
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccMTWxRv.s 			page 4
 
 
   82              		.cfi_offset 7, -8
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccYjlEfN.s 			page 1
  113              		.section	.text.Buzz_Sleep,"ax",%progbits
  114              		.align	2
  115              		.global	Buzz_Sleep
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccYjlEfN.s 			page 5
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccMTWxRv.s 			page 5
 
 
  116              		.code	16
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccYjlEfN.s 			page 1
  142 0016 1A70     		strb	r2, [r3]
  143 0018 02E0     		b	.L9
  144              	.L8:
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccYjlEfN.s 			page 6
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccMTWxRv.s 			page 6
 
 
  141:.\Generated_Source\PSoC4/Buzz_PM.c ****         }
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccYjlEfN.s 			page 1
  166:.\Generated_Source\PSoC4/Buzz_PM.c **** *  None
  167:.\Generated_Source\PSoC4/Buzz_PM.c **** *
  168:.\Generated_Source\PSoC4/Buzz_PM.c **** * Return: 
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccYjlEfN.s 			page 7
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccMTWxRv.s 			page 7
 
 
  169:.\Generated_Source\PSoC4/Buzz_PM.c **** *  None
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccYjlEfN.s 			page 1
  209              		.section	.debug_info,"",%progbits
  210              	.Ldebug_info0:
  211 0000 63010000 		.4byte	0x163
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccYjlEfN.s 			page 8
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccMTWxRv.s 			page 8
 
 
  212 0004 0200     		.2byte	0x2
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccYjlEfN.s 			page 1
  266 0074 02       		.byte	0x2
  267 0075 5B       		.byte	0x5b
  268 0076 30000000 		.4byte	0x30
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccYjlEfN.s 			page 9
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccMTWxRv.s 			page 9
 
 
  269 007a 04       		.uleb128 0x4
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccYjlEfN.s 			page 1
  323 00e0 02       		.byte	0x2
  324 00e1 23       		.byte	0x23
  325 00e2 04       		.uleb128 0x4
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccYjlEfN.s 			page 10
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccMTWxRv.s 			page 10
 
 
  326 00e3 07       		.uleb128 0x7
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccYjlEfN.s 			page 1
  380 0155 09       		.uleb128 0x9
  381 0156 43010000 		.4byte	.LASF28
  382 015a 01       		.byte	0x1
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccYjlEfN.s 			page 11
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccMTWxRv.s 			page 11
 
 
  383 015b 14       		.byte	0x14
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccYjlEfN.s 			page 1
  437 002e 03       		.uleb128 0x3
  438 002f 0E       		.uleb128 0xe
  439 0030 3A       		.uleb128 0x3a
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccYjlEfN.s 			page 12
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccMTWxRv.s 			page 12
 
 
  440 0031 0B       		.uleb128 0xb
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccYjlEfN.s 			page 1
  494 0067 0C       		.uleb128 0xc
  495 0068 11       		.uleb128 0x11
  496 0069 01       		.uleb128 0x1
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccYjlEfN.s 			page 13
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccMTWxRv.s 			page 13
 
 
  497 006a 12       		.uleb128 0x12
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccYjlEfN.s 			page 1
  551 0043 08       		.sleb128 8
  552 0044 04000000 		.4byte	.LCFI3
  553 0048 2C000000 		.4byte	.LFE1
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccYjlEfN.s 			page 14
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccMTWxRv.s 			page 14
 
 
  554 004c 0200     		.2byte	0x2
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccYjlEfN.s 			page 1
  608 0024 34000000 		.4byte	.LFE2-.LFB2
  609 0028 00000000 		.4byte	.LFB3
  610 002c 1C000000 		.4byte	.LFE3-.LFB3
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccYjlEfN.s 			page 15
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccMTWxRv.s 			page 15
 
 
  611 0030 00000000 		.4byte	0
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccYjlEfN.s 			page 1
  640      30333132 
  641 00a4 616E6368 		.ascii	"anch revision 196615]\000"
  641      20726576 
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccYjlEfN.s 			page 16
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccMTWxRv.s 			page 16
 
 
  641      6973696F 
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\ccYjlEfN.s 			page 1
  665      5F626163 
  665      6B757000 
  666              	.LASF22:
-ARM GAS  C:\Users\javier\AppData\Local\Temp\ccYjlEfN.s 			page 17
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccMTWxRv.s 			page 17
 
 
  667 014f 42757A7A 		.ascii	"Buzz_RestoreConfig\000"

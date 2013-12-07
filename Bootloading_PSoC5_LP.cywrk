@@ -3,15 +3,16 @@
 <!--This file is machine generated and read. It is not intended to be edited by hand.-->
 <!--Due to this, there is no schema for this file.-->
 <CyGuid_2867d519-54d2-4c01-9830-c51cb08bc3dd type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtWrkspc" version="5" xml_contents_version="2" name="Bootloading_PSoC5_LP" persistent="" platform="NOT_USED">
-<current_project name=".\Bootloading_PSoC5_LP.cydsn\Bootloading_PSoC5_LP.cyprj" />
+<current_project name=".\PSoc4_Main.cydsn\PSoc4_Main.cyprj" />
 <wrkspc_folders />
 <files />
 <projects>
 <name_val_pair name="Bootloading_PSoC5_LP" v=".\Bootloading_PSoC5_LP.cydsn\Bootloading_PSoC5_LP.cyprj" />
+<name_val_pair name="PSoc4_Main" v=".\PSoc4_Main.cydsn\PSoc4_Main.cyprj" />
 </projects>
 <workspace_id v="e5ab012a-7752-4b82-ae34-401eefa94d8b" />
-<WriteAppVersionLastSavedWith v="2.2.0.572" />
-<WriteAppMarketingVersionLastSavedWith v="2.2 Service Pack 1" />
+<WriteAppVersionLastSavedWith v="3.0.0.1539" />
+<WriteAppMarketingVersionLastSavedWith v="3.0 Component Pack 7" />
 <CyGuid_dcbd9771-0334-43dc-9cc3-fe99dc3c5316 type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjDependencyList" version="3">
 <wrkspc_dependencies />
 </CyGuid_dcbd9771-0334-43dc-9cc3-fe99dc3c5316>

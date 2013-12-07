@@ -16,15 +16,14 @@
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Generated_Source">
 <ExpandedNodeIds>
 <v>Bootloading_PSoC5_LP</v>
-<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Generated_Source</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP</v>
 <v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Generated_Source\PSoC5</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main</v>
 <v>Bootloading_PSoC5_LP\PSoc4_Main\TopDesign.cysch</v>
 <v>Bootloading_PSoC5_LP\PSoc4_Main\PSoc4_Main.cydwr</v>
-<v>Bootloading_PSoC5_LP\PSoc4_Main\Header Files</v>
 <v>Bootloading_PSoC5_LP\PSoc4_Main\Header Files\device.h</v>
 <v>Bootloading_PSoC5_LP\PSoc4_Main\Source Files</v>
 <v>Bootloading_PSoC5_LP\PSoc4_Main\Source Files\main.c</v>
-<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source</v>
 <v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4</v>
 <v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\ADC_ACCELEROMETER</v>
 <v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\ADC_ACCELEROMETER\ADC_ACCELEROMETER.c</v>
@@ -122,7 +121,18 @@
 <VisibleNodeIds>
 <v>Bootloading_PSoC5_LP</v>
 <v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\TopDesign.cysch</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Bootloading_PSoC5_LP.cydwr</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Header Files</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Source Files</v>
+<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\Generated_Source</v>
 <v>Bootloading_PSoC5_LP\PSoc4_Main</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\TopDesign.cysch</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\PSoc4_Main.cydwr</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Header Files</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Source Files</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Source Files\main.c</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\TopDesign\TopDesign.cysch">
@@ -275,7 +285,6 @@
 <v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\emFile_1_SPI0_PM.lst</v>
 <v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\FS_ConfigIO.lst</v>
 <v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\FS_X_OS.lst</v>
-<v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\CortexM3\ARM_GCC_473\Debug\Listing Files\GPS.lst</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStates>
@@ -307,6 +316,7 @@
 <v>Bootloading_PSoC5_LP\PSoc4_Main\cy_pins_v1_90</v>
 <v>Bootloading_PSoC5_LP\PSoc4_Main\PWM_v3_0</v>
 <v>Bootloading_PSoC5_LP\PSoc4_Main\SCB_P4_v1_10</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\UART_v2_30</v>
 </ExpandedNodeIds>
 <VisibleNodeIds>
 <v>Bootloading_PSoC5_LP</v>
@@ -331,10 +341,16 @@
 <v>Bootloading_PSoC5_LP\PSoc4_Main\cy_pins_v1_90</v>
 <v>Bootloading_PSoC5_LP\PSoc4_Main\PWM_v3_0</v>
 <v>Bootloading_PSoC5_LP\PSoc4_Main\SCB_P4_v1_10</v>
+<v>Bootloading_PSoC5_LP\PSoc4_Main\UART_v2_30</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStatesV2>
 </CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35>
+</dataGuid>
+<dataGuid v="5f2be1a5-0687-4501-bb8c-cf21cb8211bf">
+<CyGuid_5f2be1a5-0687-4501-bb8c-cf21cb8211bf type_name="CyDesigner.Common.ProjMgmt.GUI.CyBookmarkData" version="1">
+<indicators />
+</CyGuid_5f2be1a5-0687-4501-bb8c-cf21cb8211bf>
 </dataGuid>
 </userData>
 </CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
@@ -342,7 +358,9 @@
 <OpenDocs>
 <name v=".\Bootloading_PSoC5_LP.cydsn\TopDesign\TopDesign.cysch" />
 <name v=".\Bootloading_PSoC5_LP.cydsn\Bootloading_PSoC5_LP.cydwr" />
-<name v=".\Bootloading_PSoC5_LP.cydsn\main.c" />
+<name v=".\PSoc4_Main.cydsn\TopDesign\TopDesign.cysch" />
+<name v=".\PSoc4_Main.cydsn\main.c" />
+<name v=".\PSoc4_Main.cydsn\PSoc4_Main.cydwr" />
 </OpenDocs>
 <config v="" />
 <AutoUpdate v="true" />

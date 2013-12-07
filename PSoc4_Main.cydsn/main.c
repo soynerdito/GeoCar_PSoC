@@ -23,6 +23,9 @@
 //uint32 siz;
 //uint8 no,fcnt,fre,j,bufnn;
 
+//Super Mario Song
+
+
 //Buffer for PSOC5 Communication
 const int MAX_STR = 150;
 char psoc5_msg[PSOC5_MSG_MAX];
@@ -69,23 +72,10 @@ int main()
     initPSoC5();
     //Simple delay just for the sake of it
     // allow other code on PSoC5 to start up, no special time
-	CyDelay(500);
     
-    Buzz_Start();
-    CyDelay(3000);
-    Buzz_Stop();
-    Buzz_Start();
-    Clock_1_SetDivider(2);
-    CyDelay(3000);
-    Buzz_Stop();
-    Buzz_Start();
-    Clock_1_SetDivider(4);
-    CyDelay(3000);
-    Buzz_Stop();
-    Buzz_Start();
-    Clock_1_SetDivider(6);
+	CyDelay(500);    
     for(;;)
-    {
+    {            
         getAccelerometer( &accStatus );
         buildMsg(&accStatus, psoc5_msg);
         send2PSoC5( psoc5_msg );
@@ -113,3 +103,4 @@ void send2PSoC5( char *msg )
     PSOC5_UartPutChar(13);    
 }
 /* [] END OF FILE */
+

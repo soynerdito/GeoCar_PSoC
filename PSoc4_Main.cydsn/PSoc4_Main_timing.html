@@ -539,7 +539,7 @@ function getElementsByClass(rootNode, elemName, className)
 <tr> <td class="prop"> Project :</td>
 <td class="proptext"> PSoc4_Main</td></tr>
 <tr> <td class="prop"> Build Time :</td>
-<td class="proptext"> 12/05/13 21:47:15</td></tr>
+<td class="proptext"> 12/06/13 00:54:18</td></tr>
 <tr> <td class="prop"> Device :</td>
 <td class="proptext"> CY8C4245AXI-483</td></tr>
 <tr> <td class="prop"> Temperature :</td>
@@ -609,20 +609,20 @@ Clock Summary Section</span>
  <td class = "text_info"> </td>
 </tr>
 <tr> 
+ <td class = "text_info">Clock_1</td>
+ <td class = "text_info">CyHFCLK</td>
+ <td class = "number">1.000&nbsp;MHz</td>
+ <td class = "number">1.000&nbsp;MHz</td>
+ <td class = "number">44.111&nbsp;MHz</td>
+ <td class = "text_info"></td>
+</tr>
+<tr> 
  <td class = "text_info">PSOC5_SCBCLK</td>
  <td class = "text_info">CyHFCLK</td>
  <td class = "number">115.385&nbsp;kHz</td>
  <td class = "number">115.385&nbsp;kHz</td>
  <td class = "number"> N/A </td>
  <td class = "text_info"> </td>
-</tr>
-<tr> 
- <td class = "text_info">Clock_1</td>
- <td class = "text_info">CyHFCLK</td>
- <td class = "number">12.000&nbsp;kHz</td>
- <td class = "number">12.000&nbsp;kHz</td>
- <td class = "number">44.111&nbsp;MHz</td>
- <td class = "text_info"></td>
 </tr>
 <tr> 
  <td class = "text_info">CyILO</td>
@@ -684,15 +684,15 @@ Setup Subsection</span>
 <div>
 <a href="#" style="text-decoration: none; color: inherit;">
 <span class="sec_head"><span style="font-family: monospace;">+</span>
-Source Clock : Clock_1 : Positive edge(Required Frequency 12&nbsp;kHz)</span>
+Source Clock : Clock_1 : Positive edge(Required Frequency 1&nbsp;MHz)</span>
 </a>
 </div><div class="sta_secbody"><div class="sta_sec" >
 <div>
 <a href="#" style="text-decoration: none; color: inherit;">
 <span class="sec_head"><span style="font-family: monospace;">+</span>
-Destination Clock : Clock_1 : Positive edge(Required Frequency 12&nbsp;kHz)</span>
+Destination Clock : Clock_1 : Positive edge(Required Frequency 1&nbsp;MHz)</span>
 </a>
-</div><div class="sta_secbody"><div class="sta_sec_desc">Path Delay Requirement : 83333.3ns(12&nbsp;kHz)</div>
+</div><div class="sta_secbody"><div class="sta_sec_desc">Path Delay Requirement : 1000ns(1&nbsp;MHz)</div>
 <table class="sta_tscs">
  <thead> 
 <tr> 
@@ -710,7 +710,7 @@ Destination Clock : Clock_1 : Positive edge(Required Frequency 12&nbsp;kHz)</spa
  <td class = "text_info">\Buzz:PWMUDB:sP16:pwmdp:u1\/ci</td>
  <td class = "number">44.111&nbsp;MHz</td>
  <td class = "number">22.670</td>
- <td class = "number">83310.663</td>
+ <td class = "number">977.330</td>
  <td class = "text_info"></td>
 </tr>
 <tr class="sta_path">
@@ -809,7 +809,7 @@ Destination Clock : Clock_1 : Positive edge(Required Frequency 12&nbsp;kHz)</spa
  <td class = "text_info">\Buzz:PWMUDB:sP16:pwmdp:u1\/ci</td>
  <td class = "number">47.081&nbsp;MHz</td>
  <td class = "number">21.240</td>
- <td class = "number">83312.093</td>
+ <td class = "number">978.760</td>
  <td class = "text_info"></td>
 </tr>
 <tr class="sta_path">
@@ -890,7 +890,7 @@ Destination Clock : Clock_1 : Positive edge(Required Frequency 12&nbsp;kHz)</spa
  <td class = "text_info">\Buzz:PWMUDB:sP16:pwmdp:u0\/cs_addr_2</td>
  <td class = "number">51.573&nbsp;MHz</td>
  <td class = "number">19.390</td>
- <td class = "number">83313.943</td>
+ <td class = "number">980.610</td>
  <td class = "text_info"></td>
 </tr>
 <tr class="sta_path">
@@ -971,7 +971,7 @@ Destination Clock : Clock_1 : Positive edge(Required Frequency 12&nbsp;kHz)</spa
  <td class = "text_info">\Buzz:PWMUDB:sP16:pwmdp:u1\/cs_addr_2</td>
  <td class = "number">51.578&nbsp;MHz</td>
  <td class = "number">19.388</td>
- <td class = "number">83313.945</td>
+ <td class = "number">980.612</td>
  <td class = "text_info"></td>
 </tr>
 <tr class="sta_path">
@@ -1052,7 +1052,7 @@ Destination Clock : Clock_1 : Positive edge(Required Frequency 12&nbsp;kHz)</spa
  <td class = "text_info">\Buzz:PWMUDB:sP16:pwmdp:u1\/ci</td>
  <td class = "number">53.008&nbsp;MHz</td>
  <td class = "number">18.865</td>
- <td class = "number">83314.468</td>
+ <td class = "number">981.135</td>
  <td class = "text_info"></td>
 </tr>
 <tr class="sta_path">
@@ -1133,7 +1133,7 @@ Destination Clock : Clock_1 : Positive edge(Required Frequency 12&nbsp;kHz)</spa
  <td class = "text_info">\Buzz:PWMUDB:sP16:pwmdp:u0\/cs_addr_2</td>
  <td class = "number">55.679&nbsp;MHz</td>
  <td class = "number">17.960</td>
- <td class = "number">83315.373</td>
+ <td class = "number">982.040</td>
  <td class = "text_info"></td>
 </tr>
 <tr class="sta_path">
@@ -1196,7 +1196,7 @@ Destination Clock : Clock_1 : Positive edge(Required Frequency 12&nbsp;kHz)</spa
  <td class = "text_info">\Buzz:PWMUDB:sP16:pwmdp:u1\/cs_addr_2</td>
  <td class = "number">55.685&nbsp;MHz</td>
  <td class = "number">17.958</td>
- <td class = "number">83315.375</td>
+ <td class = "number">982.042</td>
  <td class = "text_info"></td>
 </tr>
 <tr class="sta_path">
@@ -1259,7 +1259,7 @@ Destination Clock : Clock_1 : Positive edge(Required Frequency 12&nbsp;kHz)</spa
  <td class = "text_info">\Buzz:PWMUDB:sP16:pwmdp:u0\/cs_addr_1</td>
  <td class = "number">64.164&nbsp;MHz</td>
  <td class = "number">15.585</td>
- <td class = "number">83317.748</td>
+ <td class = "number">984.415</td>
  <td class = "text_info"></td>
 </tr>
 <tr class="sta_path">
@@ -1322,7 +1322,7 @@ Destination Clock : Clock_1 : Positive edge(Required Frequency 12&nbsp;kHz)</spa
  <td class = "text_info">\Buzz:PWMUDB:sP16:pwmdp:u1\/cs_addr_1</td>
  <td class = "number">64.185&nbsp;MHz</td>
  <td class = "number">15.580</td>
- <td class = "number">83317.753</td>
+ <td class = "number">984.420</td>
  <td class = "text_info"></td>
 </tr>
 <tr class="sta_path">
@@ -1385,7 +1385,7 @@ Destination Clock : Clock_1 : Positive edge(Required Frequency 12&nbsp;kHz)</spa
  <td class = "text_info">Net_292/main_1</td>
  <td class = "number">76.965&nbsp;MHz</td>
  <td class = "number">12.993</td>
- <td class = "number">83320.340</td>
+ <td class = "number">987.007</td>
  <td class = "text_info"></td>
 </tr>
 <tr class="sta_path">
