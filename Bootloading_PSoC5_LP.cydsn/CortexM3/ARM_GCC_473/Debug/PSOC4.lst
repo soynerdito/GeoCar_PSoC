@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
    2:.\Generated_Source\PSoC5/PSOC4.c **** * File Name: PSOC4.c
    3:.\Generated_Source\PSoC5/PSOC4.c **** * Version 2.30
    4:.\Generated_Source\PSoC5/PSOC4.c **** *
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 2
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 2
 
 
    5:.\Generated_Source\PSoC5/PSOC4.c **** * Description:
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
   59:.\Generated_Source\PSoC5/PSOC4.c **** * Return:
   60:.\Generated_Source\PSoC5/PSOC4.c **** *  None.
   61:.\Generated_Source\PSoC5/PSOC4.c **** *
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 3
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 3
 
 
   62:.\Generated_Source\PSoC5/PSOC4.c **** * Global variables:
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
   87 002a 00BF     		.section	.text.PSOC4_Init,"ax",%progbits
   88              		.align	2
   89              		.global	PSOC4_Init
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 4
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 4
 
 
   90              		.thumb
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  111:.\Generated_Source\PSoC5/PSOC4.c ****         #if (PSOC4_RXHW_ADDRESS_ENABLED)
  112:.\Generated_Source\PSoC5/PSOC4.c ****             PSOC4_SetRxAddressMode(PSOC4_RXAddressMode);
  113:.\Generated_Source\PSoC5/PSOC4.c ****             PSOC4_SetRxAddress1(PSOC4_RXHWADDRESS1);
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 5
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 5
 
 
  114:.\Generated_Source\PSoC5/PSOC4.c ****             PSOC4_SetRxAddress2(PSOC4_RXHWADDRESS2);
@@ -247,14 +247,14 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  117:.\Generated_Source\PSoC5/PSOC4.c ****         /* Init Count7 period */
  118:.\Generated_Source\PSoC5/PSOC4.c ****         PSOC4_RXBITCTR_PERIOD_REG = PSOC4_RXBITCTR_INIT;
  116              		.loc 1 118 0
- 117 0020 46F28453 		movw	r3, #25988
+ 117 0020 46F28653 		movw	r3, #25990
  118 0024 C4F20003 		movt	r3, 16384
  119 0028 4FF07202 		mov	r2, #114
  120 002c 1A70     		strb	r2, [r3, #0]
  119:.\Generated_Source\PSoC5/PSOC4.c ****         /* Configure the Initial RX interrupt mask */
  120:.\Generated_Source\PSoC5/PSOC4.c ****         PSOC4_RXSTATUS_MASK_REG  = PSOC4_INIT_RX_INTERRUPTS_MASK;
  121              		.loc 1 120 0
- 122 002e 46F28753 		movw	r3, #25991
+ 122 002e 46F28643 		movw	r3, #25734
  123 0032 C4F20003 		movt	r3, 16384
  124 0036 4FF02002 		mov	r2, #32
  125 003a 1A70     		strb	r2, [r3, #0]
@@ -271,13 +271,13 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  131:.\Generated_Source\PSoC5/PSOC4.c ****         #if(PSOC4_TXCLKGEN_DP)
  132:.\Generated_Source\PSoC5/PSOC4.c ****             PSOC4_TXBITCLKGEN_CTR_REG = PSOC4_BIT_CENTER;
  126              		.loc 1 132 0
- 127 003c 46F22543 		movw	r3, #25637
+ 127 003c 46F22343 		movw	r3, #25635
  128 0040 C4F20003 		movt	r3, 16384
  129 0044 4FF00702 		mov	r2, #7
  130 0048 1A70     		strb	r2, [r3, #0]
  133:.\Generated_Source\PSoC5/PSOC4.c ****             PSOC4_TXBITCLKTX_COMPLETE_REG = (PSOC4_NUMBER_OF_DATA_BITS +
  131              		.loc 1 133 0
- 132 004a 46F23543 		movw	r3, #25653
+ 132 004a 46F23343 		movw	r3, #25651
  133 004e C4F20003 		movt	r3, 16384
  134 0052 4FF04802 		mov	r2, #72
  135 0056 1A70     		strb	r2, [r3, #0]
@@ -293,12 +293,12 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  143:.\Generated_Source\PSoC5/PSOC4.c ****         #else
  144:.\Generated_Source\PSoC5/PSOC4.c ****             PSOC4_TXSTATUS_MASK_REG = PSOC4_INIT_TX_INTERRUPTS_MASK;
  136              		.loc 1 144 0
- 137 0058 46F28443 		movw	r3, #25732
+ 137 0058 46F28753 		movw	r3, #25991
  138 005c C4F20003 		movt	r3, 16384
  139 0060 4FF00002 		mov	r2, #0
  140 0064 1A70     		strb	r2, [r3, #0]
  145:.\Generated_Source\PSoC5/PSOC4.c ****         #endif /*End PSOC4_TX_INTERRUPT_ENABLED*/
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 6
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 6
 
 
  146:.\Generated_Source\PSoC5/PSOC4.c **** 
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  165              		.cfi_def_cfa_offset 16
  166 0004 00AF     		add	r7, sp, #0
  167              	.LCFI6:
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 7
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 7
 
 
  168              		.cfi_def_cfa_register 7
@@ -373,9 +373,9 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  180:.\Generated_Source\PSoC5/PSOC4.c ****         /*RX Counter (Count7) Enable */
  181:.\Generated_Source\PSoC5/PSOC4.c ****         PSOC4_RXBITCTR_CONTROL_REG |= PSOC4_CNTR_ENABLE;
  173              		.loc 1 181 0
- 174 000e 46F29453 		movw	r3, #26004
+ 174 000e 46F29653 		movw	r3, #26006
  175 0012 C4F20003 		movt	r3, 16384
- 176 0016 46F29452 		movw	r2, #26004
+ 176 0016 46F29652 		movw	r2, #26006
  177 001a C4F20002 		movt	r2, 16384
  178 001e 1278     		ldrb	r2, [r2, #0]
  179 0020 D2B2     		uxtb	r2, r2
@@ -385,9 +385,9 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  182:.\Generated_Source\PSoC5/PSOC4.c ****         /* Enable the RX Interrupt. */
  183:.\Generated_Source\PSoC5/PSOC4.c ****         PSOC4_RXSTATUS_ACTL_REG  |= PSOC4_INT_ENABLE;
  183              		.loc 1 183 0
- 184 002a 46F29753 		movw	r3, #26007
+ 184 002a 46F29643 		movw	r3, #25750
  185 002e C4F20003 		movt	r3, 16384
- 186 0032 46F29752 		movw	r2, #26007
+ 186 0032 46F29642 		movw	r2, #25750
  187 0036 C4F20002 		movt	r2, 16384
  188 003a 1278     		ldrb	r2, [r2, #0]
  189 003c D2B2     		uxtb	r2, r2
@@ -415,10 +415,10 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  197:.\Generated_Source\PSoC5/PSOC4.c ****         /* Enable the TX Interrupt. */
  198:.\Generated_Source\PSoC5/PSOC4.c ****         PSOC4_TXSTATUS_ACTL_REG |= PSOC4_INT_ENABLE;
  198              		.loc 1 198 0
- 199 0054 46F29443 		movw	r3, #25748
+ 199 0054 46F29753 		movw	r3, #26007
  200 0058 C4F20003 		movt	r3, 16384
- 201 005c 46F29442 		movw	r2, #25748
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 8
+ 201 005c 46F29752 		movw	r2, #26007
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 8
 
 
  202 0060 C4F20002 		movt	r2, 16384
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  226:.\Generated_Source\PSoC5/PSOC4.c **** *******************************************************************************/
  227:.\Generated_Source\PSoC5/PSOC4.c **** void PSOC4_Stop(void) 
  228:.\Generated_Source\PSoC5/PSOC4.c **** {
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 9
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 9
 
 
  229              		.loc 1 228 0
@@ -507,9 +507,9 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  233:.\Generated_Source\PSoC5/PSOC4.c ****     #if(PSOC4_RX_ENABLED || PSOC4_HD_ENABLED)
  234:.\Generated_Source\PSoC5/PSOC4.c ****         PSOC4_RXBITCTR_CONTROL_REG &= (uint8)~PSOC4_CNTR_ENABLE;
  248              		.loc 1 234 0
- 249 000e 46F29453 		movw	r3, #26004
+ 249 000e 46F29653 		movw	r3, #26006
  250 0012 C4F20003 		movt	r3, 16384
- 251 0016 46F29452 		movw	r2, #26004
+ 251 0016 46F29652 		movw	r2, #26006
  252 001a C4F20002 		movt	r2, 16384
  253 001e 1278     		ldrb	r2, [r2, #0]
  254 0020 D2B2     		uxtb	r2, r2
@@ -535,10 +535,10 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  249:.\Generated_Source\PSoC5/PSOC4.c ****     #if(PSOC4_RX_ENABLED || PSOC4_HD_ENABLED)
  250:.\Generated_Source\PSoC5/PSOC4.c ****         PSOC4_RXSTATUS_ACTL_REG  &= (uint8)~PSOC4_INT_ENABLE;
  260              		.loc 1 250 0
- 261 002e 46F29753 		movw	r3, #26007
+ 261 002e 46F29643 		movw	r3, #25750
  262 0032 C4F20003 		movt	r3, 16384
- 263 0036 46F29752 		movw	r2, #26007
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 10
+ 263 0036 46F29642 		movw	r2, #25750
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 10
 
 
  264 003a C4F20002 		movt	r2, 16384
@@ -557,9 +557,9 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  256:.\Generated_Source\PSoC5/PSOC4.c ****     #if(PSOC4_TX_ENABLED)
  257:.\Generated_Source\PSoC5/PSOC4.c ****         PSOC4_TXSTATUS_ACTL_REG &= (uint8)~PSOC4_INT_ENABLE;
  272              		.loc 1 257 0
- 273 004e 46F29443 		movw	r3, #25748
+ 273 004e 46F29753 		movw	r3, #26007
  274 0052 C4F20003 		movt	r3, 16384
- 275 0056 46F29442 		movw	r2, #25748
+ 275 0056 46F29752 		movw	r2, #26007
  276 005a C4F20002 		movt	r2, 16384
  277 005e 1278     		ldrb	r2, [r2, #0]
  278 0060 D2B2     		uxtb	r2, r2
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  268:.\Generated_Source\PSoC5/PSOC4.c **** * Function Name: PSOC4_ReadControlRegister
  269:.\Generated_Source\PSoC5/PSOC4.c **** ********************************************************************************
  270:.\Generated_Source\PSoC5/PSOC4.c **** *
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 11
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 11
 
 
  271:.\Generated_Source\PSoC5/PSOC4.c **** * Summary:
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  295:.\Generated_Source\PSoC5/PSOC4.c **** * Summary:
  296:.\Generated_Source\PSoC5/PSOC4.c **** *  Writes an 8-bit value into the control register
  297:.\Generated_Source\PSoC5/PSOC4.c **** *
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 12
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 12
 
 
  298:.\Generated_Source\PSoC5/PSOC4.c **** * Parameters:
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  319:.\Generated_Source\PSoC5/PSOC4.c ****         /*******************************************************************************
  320:.\Generated_Source\PSoC5/PSOC4.c ****         * Function Name: PSOC4_EnableRxInt
  321:.\Generated_Source\PSoC5/PSOC4.c ****         ********************************************************************************
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 13
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 13
 
 
  322:.\Generated_Source\PSoC5/PSOC4.c ****         *
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  344:.\Generated_Source\PSoC5/PSOC4.c ****         ********************************************************************************
  345:.\Generated_Source\PSoC5/PSOC4.c ****         *
  346:.\Generated_Source\PSoC5/PSOC4.c ****         * Summary:
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 14
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 14
 
 
  347:.\Generated_Source\PSoC5/PSOC4.c ****         *  Disable RX interrupt generation
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  369:.\Generated_Source\PSoC5/PSOC4.c ****     ********************************************************************************
  370:.\Generated_Source\PSoC5/PSOC4.c ****     *
  371:.\Generated_Source\PSoC5/PSOC4.c ****     * Summary:
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 15
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 15
 
 
  372:.\Generated_Source\PSoC5/PSOC4.c ****     *  Configure which status bits trigger an interrupt event
@@ -875,7 +875,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  444 0008 FB71     		strb	r3, [r7, #7]
  387:.\Generated_Source\PSoC5/PSOC4.c ****         PSOC4_RXSTATUS_MASK_REG  = intSrc;
  445              		.loc 1 387 0
- 446 000a 46F28753 		movw	r3, #25991
+ 446 000a 46F28643 		movw	r3, #25734
  447 000e C4F20003 		movt	r3, 16384
  448 0012 FA79     		ldrb	r2, [r7, #7]
  449 0014 1A70     		strb	r2, [r3, #0]
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  465              	.LFB9:
  389:.\Generated_Source\PSoC5/PSOC4.c **** 
  390:.\Generated_Source\PSoC5/PSOC4.c **** 
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 16
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 16
 
 
  391:.\Generated_Source\PSoC5/PSOC4.c ****     /*******************************************************************************
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  482 0006 FFF7FEFF 		bl	PSOC4_DisableRxInt
  429:.\Generated_Source\PSoC5/PSOC4.c ****             #endif /* PSOC4_RX_INTERRUPT_ENABLED */
  430:.\Generated_Source\PSoC5/PSOC4.c ****             loc_rxBufferRead = PSOC4_rxBufferRead;
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 17
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 17
 
 
  483              		.loc 1 430 0
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  524              		.loc 1 443 0
  525 005c 40F20003 		movw	r3, #:lower16:PSOC4_rxBufferRead
  526 0060 C0F20003 		movt	r3, #:upper16:PSOC4_rxBufferRead
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 18
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 18
 
 
  527 0064 BA79     		ldrb	r2, [r7, #6]
@@ -1064,7 +1064,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  466:.\Generated_Source\PSoC5/PSOC4.c ****             {   /* Needs to check status for RX_STS_FIFO_NOTEMPTY bit*/
  467:.\Generated_Source\PSoC5/PSOC4.c ****                 rxData = PSOC4_RXDATA_REG;
  544              		.loc 1 467 0
- 545 0088 46F24753 		movw	r3, #25927
+ 545 0088 46F24553 		movw	r3, #25925
  546 008c C4F20003 		movt	r3, 16384
  547 0090 1B78     		ldrb	r3, [r3, #0]
  548 0092 FB71     		strb	r3, [r7, #7]
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  551 0094 FFF7FEFF 		bl	PSOC4_EnableRxInt
  473:.\Generated_Source\PSoC5/PSOC4.c ****             #endif /* End PSOC4_RX_INTERRUPT_ENABLED */
  474:.\Generated_Source\PSoC5/PSOC4.c **** 
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 19
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 19
 
 
  475:.\Generated_Source\PSoC5/PSOC4.c ****         #else /* PSOC4_RXBUFFERSIZE > PSOC4_FIFO_LENGTH */
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  570              		.loc 1 510 0
  571              		.cfi_startproc
  572              		@ args = 0, pretend = 0, frame = 8
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 20
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 20
 
 
  573              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -1157,7 +1157,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  512:.\Generated_Source\PSoC5/PSOC4.c **** 
  513:.\Generated_Source\PSoC5/PSOC4.c ****         status = PSOC4_RXSTATUS_REG & PSOC4_RX_HW_MASK;
  585              		.loc 1 513 0
- 586 0006 46F26753 		movw	r3, #25959
+ 586 0006 46F26643 		movw	r3, #25702
  587 000a C4F20003 		movt	r3, 16384
  588 000e 1B78     		ldrb	r3, [r3, #0]
  589 0010 DBB2     		uxtb	r3, r3
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  613 0042 07F10C07 		add	r7, r7, #12
  614 0046 BD46     		mov	sp, r7
  615 0048 80BC     		pop	{r7}
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 21
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 21
 
 
  616 004a 7047     		bx	lr
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  637 0002 82B0     		sub	sp, sp, #8
  638              	.LCFI29:
  639              		.cfi_def_cfa_offset 16
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 22
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 22
 
 
  640 0004 00AF     		add	r7, sp, #0
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  575:.\Generated_Source\PSoC5/PSOC4.c ****                 loc_rxBufferRead++;
  677              		.loc 1 575 0
  678 004e BB79     		ldrb	r3, [r7, #6]
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 23
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 23
 
 
  679 0050 03F10103 		add	r3, r3, #1
@@ -1378,14 +1378,14 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  599:.\Generated_Source\PSoC5/PSOC4.c ****                     #endif /* PSOC4_RX_INTERRUPT_ENABLED and Hardware flow control*/
  600:.\Generated_Source\PSoC5/PSOC4.c ****                 }
  601:.\Generated_Source\PSoC5/PSOC4.c **** 
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 24
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 24
 
 
  602:.\Generated_Source\PSoC5/PSOC4.c ****             }
  603:.\Generated_Source\PSoC5/PSOC4.c ****             else
  604:.\Generated_Source\PSoC5/PSOC4.c ****             {   rxStatus = PSOC4_RXSTATUS_REG;
  709              		.loc 1 604 0
- 710 008e 46F26753 		movw	r3, #25959
+ 710 008e 46F26643 		movw	r3, #25702
  711 0092 C4F20003 		movt	r3, 16384
  712 0096 1B78     		ldrb	r3, [r3, #0]
  713 0098 3B71     		strb	r3, [r7, #4]
@@ -1398,7 +1398,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  606:.\Generated_Source\PSoC5/PSOC4.c ****                 {   /* Read received data from FIFO*/
  607:.\Generated_Source\PSoC5/PSOC4.c ****                     rxData = PSOC4_RXDATA_REG;
  719              		.loc 1 607 0
- 720 00a4 46F24753 		movw	r3, #25927
+ 720 00a4 46F24553 		movw	r3, #25925
  721 00a8 C4F20003 		movt	r3, 16384
  722 00ac 1B78     		ldrb	r3, [r3, #0]
  723 00ae FB71     		strb	r3, [r7, #7]
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  628:.\Generated_Source\PSoC5/PSOC4.c ****                 /*Check status on error*/
  629:.\Generated_Source\PSoC5/PSOC4.c ****                 if((rxStatus & (PSOC4_RX_STS_BREAK | PSOC4_RX_STS_PAR_ERROR |
  630:.\Generated_Source\PSoC5/PSOC4.c ****                                PSOC4_RX_STS_STOP_ERROR | PSOC4_RX_STS_OVERRUN)) != 0u)
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 25
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 25
 
 
  631:.\Generated_Source\PSoC5/PSOC4.c ****                 {
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  761              		.cfi_offset 3, -16
  762              		.cfi_offset 4, -12
  763              		.cfi_offset 7, -8
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 26
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 26
 
 
  764              		.cfi_offset 14, -4
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  685:.\Generated_Source\PSoC5/PSOC4.c ****     *  No.
  686:.\Generated_Source\PSoC5/PSOC4.c ****     *
  687:.\Generated_Source\PSoC5/PSOC4.c ****     * Theory:
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 27
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 27
 
 
  688:.\Generated_Source\PSoC5/PSOC4.c ****     *  Allows the user to find out how full the RX Buffer is.
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  707:.\Generated_Source\PSoC5/PSOC4.c ****                 {
  708:.\Generated_Source\PSoC5/PSOC4.c ****                     size = PSOC4_RXBUFFERSIZE;
  828              		.loc 1 708 0
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 28
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 28
 
 
  829 0036 4FF03203 		mov	r3, #50
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  870 0096 DBB2     		uxtb	r3, r3
  871 0098 D31A     		subs	r3, r2, r3
  872 009a DBB2     		uxtb	r3, r3
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 29
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 29
 
 
  873 009c 03F13203 		add	r3, r3, #50
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  753:.\Generated_Source\PSoC5/PSOC4.c ****     *
  754:.\Generated_Source\PSoC5/PSOC4.c ****     * Global Variables:
  755:.\Generated_Source\PSoC5/PSOC4.c ****     *  PSOC4_rxBufferWrite - cleared to zero.
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 30
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 30
 
 
  756:.\Generated_Source\PSoC5/PSOC4.c ****     *  PSOC4_rxBufferRead - cleared to zero.
@@ -1784,9 +1784,9 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  914 000c FB71     		strb	r3, [r7, #7]
  778:.\Generated_Source\PSoC5/PSOC4.c ****         PSOC4_RXDATA_AUX_CTL_REG |=  PSOC4_RX_FIFO_CLR;
  915              		.loc 1 778 0
- 916 000e 46F29753 		movw	r3, #26007
+ 916 000e 46F29553 		movw	r3, #26005
  917 0012 C4F20003 		movt	r3, 16384
- 918 0016 46F29752 		movw	r2, #26007
+ 918 0016 46F29552 		movw	r2, #26005
  919 001a C4F20002 		movt	r2, 16384
  920 001e 1278     		ldrb	r2, [r2, #0]
  921 0020 D2B2     		uxtb	r2, r2
@@ -1795,10 +1795,10 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  924 0028 1A70     		strb	r2, [r3, #0]
  779:.\Generated_Source\PSoC5/PSOC4.c ****         PSOC4_RXDATA_AUX_CTL_REG &= (uint8)~PSOC4_RX_FIFO_CLR;
  925              		.loc 1 779 0
- 926 002a 46F29753 		movw	r3, #26007
+ 926 002a 46F29553 		movw	r3, #26005
  927 002e C4F20003 		movt	r3, 16384
- 928 0032 46F29752 		movw	r2, #26007
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 31
+ 928 0032 46F29552 		movw	r2, #26005
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 31
 
 
  929 0036 C4F20002 		movt	r2, 16384
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  800:.\Generated_Source\PSoC5/PSOC4.c **** 
  801:.\Generated_Source\PSoC5/PSOC4.c ****     }
  963              		.loc 1 801 0
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 32
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 32
 
 
  964 008e 07F10807 		add	r7, r7, #8
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  985              		.cfi_def_cfa_offset 4
  986              		.cfi_offset 7, -4
  987 0002 83B0     		sub	sp, sp, #12
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 33
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 33
 
 
  988              	.LCFI40:
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  866:.\Generated_Source\PSoC5/PSOC4.c ****     *  None.
  867:.\Generated_Source\PSoC5/PSOC4.c ****     *
  868:.\Generated_Source\PSoC5/PSOC4.c ****     *******************************************************************************/
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 34
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 34
 
 
  869:.\Generated_Source\PSoC5/PSOC4.c ****     void PSOC4_SetRxAddress1(uint8 address) 
@@ -2003,7 +2003,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  1027 0008 FB71     		strb	r3, [r7, #7]
  872:.\Generated_Source\PSoC5/PSOC4.c ****         PSOC4_RXADDRESS1_REG = address;
  1028              		.loc 1 872 0
- 1029 000a 46F22753 		movw	r3, #25895
+ 1029 000a 46F22553 		movw	r3, #25893
  1030 000e C4F20003 		movt	r3, 16384
  1031 0012 FA79     		ldrb	r2, [r7, #7]
  1032 0014 1A70     		strb	r2, [r3, #0]
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  885:.\Generated_Source\PSoC5/PSOC4.c ****     *
  886:.\Generated_Source\PSoC5/PSOC4.c ****     * Return:
  887:.\Generated_Source\PSoC5/PSOC4.c ****     *  None.
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 35
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 35
 
 
  888:.\Generated_Source\PSoC5/PSOC4.c ****     *
@@ -2064,7 +2064,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  1065 0008 FB71     		strb	r3, [r7, #7]
  892:.\Generated_Source\PSoC5/PSOC4.c ****         PSOC4_RXADDRESS2_REG = address;
  1066              		.loc 1 892 0
- 1067 000a 46F23753 		movw	r3, #25911
+ 1067 000a 46F23553 		movw	r3, #25909
  1068 000e C4F20003 		movt	r3, 16384
  1069 0012 FA79     		ldrb	r2, [r7, #7]
  1070 0014 1A70     		strb	r2, [r3, #0]
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  904:.\Generated_Source\PSoC5/PSOC4.c ****         ********************************************************************************
  905:.\Generated_Source\PSoC5/PSOC4.c ****         *
  906:.\Generated_Source\PSoC5/PSOC4.c ****         * Summary:
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 36
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 36
 
 
  907:.\Generated_Source\PSoC5/PSOC4.c ****         *  Enable TX interrupt generation
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  961:.\Generated_Source\PSoC5/PSOC4.c ****     * Return:
  962:.\Generated_Source\PSoC5/PSOC4.c ****     *  None.
  963:.\Generated_Source\PSoC5/PSOC4.c ****     *
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 37
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 37
 
 
  964:.\Generated_Source\PSoC5/PSOC4.c ****     * Theory:
@@ -2186,7 +2186,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  1103 0008 FB71     		strb	r3, [r7, #7]
  970:.\Generated_Source\PSoC5/PSOC4.c ****         PSOC4_TXSTATUS_MASK_REG = intSrc;
  1104              		.loc 1 970 0
- 1105 000a 46F28443 		movw	r3, #25732
+ 1105 000a 46F28753 		movw	r3, #25991
  1106 000e C4F20003 		movt	r3, 16384
  1107 0012 FA79     		ldrb	r2, [r7, #7]
  1108 0014 1A70     		strb	r2, [r3, #0]
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  980:.\Generated_Source\PSoC5/PSOC4.c ****     *  bus is available. WriteTxData sends a byte without checking for buffer room
  981:.\Generated_Source\PSoC5/PSOC4.c ****     *  or status. It is up to the user to separately check status.
  982:.\Generated_Source\PSoC5/PSOC4.c ****     *
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 38
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 38
 
 
  983:.\Generated_Source\PSoC5/PSOC4.c ****     * Parameters:
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
 1014:.\Generated_Source\PSoC5/PSOC4.c **** 
 1015:.\Generated_Source\PSoC5/PSOC4.c ****                 if( (PSOC4_txBufferRead == PSOC4_txBufferWrite) &&
 1016:.\Generated_Source\PSoC5/PSOC4.c ****                     ((PSOC4_TXSTATUS_REG & PSOC4_TX_STS_FIFO_FULL) == 0u) )
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 39
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 39
 
 
 1017:.\Generated_Source\PSoC5/PSOC4.c ****                 {
@@ -2309,7 +2309,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
 1042:.\Generated_Source\PSoC5/PSOC4.c ****                 /* Add directly to the FIFO. */
 1043:.\Generated_Source\PSoC5/PSOC4.c ****                 PSOC4_TXDATA_REG = txDataByte;
  1148              		.loc 1 1043 0
- 1149 0018 46F24443 		movw	r3, #25668
+ 1149 0018 46F24743 		movw	r3, #25671
  1150 001c C4F20003 		movt	r3, 16384
  1151 0020 FA79     		ldrb	r2, [r7, #7]
  1152 0022 1A70     		strb	r2, [r3, #0]
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
 1049:.\Generated_Source\PSoC5/PSOC4.c **** 
 1050:.\Generated_Source\PSoC5/PSOC4.c ****     /*******************************************************************************
 1051:.\Generated_Source\PSoC5/PSOC4.c ****     * Function Name: PSOC4_ReadTxStatus
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 40
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 40
 
 
 1052:.\Generated_Source\PSoC5/PSOC4.c ****     ********************************************************************************
@@ -2375,7 +2375,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  1181              		.cfi_def_cfa_register 7
 1072:.\Generated_Source\PSoC5/PSOC4.c ****         return(PSOC4_TXSTATUS_REG);
  1182              		.loc 1 1072 0
- 1183 0004 46F26443 		movw	r3, #25700
+ 1183 0004 46F26753 		movw	r3, #25959
  1184 0008 C4F20003 		movt	r3, 16384
  1185 000c 1B78     		ldrb	r3, [r3, #0]
  1186 000e DBB2     		uxtb	r3, r3
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  1202              	.LFB21:
 1074:.\Generated_Source\PSoC5/PSOC4.c **** 
 1075:.\Generated_Source\PSoC5/PSOC4.c **** 
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 41
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 41
 
 
 1076:.\Generated_Source\PSoC5/PSOC4.c ****     /*******************************************************************************
@@ -2458,7 +2458,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
 1113:.\Generated_Source\PSoC5/PSOC4.c ****                 uint8 loc_txBufferWrite;
 1114:.\Generated_Source\PSoC5/PSOC4.c ****                 uint8 loc_txBufferRead;
 1115:.\Generated_Source\PSoC5/PSOC4.c **** 
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 42
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 42
 
 
 1116:.\Generated_Source\PSoC5/PSOC4.c ****                 do{
@@ -2510,7 +2510,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  1221 000a 00BF     		nop
  1222              	.L47:
  1223              		.loc 1 1160 0 is_stmt 0 discriminator 1
- 1224 000c 46F26443 		movw	r3, #25700
+ 1224 000c 46F26753 		movw	r3, #25959
  1225 0010 C4F20003 		movt	r3, 16384
  1226 0014 1B78     		ldrb	r3, [r3, #0]
  1227 0016 DBB2     		uxtb	r3, r3
@@ -2518,7 +2518,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  1229 001c 002B     		cmp	r3, #0
  1230 001e F5D1     		bne	.L47
 1161:.\Generated_Source\PSoC5/PSOC4.c ****                 {
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 43
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 43
 
 
 1162:.\Generated_Source\PSoC5/PSOC4.c ****                     ; /* Wait for room in the FIFO. */
@@ -2527,7 +2527,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
 1165:.\Generated_Source\PSoC5/PSOC4.c ****                 /* Add directly to the FIFO. */
 1166:.\Generated_Source\PSoC5/PSOC4.c ****                 PSOC4_TXDATA_REG = txDataByte;
  1231              		.loc 1 1166 0 is_stmt 1
- 1232 0020 46F24443 		movw	r3, #25668
+ 1232 0020 46F24743 		movw	r3, #25671
  1233 0024 C4F20003 		movt	r3, 16384
  1234 0028 FA79     		ldrb	r2, [r7, #7]
  1235 002a 1A70     		strb	r2, [r3, #0]
@@ -2578,7 +2578,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
 1195:.\Generated_Source\PSoC5/PSOC4.c ****     *  transmit buffer.
 1196:.\Generated_Source\PSoC5/PSOC4.c ****     *
 1197:.\Generated_Source\PSoC5/PSOC4.c ****     *******************************************************************************/
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 44
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 44
 
 
 1198:.\Generated_Source\PSoC5/PSOC4.c ****     void PSOC4_PutString(const char8 string[]) 
@@ -2638,7 +2638,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  1294 0036 7A68     		ldr	r2, [r7, #4]
  1295 0038 D318     		adds	r3, r2, r3
  1296 003a 1B78     		ldrb	r3, [r3, #0]	@ zero_extendqisi2
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 45
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 45
 
 
  1297 003c 002B     		cmp	r3, #0
@@ -2698,7 +2698,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  1321              		.cfi_def_cfa_offset 8
  1322              		.cfi_offset 7, -8
  1323              		.cfi_offset 14, -4
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 46
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 46
 
 
  1324 0002 84B0     		sub	sp, sp, #16
@@ -2758,7 +2758,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  1367 0046 00BF     		.section	.text.PSOC4_PutCRLF,"ax",%progbits
  1368              		.align	2
  1369              		.global	PSOC4_PutCRLF
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 47
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 47
 
 
  1370              		.thumb
@@ -2818,7 +2818,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  1397 0016 0BD0     		beq	.L55
 1277:.\Generated_Source\PSoC5/PSOC4.c ****         {
 1278:.\Generated_Source\PSoC5/PSOC4.c ****             PSOC4_PutChar(txDataByte);
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 48
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 48
 
 
  1398              		.loc 1 1278 0
@@ -2878,7 +2878,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
 1307:.\Generated_Source\PSoC5/PSOC4.c ****     *  Allows the user to find out how full the TX Buffer is.
 1308:.\Generated_Source\PSoC5/PSOC4.c ****     *
 1309:.\Generated_Source\PSoC5/PSOC4.c ****     *******************************************************************************/
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 49
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 49
 
 
 1310:.\Generated_Source\PSoC5/PSOC4.c ****     uint8 PSOC4_GetTxBufferSize(void)
@@ -2931,14 +2931,14 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
 1342:.\Generated_Source\PSoC5/PSOC4.c **** 
 1343:.\Generated_Source\PSoC5/PSOC4.c ****             size = PSOC4_TXSTATUS_REG;
  1439              		.loc 1 1343 0
- 1440 0006 46F26443 		movw	r3, #25700
+ 1440 0006 46F26753 		movw	r3, #25959
  1441 000a C4F20003 		movt	r3, 16384
  1442 000e 1B78     		ldrb	r3, [r3, #0]
  1443 0010 FB71     		strb	r3, [r7, #7]
 1344:.\Generated_Source\PSoC5/PSOC4.c **** 
 1345:.\Generated_Source\PSoC5/PSOC4.c ****             /* Is the fifo is full. */
 1346:.\Generated_Source\PSoC5/PSOC4.c ****             if((size & PSOC4_TX_STS_FIFO_FULL) != 0u)
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 50
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 50
 
 
  1444              		.loc 1 1346 0
@@ -2998,7 +2998,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  1481              		.global	PSOC4_ClearTxBuffer
  1482              		.thumb
  1483              		.thumb_func
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 51
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 51
 
 
  1484              		.type	PSOC4_ClearTxBuffer, %function
@@ -3058,7 +3058,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
 1400:.\Generated_Source\PSoC5/PSOC4.c ****         /* Enter critical section */
 1401:.\Generated_Source\PSoC5/PSOC4.c ****         enableInterrupts = CyEnterCriticalSection();
  1502              		.loc 1 1401 0
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 52
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 52
 
 
  1503 0006 FFF7FEFF 		bl	CyEnterCriticalSection
@@ -3067,9 +3067,9 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
 1402:.\Generated_Source\PSoC5/PSOC4.c ****         /* clear the HW FIFO */
 1403:.\Generated_Source\PSoC5/PSOC4.c ****         PSOC4_TXDATA_AUX_CTL_REG |=  PSOC4_TX_FIFO_CLR;
  1506              		.loc 1 1403 0
- 1507 000e 46F29443 		movw	r3, #25748
+ 1507 000e 46F29743 		movw	r3, #25751
  1508 0012 C4F20003 		movt	r3, 16384
- 1509 0016 46F29442 		movw	r2, #25748
+ 1509 0016 46F29742 		movw	r2, #25751
  1510 001a C4F20002 		movt	r2, 16384
  1511 001e 1278     		ldrb	r2, [r2, #0]
  1512 0020 D2B2     		uxtb	r2, r2
@@ -3078,9 +3078,9 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  1515 0028 1A70     		strb	r2, [r3, #0]
 1404:.\Generated_Source\PSoC5/PSOC4.c ****         PSOC4_TXDATA_AUX_CTL_REG &= (uint8)~PSOC4_TX_FIFO_CLR;
  1516              		.loc 1 1404 0
- 1517 002a 46F29443 		movw	r3, #25748
+ 1517 002a 46F29743 		movw	r3, #25751
  1518 002e C4F20003 		movt	r3, 16384
- 1519 0032 46F29442 		movw	r2, #25748
+ 1519 0032 46F29742 		movw	r2, #25751
  1520 0036 C4F20002 		movt	r2, 16384
  1521 003a 1278     		ldrb	r2, [r2, #0]
  1522 003c D2B2     		uxtb	r2, r2
@@ -3118,7 +3118,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  1533 0054 80BD     		pop	{r7, pc}
  1534              		.cfi_endproc
  1535              	.LFE26:
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 53
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 53
 
 
  1536              		.size	PSOC4_ClearTxBuffer, .-PSOC4_ClearTxBuffer
@@ -3178,7 +3178,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
 1471:.\Generated_Source\PSoC5/PSOC4.c ****     *     SendBreak(1);     - complete Break operation
 1472:.\Generated_Source\PSoC5/PSOC4.c ****     *  3) Same to 2) but user may want to init and use the interrupt for complete
 1473:.\Generated_Source\PSoC5/PSOC4.c ****     *     break operation.
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 54
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 54
 
 
 1474:.\Generated_Source\PSoC5/PSOC4.c ****     *     Example for this case:
@@ -3238,7 +3238,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
 1504:.\Generated_Source\PSoC5/PSOC4.c ****                     PSOC4_TXDATA_REG = 0u;
 1505:.\Generated_Source\PSoC5/PSOC4.c **** 
 1506:.\Generated_Source\PSoC5/PSOC4.c ****                     do /*wait until transmit starts*/
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 55
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 55
 
 
 1507:.\Generated_Source\PSoC5/PSOC4.c ****                     {
@@ -3289,7 +3289,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
 1543:.\Generated_Source\PSoC5/PSOC4.c ****                     #if(PSOC4_TXCLKGEN_DP)
 1544:.\Generated_Source\PSoC5/PSOC4.c ****                         tx_period = PSOC4_TXBITCLKTX_COMPLETE_REG;
  1578              		.loc 1 1544 0 is_stmt 1
- 1579 0024 46F23543 		movw	r3, #25653
+ 1579 0024 46F23343 		movw	r3, #25651
  1580 0028 C4F20003 		movt	r3, 16384
  1581 002c 1B78     		ldrb	r3, [r3, #0]
  1582 002e DAB2     		uxtb	r2, r3
@@ -3298,10 +3298,10 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  1585 0038 1A70     		strb	r2, [r3, #0]
 1545:.\Generated_Source\PSoC5/PSOC4.c ****                         PSOC4_TXBITCLKTX_COMPLETE_REG = PSOC4_TXBITCTR_BREAKBITS;
  1586              		.loc 1 1545 0
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 56
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 56
 
 
- 1587 003a 46F23543 		movw	r3, #25653
+ 1587 003a 46F23343 		movw	r3, #25651
  1588 003e C4F20003 		movt	r3, 16384
  1589 0042 4FF06702 		mov	r2, #103
  1590 0046 1A70     		strb	r2, [r3, #0]
@@ -3313,7 +3313,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
 1551:.\Generated_Source\PSoC5/PSOC4.c ****                     /* Send zeros*/
 1552:.\Generated_Source\PSoC5/PSOC4.c ****                     PSOC4_TXDATA_REG = 0u;
  1591              		.loc 1 1552 0
- 1592 0048 46F24443 		movw	r3, #25668
+ 1592 0048 46F24743 		movw	r3, #25671
  1593 004c C4F20003 		movt	r3, 16384
  1594 0050 4FF00002 		mov	r2, #0
  1595 0054 1A70     		strb	r2, [r3, #0]
@@ -3323,7 +3323,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
 1555:.\Generated_Source\PSoC5/PSOC4.c ****                     {
 1556:.\Generated_Source\PSoC5/PSOC4.c ****                         tmpStat = PSOC4_TXSTATUS_REG;
  1597              		.loc 1 1556 0 discriminator 1
- 1598 0056 46F26443 		movw	r3, #25700
+ 1598 0056 46F26753 		movw	r3, #25959
  1599 005a C4F20003 		movt	r3, 16384
  1600 005e 1B78     		ldrb	r3, [r3, #0]
  1601 0060 FB73     		strb	r3, [r7, #15]
@@ -3352,13 +3352,13 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
 1564:.\Generated_Source\PSoC5/PSOC4.c ****                     {
 1565:.\Generated_Source\PSoC5/PSOC4.c ****                         tmpStat = PSOC4_TXSTATUS_REG;
  1617              		.loc 1 1565 0 is_stmt 1 discriminator 1
- 1618 0078 46F26443 		movw	r3, #25700
+ 1618 0078 46F26753 		movw	r3, #25959
  1619 007c C4F20003 		movt	r3, 16384
  1620 0080 1B78     		ldrb	r3, [r3, #0]
  1621 0082 FB73     		strb	r3, [r7, #15]
 1566:.\Generated_Source\PSoC5/PSOC4.c ****                     }while(((uint8)~tmpStat & PSOC4_TX_STS_COMPLETE) != 0u);
  1622              		.loc 1 1566 0 discriminator 1
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 57
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 57
 
 
  1623 0084 FB7B     		ldrb	r3, [r7, #15]
@@ -3391,7 +3391,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
 1574:.\Generated_Source\PSoC5/PSOC4.c ****                     #if(PSOC4_TXCLKGEN_DP)
 1575:.\Generated_Source\PSoC5/PSOC4.c ****                         PSOC4_TXBITCLKTX_COMPLETE_REG = tx_period;
  1643              		.loc 1 1575 0
- 1644 00a6 46F23543 		movw	r3, #25653
+ 1644 00a6 46F23343 		movw	r3, #25651
  1645 00aa C4F20003 		movt	r3, 16384
  1646 00ae 40F20002 		movw	r2, #:lower16:tx_period.4944
  1647 00b2 C0F20002 		movt	r2, #:upper16:tx_period.4944
@@ -3418,7 +3418,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  1655 00c0 80BC     		pop	{r7}
  1656 00c2 7047     		bx	lr
  1657              		.cfi_endproc
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 58
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 58
 
 
  1658              	.LFE27:
@@ -3478,7 +3478,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
 1616:.\Generated_Source\PSoC5/PSOC4.c ****         else
 1617:.\Generated_Source\PSoC5/PSOC4.c ****         {
 1618:.\Generated_Source\PSoC5/PSOC4.c ****             #if( PSOC4_CONTROL_REG_REMOVED == 0u )
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 59
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 59
 
 
 1619:.\Generated_Source\PSoC5/PSOC4.c ****                 PSOC4_WriteControlRegister(PSOC4_ReadControlRegister() &
@@ -3538,7 +3538,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  1734 004c 02       		.uleb128 0x2
  1735 004d 04       		.byte	0x4
  1736 004e 07       		.byte	0x7
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 60
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 60
 
 
  1737 004f 97010000 		.4byte	.LASF5
@@ -3598,7 +3598,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  1791 00bb 05       		.uleb128 0x5
  1792 00bc 6F000000 		.4byte	0x6f
  1793 00c0 04       		.uleb128 0x4
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 61
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 61
 
 
  1794 00c1 14020000 		.4byte	.LASF17
@@ -3658,7 +3658,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  1848 0133 E3       		.byte	0xe3
  1849 0134 01       		.byte	0x1
  1850 0135 00000000 		.4byte	.LFB3
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 62
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 62
 
 
  1851 0139 7A000000 		.4byte	.LFE3
@@ -3718,7 +3718,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  1905 01b2 0C       		.uleb128 0xc
  1906 01b3 01       		.byte	0x1
  1907 01b4 19000000 		.4byte	.LASF26
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 63
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 63
 
 
  1908 01b8 01       		.byte	0x1
@@ -3778,7 +3778,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  1962 0230 76       		.sleb128 -10
  1963 0231 0E       		.uleb128 0xe
  1964 0232 07000000 		.4byte	.LASF32
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 64
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 64
 
 
  1965 0236 01       		.byte	0x1
@@ -3838,7 +3838,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  2019 02ab 91       		.byte	0x91
  2020 02ac 74       		.sleb128 -12
  2021 02ad 0E       		.uleb128 0xe
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 65
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 65
 
 
  2022 02ae D8010000 		.4byte	.LASF31
@@ -3898,7 +3898,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  2076 0320 00000000 		.4byte	.LFB14
  2077 0324 96000000 		.4byte	.LFE14
  2078 0328 C8020000 		.4byte	.LLST14
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 66
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 66
 
 
  2079 032c 01       		.byte	0x1
@@ -3958,7 +3958,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  2133 039d 01       		.byte	0x1
  2134 039e 7A03     		.2byte	0x37a
  2135 03a0 01       		.byte	0x1
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 67
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 67
 
 
  2136 03a1 00000000 		.4byte	.LFB17
@@ -4018,7 +4018,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  2190 0418 09       		.uleb128 0x9
  2191 0419 01       		.byte	0x1
  2192 041a 59010000 		.4byte	.LASF51
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 68
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 68
 
 
  2193 041e 01       		.byte	0x1
@@ -4078,7 +4078,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  2247 0496 76       		.sleb128 -10
  2248 0497 00       		.byte	0
  2249 0498 12       		.uleb128 0x12
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 69
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 69
 
 
  2250 0499 04       		.byte	0x4
@@ -4138,7 +4138,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  2304 050d 01       		.byte	0x1
  2305 050e 22050000 		.4byte	0x522
  2306 0512 0B       		.uleb128 0xb
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 70
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 70
 
 
  2307 0513 2C000000 		.4byte	.LASF50
@@ -4198,7 +4198,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  2361 0585 01       		.byte	0x1
  2362 0586 00000000 		.4byte	.LFB27
  2363 058a C4000000 		.4byte	.LFE27
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 71
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 71
 
 
  2364 058e 94050000 		.4byte	.LLST27
@@ -4258,7 +4258,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  2418 0602 01       		.byte	0x1
  2419 0603 1C       		.byte	0x1c
  2420 0604 6F000000 		.4byte	0x6f
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 72
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 72
 
 
  2421 0608 01       		.byte	0x1
@@ -4318,7 +4318,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  2475 0677 01       		.byte	0x1
  2476 0678 05       		.byte	0x5
  2477 0679 03       		.byte	0x3
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 73
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 73
 
 
  2478 067a 00000000 		.4byte	PSOC4_rxBufferOverflow
@@ -4378,7 +4378,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  2532 0032 3B       		.uleb128 0x3b
  2533 0033 0B       		.uleb128 0xb
  2534 0034 49       		.uleb128 0x49
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 74
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 74
 
 
  2535 0035 13       		.uleb128 0x13
@@ -4438,7 +4438,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  2589 006d 01       		.uleb128 0x1
  2590 006e 13       		.uleb128 0x13
  2591 006f 00       		.byte	0
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 75
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 75
 
 
  2592 0070 00       		.byte	0
@@ -4498,7 +4498,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  2646 00a7 11       		.uleb128 0x11
  2647 00a8 01       		.uleb128 0x1
  2648 00a9 12       		.uleb128 0x12
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 76
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 76
 
 
  2649 00aa 01       		.uleb128 0x1
@@ -4558,7 +4558,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  2703 00e2 3A       		.uleb128 0x3a
  2704 00e3 0B       		.uleb128 0xb
  2705 00e4 3B       		.uleb128 0x3b
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 77
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 77
 
 
  2706 00e5 05       		.uleb128 0x5
@@ -4618,7 +4618,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  2760 011d 0C       		.uleb128 0xc
  2761 011e 01       		.uleb128 0x1
  2762 011f 13       		.uleb128 0x13
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 78
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 78
 
 
  2763 0120 00       		.byte	0
@@ -4678,7 +4678,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  2817 0158 00       		.byte	0
  2818 0159 0B       		.uleb128 0xb
  2819 015a 0B       		.uleb128 0xb
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 79
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 79
 
 
  2820 015b 49       		.uleb128 0x49
@@ -4738,7 +4738,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  2874 0191 00       		.byte	0
  2875 0192 00       		.byte	0
  2876              		.section	.debug_loc,"",%progbits
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 80
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 80
 
 
  2877              	.Ldebug_loc0:
@@ -4798,7 +4798,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  2931 0080 84000000 		.4byte	.LFE2
  2932 0084 0200     		.2byte	0x2
  2933 0086 77       		.byte	0x77
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 81
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 81
 
 
  2934 0087 10       		.sleb128 16
@@ -4858,7 +4858,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  2988 010b 04       		.sleb128 4
  2989 010c 04000000 		.4byte	.LCFI13
  2990 0110 06000000 		.4byte	.LCFI14
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 82
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 82
 
 
  2991 0114 0200     		.2byte	0x2
@@ -4918,7 +4918,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  3045 0198 0200     		.2byte	0x2
  3046 019a 7D       		.byte	0x7d
  3047 019b 04       		.sleb128 4
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 83
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 83
 
 
  3048 019c 04000000 		.4byte	.LCFI20
@@ -4978,7 +4978,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  3102 0222 77       		.byte	0x77
  3103 0223 10       		.sleb128 16
  3104 0224 00000000 		.4byte	0
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 84
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 84
 
 
  3105 0228 00000000 		.4byte	0
@@ -5038,7 +5038,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  3159 02ac 06000000 		.4byte	.LCFI35
  3160 02b0 0200     		.2byte	0x2
  3161 02b2 7D       		.byte	0x7d
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 85
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 85
 
 
  3162 02b3 10       		.sleb128 16
@@ -5098,7 +5098,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  3216              	.LLST16:
  3217 0338 00000000 		.4byte	.LFB16
  3218 033c 02000000 		.4byte	.LCFI42
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 86
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 86
 
 
  3219 0340 0200     		.2byte	0x2
@@ -5158,7 +5158,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  3273 03c0 04000000 		.4byte	.LCFI49
  3274 03c4 06000000 		.4byte	.LCFI50
  3275 03c8 0200     		.2byte	0x2
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 87
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 87
 
 
  3276 03ca 7D       		.byte	0x7d
@@ -5218,7 +5218,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  3330 044e 7D       		.byte	0x7d
  3331 044f 00       		.sleb128 0
  3332 0450 02000000 		.4byte	.LCFI56
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 88
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 88
 
 
  3333 0454 04000000 		.4byte	.LCFI57
@@ -5278,7 +5278,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  3387 04d7 18       		.sleb128 24
  3388 04d8 06000000 		.4byte	.LCFI64
  3389 04dc 46000000 		.4byte	.LFE23
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 89
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 89
 
 
  3390 04e0 0200     		.2byte	0x2
@@ -5338,7 +5338,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  3444 0564 0200     		.2byte	0x2
  3445 0566 7D       		.byte	0x7d
  3446 0567 00       		.sleb128 0
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 90
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 90
 
 
  3447 0568 02000000 		.4byte	.LCFI71
@@ -5398,7 +5398,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  3501 05ee 7D       		.byte	0x7d
  3502 05ef 10       		.sleb128 16
  3503 05f0 06000000 		.4byte	.LCFI79
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 91
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 91
 
 
  3504 05f4 14000000 		.4byte	.LFE28
@@ -5458,7 +5458,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  3558 00b0 00000000 		.4byte	.LFB20
  3559 00b4 18000000 		.4byte	.LFE20-.LFB20
  3560 00b8 00000000 		.4byte	.LFB21
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 92
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 92
 
 
  3561 00bc 36000000 		.4byte	.LFE21-.LFB21
@@ -5518,7 +5518,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  3615 008c 20000000 		.4byte	.LFE17
  3616 0090 00000000 		.4byte	.LFB18
  3617 0094 20000000 		.4byte	.LFE18
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 93
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 93
 
 
  3618 0098 00000000 		.4byte	.LFB19
@@ -5578,7 +5578,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  3654 0046 73747269 		.ascii	"string\000"
  3654      6E6700
  3655              	.LASF60:
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 94
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 94
 
 
  3656 004d 50534F43 		.ascii	"PSOC4_ClearTxBuffer\000"
@@ -5638,7 +5638,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  3678      6F646500 
  3679              	.LASF74:
  3680 00f8 433A5C50 		.ascii	"C:\\Projects\\PSoC\\Bootloading_PSoC5_LP\\Bootloadi"
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 95
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 95
 
 
  3680      726F6A65 
@@ -5698,7 +5698,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  3701      00
  3702              	.LASF3:
  3703 01c5 73686F72 		.ascii	"short unsigned int\000"
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 96
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 96
 
 
  3703      7420756E 
@@ -5758,7 +5758,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  3727      00
  3728              	.LASF47:
  3729 026f 50534F43 		.ascii	"PSOC4_SetRxAddress2\000"
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 97
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 97
 
 
  3729      345F5365 
@@ -5818,7 +5818,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  3750 0340 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\PSOC4.c\000"
  3750      6E657261 
  3750      7465645F 
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 98
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 98
 
 
  3750      536F7572 
@@ -5878,7 +5878,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 1
  3772      757300
  3773              	.LASF35:
  3774 0400 73746174 		.ascii	"status\000"
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cc9rrCv2.s 			page 99
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccLZYZiN.s 			page 99
 
 
  3774      757300

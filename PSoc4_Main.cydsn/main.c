@@ -18,13 +18,12 @@
 #define AXIS_Y 1
 #define AXIS_Z 2
 #define PSOC5_MSG_MAX 60
-//uint32 i;
-//char * fnam;
-//uint32 siz;
-//uint8 no,fcnt,fre,j,bufnn;
 
-//Super Mario Song
 
+enum RUN_MODE { RECORDING, EXPORT_BLUE } runMode;
+//Bluetooth port
+void fetchBlueMsg();
+void initBluetooth();
 
 //Buffer for PSOC5 Communication
 const int MAX_STR = 150;
@@ -39,6 +38,7 @@ struct _ADC {
 //Functions declaration
 void send2PSoC5( char *msg );
 void initPSoC5();
+void exportData();
 
 void initAccelerometer(){
     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
@@ -70,16 +70,31 @@ int main()
     initAccelerometer();
     //Initialize PSoC5 communication channel
     initPSoC5();
+    //Initialize Bluetooth
+    initBluetooth();
+    
     //Simple delay just for the sake of it
     // allow other code on PSoC5 to start up, no special time
+    
+    
     
 	CyDelay(500);    
     for(;;)
     {            
-        getAccelerometer( &accStatus );
-        buildMsg(&accStatus, psoc5_msg);
-        send2PSoC5( psoc5_msg );
-        CyDelay(500);
+        //Check if there is something from bluetooth
+        fetchBlueMsg();
+
+        if( runMode == EXPORT_BLUE )
+        {
+            // Send Message to PSoC5 and request flush!
+            exportData();
+        }else if( runMode == RECORDING )
+        {
+            getAccelerometer( &accStatus );
+            buildMsg(&accStatus, psoc5_msg);
+            send2PSoC5( psoc5_msg );
+            CyDelay(500);
+        }        
     }
     
     return 0;
@@ -101,6 +116,49 @@ void send2PSoC5( char *msg )
 {       
     PSOC5_UartPutString(msg);    
     PSOC5_UartPutChar(13);    
+}
+
+char inBlueChar;
+void initBluetooth()
+{    
+    BLUE_Init();
+    BLUE_Start();
+}
+
+void fetchBlueMsg()
+{    
+    //handle all PSoc4Msg parsing of mesg
+    inBlueChar = BLUE_GetChar();
+
+    if( inBlueChar == 'B' ){       
+        runMode = EXPORT_BLUE;    
+        exportData();
+    }else if( inBlueChar == 0 ){        
+        runMode = RECORDING;
+    }        
+}
+
+void exportData()
+{
+    //Send PSoC5 Data Request
+    send2PSoC5("B");
+    //Wait for Data from PSoC5 and flush to bluetooth
+    
+    char inChar=0;
+    //Read from PSoc5 and flush to Bluetooth
+    while( inChar != '>' )
+    {
+        inChar = PSOC5_UartGetChar();
+        if( inChar == '$' ){
+            BLUE_PutChar(13);
+            //BLUE_PutChar(10);
+        }
+        BLUE_PutChar(inChar);
+        
+        
+    }
+    
+    
 }
 /* [] END OF FILE */
 

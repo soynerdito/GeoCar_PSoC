@@ -65,11 +65,6 @@
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\core_cmInstr.h</File>
           <File BuildType="BUILD" Toolchain="IAR EWARM">.\Generated_Source\PSoC4\CyBootAsmIar.s</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\project.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Pin_1.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Pin_1.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Pin_1_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Clock_1.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Clock_1.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\PSOC5.c</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\PSOC5.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\PSOC5_SPI_UART.h</File>
@@ -107,9 +102,13 @@
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\ADC_ACCELEROMETER_intClock.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\ADC_ACCELEROMETER_IRQ.c</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\ADC_ACCELEROMETER_IRQ.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Buzz.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Buzz.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Buzz_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\BLUE.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\BLUE.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\BLUE_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\BLUE_BOOT.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\BLUE_INT.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\BLUE_IntClock.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\BLUE_IntClock.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\prebuild.bat</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\postbuild.bat</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\CyElfTool.exe</File>

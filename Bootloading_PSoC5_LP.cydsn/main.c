@@ -21,15 +21,15 @@ void clearPSoC4Buffer();
 void clearPSoC4Msg();
 void fetchPSoC4Msg();
 
-enum RUN_MODE { RECORDING, SEND_BLUETOOTH } runMode;
+enum RUN_MODE { RECORDING, EXPORT_BLUE } runMode;
 
 /****************************************
     Bluetooth Communication
 *****************************************/
 //void initBluetooth();
 //void clearBlueBuffer();
-/*enum RUN_MODE fetchPBlueMsg();
-void flushGPSData();*/
+/*enum RUN_MODE fetchPBlueMsg();*/
+void flushGPSData();
 
 const int MAX_STR = 150;
 char sdFile[10] = "GPSDAT.txt";
@@ -90,10 +90,7 @@ int main()
     
     /* Initialize file system */
     FS_Init();
-    
-    //Initialize Bluetooth UART
-    //initBluetooth();
-    
+        
     char inputLine[MAX_STR];
     int pos=0;
     //memset(inputLine, sizeof(char)*MAX_STR,0);
@@ -111,9 +108,8 @@ int main()
     //char inPSOC4;
     for(;;)
     {
-        //This may change run mode
-        /*runMode = fetchPBlueMsg();
-        if( runMode != RECORDING )
+        //If  Flush to bluetooth then flush via PSOC4 all file
+        if( runMode ==EXPORT_BLUE )
         {
             //Close existing file
             FS_FClose( pFile );    
@@ -126,7 +122,8 @@ int main()
             FS_FClose( pFile ); 
             CyDelay(5);
             pFile = FS_FOpen(sdFile, "a");
-        }*/
+             runMode = RECORDING;
+        }
 
         //Fetch data from PSoC4
         fetchPSoC4Msg();
@@ -196,16 +193,8 @@ int logTime(char input[] )
 }
 
 
-
-void fetchPSoC4Msg()
+void readPSoC4AgregateData()
 {
-    //handle all PSoc4Msg parsing of mesg
-    inPSoc4Char = PSOC4_GetChar();
-
-    if( inPSoc4Char == ':' ){        
-        psoc4MsgStarted = 1;
-        psoc4MsgPos=0;
-    }
     //Check for any overflow
     if( psoc4MsgPos >=PSOC4_MSG_MAX ){
         //Avoid overflow - clear buffer
@@ -224,6 +213,30 @@ void fetchPSoC4Msg()
         psoc4_buffer[psoc4MsgPos] = inPSoc4Char;
         psoc4MsgPos++;
     }
+}
+
+void fetchPSoC4Msg()
+{
+    //handle all PSoc4Msg parsing of mesg
+    inPSoc4Char = PSOC4_GetChar();
+ 
+    if( inPSoc4Char == ':' ){        
+        psoc4MsgStarted = 1;
+        psoc4MsgPos=0;
+        runMode = RECORDING;
+    }else if( inPSoc4Char == 'B' ){        
+        psoc4MsgStarted = 1;
+        psoc4MsgPos=0;
+        runMode = EXPORT_BLUE;
+    }
+    if( runMode == RECORDING )
+    {
+        readPSoC4AgregateData();
+    }else if( runMode == EXPORT_BLUE )
+    {
+        //Export data to Bluetooth via PSoC4
+    }
+    
 }
 
 
@@ -266,7 +279,7 @@ void clearBlueBuffer()
             //Set Mode to flush data via bluetooth
             BLUE_PutString( "OK CONNECTED" );
             runMode = SEND_BLUETOOTH;
-        }else{
+        }else{ 
             runMode = RECORDING;
         }
         blueMsgStarted = 0;
@@ -279,21 +292,28 @@ void clearBlueBuffer()
     }
 
     return runMode;
-}
+}*/
 
 void flushGPSData(FS_FILE *pFile)
 {    
     int readLen;    
-    clearBlueBuffer();
+    int pos;
+    clearPSoC4Buffer();
     while ( !FS_FEof( pFile ) )
     {
-        readLen = FS_Read( pFile,  blue_buffer, BLUE_MSG_MAX );
+        readLen = FS_Read( pFile,  psoc4_buffer, PSOC4_MSG_MAX );
         if( readLen >0 )
         {
-            //Flush to Bluetooth
-            BLUE_PutString( blue_buffer );
-            clearBlueBuffer();
+            for( pos = 0; pos < readLen; pos++ ){
+                PSOC4_PutChar( psoc4_buffer[pos] );
+                CyDelay(2);
+            }
+            //Flush to Bluetooth            
+            //PSOC4_PutString( psoc4_buffer );            
+            clearPSoC4Buffer();
+            CyDelay(20);
         }        
-    }      
-}*/
+    }
+    PSOC4_PutChar('>');
+}
 /* [] END OF FILE */

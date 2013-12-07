@@ -2,7 +2,7 @@
 --	Conversion of Bootloading_PSoC5_LP.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Thu Dec 05 21:46:23 2013
+--	Sat Dec 07 11:28:47 2013
 --
 
 USE cypress.cypress.all;
@@ -843,17 +843,17 @@ SIGNAL tmpOE__GPS_RX_net_0 : bit;
 SIGNAL tmpIO_0__GPS_RX_net_0 : bit;
 TERMINAL tmpSIOVREF__GPS_RX_net_0 : bit;
 SIGNAL tmpINTERRUPT_0__GPS_RX_net_0 : bit;
-SIGNAL tmpOE__Tx_1_net_0 : bit;
+SIGNAL tmpOE__PSOC4_Tx_net_0 : bit;
 SIGNAL Net_203 : bit;
-SIGNAL tmpFB_0__Tx_1_net_0 : bit;
-SIGNAL tmpIO_0__Tx_1_net_0 : bit;
-TERMINAL tmpSIOVREF__Tx_1_net_0 : bit;
-SIGNAL tmpINTERRUPT_0__Tx_1_net_0 : bit;
-SIGNAL tmpOE__Rx_1_net_0 : bit;
+SIGNAL tmpFB_0__PSOC4_Tx_net_0 : bit;
+SIGNAL tmpIO_0__PSOC4_Tx_net_0 : bit;
+TERMINAL tmpSIOVREF__PSOC4_Tx_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__PSOC4_Tx_net_0 : bit;
+SIGNAL tmpOE__PSOC4_Rx_net_0 : bit;
 SIGNAL Net_208 : bit;
-SIGNAL tmpIO_0__Rx_1_net_0 : bit;
-TERMINAL tmpSIOVREF__Rx_1_net_0 : bit;
-SIGNAL tmpINTERRUPT_0__Rx_1_net_0 : bit;
+SIGNAL tmpIO_0__PSOC4_Rx_net_0 : bit;
+TERMINAL tmpSIOVREF__PSOC4_Rx_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__PSOC4_Rx_net_0 : bit;
 SIGNAL \PSOC4:Net_9\ : bit;
 SIGNAL Net_266 : bit;
 SIGNAL \PSOC4:Net_61\ : bit;
@@ -2409,7 +2409,7 @@ GPS_RX:cy_psoc3_pins_v1_10
 		out_clock_en=>one,
 		out_reset=>zero,
 		interrupt=>tmpINTERRUPT_0__GPS_RX_net_0);
-Tx_1:cy_psoc3_pins_v1_10
+PSOC4_Tx:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"ed092b9b-d398-4703-be89-cebf998501f6",
 		drive_mode=>"110",
 		ibuf_enabled=>"1",
@@ -2462,10 +2462,10 @@ Tx_1:cy_psoc3_pins_v1_10
 		pa_out_reset=>-1)
 	PORT MAP(oe=>(one),
 		y=>Net_203,
-		fb=>(tmpFB_0__Tx_1_net_0),
+		fb=>(tmpFB_0__PSOC4_Tx_net_0),
 		analog=>(open),
-		io=>(tmpIO_0__Tx_1_net_0),
-		siovref=>(tmpSIOVREF__Tx_1_net_0),
+		io=>(tmpIO_0__PSOC4_Tx_net_0),
+		siovref=>(tmpSIOVREF__PSOC4_Tx_net_0),
 		annotation=>(open),
 		in_clock=>zero,
 		in_clock_en=>one,
@@ -2473,8 +2473,8 @@ Tx_1:cy_psoc3_pins_v1_10
 		out_clock=>zero,
 		out_clock_en=>one,
 		out_reset=>zero,
-		interrupt=>tmpINTERRUPT_0__Tx_1_net_0);
-Rx_1:cy_psoc3_pins_v1_10
+		interrupt=>tmpINTERRUPT_0__PSOC4_Tx_net_0);
+PSOC4_Rx:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"1425177d-0d0e-4468-8bcc-e638e5509a9b",
 		drive_mode=>"001",
 		ibuf_enabled=>"1",
@@ -2529,8 +2529,8 @@ Rx_1:cy_psoc3_pins_v1_10
 		y=>(zero),
 		fb=>Net_208,
 		analog=>(open),
-		io=>(tmpIO_0__Rx_1_net_0),
-		siovref=>(tmpSIOVREF__Rx_1_net_0),
+		io=>(tmpIO_0__PSOC4_Rx_net_0),
+		siovref=>(tmpSIOVREF__PSOC4_Rx_net_0),
 		annotation=>(open),
 		in_clock=>zero,
 		in_clock_en=>one,
@@ -2538,7 +2538,7 @@ Rx_1:cy_psoc3_pins_v1_10
 		out_clock=>zero,
 		out_clock_en=>one,
 		out_reset=>zero,
-		interrupt=>tmpINTERRUPT_0__Rx_1_net_0);
+		interrupt=>tmpINTERRUPT_0__PSOC4_Rx_net_0);
 \PSOC4:IntClock\:cy_clock_v1_0
 	GENERIC MAP(cy_registers=>"",
 		id=>"f9ac4445-25d2-4446-9f4c-6ad687a0ea94/be0a0e37-ad17-42ca-b5a1-1a654d736358",

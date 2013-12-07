@@ -1,0 +1,71 @@
+--------------- Rebuild Started: 12/07/2013 13:24:16 Project: PSoc4_Main, Configuration: ARM GCC 4.7.3 Debug ---------------
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\main.o"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\cyfitter_cfg.o"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\cymetadata.o"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\Cm0Start.o"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\CyBootAsmGnu.o"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\CyFlash.o"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\CyLib.o"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\cyPm.o"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\cyutils.o"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\Pin_1.o"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\Clock_1.o"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\PSOC5.o"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\PSOC5_SPI_UART.o"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\PSOC5_SPI_UART_INT.o"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\PSOC5_PM.o"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\PSOC5_UART.o"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\PSOC5_BOOT.o"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\PSOC5_UART_BOOT.o"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\PSOC5_rx.o"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\PSOC5_SCBCLK.o"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\PSOC5_tx.o"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\Vin.o"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\ADC_ACCELEROMETER.o"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\ADC_ACCELEROMETER_PM.o"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\ADC_ACCELEROMETER_INT.o"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\Vin_Y.o"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\Vin_Z.o"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\ADC_ACCELEROMETER_intClock.o"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\ADC_ACCELEROMETER_IRQ.o"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\Buzz.o"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\Buzz_PM.o"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\BLUE.o"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\BLUE_SPI_UART.o"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\BLUE_SPI_UART_INT.o"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\BLUE_PM.o"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\BLUE_UART.o"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\BLUE_BOOT.o"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\BLUE_UART_BOOT.o"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\BLUE_rx.o"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\BLUE_SCBCLK.o"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\BLUE_tx.o"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\PSoc4_Main.hex"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\PSoc4_Main.elf"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\PSoc4_Main.map"
+Deleting file ".\PSoc4_Main.cycdx"
+Deleting file ".\PSoc4_Main.rpt"
+Deleting file ".\PSoc4_Main_timing.html"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\.deps\C_FILE.P"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\.deps\ARM_C_FILE.P"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\.deps\GNU_ARM_ASM_FILE.P"
+cydsfit.exe "-.appdatapath" "C:\Users\javier\AppData\Local\Cypress Semiconductor\PSoC Creator\3.0" "-.fdsnotice" "-.fdswarpdepfile=warp_dependencies.txt" "-.fdselabdepfile=elab_dependencies.txt" "-.fdsbldfile=generated_files.txt" "-p" "C:\Projects\PSoC\Bootloading_PSoC5_LP\PSoc4_Main.cydsn\PSoc4_Main.cyprj" "-d" "CY8C4245AXI-483" "-s" "C:\Projects\PSoC\Bootloading_PSoC5_LP\PSoc4_Main.cydsn\Generated_Source\PSoC4" "--" "-yv2" "-v3" "-ygs" "-q10" "-o2" "-.fftcfgtype=LE"
+Elaborating Design...
+ADD: sdb.M0061: information: Info from component: ADC_ACCELEROMETER. The actual sample rate (18518 SPS) differs from the desired sample rate (18474 SPS) due to the clock configuration in the DWR.
+ * C:\Projects\PSoC\Bootloading_PSoC5_LP\PSoc4_Main.cydsn\TopDesign\TopDesign.cysch (Instance: ADC_ACCELEROMETER)
+HDL Generation ...
+Synthesis ...
+Place and Route ...
+Tech mapping ...
+Info: mpr.M0037: Unused pieces of the design have been optimized out. See the Tech mapping section of the report file for details. (App=cydsfit)
+Analog Placement ...
+Analog Routing ...
+Analog Code Generation ...
+Digital Placement ...
+Error: plm.M0046: E2809: Unable to find a valid placement for pins and fixed-function blocks. See the Digital Placement's Detailed placement messages section in the report file for details.
+Error: plm.M0046: E2055: An error occurred during placement of the design.
+Error: plm.M0046: "C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\bin/sjplacer.exe" failed (0x00000001)
+Dependency Generation ...
+Clean Temporary Files ...
+Error: cdf.M0005: CyDsFit aborted due to errors, please address all errors and rerun CyDsFit. (App=cydsfit)
+--------------- Rebuild Failed: 12/07/2013 13:24:47 ---------------

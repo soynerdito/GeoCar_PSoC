@@ -1,8 +1,8 @@
---------------- Build Started: 12/06/2013 00:53:37 Project: Bootloading_PSoC5_LP, Configuration: ARM GCC 4.7.3 Debug ---------------
+--------------- Build Started: 12/07/2013 15:10:16 Project: Bootloading_PSoC5_LP, Configuration: ARM GCC 4.7.3 Debug ---------------
 The code generation step is up to date.
 The compile step is up to date, no work needs to be done.
 The link step is up to date, no work needs to be done.
 cyelftool.exe -S C:\Projects\PSoC\Bootloading_PSoC5_LP\Bootloading_PSoC5_LP.cydsn\CortexM3\ARM_GCC_473\Debug\Bootloading_PSoC5_LP.elf
-Flash used: 28656 of 262144 bytes (10.9 %).
-SRAM used: 25389 of 65536 bytes (38.7 %).
---------------- Build Succeeded: 12/06/2013 00:53:40 ---------------
+Flash used: 29944 of 262144 bytes (11.4 %).
+SRAM used: 25405 of 65536 bytes (38.8 %).
+--------------- Build Succeeded: 12/07/2013 15:10:18 ---------------

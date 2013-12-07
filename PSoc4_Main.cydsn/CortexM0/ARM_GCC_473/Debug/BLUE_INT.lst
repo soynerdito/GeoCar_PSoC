@@ -1,0 +1,795 @@
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cc2zONpb.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 6
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"BLUE_INT.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.BLUE_TXISR,"ax",%progbits
+  18              		.align	2
+  19              		.global	BLUE_TXISR
+  20              		.code	16
+  21              		.thumb_func
+  22              		.type	BLUE_TXISR, %function
+  23              	BLUE_TXISR:
+  24              	.LFB0:
+  25              		.file 1 ".\\Generated_Source\\PSoC4\\BLUE_INT.c"
+   1:.\Generated_Source\PSoC4/BLUE_INT.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC4/BLUE_INT.c **** * File Name: BLUE_INT.c
+   3:.\Generated_Source\PSoC4/BLUE_INT.c **** * Version 2.30
+   4:.\Generated_Source\PSoC4/BLUE_INT.c **** *
+   5:.\Generated_Source\PSoC4/BLUE_INT.c **** * Description:
+   6:.\Generated_Source\PSoC4/BLUE_INT.c **** *  This file provides all Interrupt Service functionality of the UART component
+   7:.\Generated_Source\PSoC4/BLUE_INT.c **** *
+   8:.\Generated_Source\PSoC4/BLUE_INT.c **** * Note:
+   9:.\Generated_Source\PSoC4/BLUE_INT.c **** *  Any unusual or non-standard behavior should be noted here. Other-
+  10:.\Generated_Source\PSoC4/BLUE_INT.c **** *  wise, this section should remain blank.
+  11:.\Generated_Source\PSoC4/BLUE_INT.c **** *
+  12:.\Generated_Source\PSoC4/BLUE_INT.c **** ********************************************************************************
+  13:.\Generated_Source\PSoC4/BLUE_INT.c **** * Copyright 2008-2012, Cypress Semiconductor Corporation.  All rights reserved.
+  14:.\Generated_Source\PSoC4/BLUE_INT.c **** * You may use this file only in accordance with the license, terms, conditions,
+  15:.\Generated_Source\PSoC4/BLUE_INT.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  16:.\Generated_Source\PSoC4/BLUE_INT.c **** * the software package with which this file was provided.
+  17:.\Generated_Source\PSoC4/BLUE_INT.c **** *******************************************************************************/
+  18:.\Generated_Source\PSoC4/BLUE_INT.c **** 
+  19:.\Generated_Source\PSoC4/BLUE_INT.c **** #include "BLUE.h"
+  20:.\Generated_Source\PSoC4/BLUE_INT.c **** #include "CyLib.h"
+  21:.\Generated_Source\PSoC4/BLUE_INT.c **** 
+  22:.\Generated_Source\PSoC4/BLUE_INT.c **** 
+  23:.\Generated_Source\PSoC4/BLUE_INT.c **** /***************************************
+  24:.\Generated_Source\PSoC4/BLUE_INT.c **** * Custom Declratations
+  25:.\Generated_Source\PSoC4/BLUE_INT.c **** ***************************************/
+  26:.\Generated_Source\PSoC4/BLUE_INT.c **** /* `#START CUSTOM_DECLARATIONS` Place your declaration here */
+  27:.\Generated_Source\PSoC4/BLUE_INT.c **** 
+  28:.\Generated_Source\PSoC4/BLUE_INT.c **** /* `#END` */
+  29:.\Generated_Source\PSoC4/BLUE_INT.c **** 
+  30:.\Generated_Source\PSoC4/BLUE_INT.c **** #if( (BLUE_RX_ENABLED || BLUE_HD_ENABLED) && \
+  31:.\Generated_Source\PSoC4/BLUE_INT.c ****      (BLUE_RXBUFFERSIZE > BLUE_FIFO_LENGTH))
+  32:.\Generated_Source\PSoC4/BLUE_INT.c **** 
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cc2zONpb.s 			page 2
+
+
+  33:.\Generated_Source\PSoC4/BLUE_INT.c **** 
+  34:.\Generated_Source\PSoC4/BLUE_INT.c ****     /*******************************************************************************
+  35:.\Generated_Source\PSoC4/BLUE_INT.c ****     * Function Name: BLUE_RXISR
+  36:.\Generated_Source\PSoC4/BLUE_INT.c ****     ********************************************************************************
+  37:.\Generated_Source\PSoC4/BLUE_INT.c ****     *
+  38:.\Generated_Source\PSoC4/BLUE_INT.c ****     * Summary:
+  39:.\Generated_Source\PSoC4/BLUE_INT.c ****     *  Interrupt Service Routine for RX portion of the UART
+  40:.\Generated_Source\PSoC4/BLUE_INT.c ****     *
+  41:.\Generated_Source\PSoC4/BLUE_INT.c ****     * Parameters:
+  42:.\Generated_Source\PSoC4/BLUE_INT.c ****     *  None.
+  43:.\Generated_Source\PSoC4/BLUE_INT.c ****     *
+  44:.\Generated_Source\PSoC4/BLUE_INT.c ****     * Return:
+  45:.\Generated_Source\PSoC4/BLUE_INT.c ****     *  None.
+  46:.\Generated_Source\PSoC4/BLUE_INT.c ****     *
+  47:.\Generated_Source\PSoC4/BLUE_INT.c ****     * Global Variables:
+  48:.\Generated_Source\PSoC4/BLUE_INT.c ****     *  BLUE_rxBuffer - RAM buffer pointer for save received data.
+  49:.\Generated_Source\PSoC4/BLUE_INT.c ****     *  BLUE_rxBufferWrite - cyclic index for write to rxBuffer,
+  50:.\Generated_Source\PSoC4/BLUE_INT.c ****     *     increments after each byte saved to buffer.
+  51:.\Generated_Source\PSoC4/BLUE_INT.c ****     *  BLUE_rxBufferRead - cyclic index for read from rxBuffer,
+  52:.\Generated_Source\PSoC4/BLUE_INT.c ****     *     checked to detect overflow condition.
+  53:.\Generated_Source\PSoC4/BLUE_INT.c ****     *  BLUE_rxBufferOverflow - software overflow flag. Set to one
+  54:.\Generated_Source\PSoC4/BLUE_INT.c ****     *     when BLUE_rxBufferWrite index overtakes
+  55:.\Generated_Source\PSoC4/BLUE_INT.c ****     *     BLUE_rxBufferRead index.
+  56:.\Generated_Source\PSoC4/BLUE_INT.c ****     *  BLUE_rxBufferLoopDetect - additional variable to detect overflow.
+  57:.\Generated_Source\PSoC4/BLUE_INT.c ****     *     Set to one when BLUE_rxBufferWrite is equal to
+  58:.\Generated_Source\PSoC4/BLUE_INT.c ****     *    BLUE_rxBufferRead
+  59:.\Generated_Source\PSoC4/BLUE_INT.c ****     *  BLUE_rxAddressMode - this variable contains the Address mode,
+  60:.\Generated_Source\PSoC4/BLUE_INT.c ****     *     selected in customizer or set by UART_SetRxAddressMode() API.
+  61:.\Generated_Source\PSoC4/BLUE_INT.c ****     *  BLUE_rxAddressDetected - set to 1 when correct address received,
+  62:.\Generated_Source\PSoC4/BLUE_INT.c ****     *     and analysed to store following addressed data bytes to the buffer.
+  63:.\Generated_Source\PSoC4/BLUE_INT.c ****     *     When not correct address received, set to 0 to skip following data bytes.
+  64:.\Generated_Source\PSoC4/BLUE_INT.c ****     *
+  65:.\Generated_Source\PSoC4/BLUE_INT.c ****     *******************************************************************************/
+  66:.\Generated_Source\PSoC4/BLUE_INT.c ****     CY_ISR(BLUE_RXISR)
+  67:.\Generated_Source\PSoC4/BLUE_INT.c ****     {
+  68:.\Generated_Source\PSoC4/BLUE_INT.c ****         uint8 readData;
+  69:.\Generated_Source\PSoC4/BLUE_INT.c ****         uint8 increment_pointer = 0u;
+  70:.\Generated_Source\PSoC4/BLUE_INT.c ****         #if(CY_PSOC3)
+  71:.\Generated_Source\PSoC4/BLUE_INT.c ****             uint8 int_en;
+  72:.\Generated_Source\PSoC4/BLUE_INT.c ****         #endif /* CY_PSOC3 */
+  73:.\Generated_Source\PSoC4/BLUE_INT.c **** 
+  74:.\Generated_Source\PSoC4/BLUE_INT.c ****         /* User code required at start of ISR */
+  75:.\Generated_Source\PSoC4/BLUE_INT.c ****         /* `#START BLUE_RXISR_START` */
+  76:.\Generated_Source\PSoC4/BLUE_INT.c **** 
+  77:.\Generated_Source\PSoC4/BLUE_INT.c ****         /* `#END` */
+  78:.\Generated_Source\PSoC4/BLUE_INT.c **** 
+  79:.\Generated_Source\PSoC4/BLUE_INT.c ****         #if(CY_PSOC3)   /* Make sure nested interrupt is enabled */
+  80:.\Generated_Source\PSoC4/BLUE_INT.c ****             int_en = EA;
+  81:.\Generated_Source\PSoC4/BLUE_INT.c ****             CyGlobalIntEnable;
+  82:.\Generated_Source\PSoC4/BLUE_INT.c ****         #endif /* CY_PSOC3 */
+  83:.\Generated_Source\PSoC4/BLUE_INT.c **** 
+  84:.\Generated_Source\PSoC4/BLUE_INT.c ****         readData = BLUE_RXSTATUS_REG;
+  85:.\Generated_Source\PSoC4/BLUE_INT.c **** 
+  86:.\Generated_Source\PSoC4/BLUE_INT.c ****         if((readData & (BLUE_RX_STS_BREAK | BLUE_RX_STS_PAR_ERROR |
+  87:.\Generated_Source\PSoC4/BLUE_INT.c ****                         BLUE_RX_STS_STOP_ERROR | BLUE_RX_STS_OVERRUN)) != 0u)
+  88:.\Generated_Source\PSoC4/BLUE_INT.c ****         {
+  89:.\Generated_Source\PSoC4/BLUE_INT.c ****             /* ERROR handling. */
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cc2zONpb.s 			page 3
+
+
+  90:.\Generated_Source\PSoC4/BLUE_INT.c ****             /* `#START BLUE_RXISR_ERROR` */
+  91:.\Generated_Source\PSoC4/BLUE_INT.c **** 
+  92:.\Generated_Source\PSoC4/BLUE_INT.c ****             /* `#END` */
+  93:.\Generated_Source\PSoC4/BLUE_INT.c ****         }
+  94:.\Generated_Source\PSoC4/BLUE_INT.c **** 
+  95:.\Generated_Source\PSoC4/BLUE_INT.c ****         while((readData & BLUE_RX_STS_FIFO_NOTEMPTY) != 0u)
+  96:.\Generated_Source\PSoC4/BLUE_INT.c ****         {
+  97:.\Generated_Source\PSoC4/BLUE_INT.c **** 
+  98:.\Generated_Source\PSoC4/BLUE_INT.c ****             #if (BLUE_RXHW_ADDRESS_ENABLED)
+  99:.\Generated_Source\PSoC4/BLUE_INT.c ****                 if(BLUE_rxAddressMode == (uint8)BLUE__B_UART__AM_SW_DETECT_TO_BUFFER)
+ 100:.\Generated_Source\PSoC4/BLUE_INT.c ****                 {
+ 101:.\Generated_Source\PSoC4/BLUE_INT.c ****                     if((readData & BLUE_RX_STS_MRKSPC) != 0u)
+ 102:.\Generated_Source\PSoC4/BLUE_INT.c ****                     {
+ 103:.\Generated_Source\PSoC4/BLUE_INT.c ****                         if ((readData & BLUE_RX_STS_ADDR_MATCH) != 0u)
+ 104:.\Generated_Source\PSoC4/BLUE_INT.c ****                         {
+ 105:.\Generated_Source\PSoC4/BLUE_INT.c ****                             BLUE_rxAddressDetected = 1u;
+ 106:.\Generated_Source\PSoC4/BLUE_INT.c ****                         }
+ 107:.\Generated_Source\PSoC4/BLUE_INT.c ****                         else
+ 108:.\Generated_Source\PSoC4/BLUE_INT.c ****                         {
+ 109:.\Generated_Source\PSoC4/BLUE_INT.c ****                             BLUE_rxAddressDetected = 0u;
+ 110:.\Generated_Source\PSoC4/BLUE_INT.c ****                         }
+ 111:.\Generated_Source\PSoC4/BLUE_INT.c ****                     }
+ 112:.\Generated_Source\PSoC4/BLUE_INT.c **** 
+ 113:.\Generated_Source\PSoC4/BLUE_INT.c ****                     readData = BLUE_RXDATA_REG;
+ 114:.\Generated_Source\PSoC4/BLUE_INT.c ****                     if(BLUE_rxAddressDetected != 0u)
+ 115:.\Generated_Source\PSoC4/BLUE_INT.c ****                     {   /* store only addressed data */
+ 116:.\Generated_Source\PSoC4/BLUE_INT.c ****                         BLUE_rxBuffer[BLUE_rxBufferWrite] = readData;
+ 117:.\Generated_Source\PSoC4/BLUE_INT.c ****                         increment_pointer = 1u;
+ 118:.\Generated_Source\PSoC4/BLUE_INT.c ****                     }
+ 119:.\Generated_Source\PSoC4/BLUE_INT.c ****                 }
+ 120:.\Generated_Source\PSoC4/BLUE_INT.c ****                 else /* without software addressing */
+ 121:.\Generated_Source\PSoC4/BLUE_INT.c ****                 {
+ 122:.\Generated_Source\PSoC4/BLUE_INT.c ****                     BLUE_rxBuffer[BLUE_rxBufferWrite] = BLUE_RXDATA_REG;
+ 123:.\Generated_Source\PSoC4/BLUE_INT.c ****                     increment_pointer = 1u;
+ 124:.\Generated_Source\PSoC4/BLUE_INT.c ****                 }
+ 125:.\Generated_Source\PSoC4/BLUE_INT.c ****             #else  /* without addressing */
+ 126:.\Generated_Source\PSoC4/BLUE_INT.c ****                 BLUE_rxBuffer[BLUE_rxBufferWrite] = BLUE_RXDATA_REG;
+ 127:.\Generated_Source\PSoC4/BLUE_INT.c ****                 increment_pointer = 1u;
+ 128:.\Generated_Source\PSoC4/BLUE_INT.c ****             #endif /* End SW_DETECT_TO_BUFFER */
+ 129:.\Generated_Source\PSoC4/BLUE_INT.c **** 
+ 130:.\Generated_Source\PSoC4/BLUE_INT.c ****             /* do not increment buffer pointer when skip not adderessed data */
+ 131:.\Generated_Source\PSoC4/BLUE_INT.c ****             if( increment_pointer != 0u )
+ 132:.\Generated_Source\PSoC4/BLUE_INT.c ****             {
+ 133:.\Generated_Source\PSoC4/BLUE_INT.c ****                 if(BLUE_rxBufferLoopDetect != 0u)
+ 134:.\Generated_Source\PSoC4/BLUE_INT.c ****                 {   /* Set Software Buffer status Overflow */
+ 135:.\Generated_Source\PSoC4/BLUE_INT.c ****                     BLUE_rxBufferOverflow = 1u;
+ 136:.\Generated_Source\PSoC4/BLUE_INT.c ****                 }
+ 137:.\Generated_Source\PSoC4/BLUE_INT.c ****                 /* Set next pointer. */
+ 138:.\Generated_Source\PSoC4/BLUE_INT.c ****                 BLUE_rxBufferWrite++;
+ 139:.\Generated_Source\PSoC4/BLUE_INT.c **** 
+ 140:.\Generated_Source\PSoC4/BLUE_INT.c ****                 /* Check pointer for a loop condition */
+ 141:.\Generated_Source\PSoC4/BLUE_INT.c ****                 if(BLUE_rxBufferWrite >= BLUE_RXBUFFERSIZE)
+ 142:.\Generated_Source\PSoC4/BLUE_INT.c ****                 {
+ 143:.\Generated_Source\PSoC4/BLUE_INT.c ****                     BLUE_rxBufferWrite = 0u;
+ 144:.\Generated_Source\PSoC4/BLUE_INT.c ****                 }
+ 145:.\Generated_Source\PSoC4/BLUE_INT.c ****                 /* Detect pre-overload condition and set flag */
+ 146:.\Generated_Source\PSoC4/BLUE_INT.c ****                 if(BLUE_rxBufferWrite == BLUE_rxBufferRead)
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cc2zONpb.s 			page 4
+
+
+ 147:.\Generated_Source\PSoC4/BLUE_INT.c ****                 {
+ 148:.\Generated_Source\PSoC4/BLUE_INT.c ****                     BLUE_rxBufferLoopDetect = 1u;
+ 149:.\Generated_Source\PSoC4/BLUE_INT.c ****                     /* When Hardware Flow Control selected */
+ 150:.\Generated_Source\PSoC4/BLUE_INT.c ****                     #if(BLUE_FLOW_CONTROL != 0u)
+ 151:.\Generated_Source\PSoC4/BLUE_INT.c ****                     /* Disable RX interrupt mask, it will be enabled when user read data from the b
+ 152:.\Generated_Source\PSoC4/BLUE_INT.c ****                         BLUE_RXSTATUS_MASK_REG  &= (uint8)~BLUE_RX_STS_FIFO_NOTEMPTY;
+ 153:.\Generated_Source\PSoC4/BLUE_INT.c ****                         CyIntClearPending(BLUE_RX_VECT_NUM);
+ 154:.\Generated_Source\PSoC4/BLUE_INT.c ****                         break; /* Break the reading of the FIFO loop, leave the data there for gene
+ 155:.\Generated_Source\PSoC4/BLUE_INT.c ****                     #endif /* End BLUE_FLOW_CONTROL != 0 */
+ 156:.\Generated_Source\PSoC4/BLUE_INT.c ****                 }
+ 157:.\Generated_Source\PSoC4/BLUE_INT.c ****             }
+ 158:.\Generated_Source\PSoC4/BLUE_INT.c **** 
+ 159:.\Generated_Source\PSoC4/BLUE_INT.c ****             /* Check again if there is data. */
+ 160:.\Generated_Source\PSoC4/BLUE_INT.c ****             readData = BLUE_RXSTATUS_REG;
+ 161:.\Generated_Source\PSoC4/BLUE_INT.c ****         }
+ 162:.\Generated_Source\PSoC4/BLUE_INT.c **** 
+ 163:.\Generated_Source\PSoC4/BLUE_INT.c ****         /* User code required at end of ISR (Optional) */
+ 164:.\Generated_Source\PSoC4/BLUE_INT.c ****         /* `#START BLUE_RXISR_END` */
+ 165:.\Generated_Source\PSoC4/BLUE_INT.c **** 
+ 166:.\Generated_Source\PSoC4/BLUE_INT.c ****         /* `#END` */
+ 167:.\Generated_Source\PSoC4/BLUE_INT.c **** 
+ 168:.\Generated_Source\PSoC4/BLUE_INT.c ****         #if(CY_PSOC3)
+ 169:.\Generated_Source\PSoC4/BLUE_INT.c ****             EA = int_en;
+ 170:.\Generated_Source\PSoC4/BLUE_INT.c ****         #endif /* CY_PSOC3 */
+ 171:.\Generated_Source\PSoC4/BLUE_INT.c **** 
+ 172:.\Generated_Source\PSoC4/BLUE_INT.c ****     }
+ 173:.\Generated_Source\PSoC4/BLUE_INT.c **** 
+ 174:.\Generated_Source\PSoC4/BLUE_INT.c **** #endif /* End BLUE_RX_ENABLED && (BLUE_RXBUFFERSIZE > BLUE_FIFO_LENGTH) */
+ 175:.\Generated_Source\PSoC4/BLUE_INT.c **** 
+ 176:.\Generated_Source\PSoC4/BLUE_INT.c **** 
+ 177:.\Generated_Source\PSoC4/BLUE_INT.c **** #if(BLUE_TX_ENABLED && (BLUE_TXBUFFERSIZE > BLUE_FIFO_LENGTH))
+ 178:.\Generated_Source\PSoC4/BLUE_INT.c **** 
+ 179:.\Generated_Source\PSoC4/BLUE_INT.c **** 
+ 180:.\Generated_Source\PSoC4/BLUE_INT.c ****     /*******************************************************************************
+ 181:.\Generated_Source\PSoC4/BLUE_INT.c ****     * Function Name: BLUE_TXISR
+ 182:.\Generated_Source\PSoC4/BLUE_INT.c ****     ********************************************************************************
+ 183:.\Generated_Source\PSoC4/BLUE_INT.c ****     *
+ 184:.\Generated_Source\PSoC4/BLUE_INT.c ****     * Summary:
+ 185:.\Generated_Source\PSoC4/BLUE_INT.c ****     * Interrupt Service Routine for the TX portion of the UART
+ 186:.\Generated_Source\PSoC4/BLUE_INT.c ****     *
+ 187:.\Generated_Source\PSoC4/BLUE_INT.c ****     * Parameters:
+ 188:.\Generated_Source\PSoC4/BLUE_INT.c ****     *  None.
+ 189:.\Generated_Source\PSoC4/BLUE_INT.c ****     *
+ 190:.\Generated_Source\PSoC4/BLUE_INT.c ****     * Return:
+ 191:.\Generated_Source\PSoC4/BLUE_INT.c ****     *  None.
+ 192:.\Generated_Source\PSoC4/BLUE_INT.c ****     *
+ 193:.\Generated_Source\PSoC4/BLUE_INT.c ****     * Global Variables:
+ 194:.\Generated_Source\PSoC4/BLUE_INT.c ****     *  BLUE_txBuffer - RAM buffer pointer for transmit data from.
+ 195:.\Generated_Source\PSoC4/BLUE_INT.c ****     *  BLUE_txBufferRead - cyclic index for read and transmit data
+ 196:.\Generated_Source\PSoC4/BLUE_INT.c ****     *     from txBuffer, increments after each transmited byte.
+ 197:.\Generated_Source\PSoC4/BLUE_INT.c ****     *  BLUE_rxBufferWrite - cyclic index for write to txBuffer,
+ 198:.\Generated_Source\PSoC4/BLUE_INT.c ****     *     checked to detect available for transmission bytes.
+ 199:.\Generated_Source\PSoC4/BLUE_INT.c ****     *
+ 200:.\Generated_Source\PSoC4/BLUE_INT.c ****     *******************************************************************************/
+ 201:.\Generated_Source\PSoC4/BLUE_INT.c ****     CY_ISR(BLUE_TXISR)
+ 202:.\Generated_Source\PSoC4/BLUE_INT.c ****     {
+  26              		.loc 1 202 0
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cc2zONpb.s 			page 5
+
+
+  27              		.cfi_startproc
+  28 0000 80B5     		push	{r7, lr}
+  29              	.LCFI0:
+  30              		.cfi_def_cfa_offset 8
+  31              		.cfi_offset 7, -8
+  32              		.cfi_offset 14, -4
+  33 0002 00AF     		add	r7, sp, #0
+  34              	.LCFI1:
+  35              		.cfi_def_cfa_register 7
+ 203:.\Generated_Source\PSoC4/BLUE_INT.c **** 
+ 204:.\Generated_Source\PSoC4/BLUE_INT.c ****         #if(CY_PSOC3)
+ 205:.\Generated_Source\PSoC4/BLUE_INT.c ****             uint8 int_en;
+ 206:.\Generated_Source\PSoC4/BLUE_INT.c ****         #endif /* CY_PSOC3 */
+ 207:.\Generated_Source\PSoC4/BLUE_INT.c **** 
+ 208:.\Generated_Source\PSoC4/BLUE_INT.c ****         /* User code required at start of ISR */
+ 209:.\Generated_Source\PSoC4/BLUE_INT.c ****         /* `#START BLUE_TXISR_START` */
+ 210:.\Generated_Source\PSoC4/BLUE_INT.c **** 
+ 211:.\Generated_Source\PSoC4/BLUE_INT.c ****         /* `#END` */
+ 212:.\Generated_Source\PSoC4/BLUE_INT.c **** 
+ 213:.\Generated_Source\PSoC4/BLUE_INT.c ****         #if(CY_PSOC3)   /* Make sure nested interrupt is enabled */
+ 214:.\Generated_Source\PSoC4/BLUE_INT.c ****             int_en = EA;
+ 215:.\Generated_Source\PSoC4/BLUE_INT.c ****             CyGlobalIntEnable;
+ 216:.\Generated_Source\PSoC4/BLUE_INT.c ****         #endif /* CY_PSOC3 */
+ 217:.\Generated_Source\PSoC4/BLUE_INT.c **** 
+ 218:.\Generated_Source\PSoC4/BLUE_INT.c ****         while((BLUE_txBufferRead != BLUE_txBufferWrite) &&
+  36              		.loc 1 218 0
+  37 0004 16E0     		b	.L2
+  38              	.L5:
+ 219:.\Generated_Source\PSoC4/BLUE_INT.c ****              ((BLUE_TXSTATUS_REG & BLUE_TX_STS_FIFO_FULL) == 0u))
+ 220:.\Generated_Source\PSoC4/BLUE_INT.c ****         {
+ 221:.\Generated_Source\PSoC4/BLUE_INT.c ****             /* Check pointer. */
+ 222:.\Generated_Source\PSoC4/BLUE_INT.c ****             if(BLUE_txBufferRead >= BLUE_TXBUFFERSIZE)
+  39              		.loc 1 222 0
+  40 0006 134B     		ldr	r3, .L6
+  41 0008 1B78     		ldrb	r3, [r3]
+  42 000a DBB2     		uxtb	r3, r3
+  43 000c 312B     		cmp	r3, #49
+  44 000e 02D9     		bls	.L3
+ 223:.\Generated_Source\PSoC4/BLUE_INT.c ****             {
+ 224:.\Generated_Source\PSoC4/BLUE_INT.c ****                 BLUE_txBufferRead = 0u;
+  45              		.loc 1 224 0
+  46 0010 104B     		ldr	r3, .L6
+  47 0012 0022     		mov	r2, #0
+  48 0014 1A70     		strb	r2, [r3]
+  49              	.L3:
+ 225:.\Generated_Source\PSoC4/BLUE_INT.c ****             }
+ 226:.\Generated_Source\PSoC4/BLUE_INT.c **** 
+ 227:.\Generated_Source\PSoC4/BLUE_INT.c ****             BLUE_TXDATA_REG = BLUE_txBuffer[BLUE_txBufferRead];
+  50              		.loc 1 227 0
+  51 0016 104B     		ldr	r3, .L6+4
+  52 0018 0E4A     		ldr	r2, .L6
+  53 001a 1278     		ldrb	r2, [r2]
+  54 001c D2B2     		uxtb	r2, r2
+  55 001e 0F49     		ldr	r1, .L6+8
+  56 0020 8A5C     		ldrb	r2, [r1, r2]
+  57 0022 D2B2     		uxtb	r2, r2
+  58 0024 1A70     		strb	r2, [r3]
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cc2zONpb.s 			page 6
+
+
+ 228:.\Generated_Source\PSoC4/BLUE_INT.c **** 
+ 229:.\Generated_Source\PSoC4/BLUE_INT.c ****             /* Set next pointer. */
+ 230:.\Generated_Source\PSoC4/BLUE_INT.c ****             BLUE_txBufferRead++;
+  59              		.loc 1 230 0
+  60 0026 0B4B     		ldr	r3, .L6
+  61 0028 1B78     		ldrb	r3, [r3]
+  62 002a DBB2     		uxtb	r3, r3
+  63 002c 0133     		add	r3, r3, #1
+  64 002e DAB2     		uxtb	r2, r3
+  65 0030 084B     		ldr	r3, .L6
+  66 0032 1A70     		strb	r2, [r3]
+  67              	.L2:
+ 218:.\Generated_Source\PSoC4/BLUE_INT.c ****         while((BLUE_txBufferRead != BLUE_txBufferWrite) &&
+  68              		.loc 1 218 0 discriminator 1
+  69 0034 074B     		ldr	r3, .L6
+  70 0036 1B78     		ldrb	r3, [r3]
+  71 0038 DAB2     		uxtb	r2, r3
+  72 003a 094B     		ldr	r3, .L6+12
+  73 003c 1B78     		ldrb	r3, [r3]
+  74 003e 9A42     		cmp	r2, r3
+  75 0040 06D0     		beq	.L1
+ 219:.\Generated_Source\PSoC4/BLUE_INT.c ****              ((BLUE_TXSTATUS_REG & BLUE_TX_STS_FIFO_FULL) == 0u))
+  76              		.loc 1 219 0 discriminator 2
+  77 0042 084B     		ldr	r3, .L6+16
+  78 0044 1B78     		ldrb	r3, [r3]
+  79 0046 DBB2     		uxtb	r3, r3
+  80 0048 1A1C     		mov	r2, r3
+  81 004a 0423     		mov	r3, #4
+  82 004c 1340     		and	r3, r2
+ 218:.\Generated_Source\PSoC4/BLUE_INT.c ****         while((BLUE_txBufferRead != BLUE_txBufferWrite) &&
+  83              		.loc 1 218 0 discriminator 2
+  84 004e DAD0     		beq	.L5
+  85              	.L1:
+ 231:.\Generated_Source\PSoC4/BLUE_INT.c ****         }
+ 232:.\Generated_Source\PSoC4/BLUE_INT.c **** 
+ 233:.\Generated_Source\PSoC4/BLUE_INT.c ****         /* User code required at end of ISR (Optional) */
+ 234:.\Generated_Source\PSoC4/BLUE_INT.c ****         /* `#START BLUE_TXISR_END` */
+ 235:.\Generated_Source\PSoC4/BLUE_INT.c **** 
+ 236:.\Generated_Source\PSoC4/BLUE_INT.c ****         /* `#END` */
+ 237:.\Generated_Source\PSoC4/BLUE_INT.c **** 
+ 238:.\Generated_Source\PSoC4/BLUE_INT.c ****         #if(CY_PSOC3)
+ 239:.\Generated_Source\PSoC4/BLUE_INT.c ****             EA = int_en;
+ 240:.\Generated_Source\PSoC4/BLUE_INT.c ****         #endif /* CY_PSOC3 */
+ 241:.\Generated_Source\PSoC4/BLUE_INT.c **** 
+ 242:.\Generated_Source\PSoC4/BLUE_INT.c ****     }
+  86              		.loc 1 242 0
+  87 0050 BD46     		mov	sp, r7
+  88              		@ sp needed for prologue
+  89 0052 80BD     		pop	{r7, pc}
+  90              	.L7:
+  91              		.align	2
+  92              	.L6:
+  93 0054 00000000 		.word	BLUE_txBufferRead
+  94 0058 42000F40 		.word	1074724930
+  95 005c 00000000 		.word	BLUE_txBuffer
+  96 0060 00000000 		.word	BLUE_txBufferWrite
+  97 0064 62000F40 		.word	1074724962
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cc2zONpb.s 			page 7
+
+
+  98              		.cfi_endproc
+  99              	.LFE0:
+ 100              		.size	BLUE_TXISR, .-BLUE_TXISR
+ 101              		.text
+ 102              	.Letext0:
+ 103              		.file 2 ".\\Generated_Source\\PSoC4\\cytypes.h"
+ 104              		.file 3 ".\\Generated_Source\\PSoC4\\BLUE.h"
+ 105              		.section	.debug_info,"",%progbits
+ 106              	.Ldebug_info0:
+ 107 0000 F8000000 		.4byte	0xf8
+ 108 0004 0200     		.2byte	0x2
+ 109 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 110 000a 04       		.byte	0x4
+ 111 000b 01       		.uleb128 0x1
+ 112 000c 5C000000 		.4byte	.LASF18
+ 113 0010 01       		.byte	0x1
+ 114 0011 38000000 		.4byte	.LASF19
+ 115 0015 08010000 		.4byte	.LASF20
+ 116 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 117 001d 00000000 		.4byte	0
+ 118 0021 00000000 		.4byte	0
+ 119 0025 00000000 		.4byte	.Ldebug_line0
+ 120 0029 02       		.uleb128 0x2
+ 121 002a 01       		.byte	0x1
+ 122 002b 06       		.byte	0x6
+ 123 002c 62010000 		.4byte	.LASF0
+ 124 0030 02       		.uleb128 0x2
+ 125 0031 01       		.byte	0x1
+ 126 0032 08       		.byte	0x8
+ 127 0033 F5000000 		.4byte	.LASF1
+ 128 0037 02       		.uleb128 0x2
+ 129 0038 02       		.byte	0x2
+ 130 0039 05       		.byte	0x5
+ 131 003a 74010000 		.4byte	.LASF2
+ 132 003e 02       		.uleb128 0x2
+ 133 003f 02       		.byte	0x2
+ 134 0040 07       		.byte	0x7
+ 135 0041 4F010000 		.4byte	.LASF3
+ 136 0045 02       		.uleb128 0x2
+ 137 0046 04       		.byte	0x4
+ 138 0047 05       		.byte	0x5
+ 139 0048 3F010000 		.4byte	.LASF4
+ 140 004c 02       		.uleb128 0x2
+ 141 004d 04       		.byte	0x4
+ 142 004e 07       		.byte	0x7
+ 143 004f AB000000 		.4byte	.LASF5
+ 144 0053 02       		.uleb128 0x2
+ 145 0054 08       		.byte	0x8
+ 146 0055 05       		.byte	0x5
+ 147 0056 00000000 		.4byte	.LASF6
+ 148 005a 02       		.uleb128 0x2
+ 149 005b 08       		.byte	0x8
+ 150 005c 07       		.byte	0x7
+ 151 005d BD000000 		.4byte	.LASF7
+ 152 0061 03       		.uleb128 0x3
+ 153 0062 04       		.byte	0x4
+ 154 0063 05       		.byte	0x5
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cc2zONpb.s 			page 8
+
+
+ 155 0064 696E7400 		.ascii	"int\000"
+ 156 0068 02       		.uleb128 0x2
+ 157 0069 04       		.byte	0x4
+ 158 006a 07       		.byte	0x7
+ 159 006b 0E000000 		.4byte	.LASF8
+ 160 006f 04       		.uleb128 0x4
+ 161 0070 A5000000 		.4byte	.LASF12
+ 162 0074 02       		.byte	0x2
+ 163 0075 5B       		.byte	0x5b
+ 164 0076 30000000 		.4byte	0x30
+ 165 007a 02       		.uleb128 0x2
+ 166 007b 04       		.byte	0x4
+ 167 007c 04       		.byte	0x4
+ 168 007d 6E010000 		.4byte	.LASF9
+ 169 0081 02       		.uleb128 0x2
+ 170 0082 08       		.byte	0x8
+ 171 0083 04       		.byte	0x4
+ 172 0084 48010000 		.4byte	.LASF10
+ 173 0088 02       		.uleb128 0x2
+ 174 0089 01       		.byte	0x1
+ 175 008a 08       		.byte	0x8
+ 176 008b 03010000 		.4byte	.LASF11
+ 177 008f 04       		.uleb128 0x4
+ 178 0090 7E010000 		.4byte	.LASF13
+ 179 0094 02       		.byte	0x2
+ 180 0095 F0       		.byte	0xf0
+ 181 0096 9A000000 		.4byte	0x9a
+ 182 009a 05       		.uleb128 0x5
+ 183 009b 6F000000 		.4byte	0x6f
+ 184 009f 02       		.uleb128 0x2
+ 185 00a0 04       		.byte	0x4
+ 186 00a1 07       		.byte	0x7
+ 187 00a2 83010000 		.4byte	.LASF14
+ 188 00a6 06       		.uleb128 0x6
+ 189 00a7 01       		.byte	0x1
+ 190 00a8 2D000000 		.4byte	.LASF21
+ 191 00ac 01       		.byte	0x1
+ 192 00ad C9       		.byte	0xc9
+ 193 00ae 01       		.byte	0x1
+ 194 00af 00000000 		.4byte	.LFB0
+ 195 00b3 68000000 		.4byte	.LFE0
+ 196 00b7 00000000 		.4byte	.LLST0
+ 197 00bb 01       		.byte	0x1
+ 198 00bc 07       		.uleb128 0x7
+ 199 00bd 6F000000 		.4byte	0x6f
+ 200 00c1 CC000000 		.4byte	0xcc
+ 201 00c5 08       		.uleb128 0x8
+ 202 00c6 9F000000 		.4byte	0x9f
+ 203 00ca 31       		.byte	0x31
+ 204 00cb 00       		.byte	0
+ 205 00cc 09       		.uleb128 0x9
+ 206 00cd E7000000 		.4byte	.LASF15
+ 207 00d1 03       		.byte	0x3
+ 208 00d2 4C01     		.2byte	0x14c
+ 209 00d4 DA000000 		.4byte	0xda
+ 210 00d8 01       		.byte	0x1
+ 211 00d9 01       		.byte	0x1
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cc2zONpb.s 			page 9
+
+
+ 212 00da 05       		.uleb128 0x5
+ 213 00db BC000000 		.4byte	0xbc
+ 214 00df 09       		.uleb128 0x9
+ 215 00e0 1B000000 		.4byte	.LASF16
+ 216 00e4 03       		.byte	0x3
+ 217 00e5 4D01     		.2byte	0x14d
+ 218 00e7 9A000000 		.4byte	0x9a
+ 219 00eb 01       		.byte	0x1
+ 220 00ec 01       		.byte	0x1
+ 221 00ed 09       		.uleb128 0x9
+ 222 00ee D4000000 		.4byte	.LASF17
+ 223 00f2 03       		.byte	0x3
+ 224 00f3 4E01     		.2byte	0x14e
+ 225 00f5 6F000000 		.4byte	0x6f
+ 226 00f9 01       		.byte	0x1
+ 227 00fa 01       		.byte	0x1
+ 228 00fb 00       		.byte	0
+ 229              		.section	.debug_abbrev,"",%progbits
+ 230              	.Ldebug_abbrev0:
+ 231 0000 01       		.uleb128 0x1
+ 232 0001 11       		.uleb128 0x11
+ 233 0002 01       		.byte	0x1
+ 234 0003 25       		.uleb128 0x25
+ 235 0004 0E       		.uleb128 0xe
+ 236 0005 13       		.uleb128 0x13
+ 237 0006 0B       		.uleb128 0xb
+ 238 0007 03       		.uleb128 0x3
+ 239 0008 0E       		.uleb128 0xe
+ 240 0009 1B       		.uleb128 0x1b
+ 241 000a 0E       		.uleb128 0xe
+ 242 000b 55       		.uleb128 0x55
+ 243 000c 06       		.uleb128 0x6
+ 244 000d 11       		.uleb128 0x11
+ 245 000e 01       		.uleb128 0x1
+ 246 000f 52       		.uleb128 0x52
+ 247 0010 01       		.uleb128 0x1
+ 248 0011 10       		.uleb128 0x10
+ 249 0012 06       		.uleb128 0x6
+ 250 0013 00       		.byte	0
+ 251 0014 00       		.byte	0
+ 252 0015 02       		.uleb128 0x2
+ 253 0016 24       		.uleb128 0x24
+ 254 0017 00       		.byte	0
+ 255 0018 0B       		.uleb128 0xb
+ 256 0019 0B       		.uleb128 0xb
+ 257 001a 3E       		.uleb128 0x3e
+ 258 001b 0B       		.uleb128 0xb
+ 259 001c 03       		.uleb128 0x3
+ 260 001d 0E       		.uleb128 0xe
+ 261 001e 00       		.byte	0
+ 262 001f 00       		.byte	0
+ 263 0020 03       		.uleb128 0x3
+ 264 0021 24       		.uleb128 0x24
+ 265 0022 00       		.byte	0
+ 266 0023 0B       		.uleb128 0xb
+ 267 0024 0B       		.uleb128 0xb
+ 268 0025 3E       		.uleb128 0x3e
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cc2zONpb.s 			page 10
+
+
+ 269 0026 0B       		.uleb128 0xb
+ 270 0027 03       		.uleb128 0x3
+ 271 0028 08       		.uleb128 0x8
+ 272 0029 00       		.byte	0
+ 273 002a 00       		.byte	0
+ 274 002b 04       		.uleb128 0x4
+ 275 002c 16       		.uleb128 0x16
+ 276 002d 00       		.byte	0
+ 277 002e 03       		.uleb128 0x3
+ 278 002f 0E       		.uleb128 0xe
+ 279 0030 3A       		.uleb128 0x3a
+ 280 0031 0B       		.uleb128 0xb
+ 281 0032 3B       		.uleb128 0x3b
+ 282 0033 0B       		.uleb128 0xb
+ 283 0034 49       		.uleb128 0x49
+ 284 0035 13       		.uleb128 0x13
+ 285 0036 00       		.byte	0
+ 286 0037 00       		.byte	0
+ 287 0038 05       		.uleb128 0x5
+ 288 0039 35       		.uleb128 0x35
+ 289 003a 00       		.byte	0
+ 290 003b 49       		.uleb128 0x49
+ 291 003c 13       		.uleb128 0x13
+ 292 003d 00       		.byte	0
+ 293 003e 00       		.byte	0
+ 294 003f 06       		.uleb128 0x6
+ 295 0040 2E       		.uleb128 0x2e
+ 296 0041 00       		.byte	0
+ 297 0042 3F       		.uleb128 0x3f
+ 298 0043 0C       		.uleb128 0xc
+ 299 0044 03       		.uleb128 0x3
+ 300 0045 0E       		.uleb128 0xe
+ 301 0046 3A       		.uleb128 0x3a
+ 302 0047 0B       		.uleb128 0xb
+ 303 0048 3B       		.uleb128 0x3b
+ 304 0049 0B       		.uleb128 0xb
+ 305 004a 27       		.uleb128 0x27
+ 306 004b 0C       		.uleb128 0xc
+ 307 004c 11       		.uleb128 0x11
+ 308 004d 01       		.uleb128 0x1
+ 309 004e 12       		.uleb128 0x12
+ 310 004f 01       		.uleb128 0x1
+ 311 0050 40       		.uleb128 0x40
+ 312 0051 06       		.uleb128 0x6
+ 313 0052 9742     		.uleb128 0x2117
+ 314 0054 0C       		.uleb128 0xc
+ 315 0055 00       		.byte	0
+ 316 0056 00       		.byte	0
+ 317 0057 07       		.uleb128 0x7
+ 318 0058 01       		.uleb128 0x1
+ 319 0059 01       		.byte	0x1
+ 320 005a 49       		.uleb128 0x49
+ 321 005b 13       		.uleb128 0x13
+ 322 005c 01       		.uleb128 0x1
+ 323 005d 13       		.uleb128 0x13
+ 324 005e 00       		.byte	0
+ 325 005f 00       		.byte	0
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cc2zONpb.s 			page 11
+
+
+ 326 0060 08       		.uleb128 0x8
+ 327 0061 21       		.uleb128 0x21
+ 328 0062 00       		.byte	0
+ 329 0063 49       		.uleb128 0x49
+ 330 0064 13       		.uleb128 0x13
+ 331 0065 2F       		.uleb128 0x2f
+ 332 0066 0B       		.uleb128 0xb
+ 333 0067 00       		.byte	0
+ 334 0068 00       		.byte	0
+ 335 0069 09       		.uleb128 0x9
+ 336 006a 34       		.uleb128 0x34
+ 337 006b 00       		.byte	0
+ 338 006c 03       		.uleb128 0x3
+ 339 006d 0E       		.uleb128 0xe
+ 340 006e 3A       		.uleb128 0x3a
+ 341 006f 0B       		.uleb128 0xb
+ 342 0070 3B       		.uleb128 0x3b
+ 343 0071 05       		.uleb128 0x5
+ 344 0072 49       		.uleb128 0x49
+ 345 0073 13       		.uleb128 0x13
+ 346 0074 3F       		.uleb128 0x3f
+ 347 0075 0C       		.uleb128 0xc
+ 348 0076 3C       		.uleb128 0x3c
+ 349 0077 0C       		.uleb128 0xc
+ 350 0078 00       		.byte	0
+ 351 0079 00       		.byte	0
+ 352 007a 00       		.byte	0
+ 353              		.section	.debug_loc,"",%progbits
+ 354              	.Ldebug_loc0:
+ 355              	.LLST0:
+ 356 0000 00000000 		.4byte	.LFB0
+ 357 0004 02000000 		.4byte	.LCFI0
+ 358 0008 0200     		.2byte	0x2
+ 359 000a 7D       		.byte	0x7d
+ 360 000b 00       		.sleb128 0
+ 361 000c 02000000 		.4byte	.LCFI0
+ 362 0010 04000000 		.4byte	.LCFI1
+ 363 0014 0200     		.2byte	0x2
+ 364 0016 7D       		.byte	0x7d
+ 365 0017 08       		.sleb128 8
+ 366 0018 04000000 		.4byte	.LCFI1
+ 367 001c 68000000 		.4byte	.LFE0
+ 368 0020 0200     		.2byte	0x2
+ 369 0022 77       		.byte	0x77
+ 370 0023 08       		.sleb128 8
+ 371 0024 00000000 		.4byte	0
+ 372 0028 00000000 		.4byte	0
+ 373              		.section	.debug_aranges,"",%progbits
+ 374 0000 1C000000 		.4byte	0x1c
+ 375 0004 0200     		.2byte	0x2
+ 376 0006 00000000 		.4byte	.Ldebug_info0
+ 377 000a 04       		.byte	0x4
+ 378 000b 00       		.byte	0
+ 379 000c 0000     		.2byte	0
+ 380 000e 0000     		.2byte	0
+ 381 0010 00000000 		.4byte	.LFB0
+ 382 0014 68000000 		.4byte	.LFE0-.LFB0
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cc2zONpb.s 			page 12
+
+
+ 383 0018 00000000 		.4byte	0
+ 384 001c 00000000 		.4byte	0
+ 385              		.section	.debug_ranges,"",%progbits
+ 386              	.Ldebug_ranges0:
+ 387 0000 00000000 		.4byte	.LFB0
+ 388 0004 68000000 		.4byte	.LFE0
+ 389 0008 00000000 		.4byte	0
+ 390 000c 00000000 		.4byte	0
+ 391              		.section	.debug_line,"",%progbits
+ 392              	.Ldebug_line0:
+ 393 0000 82000000 		.section	.debug_str,"MS",%progbits,1
+ 393      02005100 
+ 393      00000201 
+ 393      FB0E0D00 
+ 393      01010101 
+ 394              	.LASF6:
+ 395 0000 6C6F6E67 		.ascii	"long long int\000"
+ 395      206C6F6E 
+ 395      6720696E 
+ 395      7400
+ 396              	.LASF8:
+ 397 000e 756E7369 		.ascii	"unsigned int\000"
+ 397      676E6564 
+ 397      20696E74 
+ 397      00
+ 398              	.LASF16:
+ 399 001b 424C5545 		.ascii	"BLUE_txBufferRead\000"
+ 399      5F747842 
+ 399      75666665 
+ 399      72526561 
+ 399      6400
+ 400              	.LASF21:
+ 401 002d 424C5545 		.ascii	"BLUE_TXISR\000"
+ 401      5F545849 
+ 401      535200
+ 402              	.LASF19:
+ 403 0038 2E5C4765 		.ascii	".\\Generated_Source\\PSoC4\\BLUE_INT.c\000"
+ 403      6E657261 
+ 403      7465645F 
+ 403      536F7572 
+ 403      63655C50 
+ 404              	.LASF18:
+ 405 005c 474E5520 		.ascii	"GNU C 4.7.3 20130312 (release) [ARM/embedded-4_7-br"
+ 405      4320342E 
+ 405      372E3320 
+ 405      32303133 
+ 405      30333132 
+ 406 008f 616E6368 		.ascii	"anch revision 196615]\000"
+ 406      20726576 
+ 406      6973696F 
+ 406      6E203139 
+ 406      36363135 
+ 407              	.LASF12:
+ 408 00a5 75696E74 		.ascii	"uint8\000"
+ 408      3800
+ 409              	.LASF5:
+ 410 00ab 6C6F6E67 		.ascii	"long unsigned int\000"
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cc2zONpb.s 			page 13
+
+
+ 410      20756E73 
+ 410      69676E65 
+ 410      6420696E 
+ 410      7400
+ 411              	.LASF7:
+ 412 00bd 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 412      206C6F6E 
+ 412      6720756E 
+ 412      7369676E 
+ 412      65642069 
+ 413              	.LASF17:
+ 414 00d4 424C5545 		.ascii	"BLUE_txBufferWrite\000"
+ 414      5F747842 
+ 414      75666665 
+ 414      72577269 
+ 414      746500
+ 415              	.LASF15:
+ 416 00e7 424C5545 		.ascii	"BLUE_txBuffer\000"
+ 416      5F747842 
+ 416      75666665 
+ 416      7200
+ 417              	.LASF1:
+ 418 00f5 756E7369 		.ascii	"unsigned char\000"
+ 418      676E6564 
+ 418      20636861 
+ 418      7200
+ 419              	.LASF11:
+ 420 0103 63686172 		.ascii	"char\000"
+ 420      00
+ 421              	.LASF20:
+ 422 0108 433A5C50 		.ascii	"C:\\Projects\\PSoC\\Bootloading_PSoC5_LP\\PSoc4_Mai"
+ 422      726F6A65 
+ 422      6374735C 
+ 422      50536F43 
+ 422      5C426F6F 
+ 423 0137 6E2E6379 		.ascii	"n.cydsn\000"
+ 423      64736E00 
+ 424              	.LASF4:
+ 425 013f 6C6F6E67 		.ascii	"long int\000"
+ 425      20696E74 
+ 425      00
+ 426              	.LASF10:
+ 427 0148 646F7562 		.ascii	"double\000"
+ 427      6C6500
+ 428              	.LASF3:
+ 429 014f 73686F72 		.ascii	"short unsigned int\000"
+ 429      7420756E 
+ 429      7369676E 
+ 429      65642069 
+ 429      6E7400
+ 430              	.LASF0:
+ 431 0162 7369676E 		.ascii	"signed char\000"
+ 431      65642063 
+ 431      68617200 
+ 432              	.LASF9:
+ 433 016e 666C6F61 		.ascii	"float\000"
+ 433      7400
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cc2zONpb.s 			page 14
+
+
+ 434              	.LASF2:
+ 435 0174 73686F72 		.ascii	"short int\000"
+ 435      7420696E 
+ 435      7400
+ 436              	.LASF13:
+ 437 017e 72656738 		.ascii	"reg8\000"
+ 437      00
+ 438              	.LASF14:
+ 439 0183 73697A65 		.ascii	"sizetype\000"
+ 439      74797065 
+ 439      00
+ 440              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.7.3 20130312 (release) [ARM/embedded-4_7-br

@@ -39,14 +39,11 @@
   <file name="C:\Projects\PSoC\Bootloading_PSoC5_LP\PSoc4_Main.cydsn\codegentemp\Vin_Z.c" value="ARM_C_FILE;Vin_Z" />
   <file name="C:\Projects\PSoC\Bootloading_PSoC5_LP\PSoc4_Main.cydsn\codegentemp\Vin_Z.h" value="NONE;Vin_Z" />
   <file name="C:\Projects\PSoC\Bootloading_PSoC5_LP\PSoc4_Main.cydsn\codegentemp\Vin_Z_aliases.h" value="NONE;Vin_Z" />
-  <file name="C:\Projects\PSoC\Bootloading_PSoC5_LP\PSoc4_Main.cydsn\codegentemp\Buzz.c" value="ARM_C_FILE;Buzz" />
-  <file name="C:\Projects\PSoC\Bootloading_PSoC5_LP\PSoc4_Main.cydsn\codegentemp\Buzz.h" value="NONE;Buzz" />
-  <file name="C:\Projects\PSoC\Bootloading_PSoC5_LP\PSoc4_Main.cydsn\codegentemp\Buzz_PM.c" value="ARM_C_FILE;Buzz" />
-  <file name="C:\Projects\PSoC\Bootloading_PSoC5_LP\PSoc4_Main.cydsn\codegentemp\Pin_1.c" value="ARM_C_FILE;Pin_1" />
-  <file name="C:\Projects\PSoC\Bootloading_PSoC5_LP\PSoc4_Main.cydsn\codegentemp\Pin_1.h" value="NONE;Pin_1" />
-  <file name="C:\Projects\PSoC\Bootloading_PSoC5_LP\PSoc4_Main.cydsn\codegentemp\Pin_1_aliases.h" value="NONE;Pin_1" />
-  <file name="C:\Projects\PSoC\Bootloading_PSoC5_LP\PSoc4_Main.cydsn\codegentemp\Clock_1.c" value="ARM_C_FILE;Clock_1" />
-  <file name="C:\Projects\PSoC\Bootloading_PSoC5_LP\PSoc4_Main.cydsn\codegentemp\Clock_1.h" value="NONE;Clock_1" />
+  <file name="C:\Projects\PSoC\Bootloading_PSoC5_LP\PSoc4_Main.cydsn\codegentemp\BLUE.c" value="ARM_C_FILE;BLUE" />
+  <file name="C:\Projects\PSoC\Bootloading_PSoC5_LP\PSoc4_Main.cydsn\codegentemp\BLUE.h" value="NONE;BLUE" />
+  <file name="C:\Projects\PSoC\Bootloading_PSoC5_LP\PSoc4_Main.cydsn\codegentemp\BLUE_PM.c" value="ARM_C_FILE;BLUE" />
+  <file name="C:\Projects\PSoC\Bootloading_PSoC5_LP\PSoc4_Main.cydsn\codegentemp\BLUE_INT.c" value="ARM_C_FILE;BLUE" />
+  <file name="C:\Projects\PSoC\Bootloading_PSoC5_LP\PSoc4_Main.cydsn\codegentemp\BLUE_BOOT.c" value="ARM_C_FILE;BLUE" />
   <file name="C:\Projects\PSoC\Bootloading_PSoC5_LP\PSoc4_Main.cydsn\codegentemp\PSOC5_rx.c" value="ARM_C_FILE;PSOC5_rx" />
   <file name="C:\Projects\PSoC\Bootloading_PSoC5_LP\PSoc4_Main.cydsn\codegentemp\PSOC5_rx.h" value="NONE;PSOC5_rx" />
   <file name="C:\Projects\PSoC\Bootloading_PSoC5_LP\PSoc4_Main.cydsn\codegentemp\PSOC5_rx_aliases.h" value="NONE;PSOC5_rx" />
@@ -59,6 +56,8 @@
   <file name="C:\Projects\PSoC\Bootloading_PSoC5_LP\PSoc4_Main.cydsn\codegentemp\ADC_ACCELEROMETER_intClock.h" value="NONE;ADC_ACCELEROMETER_intClock" />
   <file name="C:\Projects\PSoC\Bootloading_PSoC5_LP\PSoc4_Main.cydsn\codegentemp\ADC_ACCELEROMETER_IRQ.c" value="ARM_C_FILE;ADC_ACCELEROMETER_IRQ" />
   <file name="C:\Projects\PSoC\Bootloading_PSoC5_LP\PSoc4_Main.cydsn\codegentemp\ADC_ACCELEROMETER_IRQ.h" value="NONE;ADC_ACCELEROMETER_IRQ" />
+  <file name="C:\Projects\PSoC\Bootloading_PSoC5_LP\PSoc4_Main.cydsn\codegentemp\BLUE_IntClock.c" value="ARM_C_FILE;BLUE_IntClock" />
+  <file name="C:\Projects\PSoC\Bootloading_PSoC5_LP\PSoc4_Main.cydsn\codegentemp\BLUE_IntClock.h" value="NONE;BLUE_IntClock" />
   <file name="C:\Projects\PSoC\Bootloading_PSoC5_LP\PSoc4_Main.cydsn\codegentemp\cm0gcc.ld" value="NONE;cy_boot" />
   <file name="C:\Projects\PSoC\Bootloading_PSoC5_LP\PSoc4_Main.cydsn\codegentemp\Cm0RealView.scat" value="NONE;cy_boot" />
   <file name="C:\Projects\PSoC\Bootloading_PSoC5_LP\PSoc4_Main.cydsn\codegentemp\Cm0Start.c" value="ARM_C_FILE;cy_boot" />

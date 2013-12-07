@@ -32,21 +32,29 @@ C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/AD
 
 C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/ADC_ACCELEROMETER_intClock.c : 
 
-C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/CortexM0/ARM_GCC_473/Debug/Buzz.o : C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/Buzz.h C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/CyLib.h C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/cydevice_trm.h C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/cyfitter.h C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/cytypes.h C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/Buzz.c 
+C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/CortexM0/ARM_GCC_473/Debug/BLUE.o : C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/BLUE.h C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/BLUE_IntClock.h C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/CyLib.h C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/cydevice_trm.h C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/cyfitter.h C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/cytypes.h C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/BLUE.c 
 
-C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/Buzz.h : 
+C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/BLUE.h : 
 
-C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/Buzz.c : 
+C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/BLUE_IntClock.h : 
 
-C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/CortexM0/ARM_GCC_473/Debug/Buzz_PM.o : C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/Buzz.h C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/CyLib.h C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/cydevice_trm.h C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/cyfitter.h C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/cytypes.h C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/Buzz_PM.c 
+C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/BLUE.c : 
 
-C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/Buzz_PM.c : 
+C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/CortexM0/ARM_GCC_473/Debug/BLUE_BOOT.o : C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/BLUE.h C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/CyLib.h C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/cydevice_trm.h C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/cyfitter.h C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/cytypes.h C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/BLUE_BOOT.c 
 
-C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/CortexM0/ARM_GCC_473/Debug/Clock_1.o : C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/Clock_1.h C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/cydevice_trm.h C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/cyfitter.h C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/cytypes.h C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/Clock_1.c 
+C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/BLUE_BOOT.c : 
 
-C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/Clock_1.h : 
+C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/CortexM0/ARM_GCC_473/Debug/BLUE_INT.o : C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/BLUE.h C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/CyLib.h C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/cydevice_trm.h C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/cyfitter.h C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/cytypes.h C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/BLUE_INT.c 
 
-C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/Clock_1.c : 
+C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/BLUE_INT.c : 
+
+C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/CortexM0/ARM_GCC_473/Debug/BLUE_IntClock.o : C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/BLUE_IntClock.h C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/cydevice_trm.h C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/cyfitter.h C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/cytypes.h C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/BLUE_IntClock.c 
+
+C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/BLUE_IntClock.c : 
+
+C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/CortexM0/ARM_GCC_473/Debug/BLUE_PM.o : C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/BLUE.h C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/CyLib.h C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/cydevice_trm.h C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/cyfitter.h C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/cytypes.h C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/BLUE_PM.c 
+
+C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/BLUE_PM.c : 
 
 C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/CortexM0/ARM_GCC_473/Debug/Cm0Start.o : C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/CyLib.h C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/cydevice_trm.h C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/cyfitter.h C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/cyfitter_cfg.h C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/cytypes.h C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/Cm0Start.c 
 
@@ -125,14 +133,6 @@ C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/PS
 C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/CortexM0/ARM_GCC_473/Debug/PSOC5_tx.o : C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/PSOC5_tx.h C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/PSOC5_tx_aliases.h C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/cydevice_trm.h C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/cyfitter.h C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/cytypes.h C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/PSOC5_tx.c 
 
 C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/PSOC5_tx.c : 
-
-C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/CortexM0/ARM_GCC_473/Debug/Pin_1.o : C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/Pin_1.h C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/Pin_1_aliases.h C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/cydevice_trm.h C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/cyfitter.h C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/cytypes.h C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/Pin_1.c 
-
-C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/Pin_1.h : 
-
-C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/Pin_1_aliases.h : 
-
-C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/Pin_1.c : 
 
 C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/CortexM0/ARM_GCC_473/Debug/Vin.o : C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/Vin.h C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/Vin_aliases.h C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/cydevice_trm.h C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/cyfitter.h C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/cytypes.h C:/Projects/PSoC/Bootloading_PSoC5_LP/PSoc4_Main.cydsn/Generated_Source/PSoC4/Vin.c 
 

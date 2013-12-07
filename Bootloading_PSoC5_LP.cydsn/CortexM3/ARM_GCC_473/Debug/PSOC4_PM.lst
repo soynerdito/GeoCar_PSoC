@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cci6oUop.s 			page 1
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cceMrKAb.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cci6oUop.s 			page 1
   25:.\Generated_Source\PSoC5/PSOC4_PM.c **** {
   26:.\Generated_Source\PSoC5/PSOC4_PM.c ****     /* enableState - disabled */
   27:.\Generated_Source\PSoC5/PSOC4_PM.c ****     0u,
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cci6oUop.s 			page 2
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cceMrKAb.s 			page 2
 
 
   28:.\Generated_Source\PSoC5/PSOC4_PM.c **** };
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cci6oUop.s 			page 1
   70:.\Generated_Source\PSoC5/PSOC4_PM.c ****             #if(PSOC4_TXCLKGEN_DP)
   71:.\Generated_Source\PSoC5/PSOC4_PM.c ****                 PSOC4_backup.tx_clk_ctr = PSOC4_TXBITCLKGEN_CTR_REG;
   72:.\Generated_Source\PSoC5/PSOC4_PM.c ****                 PSOC4_backup.tx_clk_compl = PSOC4_TXBITCLKTX_COMPLETE_REG;
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cci6oUop.s 			page 3
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cceMrKAb.s 			page 3
 
 
   73:.\Generated_Source\PSoC5/PSOC4_PM.c ****             #else
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cci6oUop.s 			page 1
   58              		.loc 1 111 0
   59              		.cfi_startproc
   60              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cci6oUop.s 			page 4
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cceMrKAb.s 			page 4
 
 
   61              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cci6oUop.s 			page 1
   81              		.thumb_func
   82              		.type	PSOC4_Sleep, %function
   83              	PSOC4_Sleep:
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cci6oUop.s 			page 5
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cceMrKAb.s 			page 5
 
 
   84              	.LFB2:
@@ -284,7 +284,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cci6oUop.s 			page 1
  173:.\Generated_Source\PSoC5/PSOC4_PM.c ****     #if(PSOC4_RX_ENABLED || PSOC4_HD_ENABLED)
  174:.\Generated_Source\PSoC5/PSOC4_PM.c ****         if((PSOC4_RXSTATUS_ACTL_REG  & PSOC4_INT_ENABLE) != 0u)
   97              		.loc 1 174 0
-  98 0004 46F29753 		movw	r3, #26007
+  98 0004 46F29643 		movw	r3, #25750
   99 0008 C4F20003 		movt	r3, 16384
  100 000c 1B78     		ldrb	r3, [r3, #0]
  101 000e DBB2     		uxtb	r3, r3
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cci6oUop.s 			page 1
  107 001c C0F20003 		movt	r3, #:upper16:PSOC4_backup
  108 0020 4FF00102 		mov	r2, #1
  109 0024 1A70     		strb	r2, [r3, #0]
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cci6oUop.s 			page 6
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cceMrKAb.s 			page 6
 
 
  110 0026 06E0     		b	.L5
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cci6oUop.s 			page 1
  206:.\Generated_Source\PSoC5/PSOC4_PM.c **** * Parameters:
  207:.\Generated_Source\PSoC5/PSOC4_PM.c **** *  None.
  208:.\Generated_Source\PSoC5/PSOC4_PM.c **** *
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cci6oUop.s 			page 7
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cceMrKAb.s 			page 7
 
 
  209:.\Generated_Source\PSoC5/PSOC4_PM.c **** * Return:
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cci6oUop.s 			page 1
  164              		.cfi_endproc
  165              	.LFE3:
  166              		.size	PSOC4_Wakeup, .-PSOC4_Wakeup
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cci6oUop.s 			page 8
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cceMrKAb.s 			page 8
 
 
  167              		.text
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cci6oUop.s 			page 1
  221 0064 696E7400 		.ascii	"int\000"
  222 0068 02       		.uleb128 0x2
  223 0069 04       		.byte	0x4
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cci6oUop.s 			page 9
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cceMrKAb.s 			page 9
 
 
  224 006a 07       		.byte	0x7
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cci6oUop.s 			page 1
  278 00d3 03       		.byte	0x3
  279 00d4 59       		.byte	0x59
  280 00d5 6F000000 		.4byte	0x6f
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cci6oUop.s 			page 10
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cceMrKAb.s 			page 10
 
 
  281 00d9 02       		.byte	0x2
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cci6oUop.s 			page 1
  335 014b 05       		.byte	0x5
  336 014c 03       		.byte	0x3
  337 014d 00000000 		.4byte	PSOC4_backup
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cci6oUop.s 			page 11
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cceMrKAb.s 			page 11
 
 
  338 0151 00       		.byte	0
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cci6oUop.s 			page 1
  392 0033 0B       		.uleb128 0xb
  393 0034 49       		.uleb128 0x49
  394 0035 13       		.uleb128 0x13
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cci6oUop.s 			page 12
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cceMrKAb.s 			page 12
 
 
  395 0036 00       		.byte	0
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cci6oUop.s 			page 1
  449 006c 12       		.uleb128 0x12
  450 006d 01       		.uleb128 0x1
  451 006e 40       		.uleb128 0x40
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cci6oUop.s 			page 13
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cceMrKAb.s 			page 13
 
 
  452 006f 06       		.uleb128 0x6
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cci6oUop.s 			page 1
  506 0014 0200     		.2byte	0x2
  507 0016 7D       		.byte	0x7d
  508 0017 04       		.sleb128 4
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cci6oUop.s 			page 14
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cceMrKAb.s 			page 14
 
 
  509 0018 04000000 		.4byte	.LCFI1
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cci6oUop.s 			page 1
  563 009c 04000000 		.4byte	.LCFI7
  564 00a0 24000000 		.4byte	.LFE3
  565 00a4 0200     		.2byte	0x2
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cci6oUop.s 			page 15
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cceMrKAb.s 			page 15
 
 
  566 00a6 77       		.byte	0x77
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cci6oUop.s 			page 1
  608      345F6261 
  608      636B7570 
  608      00
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cci6oUop.s 			page 16
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cceMrKAb.s 			page 16
 
 
  609              	.LASF24:
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cci6oUop.s 			page 1
  631 0100 50534F43 		.ascii	"PSOC4_Sleep\000"
  631      345F536C 
  631      65657000 
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cci6oUop.s 			page 17
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cceMrKAb.s 			page 17
 
 
  632              	.LASF4:
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cci6oUop.s 			page 1
  655              	.LASF8:
  656 01c2 756E7369 		.ascii	"unsigned int\000"
  656      676E6564 
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cci6oUop.s 			page 18
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cceMrKAb.s 			page 18
 
 
  656      20696E74 

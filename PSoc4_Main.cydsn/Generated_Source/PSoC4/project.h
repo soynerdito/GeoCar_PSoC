@@ -30,10 +30,7 @@
 #include <Vin_Y_aliases.h>
 #include <Vin_Z.h>
 #include <Vin_Z_aliases.h>
-#include <Buzz.h>
-#include <Pin_1.h>
-#include <Pin_1_aliases.h>
-#include <Clock_1.h>
+#include <BLUE.h>
 #include <PSOC5_rx.h>
 #include <PSOC5_rx_aliases.h>
 #include <PSOC5_SCBCLK.h>
@@ -41,6 +38,7 @@
 #include <PSOC5_tx_aliases.h>
 #include <ADC_ACCELEROMETER_intClock.h>
 #include <ADC_ACCELEROMETER_IRQ.h>
+#include <BLUE_IntClock.h>
 #include <core_cm0_psoc4.h>
 #include <core_cm0.h>
 #include <CyFlash.h>

@@ -6,7 +6,7 @@
 
 #Build Date:         Mar 26 2013 14:54:34
 
-#File Generated:     Dec 5 2013 21:46:26
+#File Generated:     Dec 7 2013 11:28:49
 
 #Purpose:            
 
@@ -114,7 +114,7 @@ Clock: emFile_1_Clock_1     | Frequency:  43.3 MHz | Target:  24.0 MHz
 ======================================================================
                      End of Clock Summary
 ######################################################################
-D2088: Phase 7, elapsed time : 2.5 (sec)
+D2088: Phase 7, elapsed time : 3.8 (sec)
 
 Final Design Statistics
     Number of Combinational MCs 	:	21
@@ -145,15 +145,15 @@ analysis after routing.
                      Clock Summary 
 ======================================================================
 Number of clocks: 9
-Clock: Clock_1              | Frequency:  41.7 MHz | Target:   1.0 MHz
+Clock: Clock_1              | Frequency:  39.8 MHz | Target:   1.0 MHz
 Clock: CyBUS_CLK            | Frequency:   1.4 MHz | Target:  24.0 MHz
 Clock: CyILO                | Frequency: N/A       | Target:   0.0 MHz
 Clock: CyIMO                | Frequency: N/A       | Target:   3.0 MHz
 Clock: CyMASTER_CLK         | Frequency: N/A       | Target:  24.0 MHz
 Clock: CyPLL_OUT            | Frequency: N/A       | Target:  24.0 MHz
 Clock: GPS_IntClock         | Frequency:   1.4 MHz | Target:   0.1 MHz
-Clock: PSOC4_IntClock       | Frequency:   1.4 MHz | Target:   0.1 MHz
-Clock: emFile_1_Clock_1     | Frequency:  46.9 MHz | Target:  24.0 MHz
+Clock: PSOC4_IntClock       | Frequency:   1.5 MHz | Target:   0.1 MHz
+Clock: emFile_1_Clock_1     | Frequency:  46.8 MHz | Target:  24.0 MHz
 
 ======================================================================
                      End of Clock Summary
@@ -164,5 +164,5 @@ D2088: Phase 8, elapsed time : 0.0 (sec)
 
 D2054: Placement of the design completed successfully
 
-I2076: Total run-time: 4.2 sec.
+I2076: Total run-time: 6.0 sec.
 

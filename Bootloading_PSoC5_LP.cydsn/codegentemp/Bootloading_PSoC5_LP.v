@@ -1,6 +1,6 @@
 // ======================================================================
 // Bootloading_PSoC5_LP.v generated from TopDesign.cysch
-// 12/05/2013 at 21:46
+// 12/07/2013 at 11:28
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -1110,11 +1110,11 @@ module top ;
 
     assign Net_136 = 1'h0;
 
-	wire [0:0] tmpOE__Tx_1_net;
-	wire [0:0] tmpFB_0__Tx_1_net;
-	wire [0:0] tmpIO_0__Tx_1_net;
-	wire [0:0] tmpINTERRUPT_0__Tx_1_net;
-	electrical [0:0] tmpSIOVREF__Tx_1_net;
+	wire [0:0] tmpOE__PSOC4_Tx_net;
+	wire [0:0] tmpFB_0__PSOC4_Tx_net;
+	wire [0:0] tmpIO_0__PSOC4_Tx_net;
+	wire [0:0] tmpINTERRUPT_0__PSOC4_Tx_net;
+	electrical [0:0] tmpSIOVREF__PSOC4_Tx_net;
 
 	cy_psoc3_pins_v1_10
 		#(.id("ed092b9b-d398-4703-be89-cebf998501f6"),
@@ -1163,13 +1163,13 @@ module top ;
 		  .spanning(0),
 		  .vtrip(2'b10),
 		  .width(1))
-		Tx_1
-		 (.oe(tmpOE__Tx_1_net),
+		PSOC4_Tx
+		 (.oe(tmpOE__PSOC4_Tx_net),
 		  .y({Net_203}),
-		  .fb({tmpFB_0__Tx_1_net[0:0]}),
-		  .io({tmpIO_0__Tx_1_net[0:0]}),
-		  .siovref(tmpSIOVREF__Tx_1_net),
-		  .interrupt({tmpINTERRUPT_0__Tx_1_net[0:0]}),
+		  .fb({tmpFB_0__PSOC4_Tx_net[0:0]}),
+		  .io({tmpIO_0__PSOC4_Tx_net[0:0]}),
+		  .siovref(tmpSIOVREF__PSOC4_Tx_net),
+		  .interrupt({tmpINTERRUPT_0__PSOC4_Tx_net[0:0]}),
 		  .in_clock({1'b0}),
 		  .in_clock_en({1'b1}),
 		  .in_reset({1'b0}),
@@ -1177,12 +1177,12 @@ module top ;
 		  .out_clock_en({1'b1}),
 		  .out_reset({1'b0}));
 
-	assign tmpOE__Tx_1_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
+	assign tmpOE__PSOC4_Tx_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
 
-	wire [0:0] tmpOE__Rx_1_net;
-	wire [0:0] tmpIO_0__Rx_1_net;
-	wire [0:0] tmpINTERRUPT_0__Rx_1_net;
-	electrical [0:0] tmpSIOVREF__Rx_1_net;
+	wire [0:0] tmpOE__PSOC4_Rx_net;
+	wire [0:0] tmpIO_0__PSOC4_Rx_net;
+	wire [0:0] tmpINTERRUPT_0__PSOC4_Rx_net;
+	electrical [0:0] tmpSIOVREF__PSOC4_Rx_net;
 
 	cy_psoc3_pins_v1_10
 		#(.id("1425177d-0d0e-4468-8bcc-e638e5509a9b"),
@@ -1231,13 +1231,13 @@ module top ;
 		  .spanning(0),
 		  .vtrip(2'b00),
 		  .width(1))
-		Rx_1
-		 (.oe(tmpOE__Rx_1_net),
+		PSOC4_Rx
+		 (.oe(tmpOE__PSOC4_Rx_net),
 		  .y({1'b0}),
 		  .fb({Net_208}),
-		  .io({tmpIO_0__Rx_1_net[0:0]}),
-		  .siovref(tmpSIOVREF__Rx_1_net),
-		  .interrupt({tmpINTERRUPT_0__Rx_1_net[0:0]}),
+		  .io({tmpIO_0__PSOC4_Rx_net[0:0]}),
+		  .siovref(tmpSIOVREF__PSOC4_Rx_net),
+		  .interrupt({tmpINTERRUPT_0__PSOC4_Rx_net[0:0]}),
 		  .in_clock({1'b0}),
 		  .in_clock_en({1'b1}),
 		  .in_reset({1'b0}),
@@ -1245,7 +1245,7 @@ module top ;
 		  .out_clock_en({1'b1}),
 		  .out_reset({1'b0}));
 
-	assign tmpOE__Rx_1_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
+	assign tmpOE__PSOC4_Rx_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
 
     UART_v2_30_4 PSOC4 (
         .cts_n(1'b0),
