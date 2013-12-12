@@ -13,7 +13,7 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Bootloading_PSoC5_LP\PSoc4_Main\PSoc4_Main.cydwr">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Bootloading_PSoC5_LP\Bootloading_PSoC5_LP">
 <ExpandedNodeIds>
 <v>Bootloading_PSoC5_LP</v>
 <v>Bootloading_PSoC5_LP\Bootloading_PSoC5_LP</v>
@@ -25,7 +25,6 @@
 <v>Bootloading_PSoC5_LP\PSoc4_Main\Header Files\device.h</v>
 <v>Bootloading_PSoC5_LP\PSoc4_Main\Source Files</v>
 <v>Bootloading_PSoC5_LP\PSoc4_Main\Source Files\main.c</v>
-<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source</v>
 <v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4</v>
 <v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\ADC_ACCELEROMETER</v>
 <v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\ADC_ACCELEROMETER\ADC_ACCELEROMETER.c</v>
@@ -136,9 +135,6 @@
 <v>Bootloading_PSoC5_LP\PSoc4_Main\Source Files</v>
 <v>Bootloading_PSoC5_LP\PSoc4_Main\Source Files\main.c</v>
 <v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source</v>
-<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4</v>
-<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\ADC_ACCELEROMETER</v>
-<v>Bootloading_PSoC5_LP\PSoc4_Main\Generated_Source\PSoC4\ADC_ACCELEROMETER\ADC_ACCELEROMETER.c</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Bootloading_PSoC5_LP\Bootloading_PSoC5_LP\TopDesign\TopDesign.cysch">

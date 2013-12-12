@@ -122,7 +122,7 @@ int main()
             FS_FClose( pFile ); 
             CyDelay(5);
             pFile = FS_FOpen(sdFile, "a");
-             runMode = RECORDING;
+            runMode = RECORDING;
         }
 
         //Fetch data from PSoC4
@@ -143,7 +143,9 @@ int main()
             //Line Feed - Time to break into new line!!
             //Flush to disk!!            
             if( pos >5 ){
-                if( strncmp(inputLine, "$GPRMC", 6 ) == 0 ){                    
+                //Log only valid lines
+                if( strncmp(inputLine, "$GPRMC", 6 ) == 0 
+                    && strchr(inputLine,'A') ){                    
                     char input[2];
                     input[0] = inputLine[11];
                     input[1] = inputLine[12];
@@ -157,10 +159,8 @@ int main()
                             FS_Write(pFile, psoc4_msg, strlen(psoc4_msg));                        
                         }else{
                             FS_Write(pFile, psoc4_buffer,(psoc4MsgPos-1));                             
-                        }
-                        //CyDelay(2);
-                        FS_Write(pFile, "\n", 1);
-                        //CyDelay(1);
+                        }                        
+                        FS_Write(pFile, "\n", 1);                        
                     }                    
                 }                
             }
@@ -306,7 +306,7 @@ void flushGPSData(FS_FILE *pFile)
         {
             for( pos = 0; pos < readLen; pos++ ){
                 PSOC4_PutChar( psoc4_buffer[pos] );
-                CyDelay(2);
+                CyDelay(1);
             }
             //Flush to Bluetooth            
             //PSOC4_PutString( psoc4_buffer );            

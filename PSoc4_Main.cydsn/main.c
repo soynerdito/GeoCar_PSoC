@@ -133,6 +133,7 @@ void fetchBlueMsg()
     if( inBlueChar == 'B' ){       
         runMode = EXPORT_BLUE;    
         exportData();
+        runMode = RECORDING;
     }else if( inBlueChar == 0 ){        
         runMode = RECORDING;
     }        
@@ -153,9 +154,7 @@ void exportData()
             BLUE_PutChar(13);
             //BLUE_PutChar(10);
         }
-        BLUE_PutChar(inChar);
-        
-        
+        BLUE_PutChar(inChar);        
     }
     
     
