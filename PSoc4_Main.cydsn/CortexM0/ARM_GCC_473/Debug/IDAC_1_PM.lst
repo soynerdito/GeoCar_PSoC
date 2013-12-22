@@ -1,0 +1,881 @@
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cc7eJWl8.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 6
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"IDAC_1_PM.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.bss
+  18              		.align	2
+  19              	IDAC_1_backup:
+  20 0000 00       		.space	1
+  21 0001 000000   		.section	.text.IDAC_1_SaveConfig,"ax",%progbits
+  22              		.align	2
+  23              		.global	IDAC_1_SaveConfig
+  24              		.code	16
+  25              		.thumb_func
+  26              		.type	IDAC_1_SaveConfig, %function
+  27              	IDAC_1_SaveConfig:
+  28              	.LFB0:
+  29              		.file 1 ".\\Generated_Source\\PSoC4\\IDAC_1_PM.c"
+   1:.\Generated_Source\PSoC4/IDAC_1_PM.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC4/IDAC_1_PM.c **** * File Name: IDAC_1_PM.c
+   3:.\Generated_Source\PSoC4/IDAC_1_PM.c **** * Version 1.0
+   4:.\Generated_Source\PSoC4/IDAC_1_PM.c **** *
+   5:.\Generated_Source\PSoC4/IDAC_1_PM.c **** * Description:
+   6:.\Generated_Source\PSoC4/IDAC_1_PM.c **** *  This file provides Low power mode APIs for IDAC_P4 component.
+   7:.\Generated_Source\PSoC4/IDAC_1_PM.c **** *
+   8:.\Generated_Source\PSoC4/IDAC_1_PM.c **** ********************************************************************************
+   9:.\Generated_Source\PSoC4/IDAC_1_PM.c **** * Copyright 2013, Cypress Semiconductor Corporation.  All rights reserved.
+  10:.\Generated_Source\PSoC4/IDAC_1_PM.c **** * You may use this file only in accordance with the license, terms, conditions,
+  11:.\Generated_Source\PSoC4/IDAC_1_PM.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  12:.\Generated_Source\PSoC4/IDAC_1_PM.c **** * the software package with which this file was provided.
+  13:.\Generated_Source\PSoC4/IDAC_1_PM.c **** *******************************************************************************/
+  14:.\Generated_Source\PSoC4/IDAC_1_PM.c **** 
+  15:.\Generated_Source\PSoC4/IDAC_1_PM.c **** #include "IDAC_1.h"
+  16:.\Generated_Source\PSoC4/IDAC_1_PM.c **** 
+  17:.\Generated_Source\PSoC4/IDAC_1_PM.c **** 
+  18:.\Generated_Source\PSoC4/IDAC_1_PM.c **** static IDAC_1_BACKUP_STRUCT IDAC_1_backup;
+  19:.\Generated_Source\PSoC4/IDAC_1_PM.c **** 
+  20:.\Generated_Source\PSoC4/IDAC_1_PM.c **** 
+  21:.\Generated_Source\PSoC4/IDAC_1_PM.c **** /*******************************************************************************
+  22:.\Generated_Source\PSoC4/IDAC_1_PM.c **** * Function Name: IDAC_1_SaveConfig
+  23:.\Generated_Source\PSoC4/IDAC_1_PM.c **** ********************************************************************************
+  24:.\Generated_Source\PSoC4/IDAC_1_PM.c **** *
+  25:.\Generated_Source\PSoC4/IDAC_1_PM.c **** * Summary:
+  26:.\Generated_Source\PSoC4/IDAC_1_PM.c **** *  Saves component state before sleep
+  27:.\Generated_Source\PSoC4/IDAC_1_PM.c **** * Parameters:
+  28:.\Generated_Source\PSoC4/IDAC_1_PM.c **** *  None
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cc7eJWl8.s 			page 2
+
+
+  29:.\Generated_Source\PSoC4/IDAC_1_PM.c **** *
+  30:.\Generated_Source\PSoC4/IDAC_1_PM.c **** * Return:
+  31:.\Generated_Source\PSoC4/IDAC_1_PM.c **** *  None
+  32:.\Generated_Source\PSoC4/IDAC_1_PM.c **** *
+  33:.\Generated_Source\PSoC4/IDAC_1_PM.c **** * Global Variables:
+  34:.\Generated_Source\PSoC4/IDAC_1_PM.c **** *  None
+  35:.\Generated_Source\PSoC4/IDAC_1_PM.c **** *
+  36:.\Generated_Source\PSoC4/IDAC_1_PM.c **** *******************************************************************************/
+  37:.\Generated_Source\PSoC4/IDAC_1_PM.c **** void IDAC_1_SaveConfig(void)
+  38:.\Generated_Source\PSoC4/IDAC_1_PM.c **** {
+  30              		.loc 1 38 0
+  31              		.cfi_startproc
+  32 0000 80B5     		push	{r7, lr}
+  33              	.LCFI0:
+  34              		.cfi_def_cfa_offset 8
+  35              		.cfi_offset 7, -8
+  36              		.cfi_offset 14, -4
+  37 0002 00AF     		add	r7, sp, #0
+  38              	.LCFI1:
+  39              		.cfi_def_cfa_register 7
+  39:.\Generated_Source\PSoC4/IDAC_1_PM.c ****     /* All registers are retention - nothing to save */
+  40:.\Generated_Source\PSoC4/IDAC_1_PM.c **** }
+  40              		.loc 1 40 0
+  41 0004 BD46     		mov	sp, r7
+  42              		@ sp needed for prologue
+  43 0006 80BD     		pop	{r7, pc}
+  44              		.cfi_endproc
+  45              	.LFE0:
+  46              		.size	IDAC_1_SaveConfig, .-IDAC_1_SaveConfig
+  47              		.section	.text.IDAC_1_Sleep,"ax",%progbits
+  48              		.align	2
+  49              		.global	IDAC_1_Sleep
+  50              		.code	16
+  51              		.thumb_func
+  52              		.type	IDAC_1_Sleep, %function
+  53              	IDAC_1_Sleep:
+  54              	.LFB1:
+  41:.\Generated_Source\PSoC4/IDAC_1_PM.c **** 
+  42:.\Generated_Source\PSoC4/IDAC_1_PM.c **** 
+  43:.\Generated_Source\PSoC4/IDAC_1_PM.c **** /*******************************************************************************
+  44:.\Generated_Source\PSoC4/IDAC_1_PM.c **** * Function Name: IDAC_1_Sleep
+  45:.\Generated_Source\PSoC4/IDAC_1_PM.c **** ********************************************************************************
+  46:.\Generated_Source\PSoC4/IDAC_1_PM.c **** *
+  47:.\Generated_Source\PSoC4/IDAC_1_PM.c **** * Summary:
+  48:.\Generated_Source\PSoC4/IDAC_1_PM.c **** *  Calls _SaveConfig() function
+  49:.\Generated_Source\PSoC4/IDAC_1_PM.c **** * Parameters:
+  50:.\Generated_Source\PSoC4/IDAC_1_PM.c **** *  None
+  51:.\Generated_Source\PSoC4/IDAC_1_PM.c **** *
+  52:.\Generated_Source\PSoC4/IDAC_1_PM.c **** * Return:
+  53:.\Generated_Source\PSoC4/IDAC_1_PM.c **** *  None
+  54:.\Generated_Source\PSoC4/IDAC_1_PM.c **** *
+  55:.\Generated_Source\PSoC4/IDAC_1_PM.c **** *******************************************************************************/
+  56:.\Generated_Source\PSoC4/IDAC_1_PM.c **** void IDAC_1_Sleep(void)
+  57:.\Generated_Source\PSoC4/IDAC_1_PM.c **** {
+  55              		.loc 1 57 0
+  56              		.cfi_startproc
+  57 0000 80B5     		push	{r7, lr}
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cc7eJWl8.s 			page 3
+
+
+  58              	.LCFI2:
+  59              		.cfi_def_cfa_offset 8
+  60              		.cfi_offset 7, -8
+  61              		.cfi_offset 14, -4
+  62 0002 00AF     		add	r7, sp, #0
+  63              	.LCFI3:
+  64              		.cfi_def_cfa_register 7
+  58:.\Generated_Source\PSoC4/IDAC_1_PM.c ****         if(0u != (IDAC_1_IDAC_CONTROL_REG & ((uint32)IDAC_1_IDAC_MODE_MASK <<
+  65              		.loc 1 58 0
+  66 0004 094B     		ldr	r3, .L5
+  67 0006 1A68     		ldr	r2, [r3]
+  68 0008 C023     		mov	r3, #192
+  69 000a 9B00     		lsl	r3, r3, #2
+  70 000c 1340     		and	r3, r2
+  71 000e 03D0     		beq	.L3
+  59:.\Generated_Source\PSoC4/IDAC_1_PM.c ****         IDAC_1_IDAC_MODE_POSITION)))
+  60:.\Generated_Source\PSoC4/IDAC_1_PM.c ****         {
+  61:.\Generated_Source\PSoC4/IDAC_1_PM.c ****             IDAC_1_backup.enableState = 1u;
+  72              		.loc 1 61 0
+  73 0010 074B     		ldr	r3, .L5+4
+  74 0012 0122     		mov	r2, #1
+  75 0014 1A70     		strb	r2, [r3]
+  76 0016 02E0     		b	.L4
+  77              	.L3:
+  62:.\Generated_Source\PSoC4/IDAC_1_PM.c ****         }
+  63:.\Generated_Source\PSoC4/IDAC_1_PM.c ****         else
+  64:.\Generated_Source\PSoC4/IDAC_1_PM.c ****         {
+  65:.\Generated_Source\PSoC4/IDAC_1_PM.c ****             IDAC_1_backup.enableState = 0u;
+  78              		.loc 1 65 0
+  79 0018 054B     		ldr	r3, .L5+4
+  80 001a 0022     		mov	r2, #0
+  81 001c 1A70     		strb	r2, [r3]
+  82              	.L4:
+  66:.\Generated_Source\PSoC4/IDAC_1_PM.c ****         }
+  67:.\Generated_Source\PSoC4/IDAC_1_PM.c **** 
+  68:.\Generated_Source\PSoC4/IDAC_1_PM.c ****     IDAC_1_Stop();
+  83              		.loc 1 68 0
+  84 001e FFF7FEFF 		bl	IDAC_1_Stop
+  69:.\Generated_Source\PSoC4/IDAC_1_PM.c ****     IDAC_1_SaveConfig();
+  85              		.loc 1 69 0
+  86 0022 FFF7FEFF 		bl	IDAC_1_SaveConfig
+  70:.\Generated_Source\PSoC4/IDAC_1_PM.c **** }
+  87              		.loc 1 70 0
+  88 0026 BD46     		mov	sp, r7
+  89              		@ sp needed for prologue
+  90 0028 80BD     		pop	{r7, pc}
+  91              	.L6:
+  92 002a C046     		.align	2
+  93              	.L5:
+  94 002c 08000840 		.word	1074266120
+  95 0030 00000000 		.word	IDAC_1_backup
+  96              		.cfi_endproc
+  97              	.LFE1:
+  98              		.size	IDAC_1_Sleep, .-IDAC_1_Sleep
+  99              		.section	.text.IDAC_1_RestoreConfig,"ax",%progbits
+ 100              		.align	2
+ 101              		.global	IDAC_1_RestoreConfig
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cc7eJWl8.s 			page 4
+
+
+ 102              		.code	16
+ 103              		.thumb_func
+ 104              		.type	IDAC_1_RestoreConfig, %function
+ 105              	IDAC_1_RestoreConfig:
+ 106              	.LFB2:
+  71:.\Generated_Source\PSoC4/IDAC_1_PM.c **** 
+  72:.\Generated_Source\PSoC4/IDAC_1_PM.c **** 
+  73:.\Generated_Source\PSoC4/IDAC_1_PM.c **** /*******************************************************************************
+  74:.\Generated_Source\PSoC4/IDAC_1_PM.c **** * Function Name: IDAC_1_RestoreConfig
+  75:.\Generated_Source\PSoC4/IDAC_1_PM.c **** ********************************************************************************
+  76:.\Generated_Source\PSoC4/IDAC_1_PM.c **** *
+  77:.\Generated_Source\PSoC4/IDAC_1_PM.c **** * Summary:
+  78:.\Generated_Source\PSoC4/IDAC_1_PM.c **** *  Restores component state after wakeup
+  79:.\Generated_Source\PSoC4/IDAC_1_PM.c **** * Parameters:
+  80:.\Generated_Source\PSoC4/IDAC_1_PM.c **** *  None
+  81:.\Generated_Source\PSoC4/IDAC_1_PM.c **** *
+  82:.\Generated_Source\PSoC4/IDAC_1_PM.c **** * Return:
+  83:.\Generated_Source\PSoC4/IDAC_1_PM.c **** *  None
+  84:.\Generated_Source\PSoC4/IDAC_1_PM.c **** *
+  85:.\Generated_Source\PSoC4/IDAC_1_PM.c **** * Global Variables:
+  86:.\Generated_Source\PSoC4/IDAC_1_PM.c **** *  None
+  87:.\Generated_Source\PSoC4/IDAC_1_PM.c **** *
+  88:.\Generated_Source\PSoC4/IDAC_1_PM.c **** *******************************************************************************/
+  89:.\Generated_Source\PSoC4/IDAC_1_PM.c **** void IDAC_1_RestoreConfig(void)
+  90:.\Generated_Source\PSoC4/IDAC_1_PM.c **** {
+ 107              		.loc 1 90 0
+ 108              		.cfi_startproc
+ 109 0000 80B5     		push	{r7, lr}
+ 110              	.LCFI4:
+ 111              		.cfi_def_cfa_offset 8
+ 112              		.cfi_offset 7, -8
+ 113              		.cfi_offset 14, -4
+ 114 0002 00AF     		add	r7, sp, #0
+ 115              	.LCFI5:
+ 116              		.cfi_def_cfa_register 7
+  91:.\Generated_Source\PSoC4/IDAC_1_PM.c ****     /* All registers are retention - nothing to save */
+  92:.\Generated_Source\PSoC4/IDAC_1_PM.c **** }
+ 117              		.loc 1 92 0
+ 118 0004 BD46     		mov	sp, r7
+ 119              		@ sp needed for prologue
+ 120 0006 80BD     		pop	{r7, pc}
+ 121              		.cfi_endproc
+ 122              	.LFE2:
+ 123              		.size	IDAC_1_RestoreConfig, .-IDAC_1_RestoreConfig
+ 124              		.section	.text.IDAC_1_Wakeup,"ax",%progbits
+ 125              		.align	2
+ 126              		.global	IDAC_1_Wakeup
+ 127              		.code	16
+ 128              		.thumb_func
+ 129              		.type	IDAC_1_Wakeup, %function
+ 130              	IDAC_1_Wakeup:
+ 131              	.LFB3:
+  93:.\Generated_Source\PSoC4/IDAC_1_PM.c **** 
+  94:.\Generated_Source\PSoC4/IDAC_1_PM.c **** 
+  95:.\Generated_Source\PSoC4/IDAC_1_PM.c **** /*******************************************************************************
+  96:.\Generated_Source\PSoC4/IDAC_1_PM.c **** * Function Name: IDAC_1_Wakeup
+  97:.\Generated_Source\PSoC4/IDAC_1_PM.c **** ********************************************************************************
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cc7eJWl8.s 			page 5
+
+
+  98:.\Generated_Source\PSoC4/IDAC_1_PM.c **** *
+  99:.\Generated_Source\PSoC4/IDAC_1_PM.c **** * Summary:
+ 100:.\Generated_Source\PSoC4/IDAC_1_PM.c **** *  Calls _RestoreConfig() function
+ 101:.\Generated_Source\PSoC4/IDAC_1_PM.c **** * Parameters:
+ 102:.\Generated_Source\PSoC4/IDAC_1_PM.c **** *  None
+ 103:.\Generated_Source\PSoC4/IDAC_1_PM.c **** *
+ 104:.\Generated_Source\PSoC4/IDAC_1_PM.c **** * Return:
+ 105:.\Generated_Source\PSoC4/IDAC_1_PM.c **** *  None
+ 106:.\Generated_Source\PSoC4/IDAC_1_PM.c **** *
+ 107:.\Generated_Source\PSoC4/IDAC_1_PM.c **** *******************************************************************************/
+ 108:.\Generated_Source\PSoC4/IDAC_1_PM.c **** void IDAC_1_Wakeup(void)
+ 109:.\Generated_Source\PSoC4/IDAC_1_PM.c **** {
+ 132              		.loc 1 109 0
+ 133              		.cfi_startproc
+ 134 0000 80B5     		push	{r7, lr}
+ 135              	.LCFI6:
+ 136              		.cfi_def_cfa_offset 8
+ 137              		.cfi_offset 7, -8
+ 138              		.cfi_offset 14, -4
+ 139 0002 00AF     		add	r7, sp, #0
+ 140              	.LCFI7:
+ 141              		.cfi_def_cfa_register 7
+ 110:.\Generated_Source\PSoC4/IDAC_1_PM.c ****     /* Restore IDAC register settings */
+ 111:.\Generated_Source\PSoC4/IDAC_1_PM.c ****     IDAC_1_RestoreConfig();
+ 142              		.loc 1 111 0
+ 143 0004 FFF7FEFF 		bl	IDAC_1_RestoreConfig
+ 112:.\Generated_Source\PSoC4/IDAC_1_PM.c ****     if(IDAC_1_backup.enableState == 1u)
+ 144              		.loc 1 112 0
+ 145 0008 034B     		ldr	r3, .L10
+ 146 000a 1B78     		ldrb	r3, [r3]
+ 147 000c 012B     		cmp	r3, #1
+ 148 000e 01D1     		bne	.L8
+ 113:.\Generated_Source\PSoC4/IDAC_1_PM.c ****     {
+ 114:.\Generated_Source\PSoC4/IDAC_1_PM.c ****         /* Enable operation */
+ 115:.\Generated_Source\PSoC4/IDAC_1_PM.c ****         IDAC_1_Enable();
+ 149              		.loc 1 115 0
+ 150 0010 FFF7FEFF 		bl	IDAC_1_Enable
+ 151              	.L8:
+ 116:.\Generated_Source\PSoC4/IDAC_1_PM.c ****     } /* Do nothing if the component was disabled before */
+ 117:.\Generated_Source\PSoC4/IDAC_1_PM.c **** 
+ 118:.\Generated_Source\PSoC4/IDAC_1_PM.c **** }
+ 152              		.loc 1 118 0
+ 153 0014 BD46     		mov	sp, r7
+ 154              		@ sp needed for prologue
+ 155 0016 80BD     		pop	{r7, pc}
+ 156              	.L11:
+ 157              		.align	2
+ 158              	.L10:
+ 159 0018 00000000 		.word	IDAC_1_backup
+ 160              		.cfi_endproc
+ 161              	.LFE3:
+ 162              		.size	IDAC_1_Wakeup, .-IDAC_1_Wakeup
+ 163              		.text
+ 164              	.Letext0:
+ 165              		.file 2 ".\\Generated_Source\\PSoC4\\cytypes.h"
+ 166              		.file 3 ".\\Generated_Source\\PSoC4\\IDAC_1.h"
+ 167              		.section	.debug_info,"",%progbits
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cc7eJWl8.s 			page 6
+
+
+ 168              	.Ldebug_info0:
+ 169 0000 39010000 		.4byte	0x139
+ 170 0004 0200     		.2byte	0x2
+ 171 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 172 000a 04       		.byte	0x4
+ 173 000b 01       		.uleb128 0x1
+ 174 000c AF000000 		.4byte	.LASF21
+ 175 0010 01       		.byte	0x1
+ 176 0011 F8000000 		.4byte	.LASF22
+ 177 0015 2E000000 		.4byte	.LASF23
+ 178 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 179 001d 00000000 		.4byte	0
+ 180 0021 00000000 		.4byte	0
+ 181 0025 00000000 		.4byte	.Ldebug_line0
+ 182 0029 02       		.uleb128 0x2
+ 183 002a 01       		.byte	0x1
+ 184 002b 06       		.byte	0x6
+ 185 002c 59010000 		.4byte	.LASF0
+ 186 0030 02       		.uleb128 0x2
+ 187 0031 01       		.byte	0x1
+ 188 0032 08       		.byte	0x8
+ 189 0033 1D010000 		.4byte	.LASF1
+ 190 0037 02       		.uleb128 0x2
+ 191 0038 02       		.byte	0x2
+ 192 0039 05       		.byte	0x5
+ 193 003a 92010000 		.4byte	.LASF2
+ 194 003e 02       		.uleb128 0x2
+ 195 003f 02       		.byte	0x2
+ 196 0040 07       		.byte	0x7
+ 197 0041 46010000 		.4byte	.LASF3
+ 198 0045 02       		.uleb128 0x2
+ 199 0046 04       		.byte	0x4
+ 200 0047 05       		.byte	0x5
+ 201 0048 30010000 		.4byte	.LASF4
+ 202 004c 02       		.uleb128 0x2
+ 203 004d 04       		.byte	0x4
+ 204 004e 07       		.byte	0x7
+ 205 004f 86000000 		.4byte	.LASF5
+ 206 0053 02       		.uleb128 0x2
+ 207 0054 08       		.byte	0x8
+ 208 0055 05       		.byte	0x5
+ 209 0056 00000000 		.4byte	.LASF6
+ 210 005a 02       		.uleb128 0x2
+ 211 005b 08       		.byte	0x8
+ 212 005c 07       		.byte	0x7
+ 213 005d 98000000 		.4byte	.LASF7
+ 214 0061 03       		.uleb128 0x3
+ 215 0062 04       		.byte	0x4
+ 216 0063 05       		.byte	0x5
+ 217 0064 696E7400 		.ascii	"int\000"
+ 218 0068 02       		.uleb128 0x2
+ 219 0069 04       		.byte	0x4
+ 220 006a 07       		.byte	0x7
+ 221 006b 21000000 		.4byte	.LASF8
+ 222 006f 04       		.uleb128 0x4
+ 223 0070 80000000 		.4byte	.LASF9
+ 224 0074 02       		.byte	0x2
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cc7eJWl8.s 			page 7
+
+
+ 225 0075 5B       		.byte	0x5b
+ 226 0076 30000000 		.4byte	0x30
+ 227 007a 04       		.uleb128 0x4
+ 228 007b 0E000000 		.4byte	.LASF10
+ 229 007f 02       		.byte	0x2
+ 230 0080 5D       		.byte	0x5d
+ 231 0081 4C000000 		.4byte	0x4c
+ 232 0085 02       		.uleb128 0x2
+ 233 0086 04       		.byte	0x4
+ 234 0087 04       		.byte	0x4
+ 235 0088 65010000 		.4byte	.LASF11
+ 236 008c 02       		.uleb128 0x2
+ 237 008d 08       		.byte	0x8
+ 238 008e 04       		.byte	0x4
+ 239 008f 39010000 		.4byte	.LASF12
+ 240 0093 02       		.uleb128 0x2
+ 241 0094 01       		.byte	0x1
+ 242 0095 08       		.byte	0x8
+ 243 0096 2B010000 		.4byte	.LASF13
+ 244 009a 04       		.uleb128 0x4
+ 245 009b 40010000 		.4byte	.LASF14
+ 246 009f 02       		.byte	0x2
+ 247 00a0 F2       		.byte	0xf2
+ 248 00a1 A5000000 		.4byte	0xa5
+ 249 00a5 05       		.uleb128 0x5
+ 250 00a6 7A000000 		.4byte	0x7a
+ 251 00aa 02       		.uleb128 0x2
+ 252 00ab 04       		.byte	0x4
+ 253 00ac 07       		.byte	0x7
+ 254 00ad BF010000 		.4byte	.LASF15
+ 255 00b1 06       		.uleb128 0x6
+ 256 00b2 01       		.byte	0x1
+ 257 00b3 03       		.byte	0x3
+ 258 00b4 1D       		.byte	0x1d
+ 259 00b5 C8000000 		.4byte	0xc8
+ 260 00b9 07       		.uleb128 0x7
+ 261 00ba 15000000 		.4byte	.LASF24
+ 262 00be 03       		.byte	0x3
+ 263 00bf 1F       		.byte	0x1f
+ 264 00c0 6F000000 		.4byte	0x6f
+ 265 00c4 02       		.byte	0x2
+ 266 00c5 23       		.byte	0x23
+ 267 00c6 00       		.uleb128 0
+ 268 00c7 00       		.byte	0
+ 269 00c8 04       		.uleb128 0x4
+ 270 00c9 9C010000 		.4byte	.LASF16
+ 271 00cd 03       		.byte	0x3
+ 272 00ce 20       		.byte	0x20
+ 273 00cf B1000000 		.4byte	0xb1
+ 274 00d3 08       		.uleb128 0x8
+ 275 00d4 01       		.byte	0x1
+ 276 00d5 80010000 		.4byte	.LASF17
+ 277 00d9 01       		.byte	0x1
+ 278 00da 25       		.byte	0x25
+ 279 00db 01       		.byte	0x1
+ 280 00dc 00000000 		.4byte	.LFB0
+ 281 00e0 08000000 		.4byte	.LFE0
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cc7eJWl8.s 			page 8
+
+
+ 282 00e4 00000000 		.4byte	.LLST0
+ 283 00e8 01       		.byte	0x1
+ 284 00e9 09       		.uleb128 0x9
+ 285 00ea 01       		.byte	0x1
+ 286 00eb 73000000 		.4byte	.LASF18
+ 287 00ef 01       		.byte	0x1
+ 288 00f0 38       		.byte	0x38
+ 289 00f1 01       		.byte	0x1
+ 290 00f2 00000000 		.4byte	.LFB1
+ 291 00f6 34000000 		.4byte	.LFE1
+ 292 00fa 2C000000 		.4byte	.LLST1
+ 293 00fe 01       		.byte	0x1
+ 294 00ff 08       		.uleb128 0x8
+ 295 0100 01       		.byte	0x1
+ 296 0101 6B010000 		.4byte	.LASF19
+ 297 0105 01       		.byte	0x1
+ 298 0106 59       		.byte	0x59
+ 299 0107 01       		.byte	0x1
+ 300 0108 00000000 		.4byte	.LFB2
+ 301 010c 08000000 		.4byte	.LFE2
+ 302 0110 58000000 		.4byte	.LLST2
+ 303 0114 01       		.byte	0x1
+ 304 0115 09       		.uleb128 0x9
+ 305 0116 01       		.byte	0x1
+ 306 0117 65000000 		.4byte	.LASF20
+ 307 011b 01       		.byte	0x1
+ 308 011c 6C       		.byte	0x6c
+ 309 011d 01       		.byte	0x1
+ 310 011e 00000000 		.4byte	.LFB3
+ 311 0122 1C000000 		.4byte	.LFE3
+ 312 0126 84000000 		.4byte	.LLST3
+ 313 012a 01       		.byte	0x1
+ 314 012b 0A       		.uleb128 0xa
+ 315 012c B1010000 		.4byte	.LASF25
+ 316 0130 01       		.byte	0x1
+ 317 0131 12       		.byte	0x12
+ 318 0132 C8000000 		.4byte	0xc8
+ 319 0136 05       		.byte	0x5
+ 320 0137 03       		.byte	0x3
+ 321 0138 00000000 		.4byte	IDAC_1_backup
+ 322 013c 00       		.byte	0
+ 323              		.section	.debug_abbrev,"",%progbits
+ 324              	.Ldebug_abbrev0:
+ 325 0000 01       		.uleb128 0x1
+ 326 0001 11       		.uleb128 0x11
+ 327 0002 01       		.byte	0x1
+ 328 0003 25       		.uleb128 0x25
+ 329 0004 0E       		.uleb128 0xe
+ 330 0005 13       		.uleb128 0x13
+ 331 0006 0B       		.uleb128 0xb
+ 332 0007 03       		.uleb128 0x3
+ 333 0008 0E       		.uleb128 0xe
+ 334 0009 1B       		.uleb128 0x1b
+ 335 000a 0E       		.uleb128 0xe
+ 336 000b 55       		.uleb128 0x55
+ 337 000c 06       		.uleb128 0x6
+ 338 000d 11       		.uleb128 0x11
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cc7eJWl8.s 			page 9
+
+
+ 339 000e 01       		.uleb128 0x1
+ 340 000f 52       		.uleb128 0x52
+ 341 0010 01       		.uleb128 0x1
+ 342 0011 10       		.uleb128 0x10
+ 343 0012 06       		.uleb128 0x6
+ 344 0013 00       		.byte	0
+ 345 0014 00       		.byte	0
+ 346 0015 02       		.uleb128 0x2
+ 347 0016 24       		.uleb128 0x24
+ 348 0017 00       		.byte	0
+ 349 0018 0B       		.uleb128 0xb
+ 350 0019 0B       		.uleb128 0xb
+ 351 001a 3E       		.uleb128 0x3e
+ 352 001b 0B       		.uleb128 0xb
+ 353 001c 03       		.uleb128 0x3
+ 354 001d 0E       		.uleb128 0xe
+ 355 001e 00       		.byte	0
+ 356 001f 00       		.byte	0
+ 357 0020 03       		.uleb128 0x3
+ 358 0021 24       		.uleb128 0x24
+ 359 0022 00       		.byte	0
+ 360 0023 0B       		.uleb128 0xb
+ 361 0024 0B       		.uleb128 0xb
+ 362 0025 3E       		.uleb128 0x3e
+ 363 0026 0B       		.uleb128 0xb
+ 364 0027 03       		.uleb128 0x3
+ 365 0028 08       		.uleb128 0x8
+ 366 0029 00       		.byte	0
+ 367 002a 00       		.byte	0
+ 368 002b 04       		.uleb128 0x4
+ 369 002c 16       		.uleb128 0x16
+ 370 002d 00       		.byte	0
+ 371 002e 03       		.uleb128 0x3
+ 372 002f 0E       		.uleb128 0xe
+ 373 0030 3A       		.uleb128 0x3a
+ 374 0031 0B       		.uleb128 0xb
+ 375 0032 3B       		.uleb128 0x3b
+ 376 0033 0B       		.uleb128 0xb
+ 377 0034 49       		.uleb128 0x49
+ 378 0035 13       		.uleb128 0x13
+ 379 0036 00       		.byte	0
+ 380 0037 00       		.byte	0
+ 381 0038 05       		.uleb128 0x5
+ 382 0039 35       		.uleb128 0x35
+ 383 003a 00       		.byte	0
+ 384 003b 49       		.uleb128 0x49
+ 385 003c 13       		.uleb128 0x13
+ 386 003d 00       		.byte	0
+ 387 003e 00       		.byte	0
+ 388 003f 06       		.uleb128 0x6
+ 389 0040 13       		.uleb128 0x13
+ 390 0041 01       		.byte	0x1
+ 391 0042 0B       		.uleb128 0xb
+ 392 0043 0B       		.uleb128 0xb
+ 393 0044 3A       		.uleb128 0x3a
+ 394 0045 0B       		.uleb128 0xb
+ 395 0046 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cc7eJWl8.s 			page 10
+
+
+ 396 0047 0B       		.uleb128 0xb
+ 397 0048 01       		.uleb128 0x1
+ 398 0049 13       		.uleb128 0x13
+ 399 004a 00       		.byte	0
+ 400 004b 00       		.byte	0
+ 401 004c 07       		.uleb128 0x7
+ 402 004d 0D       		.uleb128 0xd
+ 403 004e 00       		.byte	0
+ 404 004f 03       		.uleb128 0x3
+ 405 0050 0E       		.uleb128 0xe
+ 406 0051 3A       		.uleb128 0x3a
+ 407 0052 0B       		.uleb128 0xb
+ 408 0053 3B       		.uleb128 0x3b
+ 409 0054 0B       		.uleb128 0xb
+ 410 0055 49       		.uleb128 0x49
+ 411 0056 13       		.uleb128 0x13
+ 412 0057 38       		.uleb128 0x38
+ 413 0058 0A       		.uleb128 0xa
+ 414 0059 00       		.byte	0
+ 415 005a 00       		.byte	0
+ 416 005b 08       		.uleb128 0x8
+ 417 005c 2E       		.uleb128 0x2e
+ 418 005d 00       		.byte	0
+ 419 005e 3F       		.uleb128 0x3f
+ 420 005f 0C       		.uleb128 0xc
+ 421 0060 03       		.uleb128 0x3
+ 422 0061 0E       		.uleb128 0xe
+ 423 0062 3A       		.uleb128 0x3a
+ 424 0063 0B       		.uleb128 0xb
+ 425 0064 3B       		.uleb128 0x3b
+ 426 0065 0B       		.uleb128 0xb
+ 427 0066 27       		.uleb128 0x27
+ 428 0067 0C       		.uleb128 0xc
+ 429 0068 11       		.uleb128 0x11
+ 430 0069 01       		.uleb128 0x1
+ 431 006a 12       		.uleb128 0x12
+ 432 006b 01       		.uleb128 0x1
+ 433 006c 40       		.uleb128 0x40
+ 434 006d 06       		.uleb128 0x6
+ 435 006e 9742     		.uleb128 0x2117
+ 436 0070 0C       		.uleb128 0xc
+ 437 0071 00       		.byte	0
+ 438 0072 00       		.byte	0
+ 439 0073 09       		.uleb128 0x9
+ 440 0074 2E       		.uleb128 0x2e
+ 441 0075 00       		.byte	0
+ 442 0076 3F       		.uleb128 0x3f
+ 443 0077 0C       		.uleb128 0xc
+ 444 0078 03       		.uleb128 0x3
+ 445 0079 0E       		.uleb128 0xe
+ 446 007a 3A       		.uleb128 0x3a
+ 447 007b 0B       		.uleb128 0xb
+ 448 007c 3B       		.uleb128 0x3b
+ 449 007d 0B       		.uleb128 0xb
+ 450 007e 27       		.uleb128 0x27
+ 451 007f 0C       		.uleb128 0xc
+ 452 0080 11       		.uleb128 0x11
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cc7eJWl8.s 			page 11
+
+
+ 453 0081 01       		.uleb128 0x1
+ 454 0082 12       		.uleb128 0x12
+ 455 0083 01       		.uleb128 0x1
+ 456 0084 40       		.uleb128 0x40
+ 457 0085 06       		.uleb128 0x6
+ 458 0086 9642     		.uleb128 0x2116
+ 459 0088 0C       		.uleb128 0xc
+ 460 0089 00       		.byte	0
+ 461 008a 00       		.byte	0
+ 462 008b 0A       		.uleb128 0xa
+ 463 008c 34       		.uleb128 0x34
+ 464 008d 00       		.byte	0
+ 465 008e 03       		.uleb128 0x3
+ 466 008f 0E       		.uleb128 0xe
+ 467 0090 3A       		.uleb128 0x3a
+ 468 0091 0B       		.uleb128 0xb
+ 469 0092 3B       		.uleb128 0x3b
+ 470 0093 0B       		.uleb128 0xb
+ 471 0094 49       		.uleb128 0x49
+ 472 0095 13       		.uleb128 0x13
+ 473 0096 02       		.uleb128 0x2
+ 474 0097 0A       		.uleb128 0xa
+ 475 0098 00       		.byte	0
+ 476 0099 00       		.byte	0
+ 477 009a 00       		.byte	0
+ 478              		.section	.debug_loc,"",%progbits
+ 479              	.Ldebug_loc0:
+ 480              	.LLST0:
+ 481 0000 00000000 		.4byte	.LFB0
+ 482 0004 02000000 		.4byte	.LCFI0
+ 483 0008 0200     		.2byte	0x2
+ 484 000a 7D       		.byte	0x7d
+ 485 000b 00       		.sleb128 0
+ 486 000c 02000000 		.4byte	.LCFI0
+ 487 0010 04000000 		.4byte	.LCFI1
+ 488 0014 0200     		.2byte	0x2
+ 489 0016 7D       		.byte	0x7d
+ 490 0017 08       		.sleb128 8
+ 491 0018 04000000 		.4byte	.LCFI1
+ 492 001c 08000000 		.4byte	.LFE0
+ 493 0020 0200     		.2byte	0x2
+ 494 0022 77       		.byte	0x77
+ 495 0023 08       		.sleb128 8
+ 496 0024 00000000 		.4byte	0
+ 497 0028 00000000 		.4byte	0
+ 498              	.LLST1:
+ 499 002c 00000000 		.4byte	.LFB1
+ 500 0030 02000000 		.4byte	.LCFI2
+ 501 0034 0200     		.2byte	0x2
+ 502 0036 7D       		.byte	0x7d
+ 503 0037 00       		.sleb128 0
+ 504 0038 02000000 		.4byte	.LCFI2
+ 505 003c 04000000 		.4byte	.LCFI3
+ 506 0040 0200     		.2byte	0x2
+ 507 0042 7D       		.byte	0x7d
+ 508 0043 08       		.sleb128 8
+ 509 0044 04000000 		.4byte	.LCFI3
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cc7eJWl8.s 			page 12
+
+
+ 510 0048 34000000 		.4byte	.LFE1
+ 511 004c 0200     		.2byte	0x2
+ 512 004e 77       		.byte	0x77
+ 513 004f 08       		.sleb128 8
+ 514 0050 00000000 		.4byte	0
+ 515 0054 00000000 		.4byte	0
+ 516              	.LLST2:
+ 517 0058 00000000 		.4byte	.LFB2
+ 518 005c 02000000 		.4byte	.LCFI4
+ 519 0060 0200     		.2byte	0x2
+ 520 0062 7D       		.byte	0x7d
+ 521 0063 00       		.sleb128 0
+ 522 0064 02000000 		.4byte	.LCFI4
+ 523 0068 04000000 		.4byte	.LCFI5
+ 524 006c 0200     		.2byte	0x2
+ 525 006e 7D       		.byte	0x7d
+ 526 006f 08       		.sleb128 8
+ 527 0070 04000000 		.4byte	.LCFI5
+ 528 0074 08000000 		.4byte	.LFE2
+ 529 0078 0200     		.2byte	0x2
+ 530 007a 77       		.byte	0x77
+ 531 007b 08       		.sleb128 8
+ 532 007c 00000000 		.4byte	0
+ 533 0080 00000000 		.4byte	0
+ 534              	.LLST3:
+ 535 0084 00000000 		.4byte	.LFB3
+ 536 0088 02000000 		.4byte	.LCFI6
+ 537 008c 0200     		.2byte	0x2
+ 538 008e 7D       		.byte	0x7d
+ 539 008f 00       		.sleb128 0
+ 540 0090 02000000 		.4byte	.LCFI6
+ 541 0094 04000000 		.4byte	.LCFI7
+ 542 0098 0200     		.2byte	0x2
+ 543 009a 7D       		.byte	0x7d
+ 544 009b 08       		.sleb128 8
+ 545 009c 04000000 		.4byte	.LCFI7
+ 546 00a0 1C000000 		.4byte	.LFE3
+ 547 00a4 0200     		.2byte	0x2
+ 548 00a6 77       		.byte	0x77
+ 549 00a7 08       		.sleb128 8
+ 550 00a8 00000000 		.4byte	0
+ 551 00ac 00000000 		.4byte	0
+ 552              		.section	.debug_aranges,"",%progbits
+ 553 0000 34000000 		.4byte	0x34
+ 554 0004 0200     		.2byte	0x2
+ 555 0006 00000000 		.4byte	.Ldebug_info0
+ 556 000a 04       		.byte	0x4
+ 557 000b 00       		.byte	0
+ 558 000c 0000     		.2byte	0
+ 559 000e 0000     		.2byte	0
+ 560 0010 00000000 		.4byte	.LFB0
+ 561 0014 08000000 		.4byte	.LFE0-.LFB0
+ 562 0018 00000000 		.4byte	.LFB1
+ 563 001c 34000000 		.4byte	.LFE1-.LFB1
+ 564 0020 00000000 		.4byte	.LFB2
+ 565 0024 08000000 		.4byte	.LFE2-.LFB2
+ 566 0028 00000000 		.4byte	.LFB3
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cc7eJWl8.s 			page 13
+
+
+ 567 002c 1C000000 		.4byte	.LFE3-.LFB3
+ 568 0030 00000000 		.4byte	0
+ 569 0034 00000000 		.4byte	0
+ 570              		.section	.debug_ranges,"",%progbits
+ 571              	.Ldebug_ranges0:
+ 572 0000 00000000 		.4byte	.LFB0
+ 573 0004 08000000 		.4byte	.LFE0
+ 574 0008 00000000 		.4byte	.LFB1
+ 575 000c 34000000 		.4byte	.LFE1
+ 576 0010 00000000 		.4byte	.LFB2
+ 577 0014 08000000 		.4byte	.LFE2
+ 578 0018 00000000 		.4byte	.LFB3
+ 579 001c 1C000000 		.4byte	.LFE3
+ 580 0020 00000000 		.4byte	0
+ 581 0024 00000000 		.4byte	0
+ 582              		.section	.debug_line,"",%progbits
+ 583              	.Ldebug_line0:
+ 584 0000 A4000000 		.section	.debug_str,"MS",%progbits,1
+ 584      02005400 
+ 584      00000201 
+ 584      FB0E0D00 
+ 584      01010101 
+ 585              	.LASF6:
+ 586 0000 6C6F6E67 		.ascii	"long long int\000"
+ 586      206C6F6E 
+ 586      6720696E 
+ 586      7400
+ 587              	.LASF10:
+ 588 000e 75696E74 		.ascii	"uint32\000"
+ 588      333200
+ 589              	.LASF24:
+ 590 0015 656E6162 		.ascii	"enableState\000"
+ 590      6C655374 
+ 590      61746500 
+ 591              	.LASF8:
+ 592 0021 756E7369 		.ascii	"unsigned int\000"
+ 592      676E6564 
+ 592      20696E74 
+ 592      00
+ 593              	.LASF23:
+ 594 002e 433A5C50 		.ascii	"C:\\Projects\\PSoC\\Bootloading_PSoC5_LP\\PSoc4_Mai"
+ 594      726F6A65 
+ 594      6374735C 
+ 594      50536F43 
+ 594      5C426F6F 
+ 595 005d 6E2E6379 		.ascii	"n.cydsn\000"
+ 595      64736E00 
+ 596              	.LASF20:
+ 597 0065 49444143 		.ascii	"IDAC_1_Wakeup\000"
+ 597      5F315F57 
+ 597      616B6575 
+ 597      7000
+ 598              	.LASF18:
+ 599 0073 49444143 		.ascii	"IDAC_1_Sleep\000"
+ 599      5F315F53 
+ 599      6C656570 
+ 599      00
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cc7eJWl8.s 			page 14
+
+
+ 600              	.LASF9:
+ 601 0080 75696E74 		.ascii	"uint8\000"
+ 601      3800
+ 602              	.LASF5:
+ 603 0086 6C6F6E67 		.ascii	"long unsigned int\000"
+ 603      20756E73 
+ 603      69676E65 
+ 603      6420696E 
+ 603      7400
+ 604              	.LASF7:
+ 605 0098 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 605      206C6F6E 
+ 605      6720756E 
+ 605      7369676E 
+ 605      65642069 
+ 606              	.LASF21:
+ 607 00af 474E5520 		.ascii	"GNU C 4.7.3 20130312 (release) [ARM/embedded-4_7-br"
+ 607      4320342E 
+ 607      372E3320 
+ 607      32303133 
+ 607      30333132 
+ 608 00e2 616E6368 		.ascii	"anch revision 196615]\000"
+ 608      20726576 
+ 608      6973696F 
+ 608      6E203139 
+ 608      36363135 
+ 609              	.LASF22:
+ 610 00f8 2E5C4765 		.ascii	".\\Generated_Source\\PSoC4\\IDAC_1_PM.c\000"
+ 610      6E657261 
+ 610      7465645F 
+ 610      536F7572 
+ 610      63655C50 
+ 611              	.LASF1:
+ 612 011d 756E7369 		.ascii	"unsigned char\000"
+ 612      676E6564 
+ 612      20636861 
+ 612      7200
+ 613              	.LASF13:
+ 614 012b 63686172 		.ascii	"char\000"
+ 614      00
+ 615              	.LASF4:
+ 616 0130 6C6F6E67 		.ascii	"long int\000"
+ 616      20696E74 
+ 616      00
+ 617              	.LASF12:
+ 618 0139 646F7562 		.ascii	"double\000"
+ 618      6C6500
+ 619              	.LASF14:
+ 620 0140 72656733 		.ascii	"reg32\000"
+ 620      3200
+ 621              	.LASF3:
+ 622 0146 73686F72 		.ascii	"short unsigned int\000"
+ 622      7420756E 
+ 622      7369676E 
+ 622      65642069 
+ 622      6E7400
+ 623              	.LASF0:
+ARM GAS  C:\Users\javier\AppData\Local\Temp\cc7eJWl8.s 			page 15
+
+
+ 624 0159 7369676E 		.ascii	"signed char\000"
+ 624      65642063 
+ 624      68617200 
+ 625              	.LASF11:
+ 626 0165 666C6F61 		.ascii	"float\000"
+ 626      7400
+ 627              	.LASF19:
+ 628 016b 49444143 		.ascii	"IDAC_1_RestoreConfig\000"
+ 628      5F315F52 
+ 628      6573746F 
+ 628      7265436F 
+ 628      6E666967 
+ 629              	.LASF17:
+ 630 0180 49444143 		.ascii	"IDAC_1_SaveConfig\000"
+ 630      5F315F53 
+ 630      61766543 
+ 630      6F6E6669 
+ 630      6700
+ 631              	.LASF2:
+ 632 0192 73686F72 		.ascii	"short int\000"
+ 632      7420696E 
+ 632      7400
+ 633              	.LASF16:
+ 634 019c 49444143 		.ascii	"IDAC_1_BACKUP_STRUCT\000"
+ 634      5F315F42 
+ 634      41434B55 
+ 634      505F5354 
+ 634      52554354 
+ 635              	.LASF25:
+ 636 01b1 49444143 		.ascii	"IDAC_1_backup\000"
+ 636      5F315F62 
+ 636      61636B75 
+ 636      7000
+ 637              	.LASF15:
+ 638 01bf 73697A65 		.ascii	"sizetype\000"
+ 638      74797065 
+ 638      00
+ 639              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.7.3 20130312 (release) [ARM/embedded-4_7-br

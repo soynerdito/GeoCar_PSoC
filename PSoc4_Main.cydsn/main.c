@@ -1,15 +1,23 @@
 /* ========================================
  *
- * Copyright YOUR COMPANY, THE YEAR
- * All Rights Reserved
- * UNPUBLISHED, LICENSED SOFTWARE.
- *
- * CONFIDENTIAL AND PROPRIETARY INFORMATION
- * WHICH IS THE PROPERTY OF your company.
+ * The following firmware was developed by Soynerdito
+ * 
+ * 
+ * You are free to:
+ * -To Share — to copy, distribute and transmit the work 
+ * -To Remix — to adapt the work 
  *
  * ========================================
-*/
-//#include <project.h>
+ */
+ 
+/* GeoCar Project source
+ * By Soynerdito
+ * Version 1
+ * Updated Use Github dates
+ *
+ * Refer to element14 Cypress Development Kit GeoCar blog for project descriptions
+ *
+ */
 
 #include <device.h>
 #include <stdio.h>            //definitions for all standard io functions
@@ -20,14 +28,27 @@
 #define PSOC5_MSG_MAX 60
 
 
-enum RUN_MODE { RECORDING, EXPORT_BLUE } runMode;
+enum RUN_MODE { RECORDING, EXPORT_BLUE, ALERT } runMode;
 //Bluetooth port
 void fetchBlueMsg();
 void initBluetooth();
 
+void setRunMode(enum RUN_MODE mode );
+
 //Buffer for PSOC5 Communication
 const int MAX_STR = 150;
 char psoc5_msg[PSOC5_MSG_MAX];
+
+//Connection GREEN BLUE RED
+// Color    B2 B1 B0
+// RED       1  1  0    = 6
+// BLUE      1  0  1    = 5
+// GREEN     0  1  1    = 3
+// NONE      1  1  1    = 7
+const int LED_RED   = 6;
+const int LED_BLUE  = 5;
+const int LED_GREEN = 3;
+const int LED_NONE  = 7;
 
 struct _ADC {
     uint16 X;
@@ -40,14 +61,15 @@ void send2PSoC5( char *msg );
 void initPSoC5();
 void exportData();
 
+/* Initialize Accelerometer ADC control */
 void initAccelerometer(){
-    /* Place your initialization/startup code here (e.g. MyInst_Start()) */
     ADC_ACCELEROMETER_Start();
     ADC_ACCELEROMETER_StartConvert();
     ADC_ACCELEROMETER_IsEndConversion( ADC_ACCELEROMETER_WAIT_FOR_RESULT); 
     
 }
 
+/* Reads ADC data from Accelerometer */
 void getAccelerometer( struct _ADC *out )
 {
     ADC_ACCELEROMETER_IsEndConversion( ADC_ACCELEROMETER_WAIT_FOR_RESULT); 
@@ -62,39 +84,46 @@ int buildMsg(struct _ADC *accelData, char outMsg[] ){
     return strlen(outMsg);
 }
 
+
 int main()
 {    
-    CyGlobalIntEnable;  /* Uncomment this line to enable global interrupts. */
+    /* Enables interrupts */
+    CyGlobalIntEnable;  
     
-    //Initialize Accelerometer
+    /* Initialize Accelerometer */
     initAccelerometer();
-    //Initialize PSoC5 communication channel
+    /*  Initialize PSoC5 communication channel */
     initPSoC5();
-    //Initialize Bluetooth
+    /*  Initialize Bluetooth    */
     initBluetooth();
-    
-    //Simple delay just for the sake of it
-    // allow other code on PSoC5 to start up, no special time
-    
-    
-    
+    /*  Delay just because - Allow PSoC5 to initialize as well    */
 	CyDelay(500);    
+    
     for(;;)
-    {            
-        //Check if there is something from bluetooth
+    {        
+        /*  Check if there is something from bluetooth */
         fetchBlueMsg();
 
-        if( runMode == EXPORT_BLUE )
-        {
-            // Send Message to PSoC5 and request flush!
-            exportData();
-        }else if( runMode == RECORDING )
-        {
-            getAccelerometer( &accStatus );
-            buildMsg(&accStatus, psoc5_msg);
-            send2PSoC5( psoc5_msg );
-            CyDelay(500);
-        }        
+        switch( runMode ){
+            case EXPORT_BLUE:
+            {
+                //TODO this code should not be needed here. Check on when message received.
+                //this Export Blue might be dead code
+                //Send Message to PSoC5 and request flush!
+                exportData();
+            }
+            break;
+            case RECORDING:
+            {
+                getAccelerometer( &accStatus );
+                buildMsg(&accStatus, psoc5_msg);
+                send2PSoC5( psoc5_msg );
+                CyDelay(500);
+            }
+            break;
+            default:
+            break;
+        }            
     }
     
     return 0;
@@ -129,15 +158,31 @@ void fetchBlueMsg()
 {    
     //handle all PSoc4Msg parsing of mesg
     inBlueChar = BLUE_GetChar();
-
-    if( inBlueChar == 'B' ){       
-        runMode = EXPORT_BLUE;    
-        exportData();
-        runMode = RECORDING;
-    }else if( inBlueChar == 0 ){        
-        runMode = RECORDING;
-    }        
+    switch( inBlueChar ){
+        case 'B':
+        {
+            setRunMode( EXPORT_BLUE );
+            exportData();                     
+            setRunMode( RECORDING );  
+        }
+        break;
+        case 'A':
+        {
+            setRunMode( ALERT );           
+        }
+        break;
+        case 0:
+        {
+            setRunMode( RECORDING );
+        }
+        break;
+        default:
+        break;
+        
+    }    
 }
+
+
 
 void exportData()
 {
@@ -156,8 +201,32 @@ void exportData()
         }
         BLUE_PutChar(inChar);        
     }
-    
-    
+}
+
+/* Configures the Running mode of the PSoC4 */
+void setRunMode(enum RUN_MODE mode )
+{
+    runMode = mode;
+    switch( mode ){
+        case EXPORT_BLUE:
+        {
+            OutStatus_Write(LED_BLUE);        
+        }
+        break;
+        case RECORDING:        
+        {
+            OutStatus_Write(LED_GREEN);
+        }
+        break;
+        case ALERT:
+        {
+            OutStatus_Write(LED_RED);
+        }
+        break;
+        default:
+            OutStatus_Write(LED_NONE);
+        break;
+    }
 }
 /* [] END OF FILE */
 

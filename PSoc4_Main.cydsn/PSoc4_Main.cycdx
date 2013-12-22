@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <blockRegMap version="1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://cypress.com/xsd/cyblockregmap cyblockregmap.xsd" xmlns="http://cypress.com/xsd/cyblockregmap">
-  <block name="Blue_Rx" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="OutStatus" BASE="0x0" SIZE="0x0" desc="" visible="true">
+    <register name="OutStatus_CONTROL_REG" address="0x400F0072" bitWidth="8" desc="" />
+  </block>
+  <block name="D_Blue" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="Resistor_Blue" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="D_3" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="Resistor_Red" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="VDD_2" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="D_2" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="Resistor_Green" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="VDD_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="VDD" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="Pin_BlueLED" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="Pin_GreenLED" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="Vin_Y" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="Vin_Z" BASE="0x0" SIZE="0x0" desc="" visible="true" />
   <block name="BLUE" BASE="0x0" SIZE="0x0" desc="UART" visible="true">
     <block name="IntClock" BASE="0x0" SIZE="0x0" desc="" visible="true" />
     <block name="VirtualMux_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
@@ -26,10 +41,6 @@
       <field name="BLUE_TX_STS_FIFO_NOT_FULL" from="3" to="3" access="R" resetVal="" desc="" />
     </register>
   </block>
-  <block name="cy_constant_2" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="Blue_Tx" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="Vin_Z" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="Vin" BASE="0x0" SIZE="0x0" desc="" visible="true" />
   <block name="PSOC5" BASE="0x0" SIZE="0x0" desc="Serial Communication Block" visible="true">
     <block name="miso_m_VM" BASE="0x0" SIZE="0x0" desc="" visible="true" />
     <block name="tx" BASE="0x0" SIZE="0x0" desc="" visible="true" />
@@ -344,7 +355,7 @@
       <field name="BREAK_DETECT" from="11" to="11" access="RW" resetVal="" desc="" />
     </register>
   </block>
-  <block name="Vin_Y" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="Vin" BASE="0x0" SIZE="0x0" desc="" visible="true" />
   <block name="ADC_ACCELEROMETER" BASE="0x0" SIZE="0x0" desc="Sequencing SAR ADC" visible="true">
     <block name="cy_analog_noconnect_18" BASE="0x0" SIZE="0x0" desc="" visible="true" />
     <block name="cy_analog_noconnect_17" BASE="0x0" SIZE="0x0" desc="" visible="true" />
@@ -747,4 +758,17 @@
       <field name="WOUND_RESOLUTION" from="1" to="0" access="R" resetVal="" desc="Maximum SAR resolution allowed" />
     </register>
   </block>
+  <block name="IDAC_1" BASE="0x0" SIZE="0x0" desc="IDAC" visible="true">
+    <block name="cy_psoc4_idac" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+    <block name="OneTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+    <register name="CSD_IDAC_POLARITY" address="0x40080004" bitWidth="32" desc=" CSD IDAC Polarity" />
+    <register name="CSD_IDAC" address="0x40080008" bitWidth="32" desc=" CSD IDAC register" />
+    <register name="CSD_TRIM1" address="0x4008FF00" bitWidth="32" desc=" CSD IDAC TRIM1" />
+    <register name="CSD_TRIM2" address="0x4008FF04" bitWidth="32" desc=" CSD IDAC TRIM2" />
+  </block>
+  <block name="Buzz" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="Pin_RedLED" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="Blue_Rx" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="Blue_Tx" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="cy_constant_2" BASE="0x0" SIZE="0x0" desc="" visible="true" />
 </blockRegMap>

@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cccQLrBH.s 			page 1
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccT4t89T.s 			page 1
 
 
    1              		.cpu cortex-m0
@@ -17,2688 +17,1058 @@ ARM GAS  C:\Users\javier\AppData\Local\Temp\cccQLrBH.s 			page 1
   14              		.text
   15              	.Ltext0:
   16              		.cfi_sections	.debug_frame
-  17              		.global	Buzz_initVar
-  18              		.bss
-  19              		.type	Buzz_initVar, %object
-  20              		.size	Buzz_initVar, 1
-  21              	Buzz_initVar:
-  22 0000 00       		.space	1
-  23              		.section	.text.Buzz_Start,"ax",%progbits
-  24              		.align	2
-  25              		.global	Buzz_Start
-  26              		.code	16
-  27              		.thumb_func
-  28              		.type	Buzz_Start, %function
-  29              	Buzz_Start:
-  30              	.LFB0:
-  31              		.file 1 ".\\Generated_Source\\PSoC4\\Buzz.c"
+  17              		.section	.text.Buzz_Write,"ax",%progbits
+  18              		.align	2
+  19              		.global	Buzz_Write
+  20              		.code	16
+  21              		.thumb_func
+  22              		.type	Buzz_Write, %function
+  23              	Buzz_Write:
+  24              	.LFB0:
+  25              		.file 1 ".\\Generated_Source\\PSoC4\\Buzz.c"
    1:.\Generated_Source\PSoC4/Buzz.c **** /*******************************************************************************
    2:.\Generated_Source\PSoC4/Buzz.c **** * File Name: Buzz.c  
-   3:.\Generated_Source\PSoC4/Buzz.c **** * Version 3.0
+   3:.\Generated_Source\PSoC4/Buzz.c **** * Version 1.90
    4:.\Generated_Source\PSoC4/Buzz.c **** *
    5:.\Generated_Source\PSoC4/Buzz.c **** * Description:
-   6:.\Generated_Source\PSoC4/Buzz.c **** *  The PWM User Module consist of an 8 or 16-bit counter with two 8 or 16-bit
-   7:.\Generated_Source\PSoC4/Buzz.c **** *  comparitors. Each instance of this user module is capable of generating
-   8:.\Generated_Source\PSoC4/Buzz.c **** *  two PWM outputs with the same period. The pulse width is selectable between
-   9:.\Generated_Source\PSoC4/Buzz.c **** *  1 and 255/65535. The period is selectable between 2 and 255/65536 clocks. 
-  10:.\Generated_Source\PSoC4/Buzz.c **** *  The compare value output may be configured to be active when the present 
-  11:.\Generated_Source\PSoC4/Buzz.c **** *  counter is less than or less than/equal to the compare value.
-  12:.\Generated_Source\PSoC4/Buzz.c **** *  A terminal count output is also provided. It generates a pulse one clock
-  13:.\Generated_Source\PSoC4/Buzz.c **** *  width wide when the counter is equal to zero.
-  14:.\Generated_Source\PSoC4/Buzz.c **** *
-  15:.\Generated_Source\PSoC4/Buzz.c **** * Note:
-  16:.\Generated_Source\PSoC4/Buzz.c **** *
-  17:.\Generated_Source\PSoC4/Buzz.c **** *******************************************************************************
-  18:.\Generated_Source\PSoC4/Buzz.c **** * Copyright 2008-2012, Cypress Semiconductor Corporation.  All rights reserved.
-  19:.\Generated_Source\PSoC4/Buzz.c **** * You may use this file only in accordance with the license, terms, conditions, 
-  20:.\Generated_Source\PSoC4/Buzz.c **** * disclaimers, and limitations in the end user license agreement accompanying 
-  21:.\Generated_Source\PSoC4/Buzz.c **** * the software package with which this file was provided.
-  22:.\Generated_Source\PSoC4/Buzz.c **** ********************************************************************************/
-  23:.\Generated_Source\PSoC4/Buzz.c **** 
-  24:.\Generated_Source\PSoC4/Buzz.c **** #include "cytypes.h"
-  25:.\Generated_Source\PSoC4/Buzz.c **** #include "Buzz.h"
+   6:.\Generated_Source\PSoC4/Buzz.c **** *  This file contains API to enable firmware control of a Pins component.
+   7:.\Generated_Source\PSoC4/Buzz.c **** *
+   8:.\Generated_Source\PSoC4/Buzz.c **** * Note:
+   9:.\Generated_Source\PSoC4/Buzz.c **** *
+  10:.\Generated_Source\PSoC4/Buzz.c **** ********************************************************************************
+  11:.\Generated_Source\PSoC4/Buzz.c **** * Copyright 2008-2012, Cypress Semiconductor Corporation.  All rights reserved.
+  12:.\Generated_Source\PSoC4/Buzz.c **** * You may use this file only in accordance with the license, terms, conditions, 
+  13:.\Generated_Source\PSoC4/Buzz.c **** * disclaimers, and limitations in the end user license agreement accompanying 
+  14:.\Generated_Source\PSoC4/Buzz.c **** * the software package with which this file was provided.
+  15:.\Generated_Source\PSoC4/Buzz.c **** *******************************************************************************/
+  16:.\Generated_Source\PSoC4/Buzz.c **** 
+  17:.\Generated_Source\PSoC4/Buzz.c **** #include "cytypes.h"
+  18:.\Generated_Source\PSoC4/Buzz.c **** #include "Buzz.h"
+  19:.\Generated_Source\PSoC4/Buzz.c **** 
+  20:.\Generated_Source\PSoC4/Buzz.c **** #define SetP4PinDriveMode(shift, mode)  \
+  21:.\Generated_Source\PSoC4/Buzz.c ****     do { \
+  22:.\Generated_Source\PSoC4/Buzz.c ****         Buzz_PC =   (Buzz_PC & \
+  23:.\Generated_Source\PSoC4/Buzz.c ****                                 (uint32)(~(uint32)(Buzz_DRIVE_MODE_IND_MASK << (Buzz_DRIVE_MODE_BIT
+  24:.\Generated_Source\PSoC4/Buzz.c ****                                 (uint32)((uint32)(mode) << (Buzz_DRIVE_MODE_BITS * (shift))); \
+  25:.\Generated_Source\PSoC4/Buzz.c ****     } while (0)
   26:.\Generated_Source\PSoC4/Buzz.c **** 
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cccQLrBH.s 			page 2
+  27:.\Generated_Source\PSoC4/Buzz.c **** 
+  28:.\Generated_Source\PSoC4/Buzz.c **** /*******************************************************************************
+  29:.\Generated_Source\PSoC4/Buzz.c **** * Function Name: Buzz_Write
+  30:.\Generated_Source\PSoC4/Buzz.c **** ********************************************************************************
+  31:.\Generated_Source\PSoC4/Buzz.c **** *
+  32:.\Generated_Source\PSoC4/Buzz.c **** * Summary:
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccT4t89T.s 			page 2
 
 
-  27:.\Generated_Source\PSoC4/Buzz.c **** uint8 Buzz_initVar = 0u;
-  28:.\Generated_Source\PSoC4/Buzz.c **** 
-  29:.\Generated_Source\PSoC4/Buzz.c **** 
-  30:.\Generated_Source\PSoC4/Buzz.c **** /*******************************************************************************
-  31:.\Generated_Source\PSoC4/Buzz.c **** * Function Name: Buzz_Start
-  32:.\Generated_Source\PSoC4/Buzz.c **** ********************************************************************************
-  33:.\Generated_Source\PSoC4/Buzz.c **** *
-  34:.\Generated_Source\PSoC4/Buzz.c **** * Summary:
-  35:.\Generated_Source\PSoC4/Buzz.c **** *  The start function initializes the pwm with the default values, the 
-  36:.\Generated_Source\PSoC4/Buzz.c **** *  enables the counter to begin counting.  It does not enable interrupts,
-  37:.\Generated_Source\PSoC4/Buzz.c **** *  the EnableInt command should be called if interrupt generation is required.
-  38:.\Generated_Source\PSoC4/Buzz.c **** *
-  39:.\Generated_Source\PSoC4/Buzz.c **** * Parameters:  
-  40:.\Generated_Source\PSoC4/Buzz.c **** *  None  
-  41:.\Generated_Source\PSoC4/Buzz.c **** *
-  42:.\Generated_Source\PSoC4/Buzz.c **** * Return: 
-  43:.\Generated_Source\PSoC4/Buzz.c **** *  None
-  44:.\Generated_Source\PSoC4/Buzz.c **** *
-  45:.\Generated_Source\PSoC4/Buzz.c **** * Global variables:
-  46:.\Generated_Source\PSoC4/Buzz.c **** *  Buzz_initVar: Is modified when this function is called for the 
-  47:.\Generated_Source\PSoC4/Buzz.c **** *   first time. Is used to ensure that initialization happens only once.
-  48:.\Generated_Source\PSoC4/Buzz.c **** *
-  49:.\Generated_Source\PSoC4/Buzz.c **** *******************************************************************************/
-  50:.\Generated_Source\PSoC4/Buzz.c **** void Buzz_Start(void) 
-  51:.\Generated_Source\PSoC4/Buzz.c **** {
-  32              		.loc 1 51 0
-  33              		.cfi_startproc
-  34 0000 80B5     		push	{r7, lr}
-  35              	.LCFI0:
-  36              		.cfi_def_cfa_offset 8
-  37              		.cfi_offset 7, -8
-  38              		.cfi_offset 14, -4
-  39 0002 00AF     		add	r7, sp, #0
-  40              	.LCFI1:
-  41              		.cfi_def_cfa_register 7
-  52:.\Generated_Source\PSoC4/Buzz.c ****     /* If not Initialized then initialize all required hardware and software */
-  53:.\Generated_Source\PSoC4/Buzz.c ****     if(Buzz_initVar == 0u)
-  42              		.loc 1 53 0
-  43 0004 064B     		ldr	r3, .L3
-  44 0006 1B78     		ldrb	r3, [r3]
-  45 0008 002B     		cmp	r3, #0
-  46 000a 04D1     		bne	.L2
-  54:.\Generated_Source\PSoC4/Buzz.c ****     {
-  55:.\Generated_Source\PSoC4/Buzz.c ****         Buzz_Init();
-  47              		.loc 1 55 0
-  48 000c FFF7FEFF 		bl	Buzz_Init
-  56:.\Generated_Source\PSoC4/Buzz.c ****         Buzz_initVar = 1u;
-  49              		.loc 1 56 0
-  50 0010 034B     		ldr	r3, .L3
-  51 0012 0122     		mov	r2, #1
-  52 0014 1A70     		strb	r2, [r3]
-  53              	.L2:
-  57:.\Generated_Source\PSoC4/Buzz.c ****     }
-  58:.\Generated_Source\PSoC4/Buzz.c ****     Buzz_Enable();
-  54              		.loc 1 58 0
-  55 0016 FFF7FEFF 		bl	Buzz_Enable
-  59:.\Generated_Source\PSoC4/Buzz.c **** 
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cccQLrBH.s 			page 3
+  33:.\Generated_Source\PSoC4/Buzz.c **** *  Assign a new value to the digital port's data output register.  
+  34:.\Generated_Source\PSoC4/Buzz.c **** *
+  35:.\Generated_Source\PSoC4/Buzz.c **** * Parameters:  
+  36:.\Generated_Source\PSoC4/Buzz.c **** *  prtValue:  The value to be assigned to the Digital Port. 
+  37:.\Generated_Source\PSoC4/Buzz.c **** *
+  38:.\Generated_Source\PSoC4/Buzz.c **** * Return: 
+  39:.\Generated_Source\PSoC4/Buzz.c **** *  None 
+  40:.\Generated_Source\PSoC4/Buzz.c **** *  
+  41:.\Generated_Source\PSoC4/Buzz.c **** *******************************************************************************/
+  42:.\Generated_Source\PSoC4/Buzz.c **** void Buzz_Write(uint8 value) 
+  43:.\Generated_Source\PSoC4/Buzz.c **** {
+  26              		.loc 1 43 0
+  27              		.cfi_startproc
+  28 0000 80B5     		push	{r7, lr}
+  29              	.LCFI0:
+  30              		.cfi_def_cfa_offset 8
+  31              		.cfi_offset 7, -8
+  32              		.cfi_offset 14, -4
+  33 0002 84B0     		sub	sp, sp, #16
+  34              	.LCFI1:
+  35              		.cfi_def_cfa_offset 24
+  36 0004 00AF     		add	r7, sp, #0
+  37              	.LCFI2:
+  38              		.cfi_def_cfa_register 7
+  39 0006 021C     		mov	r2, r0
+  40 0008 FB1D     		add	r3, r7, #7
+  41 000a 1A70     		strb	r2, [r3]
+  44:.\Generated_Source\PSoC4/Buzz.c ****     uint8 drVal = (uint8)(Buzz_DR & (uint8)(~Buzz_MASK));
+  42              		.loc 1 44 0
+  43 000c 0E4B     		ldr	r3, .L2
+  44 000e 1B68     		ldr	r3, [r3]
+  45 0010 DAB2     		uxtb	r2, r3
+  46 0012 3B1C     		mov	r3, r7
+  47 0014 0F33     		add	r3, r3, #15
+  48 0016 2021     		mov	r1, #32
+  49 0018 8A43     		bic	r2, r1
+  50 001a 1A70     		strb	r2, [r3]
+  45:.\Generated_Source\PSoC4/Buzz.c ****     drVal = (drVal | ((uint8)(value << Buzz_SHIFT) & Buzz_MASK));
+  51              		.loc 1 45 0
+  52 001c FB1D     		add	r3, r7, #7
+  53 001e 1B78     		ldrb	r3, [r3]
+  54 0020 5B01     		lsl	r3, r3, #5
+  55 0022 DAB2     		uxtb	r2, r3
+  56 0024 2023     		mov	r3, #32
+  57 0026 1340     		and	r3, r2
+  58 0028 D9B2     		uxtb	r1, r3
+  59 002a 3B1C     		mov	r3, r7
+  60 002c 0F33     		add	r3, r3, #15
+  61 002e 3A1C     		mov	r2, r7
+  62 0030 0F32     		add	r2, r2, #15
+  63 0032 1278     		ldrb	r2, [r2]
+  64 0034 0A43     		orr	r2, r1
+  65 0036 1A70     		strb	r2, [r3]
+  46:.\Generated_Source\PSoC4/Buzz.c ****     Buzz_DR = (uint32)drVal;
+  66              		.loc 1 46 0
+  67 0038 034B     		ldr	r3, .L2
+  68 003a 3A1C     		mov	r2, r7
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccT4t89T.s 			page 3
 
 
-  60:.\Generated_Source\PSoC4/Buzz.c **** }
-  56              		.loc 1 60 0
-  57 001a BD46     		mov	sp, r7
-  58              		@ sp needed for prologue
-  59 001c 80BD     		pop	{r7, pc}
-  60              	.L4:
-  61 001e C046     		.align	2
-  62              	.L3:
-  63 0020 00000000 		.word	Buzz_initVar
-  64              		.cfi_endproc
-  65              	.LFE0:
-  66              		.size	Buzz_Start, .-Buzz_Start
-  67              		.section	.text.Buzz_Init,"ax",%progbits
-  68              		.align	2
-  69              		.global	Buzz_Init
-  70              		.code	16
-  71              		.thumb_func
-  72              		.type	Buzz_Init, %function
-  73              	Buzz_Init:
-  74              	.LFB1:
-  61:.\Generated_Source\PSoC4/Buzz.c **** 
-  62:.\Generated_Source\PSoC4/Buzz.c **** 
-  63:.\Generated_Source\PSoC4/Buzz.c **** /*******************************************************************************
-  64:.\Generated_Source\PSoC4/Buzz.c **** * Function Name: Buzz_Init
-  65:.\Generated_Source\PSoC4/Buzz.c **** ********************************************************************************
-  66:.\Generated_Source\PSoC4/Buzz.c **** *
-  67:.\Generated_Source\PSoC4/Buzz.c **** * Summary:
-  68:.\Generated_Source\PSoC4/Buzz.c **** *  Initialize component's parameters to the parameters set by user in the 
-  69:.\Generated_Source\PSoC4/Buzz.c **** *  customizer of the component placed onto schematic. Usually called in 
-  70:.\Generated_Source\PSoC4/Buzz.c **** *  Buzz_Start().
-  71:.\Generated_Source\PSoC4/Buzz.c **** *
-  72:.\Generated_Source\PSoC4/Buzz.c **** * Parameters:  
-  73:.\Generated_Source\PSoC4/Buzz.c **** *  None
-  74:.\Generated_Source\PSoC4/Buzz.c **** *
-  75:.\Generated_Source\PSoC4/Buzz.c **** * Return: 
-  76:.\Generated_Source\PSoC4/Buzz.c **** *  None
+  69 003c 0F32     		add	r2, r2, #15
+  70 003e 1278     		ldrb	r2, [r2]
+  71 0040 1A60     		str	r2, [r3]
+  47:.\Generated_Source\PSoC4/Buzz.c **** }
+  72              		.loc 1 47 0
+  73 0042 BD46     		mov	sp, r7
+  74 0044 04B0     		add	sp, sp, #16
+  75              		@ sp needed for prologue
+  76 0046 80BD     		pop	{r7, pc}
+  77              	.L3:
+  78              		.align	2
+  79              	.L2:
+  80 0048 00020440 		.word	1074004480
+  81              		.cfi_endproc
+  82              	.LFE0:
+  83              		.size	Buzz_Write, .-Buzz_Write
+  84              		.section	.text.Buzz_SetDriveMode,"ax",%progbits
+  85              		.align	2
+  86              		.global	Buzz_SetDriveMode
+  87              		.code	16
+  88              		.thumb_func
+  89              		.type	Buzz_SetDriveMode, %function
+  90              	Buzz_SetDriveMode:
+  91              	.LFB1:
+  48:.\Generated_Source\PSoC4/Buzz.c **** 
+  49:.\Generated_Source\PSoC4/Buzz.c **** 
+  50:.\Generated_Source\PSoC4/Buzz.c **** /*******************************************************************************
+  51:.\Generated_Source\PSoC4/Buzz.c **** * Function Name: Buzz_SetDriveMode
+  52:.\Generated_Source\PSoC4/Buzz.c **** ********************************************************************************
+  53:.\Generated_Source\PSoC4/Buzz.c **** *
+  54:.\Generated_Source\PSoC4/Buzz.c **** * Summary:
+  55:.\Generated_Source\PSoC4/Buzz.c **** *  Change the drive mode on the pins of the port.
+  56:.\Generated_Source\PSoC4/Buzz.c **** * 
+  57:.\Generated_Source\PSoC4/Buzz.c **** * Parameters:  
+  58:.\Generated_Source\PSoC4/Buzz.c **** *  mode:  Change the pins to this drive mode.
+  59:.\Generated_Source\PSoC4/Buzz.c **** *
+  60:.\Generated_Source\PSoC4/Buzz.c **** * Return: 
+  61:.\Generated_Source\PSoC4/Buzz.c **** *  None
+  62:.\Generated_Source\PSoC4/Buzz.c **** *
+  63:.\Generated_Source\PSoC4/Buzz.c **** *******************************************************************************/
+  64:.\Generated_Source\PSoC4/Buzz.c **** void Buzz_SetDriveMode(uint8 mode) 
+  65:.\Generated_Source\PSoC4/Buzz.c **** {
+  92              		.loc 1 65 0
+  93              		.cfi_startproc
+  94 0000 80B5     		push	{r7, lr}
+  95              	.LCFI3:
+  96              		.cfi_def_cfa_offset 8
+  97              		.cfi_offset 7, -8
+  98              		.cfi_offset 14, -4
+  99 0002 82B0     		sub	sp, sp, #8
+ 100              	.LCFI4:
+ 101              		.cfi_def_cfa_offset 16
+ 102 0004 00AF     		add	r7, sp, #0
+ 103              	.LCFI5:
+ 104              		.cfi_def_cfa_register 7
+ 105 0006 021C     		mov	r2, r0
+ 106 0008 FB1D     		add	r3, r7, #7
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccT4t89T.s 			page 4
+
+
+ 107 000a 1A70     		strb	r2, [r3]
+  66:.\Generated_Source\PSoC4/Buzz.c **** 	SetP4PinDriveMode(Buzz__0__SHIFT, mode);
+ 108              		.loc 1 66 0
+ 109 000c 064B     		ldr	r3, .L5
+ 110 000e 064A     		ldr	r2, .L5
+ 111 0010 1168     		ldr	r1, [r2]
+ 112 0012 064A     		ldr	r2, .L5+4
+ 113 0014 1140     		and	r1, r2
+ 114 0016 FA1D     		add	r2, r7, #7
+ 115 0018 1278     		ldrb	r2, [r2]
+ 116 001a D203     		lsl	r2, r2, #15
+ 117 001c 0A43     		orr	r2, r1
+ 118 001e 1A60     		str	r2, [r3]
+  67:.\Generated_Source\PSoC4/Buzz.c **** }
+ 119              		.loc 1 67 0
+ 120 0020 BD46     		mov	sp, r7
+ 121 0022 02B0     		add	sp, sp, #8
+ 122              		@ sp needed for prologue
+ 123 0024 80BD     		pop	{r7, pc}
+ 124              	.L6:
+ 125 0026 C046     		.align	2
+ 126              	.L5:
+ 127 0028 08020440 		.word	1074004488
+ 128 002c FF7FFCFF 		.word	-229377
+ 129              		.cfi_endproc
+ 130              	.LFE1:
+ 131              		.size	Buzz_SetDriveMode, .-Buzz_SetDriveMode
+ 132              		.section	.text.Buzz_Read,"ax",%progbits
+ 133              		.align	2
+ 134              		.global	Buzz_Read
+ 135              		.code	16
+ 136              		.thumb_func
+ 137              		.type	Buzz_Read, %function
+ 138              	Buzz_Read:
+ 139              	.LFB2:
+  68:.\Generated_Source\PSoC4/Buzz.c **** 
+  69:.\Generated_Source\PSoC4/Buzz.c **** 
+  70:.\Generated_Source\PSoC4/Buzz.c **** /*******************************************************************************
+  71:.\Generated_Source\PSoC4/Buzz.c **** * Function Name: Buzz_Read
+  72:.\Generated_Source\PSoC4/Buzz.c **** ********************************************************************************
+  73:.\Generated_Source\PSoC4/Buzz.c **** *
+  74:.\Generated_Source\PSoC4/Buzz.c **** * Summary:
+  75:.\Generated_Source\PSoC4/Buzz.c **** *  Read the current value on the pins of the Digital Port in right justified 
+  76:.\Generated_Source\PSoC4/Buzz.c **** *  form.
   77:.\Generated_Source\PSoC4/Buzz.c **** *
-  78:.\Generated_Source\PSoC4/Buzz.c **** *******************************************************************************/
-  79:.\Generated_Source\PSoC4/Buzz.c **** void Buzz_Init(void) 
-  80:.\Generated_Source\PSoC4/Buzz.c **** {
-  75              		.loc 1 80 0
-  76              		.cfi_startproc
-  77 0000 80B5     		push	{r7, lr}
-  78              	.LCFI2:
-  79              		.cfi_def_cfa_offset 8
-  80              		.cfi_offset 7, -8
-  81              		.cfi_offset 14, -4
-  82 0002 82B0     		sub	sp, sp, #8
-  83              	.LCFI3:
-  84              		.cfi_def_cfa_offset 16
-  85 0004 00AF     		add	r7, sp, #0
-  86              	.LCFI4:
-  87              		.cfi_def_cfa_register 7
-  81:.\Generated_Source\PSoC4/Buzz.c ****     #if (Buzz_UsingFixedFunction || Buzz_UseControl)
-  82:.\Generated_Source\PSoC4/Buzz.c ****         uint8 ctrl;
-  83:.\Generated_Source\PSoC4/Buzz.c ****     #endif /* (Buzz_UsingFixedFunction || Buzz_UseControl) */
-  84:.\Generated_Source\PSoC4/Buzz.c ****     
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cccQLrBH.s 			page 4
-
-
-  85:.\Generated_Source\PSoC4/Buzz.c ****     #if(!Buzz_UsingFixedFunction) 
-  86:.\Generated_Source\PSoC4/Buzz.c ****         #if(Buzz_UseStatus)
-  87:.\Generated_Source\PSoC4/Buzz.c ****             /* Interrupt State Backup for Critical Region*/
-  88:.\Generated_Source\PSoC4/Buzz.c ****             uint8 Buzz_interruptState;
-  89:.\Generated_Source\PSoC4/Buzz.c ****         #endif /* (Buzz_UseStatus) */
-  90:.\Generated_Source\PSoC4/Buzz.c ****     #endif /* (!Buzz_UsingFixedFunction) */
-  91:.\Generated_Source\PSoC4/Buzz.c ****     
-  92:.\Generated_Source\PSoC4/Buzz.c ****     #if (Buzz_UsingFixedFunction)
-  93:.\Generated_Source\PSoC4/Buzz.c ****         /* You are allowed to write the compare value (FF only) */
-  94:.\Generated_Source\PSoC4/Buzz.c ****         Buzz_CONTROL |= Buzz_CFG0_MODE;
-  95:.\Generated_Source\PSoC4/Buzz.c ****         #if (Buzz_DeadBand2_4)
-  96:.\Generated_Source\PSoC4/Buzz.c ****             Buzz_CONTROL |= Buzz_CFG0_DB;
-  97:.\Generated_Source\PSoC4/Buzz.c ****         #endif /* (Buzz_DeadBand2_4) */
-  98:.\Generated_Source\PSoC4/Buzz.c ****                 
-  99:.\Generated_Source\PSoC4/Buzz.c ****         ctrl = Buzz_CONTROL3 & ((uint8 )(~Buzz_CTRL_CMPMODE1_MASK));
- 100:.\Generated_Source\PSoC4/Buzz.c ****         Buzz_CONTROL3 = ctrl | Buzz_DEFAULT_COMPARE1_MODE;
- 101:.\Generated_Source\PSoC4/Buzz.c ****         
- 102:.\Generated_Source\PSoC4/Buzz.c ****          /* Clear and Set SYNCTC and SYNCCMP bits of RT1 register */
- 103:.\Generated_Source\PSoC4/Buzz.c ****         Buzz_RT1 &= ((uint8)(~Buzz_RT1_MASK));
- 104:.\Generated_Source\PSoC4/Buzz.c ****         Buzz_RT1 |= Buzz_SYNC;     
- 105:.\Generated_Source\PSoC4/Buzz.c ****                 
- 106:.\Generated_Source\PSoC4/Buzz.c ****         /*Enable DSI Sync all all inputs of the PWM*/
- 107:.\Generated_Source\PSoC4/Buzz.c ****         Buzz_RT1 &= ((uint8)(~Buzz_SYNCDSI_MASK));
- 108:.\Generated_Source\PSoC4/Buzz.c ****         Buzz_RT1 |= Buzz_SYNCDSI_EN;
- 109:.\Generated_Source\PSoC4/Buzz.c ****        
- 110:.\Generated_Source\PSoC4/Buzz.c ****     #elif (Buzz_UseControl)
- 111:.\Generated_Source\PSoC4/Buzz.c ****         /* Set the default compare mode defined in the parameter */
- 112:.\Generated_Source\PSoC4/Buzz.c ****         ctrl = Buzz_CONTROL & ((uint8)(~Buzz_CTRL_CMPMODE2_MASK)) & ((uint8)(~Buzz_CTRL_CMPMODE1_MA
-  88              		.loc 1 112 0
-  89 0006 164B     		ldr	r3, .L6
-  90 0008 1B78     		ldrb	r3, [r3]
-  91 000a DAB2     		uxtb	r2, r3
-  92 000c FB1D     		add	r3, r7, #7
-  93 000e 3F21     		mov	r1, #63
-  94 0010 8A43     		bic	r2, r1
-  95 0012 1A70     		strb	r2, [r3]
- 113:.\Generated_Source\PSoC4/Buzz.c ****         Buzz_CONTROL = ctrl | Buzz_DEFAULT_COMPARE2_MODE | 
-  96              		.loc 1 113 0
-  97 0014 124B     		ldr	r3, .L6
-  98 0016 FA1D     		add	r2, r7, #7
-  99 0018 1278     		ldrb	r2, [r2]
- 100 001a 0921     		mov	r1, #9
- 101 001c 0A43     		orr	r2, r1
- 102 001e D2B2     		uxtb	r2, r2
- 103 0020 1A70     		strb	r2, [r3]
- 114:.\Generated_Source\PSoC4/Buzz.c ****                                    Buzz_DEFAULT_COMPARE1_MODE;
- 115:.\Generated_Source\PSoC4/Buzz.c ****     #endif /* (Buzz_UsingFixedFunction) */
- 116:.\Generated_Source\PSoC4/Buzz.c ****         
- 117:.\Generated_Source\PSoC4/Buzz.c ****     #if (!Buzz_UsingFixedFunction)
- 118:.\Generated_Source\PSoC4/Buzz.c ****         #if (Buzz_Resolution == 8)
- 119:.\Generated_Source\PSoC4/Buzz.c ****             /* Set FIFO 0 to 1 byte register for period*/
- 120:.\Generated_Source\PSoC4/Buzz.c ****             Buzz_AUX_CONTROLDP0 |= (Buzz_AUX_CTRL_FIFO0_CLR);
- 121:.\Generated_Source\PSoC4/Buzz.c ****         #else /* (Buzz_Resolution == 16)*/
- 122:.\Generated_Source\PSoC4/Buzz.c ****             /* Set FIFO 0 to 1 byte register for period */
- 123:.\Generated_Source\PSoC4/Buzz.c ****             Buzz_AUX_CONTROLDP0 |= (Buzz_AUX_CTRL_FIFO0_CLR);
- 104              		.loc 1 123 0
- 105 0022 104B     		ldr	r3, .L6+4
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cccQLrBH.s 			page 5
-
-
- 106 0024 0F4A     		ldr	r2, .L6+4
- 107 0026 1278     		ldrb	r2, [r2]
- 108 0028 D2B2     		uxtb	r2, r2
- 109 002a 0121     		mov	r1, #1
- 110 002c 0A43     		orr	r2, r1
- 111 002e D2B2     		uxtb	r2, r2
- 112 0030 1A70     		strb	r2, [r3]
- 124:.\Generated_Source\PSoC4/Buzz.c ****             Buzz_AUX_CONTROLDP1 |= (Buzz_AUX_CTRL_FIFO0_CLR);
- 113              		.loc 1 124 0
- 114 0032 0D4B     		ldr	r3, .L6+8
- 115 0034 0C4A     		ldr	r2, .L6+8
- 116 0036 1278     		ldrb	r2, [r2]
- 117 0038 D2B2     		uxtb	r2, r2
- 118 003a 0121     		mov	r1, #1
- 119 003c 0A43     		orr	r2, r1
- 120 003e D2B2     		uxtb	r2, r2
- 121 0040 1A70     		strb	r2, [r3]
- 125:.\Generated_Source\PSoC4/Buzz.c ****         #endif /* (Buzz_Resolution == 8) */
- 126:.\Generated_Source\PSoC4/Buzz.c **** 
- 127:.\Generated_Source\PSoC4/Buzz.c ****         Buzz_WriteCounter(Buzz_INIT_PERIOD_VALUE);
- 122              		.loc 1 127 0
- 123 0042 0A4B     		ldr	r3, .L6+12
- 124 0044 181C     		mov	r0, r3
- 125 0046 FFF7FEFF 		bl	Buzz_WriteCounter
- 128:.\Generated_Source\PSoC4/Buzz.c ****     #endif /* (!Buzz_UsingFixedFunction) */
- 129:.\Generated_Source\PSoC4/Buzz.c ****         
- 130:.\Generated_Source\PSoC4/Buzz.c ****     Buzz_WritePeriod(Buzz_INIT_PERIOD_VALUE);
- 126              		.loc 1 130 0
- 127 004a 084B     		ldr	r3, .L6+12
- 128 004c 181C     		mov	r0, r3
- 129 004e FFF7FEFF 		bl	Buzz_WritePeriod
- 131:.\Generated_Source\PSoC4/Buzz.c **** 
- 132:.\Generated_Source\PSoC4/Buzz.c ****         #if (Buzz_UseOneCompareMode)
- 133:.\Generated_Source\PSoC4/Buzz.c ****             Buzz_WriteCompare(Buzz_INIT_COMPARE_VALUE1);
- 130              		.loc 1 133 0
- 131 0052 074B     		ldr	r3, .L6+16
- 132 0054 181C     		mov	r0, r3
- 133 0056 FFF7FEFF 		bl	Buzz_WriteCompare
- 134:.\Generated_Source\PSoC4/Buzz.c ****         #else
- 135:.\Generated_Source\PSoC4/Buzz.c ****             Buzz_WriteCompare1(Buzz_INIT_COMPARE_VALUE1);
- 136:.\Generated_Source\PSoC4/Buzz.c ****             Buzz_WriteCompare2(Buzz_INIT_COMPARE_VALUE2);
- 137:.\Generated_Source\PSoC4/Buzz.c ****         #endif /* (Buzz_UseOneCompareMode) */
- 138:.\Generated_Source\PSoC4/Buzz.c ****         
- 139:.\Generated_Source\PSoC4/Buzz.c ****         #if (Buzz_KillModeMinTime)
- 140:.\Generated_Source\PSoC4/Buzz.c ****             Buzz_WriteKillTime(Buzz_MinimumKillTime);
- 141:.\Generated_Source\PSoC4/Buzz.c ****         #endif /* (Buzz_KillModeMinTime) */
- 142:.\Generated_Source\PSoC4/Buzz.c ****         
- 143:.\Generated_Source\PSoC4/Buzz.c ****         #if (Buzz_DeadBandUsed)
- 144:.\Generated_Source\PSoC4/Buzz.c ****             Buzz_WriteDeadTime(Buzz_INIT_DEAD_TIME);
- 145:.\Generated_Source\PSoC4/Buzz.c ****         #endif /* (Buzz_DeadBandUsed) */
- 146:.\Generated_Source\PSoC4/Buzz.c **** 
- 147:.\Generated_Source\PSoC4/Buzz.c ****     #if (Buzz_UseStatus || Buzz_UsingFixedFunction)
- 148:.\Generated_Source\PSoC4/Buzz.c ****         Buzz_SetInterruptMode(Buzz_INIT_INTERRUPTS_MODE);
- 149:.\Generated_Source\PSoC4/Buzz.c ****     #endif /* (Buzz_UseStatus || Buzz_UsingFixedFunction) */
- 150:.\Generated_Source\PSoC4/Buzz.c ****         
- 151:.\Generated_Source\PSoC4/Buzz.c ****     #if (Buzz_UsingFixedFunction)
- 152:.\Generated_Source\PSoC4/Buzz.c ****         /* Globally Enable the Fixed Function Block chosen */
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cccQLrBH.s 			page 6
-
-
- 153:.\Generated_Source\PSoC4/Buzz.c ****         Buzz_GLOBAL_ENABLE |= Buzz_BLOCK_EN_MASK;
- 154:.\Generated_Source\PSoC4/Buzz.c ****         /* Set the Interrupt source to come from the status register */
- 155:.\Generated_Source\PSoC4/Buzz.c ****         Buzz_CONTROL2 |= Buzz_CTRL2_IRQ_SEL;
- 156:.\Generated_Source\PSoC4/Buzz.c ****     #else
- 157:.\Generated_Source\PSoC4/Buzz.c ****         #if(Buzz_UseStatus)
- 158:.\Generated_Source\PSoC4/Buzz.c ****             
- 159:.\Generated_Source\PSoC4/Buzz.c ****             /* CyEnterCriticalRegion and CyExitCriticalRegion are used to mark following region cri
- 160:.\Generated_Source\PSoC4/Buzz.c ****             /* Enter Critical Region*/
- 161:.\Generated_Source\PSoC4/Buzz.c ****             Buzz_interruptState = CyEnterCriticalSection();
- 162:.\Generated_Source\PSoC4/Buzz.c ****             /* Use the interrupt output of the status register for IRQ output */
- 163:.\Generated_Source\PSoC4/Buzz.c ****             Buzz_STATUS_AUX_CTRL |= Buzz_STATUS_ACTL_INT_EN_MASK;
- 164:.\Generated_Source\PSoC4/Buzz.c ****             
- 165:.\Generated_Source\PSoC4/Buzz.c ****              /* Exit Critical Region*/
- 166:.\Generated_Source\PSoC4/Buzz.c ****             CyExitCriticalSection(Buzz_interruptState);
- 167:.\Generated_Source\PSoC4/Buzz.c ****             
- 168:.\Generated_Source\PSoC4/Buzz.c ****             /* Clear the FIFO to enable the Buzz_STATUS_FIFOFULL
- 169:.\Generated_Source\PSoC4/Buzz.c ****                    bit to be set on FIFO full. */
- 170:.\Generated_Source\PSoC4/Buzz.c ****             Buzz_ClearFIFO();
- 171:.\Generated_Source\PSoC4/Buzz.c ****         #endif /* (Buzz_UseStatus) */
- 172:.\Generated_Source\PSoC4/Buzz.c ****     #endif /* (Buzz_UsingFixedFunction) */
- 173:.\Generated_Source\PSoC4/Buzz.c **** }
- 134              		.loc 1 173 0
- 135 005a BD46     		mov	sp, r7
- 136 005c 02B0     		add	sp, sp, #8
- 137              		@ sp needed for prologue
- 138 005e 80BD     		pop	{r7, pc}
- 139              	.L7:
- 140              		.align	2
- 141              	.L6:
- 142 0060 71000F40 		.word	1074724977
- 143 0064 90000F40 		.word	1074725008
- 144 0068 91000F40 		.word	1074725009
- 145 006c FFFF0000 		.word	65535
- 146 0070 30750000 		.word	30000
- 147              		.cfi_endproc
- 148              	.LFE1:
- 149              		.size	Buzz_Init, .-Buzz_Init
- 150              		.section	.text.Buzz_Enable,"ax",%progbits
- 151              		.align	2
- 152              		.global	Buzz_Enable
- 153              		.code	16
- 154              		.thumb_func
- 155              		.type	Buzz_Enable, %function
- 156              	Buzz_Enable:
- 157              	.LFB2:
- 174:.\Generated_Source\PSoC4/Buzz.c **** 
- 175:.\Generated_Source\PSoC4/Buzz.c **** 
- 176:.\Generated_Source\PSoC4/Buzz.c **** /*******************************************************************************
- 177:.\Generated_Source\PSoC4/Buzz.c **** * Function Name: Buzz_Enable
- 178:.\Generated_Source\PSoC4/Buzz.c **** ********************************************************************************
- 179:.\Generated_Source\PSoC4/Buzz.c **** *
- 180:.\Generated_Source\PSoC4/Buzz.c **** * Summary: 
- 181:.\Generated_Source\PSoC4/Buzz.c **** *  Enables the PWM block operation
- 182:.\Generated_Source\PSoC4/Buzz.c **** *
- 183:.\Generated_Source\PSoC4/Buzz.c **** * Parameters:  
- 184:.\Generated_Source\PSoC4/Buzz.c **** *  None
- 185:.\Generated_Source\PSoC4/Buzz.c **** *
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cccQLrBH.s 			page 7
-
-
- 186:.\Generated_Source\PSoC4/Buzz.c **** * Return: 
- 187:.\Generated_Source\PSoC4/Buzz.c **** *  None
- 188:.\Generated_Source\PSoC4/Buzz.c **** *
- 189:.\Generated_Source\PSoC4/Buzz.c **** * Side Effects: 
- 190:.\Generated_Source\PSoC4/Buzz.c **** *  This works only if software enable mode is chosen
- 191:.\Generated_Source\PSoC4/Buzz.c **** *
- 192:.\Generated_Source\PSoC4/Buzz.c **** *******************************************************************************/
- 193:.\Generated_Source\PSoC4/Buzz.c **** void Buzz_Enable(void) 
- 194:.\Generated_Source\PSoC4/Buzz.c **** {
- 158              		.loc 1 194 0
- 159              		.cfi_startproc
- 160 0000 80B5     		push	{r7, lr}
- 161              	.LCFI5:
- 162              		.cfi_def_cfa_offset 8
- 163              		.cfi_offset 7, -8
- 164              		.cfi_offset 14, -4
- 165 0002 00AF     		add	r7, sp, #0
- 166              	.LCFI6:
- 167              		.cfi_def_cfa_register 7
- 195:.\Generated_Source\PSoC4/Buzz.c ****     /* Globally Enable the Fixed Function Block chosen */
- 196:.\Generated_Source\PSoC4/Buzz.c ****     #if (Buzz_UsingFixedFunction)
- 197:.\Generated_Source\PSoC4/Buzz.c ****         Buzz_GLOBAL_ENABLE |= Buzz_BLOCK_EN_MASK;
- 198:.\Generated_Source\PSoC4/Buzz.c ****         Buzz_GLOBAL_STBY_ENABLE |= Buzz_BLOCK_STBY_EN_MASK;
- 199:.\Generated_Source\PSoC4/Buzz.c ****     #endif /* (Buzz_UsingFixedFunction) */
- 200:.\Generated_Source\PSoC4/Buzz.c ****     
- 201:.\Generated_Source\PSoC4/Buzz.c ****     /* Enable the PWM from the control register  */
- 202:.\Generated_Source\PSoC4/Buzz.c ****     #if (Buzz_UseControl || Buzz_UsingFixedFunction)
- 203:.\Generated_Source\PSoC4/Buzz.c ****         Buzz_CONTROL |= Buzz_CTRL_ENABLE;
- 168              		.loc 1 203 0
- 169 0004 054B     		ldr	r3, .L9
- 170 0006 054A     		ldr	r2, .L9
- 171 0008 1278     		ldrb	r2, [r2]
- 172 000a D2B2     		uxtb	r2, r2
- 173 000c 8021     		mov	r1, #128
- 174 000e 4942     		neg	r1, r1
- 175 0010 0A43     		orr	r2, r1
- 176 0012 D2B2     		uxtb	r2, r2
- 177 0014 1A70     		strb	r2, [r3]
- 204:.\Generated_Source\PSoC4/Buzz.c ****     #endif /* (Buzz_UseControl || Buzz_UsingFixedFunction) */
- 205:.\Generated_Source\PSoC4/Buzz.c **** }
- 178              		.loc 1 205 0
- 179 0016 BD46     		mov	sp, r7
- 180              		@ sp needed for prologue
- 181 0018 80BD     		pop	{r7, pc}
- 182              	.L10:
- 183 001a C046     		.align	2
- 184              	.L9:
- 185 001c 71000F40 		.word	1074724977
- 186              		.cfi_endproc
- 187              	.LFE2:
- 188              		.size	Buzz_Enable, .-Buzz_Enable
- 189              		.section	.text.Buzz_Stop,"ax",%progbits
- 190              		.align	2
- 191              		.global	Buzz_Stop
- 192              		.code	16
- 193              		.thumb_func
- 194              		.type	Buzz_Stop, %function
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cccQLrBH.s 			page 8
-
-
- 195              	Buzz_Stop:
- 196              	.LFB3:
- 206:.\Generated_Source\PSoC4/Buzz.c **** 
- 207:.\Generated_Source\PSoC4/Buzz.c **** 
- 208:.\Generated_Source\PSoC4/Buzz.c **** /*******************************************************************************
- 209:.\Generated_Source\PSoC4/Buzz.c **** * Function Name: Buzz_Stop
- 210:.\Generated_Source\PSoC4/Buzz.c **** ********************************************************************************
- 211:.\Generated_Source\PSoC4/Buzz.c **** *
- 212:.\Generated_Source\PSoC4/Buzz.c **** * Summary:
- 213:.\Generated_Source\PSoC4/Buzz.c **** *  The stop function halts the PWM, but does not change any modes or disable
- 214:.\Generated_Source\PSoC4/Buzz.c **** *  interrupts.
- 215:.\Generated_Source\PSoC4/Buzz.c **** *
- 216:.\Generated_Source\PSoC4/Buzz.c **** * Parameters:  
- 217:.\Generated_Source\PSoC4/Buzz.c **** *  None  
- 218:.\Generated_Source\PSoC4/Buzz.c **** *
- 219:.\Generated_Source\PSoC4/Buzz.c **** * Return: 
- 220:.\Generated_Source\PSoC4/Buzz.c **** *  None
- 221:.\Generated_Source\PSoC4/Buzz.c **** *
- 222:.\Generated_Source\PSoC4/Buzz.c **** * Side Effects:
- 223:.\Generated_Source\PSoC4/Buzz.c **** *  If the Enable mode is set to Hardware only then this function
- 224:.\Generated_Source\PSoC4/Buzz.c **** *  has no effect on the operation of the PWM
- 225:.\Generated_Source\PSoC4/Buzz.c **** *
- 226:.\Generated_Source\PSoC4/Buzz.c **** *******************************************************************************/
- 227:.\Generated_Source\PSoC4/Buzz.c **** void Buzz_Stop(void) 
- 228:.\Generated_Source\PSoC4/Buzz.c **** {
- 197              		.loc 1 228 0
- 198              		.cfi_startproc
- 199 0000 80B5     		push	{r7, lr}
- 200              	.LCFI7:
- 201              		.cfi_def_cfa_offset 8
- 202              		.cfi_offset 7, -8
- 203              		.cfi_offset 14, -4
- 204 0002 00AF     		add	r7, sp, #0
- 205              	.LCFI8:
- 206              		.cfi_def_cfa_register 7
- 229:.\Generated_Source\PSoC4/Buzz.c ****     #if (Buzz_UseControl || Buzz_UsingFixedFunction)
- 230:.\Generated_Source\PSoC4/Buzz.c ****         Buzz_CONTROL &= ((uint8)(~Buzz_CTRL_ENABLE));
- 207              		.loc 1 230 0
- 208 0004 044B     		ldr	r3, .L12
- 209 0006 044A     		ldr	r2, .L12
- 210 0008 1278     		ldrb	r2, [r2]
- 211 000a D1B2     		uxtb	r1, r2
- 212 000c 7F22     		mov	r2, #127
- 213 000e 0A40     		and	r2, r1
- 214 0010 D2B2     		uxtb	r2, r2
- 215 0012 1A70     		strb	r2, [r3]
- 231:.\Generated_Source\PSoC4/Buzz.c ****     #endif /* (Buzz_UseControl || Buzz_UsingFixedFunction) */
- 232:.\Generated_Source\PSoC4/Buzz.c ****     
- 233:.\Generated_Source\PSoC4/Buzz.c ****     /* Globally disable the Fixed Function Block chosen */
- 234:.\Generated_Source\PSoC4/Buzz.c ****     #if (Buzz_UsingFixedFunction)
- 235:.\Generated_Source\PSoC4/Buzz.c ****         Buzz_GLOBAL_ENABLE &= ((uint8)(~Buzz_BLOCK_EN_MASK));
- 236:.\Generated_Source\PSoC4/Buzz.c ****         Buzz_GLOBAL_STBY_ENABLE &= ((uint8)(~Buzz_BLOCK_STBY_EN_MASK));
- 237:.\Generated_Source\PSoC4/Buzz.c ****     #endif /* (Buzz_UsingFixedFunction) */
- 238:.\Generated_Source\PSoC4/Buzz.c **** }
- 216              		.loc 1 238 0
- 217 0014 BD46     		mov	sp, r7
- 218              		@ sp needed for prologue
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cccQLrBH.s 			page 9
-
-
- 219 0016 80BD     		pop	{r7, pc}
- 220              	.L13:
- 221              		.align	2
- 222              	.L12:
- 223 0018 71000F40 		.word	1074724977
- 224              		.cfi_endproc
- 225              	.LFE3:
- 226              		.size	Buzz_Stop, .-Buzz_Stop
- 227              		.section	.text.Buzz_WriteCounter,"ax",%progbits
- 228              		.align	2
- 229              		.global	Buzz_WriteCounter
- 230              		.code	16
- 231              		.thumb_func
- 232              		.type	Buzz_WriteCounter, %function
- 233              	Buzz_WriteCounter:
- 234              	.LFB4:
- 239:.\Generated_Source\PSoC4/Buzz.c **** 
- 240:.\Generated_Source\PSoC4/Buzz.c **** 
- 241:.\Generated_Source\PSoC4/Buzz.c **** #if (Buzz_UseOneCompareMode)
- 242:.\Generated_Source\PSoC4/Buzz.c **** 	#if (Buzz_CompareMode1SW)
- 243:.\Generated_Source\PSoC4/Buzz.c **** 
- 244:.\Generated_Source\PSoC4/Buzz.c **** 
- 245:.\Generated_Source\PSoC4/Buzz.c **** 		/*******************************************************************************
- 246:.\Generated_Source\PSoC4/Buzz.c **** 		* Function Name: Buzz_SetCompareMode
- 247:.\Generated_Source\PSoC4/Buzz.c **** 		********************************************************************************
- 248:.\Generated_Source\PSoC4/Buzz.c **** 		* 
- 249:.\Generated_Source\PSoC4/Buzz.c **** 		* Summary:
- 250:.\Generated_Source\PSoC4/Buzz.c **** 		*  This function writes the Compare Mode for the pwm output when in Dither mode,
- 251:.\Generated_Source\PSoC4/Buzz.c **** 		*  Center Align Mode or One Output Mode.
- 252:.\Generated_Source\PSoC4/Buzz.c **** 		*
- 253:.\Generated_Source\PSoC4/Buzz.c **** 		* Parameters:
- 254:.\Generated_Source\PSoC4/Buzz.c **** 		*  comparemode:  The new compare mode for the PWM output. Use the compare types
- 255:.\Generated_Source\PSoC4/Buzz.c **** 		*                defined in the H file as input arguments.
- 256:.\Generated_Source\PSoC4/Buzz.c **** 		*
- 257:.\Generated_Source\PSoC4/Buzz.c **** 		* Return:
- 258:.\Generated_Source\PSoC4/Buzz.c **** 		*  None
- 259:.\Generated_Source\PSoC4/Buzz.c **** 		*
- 260:.\Generated_Source\PSoC4/Buzz.c **** 		*******************************************************************************/
- 261:.\Generated_Source\PSoC4/Buzz.c **** 		void Buzz_SetCompareMode(uint8 comparemode) 
- 262:.\Generated_Source\PSoC4/Buzz.c **** 		{
- 263:.\Generated_Source\PSoC4/Buzz.c **** 		    #if(Buzz_UsingFixedFunction)
- 264:.\Generated_Source\PSoC4/Buzz.c ****             
- 265:.\Generated_Source\PSoC4/Buzz.c ****                 #if(0 != Buzz_CTRL_CMPMODE1_SHIFT)
- 266:.\Generated_Source\PSoC4/Buzz.c ****                     uint8 comparemodemasked = ((uint8)((uint8)comparemode << Buzz_CTRL_CMPMODE1_SHI
- 267:.\Generated_Source\PSoC4/Buzz.c ****                 #else
- 268:.\Generated_Source\PSoC4/Buzz.c ****                     uint8 comparemodemasked = comparemode;
- 269:.\Generated_Source\PSoC4/Buzz.c ****                 #endif /* (0 != Buzz_CTRL_CMPMODE1_SHIFT) */
- 270:.\Generated_Source\PSoC4/Buzz.c ****             
- 271:.\Generated_Source\PSoC4/Buzz.c **** 	            Buzz_CONTROL3 &= ((uint8)(~Buzz_CTRL_CMPMODE1_MASK)); /*Clear Existing Data */
- 272:.\Generated_Source\PSoC4/Buzz.c **** 	            Buzz_CONTROL3 |= comparemodemasked;     
- 273:.\Generated_Source\PSoC4/Buzz.c **** 		                
- 274:.\Generated_Source\PSoC4/Buzz.c **** 		    #elif (Buzz_UseControl)
- 275:.\Generated_Source\PSoC4/Buzz.c **** 		        
- 276:.\Generated_Source\PSoC4/Buzz.c ****                 #if(0 != Buzz_CTRL_CMPMODE1_SHIFT)
- 277:.\Generated_Source\PSoC4/Buzz.c ****                     uint8 comparemode1masked = ((uint8)((uint8)comparemode << Buzz_CTRL_CMPMODE1_SH
- 278:.\Generated_Source\PSoC4/Buzz.c ****     		                                    Buzz_CTRL_CMPMODE1_MASK;
- 279:.\Generated_Source\PSoC4/Buzz.c ****                 #else
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cccQLrBH.s 			page 10
-
-
- 280:.\Generated_Source\PSoC4/Buzz.c ****                     uint8 comparemode1masked = comparemode & Buzz_CTRL_CMPMODE1_MASK;              
- 281:.\Generated_Source\PSoC4/Buzz.c ****                 #endif /* (0 != Buzz_CTRL_CMPMODE1_SHIFT) */
- 282:.\Generated_Source\PSoC4/Buzz.c ****                 
- 283:.\Generated_Source\PSoC4/Buzz.c ****                 #if(0 != Buzz_CTRL_CMPMODE2_SHIFT)                            
- 284:.\Generated_Source\PSoC4/Buzz.c ****     		        uint8 comparemode2masked = ((uint8)((uint8)comparemode << Buzz_CTRL_CMPMODE2_SHIFT)) 
- 285:.\Generated_Source\PSoC4/Buzz.c ****     		                                   Buzz_CTRL_CMPMODE2_MASK;
- 286:.\Generated_Source\PSoC4/Buzz.c ****                 #else
- 287:.\Generated_Source\PSoC4/Buzz.c ****     		        uint8 comparemode2masked = comparemode & Buzz_CTRL_CMPMODE2_MASK;                
- 288:.\Generated_Source\PSoC4/Buzz.c ****                 #endif /* (0 != Buzz_CTRL_CMPMODE2_SHIFT) */
- 289:.\Generated_Source\PSoC4/Buzz.c ****                 
- 290:.\Generated_Source\PSoC4/Buzz.c **** 		        /*Clear existing mode */
- 291:.\Generated_Source\PSoC4/Buzz.c **** 		        Buzz_CONTROL &= ((uint8)(~(Buzz_CTRL_CMPMODE1_MASK | Buzz_CTRL_CMPMODE2_MASK))); 
- 292:.\Generated_Source\PSoC4/Buzz.c **** 		        Buzz_CONTROL |= (comparemode1masked | comparemode2masked);
- 293:.\Generated_Source\PSoC4/Buzz.c **** 		        
- 294:.\Generated_Source\PSoC4/Buzz.c **** 		    #else
- 295:.\Generated_Source\PSoC4/Buzz.c **** 		        uint8 temp = comparemode;
- 296:.\Generated_Source\PSoC4/Buzz.c **** 		    #endif /* (Buzz_UsingFixedFunction) */
- 297:.\Generated_Source\PSoC4/Buzz.c **** 		}
- 298:.\Generated_Source\PSoC4/Buzz.c **** 	#endif /* Buzz_CompareMode1SW */
- 299:.\Generated_Source\PSoC4/Buzz.c **** 
- 300:.\Generated_Source\PSoC4/Buzz.c **** #else /* UseOneCompareMode */
- 301:.\Generated_Source\PSoC4/Buzz.c **** 
- 302:.\Generated_Source\PSoC4/Buzz.c **** 	#if (Buzz_CompareMode1SW)
- 303:.\Generated_Source\PSoC4/Buzz.c **** 
- 304:.\Generated_Source\PSoC4/Buzz.c **** 
- 305:.\Generated_Source\PSoC4/Buzz.c **** 		/*******************************************************************************
- 306:.\Generated_Source\PSoC4/Buzz.c **** 		* Function Name: Buzz_SetCompareMode1
- 307:.\Generated_Source\PSoC4/Buzz.c **** 		********************************************************************************
- 308:.\Generated_Source\PSoC4/Buzz.c **** 		* 
- 309:.\Generated_Source\PSoC4/Buzz.c **** 		* Summary:
- 310:.\Generated_Source\PSoC4/Buzz.c **** 		*  This function writes the Compare Mode for the pwm or pwm1 output
- 311:.\Generated_Source\PSoC4/Buzz.c **** 		*
- 312:.\Generated_Source\PSoC4/Buzz.c **** 		* Parameters:  
- 313:.\Generated_Source\PSoC4/Buzz.c **** 		*  comparemode:  The new compare mode for the PWM output. Use the compare types
- 314:.\Generated_Source\PSoC4/Buzz.c **** 		*                defined in the H file as input arguments.
- 315:.\Generated_Source\PSoC4/Buzz.c **** 		*
- 316:.\Generated_Source\PSoC4/Buzz.c **** 		* Return: 
- 317:.\Generated_Source\PSoC4/Buzz.c **** 		*  None
- 318:.\Generated_Source\PSoC4/Buzz.c **** 		*
- 319:.\Generated_Source\PSoC4/Buzz.c **** 		*******************************************************************************/
- 320:.\Generated_Source\PSoC4/Buzz.c **** 		void Buzz_SetCompareMode1(uint8 comparemode) 
- 321:.\Generated_Source\PSoC4/Buzz.c **** 		{
- 322:.\Generated_Source\PSoC4/Buzz.c **** 		    #if(0 != Buzz_CTRL_CMPMODE1_SHIFT)
- 323:.\Generated_Source\PSoC4/Buzz.c ****                 uint8 comparemodemasked = ((uint8)((uint8)comparemode << Buzz_CTRL_CMPMODE1_SHIFT))
- 324:.\Generated_Source\PSoC4/Buzz.c ****     		                               Buzz_CTRL_CMPMODE1_MASK;
- 325:.\Generated_Source\PSoC4/Buzz.c **** 		    #else
- 326:.\Generated_Source\PSoC4/Buzz.c ****                 uint8 comparemodemasked = comparemode & Buzz_CTRL_CMPMODE1_MASK;                
- 327:.\Generated_Source\PSoC4/Buzz.c ****             #endif /* (0 != Buzz_CTRL_CMPMODE1_SHIFT) */
- 328:.\Generated_Source\PSoC4/Buzz.c ****                    
- 329:.\Generated_Source\PSoC4/Buzz.c **** 		    #if (Buzz_UseControl)
- 330:.\Generated_Source\PSoC4/Buzz.c **** 		        Buzz_CONTROL &= ((uint8)(~Buzz_CTRL_CMPMODE1_MASK)); /*Clear existing mode */
- 331:.\Generated_Source\PSoC4/Buzz.c **** 		        Buzz_CONTROL |= comparemodemasked;
- 332:.\Generated_Source\PSoC4/Buzz.c **** 		    #endif /* (Buzz_UseControl) */
- 333:.\Generated_Source\PSoC4/Buzz.c **** 		}
- 334:.\Generated_Source\PSoC4/Buzz.c **** 	#endif /* Buzz_CompareMode1SW */
- 335:.\Generated_Source\PSoC4/Buzz.c **** 
- 336:.\Generated_Source\PSoC4/Buzz.c **** #if (Buzz_CompareMode2SW)
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cccQLrBH.s 			page 11
-
-
- 337:.\Generated_Source\PSoC4/Buzz.c **** 
- 338:.\Generated_Source\PSoC4/Buzz.c **** 
- 339:.\Generated_Source\PSoC4/Buzz.c ****     /*******************************************************************************
- 340:.\Generated_Source\PSoC4/Buzz.c ****     * Function Name: Buzz_SetCompareMode2
- 341:.\Generated_Source\PSoC4/Buzz.c ****     ********************************************************************************
- 342:.\Generated_Source\PSoC4/Buzz.c ****     * 
- 343:.\Generated_Source\PSoC4/Buzz.c ****     * Summary:
- 344:.\Generated_Source\PSoC4/Buzz.c ****     *  This function writes the Compare Mode for the pwm or pwm2 output
- 345:.\Generated_Source\PSoC4/Buzz.c ****     *
- 346:.\Generated_Source\PSoC4/Buzz.c ****     * Parameters:  
- 347:.\Generated_Source\PSoC4/Buzz.c ****     *  comparemode:  The new compare mode for the PWM output. Use the compare types
- 348:.\Generated_Source\PSoC4/Buzz.c ****     *                defined in the H file as input arguments.
- 349:.\Generated_Source\PSoC4/Buzz.c ****     *
- 350:.\Generated_Source\PSoC4/Buzz.c ****     * Return: 
- 351:.\Generated_Source\PSoC4/Buzz.c ****     *  None
- 352:.\Generated_Source\PSoC4/Buzz.c ****     *
- 353:.\Generated_Source\PSoC4/Buzz.c ****     *******************************************************************************/
- 354:.\Generated_Source\PSoC4/Buzz.c ****     void Buzz_SetCompareMode2(uint8 comparemode) 
- 355:.\Generated_Source\PSoC4/Buzz.c ****     {
- 356:.\Generated_Source\PSoC4/Buzz.c **** 
- 357:.\Generated_Source\PSoC4/Buzz.c ****         #if(0 != Buzz_CTRL_CMPMODE2_SHIFT)
- 358:.\Generated_Source\PSoC4/Buzz.c ****             uint8 comparemodemasked = ((uint8)((uint8)comparemode << Buzz_CTRL_CMPMODE2_SHIFT)) & 
- 359:.\Generated_Source\PSoC4/Buzz.c ****                                                  Buzz_CTRL_CMPMODE2_MASK;
- 360:.\Generated_Source\PSoC4/Buzz.c ****         #else
- 361:.\Generated_Source\PSoC4/Buzz.c ****             uint8 comparemodemasked = comparemode & Buzz_CTRL_CMPMODE2_MASK;            
- 362:.\Generated_Source\PSoC4/Buzz.c ****         #endif /* (0 != Buzz_CTRL_CMPMODE2_SHIFT) */
- 363:.\Generated_Source\PSoC4/Buzz.c ****         
- 364:.\Generated_Source\PSoC4/Buzz.c ****         #if (Buzz_UseControl)
- 365:.\Generated_Source\PSoC4/Buzz.c ****             Buzz_CONTROL &= ((uint8)(~Buzz_CTRL_CMPMODE2_MASK)); /*Clear existing mode */
- 366:.\Generated_Source\PSoC4/Buzz.c ****             Buzz_CONTROL |= comparemodemasked;
- 367:.\Generated_Source\PSoC4/Buzz.c ****         #endif /* (Buzz_UseControl) */
- 368:.\Generated_Source\PSoC4/Buzz.c ****     }
- 369:.\Generated_Source\PSoC4/Buzz.c ****     #endif /*Buzz_CompareMode2SW */
- 370:.\Generated_Source\PSoC4/Buzz.c **** 
- 371:.\Generated_Source\PSoC4/Buzz.c **** #endif /* UseOneCompareMode */
- 372:.\Generated_Source\PSoC4/Buzz.c **** 
- 373:.\Generated_Source\PSoC4/Buzz.c **** 
- 374:.\Generated_Source\PSoC4/Buzz.c **** #if (!Buzz_UsingFixedFunction)
- 375:.\Generated_Source\PSoC4/Buzz.c **** 
- 376:.\Generated_Source\PSoC4/Buzz.c **** 
- 377:.\Generated_Source\PSoC4/Buzz.c ****     /*******************************************************************************
- 378:.\Generated_Source\PSoC4/Buzz.c ****     * Function Name: Buzz_WriteCounter
- 379:.\Generated_Source\PSoC4/Buzz.c ****     ********************************************************************************
- 380:.\Generated_Source\PSoC4/Buzz.c ****     * 
- 381:.\Generated_Source\PSoC4/Buzz.c ****     * Summary:
- 382:.\Generated_Source\PSoC4/Buzz.c ****     *  Writes a new counter value directly to the counter register. This will be 
- 383:.\Generated_Source\PSoC4/Buzz.c ****     *  implemented for that currently running period and only that period. This API 
- 384:.\Generated_Source\PSoC4/Buzz.c ****     *  is valid only for UDB implementation and not available for fixed function 
- 385:.\Generated_Source\PSoC4/Buzz.c ****     *  PWM implementation.    
- 386:.\Generated_Source\PSoC4/Buzz.c ****     *
- 387:.\Generated_Source\PSoC4/Buzz.c ****     * Parameters:  
- 388:.\Generated_Source\PSoC4/Buzz.c ****     *  counter:  The period new period counter value.
- 389:.\Generated_Source\PSoC4/Buzz.c ****     *
- 390:.\Generated_Source\PSoC4/Buzz.c ****     * Return: 
- 391:.\Generated_Source\PSoC4/Buzz.c ****     *  None
- 392:.\Generated_Source\PSoC4/Buzz.c ****     *
- 393:.\Generated_Source\PSoC4/Buzz.c ****     * Side Effects: 
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cccQLrBH.s 			page 12
-
-
- 394:.\Generated_Source\PSoC4/Buzz.c ****     *  The PWM Period will be reloaded when a counter value will be a zero
- 395:.\Generated_Source\PSoC4/Buzz.c ****     *
- 396:.\Generated_Source\PSoC4/Buzz.c ****     *******************************************************************************/
- 397:.\Generated_Source\PSoC4/Buzz.c ****     void Buzz_WriteCounter(uint16 counter) \
- 398:.\Generated_Source\PSoC4/Buzz.c ****                                        
- 399:.\Generated_Source\PSoC4/Buzz.c ****     {
- 235              		.loc 1 399 0
- 236              		.cfi_startproc
- 237 0000 80B5     		push	{r7, lr}
- 238              	.LCFI9:
- 239              		.cfi_def_cfa_offset 8
- 240              		.cfi_offset 7, -8
- 241              		.cfi_offset 14, -4
- 242 0002 82B0     		sub	sp, sp, #8
- 243              	.LCFI10:
- 244              		.cfi_def_cfa_offset 16
- 245 0004 00AF     		add	r7, sp, #0
- 246              	.LCFI11:
- 247              		.cfi_def_cfa_register 7
- 248 0006 021C     		mov	r2, r0
- 249 0008 BB1D     		add	r3, r7, #6
- 250 000a 1A80     		strh	r2, [r3]
- 400:.\Generated_Source\PSoC4/Buzz.c ****         CY_SET_REG16(Buzz_COUNTER_LSB_PTR, counter);
- 251              		.loc 1 400 0
- 252 000c 034B     		ldr	r3, .L15
- 253 000e BA1D     		add	r2, r7, #6
- 254 0010 1288     		ldrh	r2, [r2]
- 255 0012 1A80     		strh	r2, [r3]
- 401:.\Generated_Source\PSoC4/Buzz.c ****     }
- 256              		.loc 1 401 0
- 257 0014 BD46     		mov	sp, r7
- 258 0016 02B0     		add	sp, sp, #8
- 259              		@ sp needed for prologue
- 260 0018 80BD     		pop	{r7, pc}
- 261              	.L16:
- 262 001a C046     		.align	2
- 263              	.L15:
- 264 001c 00100F40 		.word	1074728960
- 265              		.cfi_endproc
- 266              	.LFE4:
- 267              		.size	Buzz_WriteCounter, .-Buzz_WriteCounter
- 268              		.section	.text.Buzz_ReadCounter,"ax",%progbits
- 269              		.align	2
- 270              		.global	Buzz_ReadCounter
- 271              		.code	16
- 272              		.thumb_func
- 273              		.type	Buzz_ReadCounter, %function
- 274              	Buzz_ReadCounter:
- 275              	.LFB5:
- 402:.\Generated_Source\PSoC4/Buzz.c **** 
- 403:.\Generated_Source\PSoC4/Buzz.c **** 
- 404:.\Generated_Source\PSoC4/Buzz.c ****     /*******************************************************************************
- 405:.\Generated_Source\PSoC4/Buzz.c ****     * Function Name: Buzz_ReadCounter
- 406:.\Generated_Source\PSoC4/Buzz.c ****     ********************************************************************************
- 407:.\Generated_Source\PSoC4/Buzz.c ****     * 
- 408:.\Generated_Source\PSoC4/Buzz.c ****     * Summary:
- 409:.\Generated_Source\PSoC4/Buzz.c ****     *  This function returns the current value of the counter.  It doesn't matter
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cccQLrBH.s 			page 13
-
-
- 410:.\Generated_Source\PSoC4/Buzz.c ****     *  if the counter is enabled or running.
- 411:.\Generated_Source\PSoC4/Buzz.c ****     *
- 412:.\Generated_Source\PSoC4/Buzz.c ****     * Parameters:  
- 413:.\Generated_Source\PSoC4/Buzz.c ****     *  None  
- 414:.\Generated_Source\PSoC4/Buzz.c ****     *
- 415:.\Generated_Source\PSoC4/Buzz.c ****     * Return: 
- 416:.\Generated_Source\PSoC4/Buzz.c ****     *  The current value of the counter.
- 417:.\Generated_Source\PSoC4/Buzz.c ****     *
- 418:.\Generated_Source\PSoC4/Buzz.c ****     *******************************************************************************/
- 419:.\Generated_Source\PSoC4/Buzz.c ****     uint16 Buzz_ReadCounter(void) 
- 420:.\Generated_Source\PSoC4/Buzz.c ****     {
- 276              		.loc 1 420 0
- 277              		.cfi_startproc
- 278 0000 80B5     		push	{r7, lr}
- 279              	.LCFI12:
- 280              		.cfi_def_cfa_offset 8
- 281              		.cfi_offset 7, -8
- 282              		.cfi_offset 14, -4
- 283 0002 00AF     		add	r7, sp, #0
- 284              	.LCFI13:
- 285              		.cfi_def_cfa_register 7
- 421:.\Generated_Source\PSoC4/Buzz.c ****         /* Force capture by reading Accumulator */
- 422:.\Generated_Source\PSoC4/Buzz.c ****         /* Must first do a software capture to be able to read the counter */
- 423:.\Generated_Source\PSoC4/Buzz.c ****         /* It is up to the user code to make sure there isn't already captured data in the FIFO */
- 424:.\Generated_Source\PSoC4/Buzz.c ****         (void)Buzz_COUNTERCAP_LSB;
- 286              		.loc 1 424 0
- 287 0004 034B     		ldr	r3, .L19
- 288 0006 1B88     		ldrh	r3, [r3]
- 425:.\Generated_Source\PSoC4/Buzz.c ****         
- 426:.\Generated_Source\PSoC4/Buzz.c ****         /* Read the data from the FIFO (or capture register for Fixed Function)*/
- 427:.\Generated_Source\PSoC4/Buzz.c ****         return (CY_GET_REG16(Buzz_CAPTURE_LSB_PTR));
- 289              		.loc 1 427 0
- 290 0008 034B     		ldr	r3, .L19+4
- 291 000a 1B88     		ldrh	r3, [r3]
- 292 000c 9BB2     		uxth	r3, r3
- 428:.\Generated_Source\PSoC4/Buzz.c ****     }
- 293              		.loc 1 428 0
- 294 000e 181C     		mov	r0, r3
- 295 0010 BD46     		mov	sp, r7
- 296              		@ sp needed for prologue
- 297 0012 80BD     		pop	{r7, pc}
- 298              	.L20:
- 299              		.align	2
- 300              	.L19:
- 301 0014 20100F40 		.word	1074728992
- 302 0018 A0100F40 		.word	1074729120
- 303              		.cfi_endproc
- 304              	.LFE5:
- 305              		.size	Buzz_ReadCounter, .-Buzz_ReadCounter
- 306              		.section	.text.Buzz_WritePeriod,"ax",%progbits
- 307              		.align	2
- 308              		.global	Buzz_WritePeriod
- 309              		.code	16
- 310              		.thumb_func
- 311              		.type	Buzz_WritePeriod, %function
- 312              	Buzz_WritePeriod:
- 313              	.LFB6:
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cccQLrBH.s 			page 14
-
-
- 429:.\Generated_Source\PSoC4/Buzz.c **** 
- 430:.\Generated_Source\PSoC4/Buzz.c ****         #if (Buzz_UseStatus)
- 431:.\Generated_Source\PSoC4/Buzz.c **** 
- 432:.\Generated_Source\PSoC4/Buzz.c **** 
- 433:.\Generated_Source\PSoC4/Buzz.c ****             /*******************************************************************************
- 434:.\Generated_Source\PSoC4/Buzz.c ****             * Function Name: Buzz_ClearFIFO
- 435:.\Generated_Source\PSoC4/Buzz.c ****             ********************************************************************************
- 436:.\Generated_Source\PSoC4/Buzz.c ****             * 
- 437:.\Generated_Source\PSoC4/Buzz.c ****             * Summary:
- 438:.\Generated_Source\PSoC4/Buzz.c ****             *  This function clears all capture data from the capture FIFO
- 439:.\Generated_Source\PSoC4/Buzz.c ****             *
- 440:.\Generated_Source\PSoC4/Buzz.c ****             * Parameters:  
- 441:.\Generated_Source\PSoC4/Buzz.c ****             *  None
- 442:.\Generated_Source\PSoC4/Buzz.c ****             *
- 443:.\Generated_Source\PSoC4/Buzz.c ****             * Return: 
- 444:.\Generated_Source\PSoC4/Buzz.c ****             *  None
- 445:.\Generated_Source\PSoC4/Buzz.c ****             *
- 446:.\Generated_Source\PSoC4/Buzz.c ****             *******************************************************************************/
- 447:.\Generated_Source\PSoC4/Buzz.c ****             void Buzz_ClearFIFO(void) 
- 448:.\Generated_Source\PSoC4/Buzz.c ****             {
- 449:.\Generated_Source\PSoC4/Buzz.c ****                 while(0u != (Buzz_ReadStatusRegister() & Buzz_STATUS_FIFONEMPTY))
- 450:.\Generated_Source\PSoC4/Buzz.c ****                 {
- 451:.\Generated_Source\PSoC4/Buzz.c ****                     (void)Buzz_ReadCapture();
- 452:.\Generated_Source\PSoC4/Buzz.c ****                 }
- 453:.\Generated_Source\PSoC4/Buzz.c ****             }
- 454:.\Generated_Source\PSoC4/Buzz.c **** 
- 455:.\Generated_Source\PSoC4/Buzz.c ****         #endif /* Buzz_UseStatus */
- 456:.\Generated_Source\PSoC4/Buzz.c **** 
- 457:.\Generated_Source\PSoC4/Buzz.c **** #endif /* !Buzz_UsingFixedFunction */
- 458:.\Generated_Source\PSoC4/Buzz.c **** 
- 459:.\Generated_Source\PSoC4/Buzz.c **** 
- 460:.\Generated_Source\PSoC4/Buzz.c **** /*******************************************************************************
- 461:.\Generated_Source\PSoC4/Buzz.c **** * Function Name: Buzz_WritePeriod
- 462:.\Generated_Source\PSoC4/Buzz.c **** ********************************************************************************
- 463:.\Generated_Source\PSoC4/Buzz.c **** * 
- 464:.\Generated_Source\PSoC4/Buzz.c **** * Summary:
- 465:.\Generated_Source\PSoC4/Buzz.c **** *  This function is used to change the period of the counter.  The new period 
- 466:.\Generated_Source\PSoC4/Buzz.c **** *  will be loaded the next time terminal count is detected.
- 467:.\Generated_Source\PSoC4/Buzz.c **** *
- 468:.\Generated_Source\PSoC4/Buzz.c **** * Parameters:  
- 469:.\Generated_Source\PSoC4/Buzz.c **** *  period:  Period value. May be between 1 and (2^Resolution)-1.  A value of 0 
- 470:.\Generated_Source\PSoC4/Buzz.c **** *           will result in the counter remaining at zero.
- 471:.\Generated_Source\PSoC4/Buzz.c **** *
- 472:.\Generated_Source\PSoC4/Buzz.c **** * Return: 
- 473:.\Generated_Source\PSoC4/Buzz.c **** *  None
- 474:.\Generated_Source\PSoC4/Buzz.c **** *
- 475:.\Generated_Source\PSoC4/Buzz.c **** *******************************************************************************/
- 476:.\Generated_Source\PSoC4/Buzz.c **** void Buzz_WritePeriod(uint16 period) 
- 477:.\Generated_Source\PSoC4/Buzz.c **** {
- 314              		.loc 1 477 0
- 315              		.cfi_startproc
- 316 0000 80B5     		push	{r7, lr}
- 317              	.LCFI14:
- 318              		.cfi_def_cfa_offset 8
- 319              		.cfi_offset 7, -8
- 320              		.cfi_offset 14, -4
- 321 0002 82B0     		sub	sp, sp, #8
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cccQLrBH.s 			page 15
-
-
- 322              	.LCFI15:
- 323              		.cfi_def_cfa_offset 16
- 324 0004 00AF     		add	r7, sp, #0
- 325              	.LCFI16:
- 326              		.cfi_def_cfa_register 7
- 327 0006 021C     		mov	r2, r0
- 328 0008 BB1D     		add	r3, r7, #6
- 329 000a 1A80     		strh	r2, [r3]
- 478:.\Generated_Source\PSoC4/Buzz.c ****     #if(Buzz_UsingFixedFunction)
- 479:.\Generated_Source\PSoC4/Buzz.c ****         CY_SET_REG16(Buzz_PERIOD_LSB_PTR, (uint16)period);
- 480:.\Generated_Source\PSoC4/Buzz.c ****     #else
- 481:.\Generated_Source\PSoC4/Buzz.c ****         CY_SET_REG16(Buzz_PERIOD_LSB_PTR, period);
- 330              		.loc 1 481 0
- 331 000c 034B     		ldr	r3, .L22
- 332 000e BA1D     		add	r2, r7, #6
- 333 0010 1288     		ldrh	r2, [r2]
- 334 0012 1A80     		strh	r2, [r3]
- 482:.\Generated_Source\PSoC4/Buzz.c ****     #endif /* (Buzz_UsingFixedFunction) */
- 483:.\Generated_Source\PSoC4/Buzz.c **** }
- 335              		.loc 1 483 0
- 336 0014 BD46     		mov	sp, r7
- 337 0016 02B0     		add	sp, sp, #8
- 338              		@ sp needed for prologue
- 339 0018 80BD     		pop	{r7, pc}
- 340              	.L23:
- 341 001a C046     		.align	2
- 342              	.L22:
- 343 001c 80100F40 		.word	1074729088
- 344              		.cfi_endproc
- 345              	.LFE6:
- 346              		.size	Buzz_WritePeriod, .-Buzz_WritePeriod
- 347              		.section	.text.Buzz_WriteCompare,"ax",%progbits
- 348              		.align	2
- 349              		.global	Buzz_WriteCompare
- 350              		.code	16
- 351              		.thumb_func
- 352              		.type	Buzz_WriteCompare, %function
- 353              	Buzz_WriteCompare:
- 354              	.LFB7:
- 484:.\Generated_Source\PSoC4/Buzz.c **** 
- 485:.\Generated_Source\PSoC4/Buzz.c **** #if (Buzz_UseOneCompareMode)
- 486:.\Generated_Source\PSoC4/Buzz.c **** 
- 487:.\Generated_Source\PSoC4/Buzz.c **** 
- 488:.\Generated_Source\PSoC4/Buzz.c ****     /*******************************************************************************
- 489:.\Generated_Source\PSoC4/Buzz.c ****     * Function Name: Buzz_WriteCompare
- 490:.\Generated_Source\PSoC4/Buzz.c ****     ********************************************************************************
- 491:.\Generated_Source\PSoC4/Buzz.c ****     * 
- 492:.\Generated_Source\PSoC4/Buzz.c ****     * Summary:
- 493:.\Generated_Source\PSoC4/Buzz.c ****     *  This funtion is used to change the compare1 value when the PWM is in Dither
- 494:.\Generated_Source\PSoC4/Buzz.c ****     *  mode. The compare output will reflect the new value on the next UDB clock. 
- 495:.\Generated_Source\PSoC4/Buzz.c ****     *  The compare output will be driven high when the present counter value is 
- 496:.\Generated_Source\PSoC4/Buzz.c ****     *  compared to the compare value based on the compare mode defined in 
- 497:.\Generated_Source\PSoC4/Buzz.c ****     *  Dither Mode.
- 498:.\Generated_Source\PSoC4/Buzz.c ****     *
- 499:.\Generated_Source\PSoC4/Buzz.c ****     * Parameters:  
- 500:.\Generated_Source\PSoC4/Buzz.c ****     *  compare:  New compare value.  
- 501:.\Generated_Source\PSoC4/Buzz.c ****     *
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cccQLrBH.s 			page 16
-
-
- 502:.\Generated_Source\PSoC4/Buzz.c ****     * Return: 
- 503:.\Generated_Source\PSoC4/Buzz.c ****     *  None
- 504:.\Generated_Source\PSoC4/Buzz.c ****     *
- 505:.\Generated_Source\PSoC4/Buzz.c ****     * Side Effects:
- 506:.\Generated_Source\PSoC4/Buzz.c ****     *  This function is only available if the PWM mode parameter is set to
- 507:.\Generated_Source\PSoC4/Buzz.c ****     *  Dither Mode, Center Aligned Mode or One Output Mode
- 508:.\Generated_Source\PSoC4/Buzz.c ****     *
- 509:.\Generated_Source\PSoC4/Buzz.c ****     *******************************************************************************/
- 510:.\Generated_Source\PSoC4/Buzz.c ****     void Buzz_WriteCompare(uint16 compare) \
- 511:.\Generated_Source\PSoC4/Buzz.c ****                                        
- 512:.\Generated_Source\PSoC4/Buzz.c ****     {	
- 355              		.loc 1 512 0
- 356              		.cfi_startproc
- 357 0000 80B5     		push	{r7, lr}
- 358              	.LCFI17:
- 359              		.cfi_def_cfa_offset 8
- 360              		.cfi_offset 7, -8
- 361              		.cfi_offset 14, -4
- 362 0002 82B0     		sub	sp, sp, #8
- 363              	.LCFI18:
- 364              		.cfi_def_cfa_offset 16
- 365 0004 00AF     		add	r7, sp, #0
- 366              	.LCFI19:
- 367              		.cfi_def_cfa_register 7
- 368 0006 021C     		mov	r2, r0
- 369 0008 BB1D     		add	r3, r7, #6
- 370 000a 1A80     		strh	r2, [r3]
- 513:.\Generated_Source\PSoC4/Buzz.c **** 		#if(Buzz_UsingFixedFunction)
- 514:.\Generated_Source\PSoC4/Buzz.c **** 			CY_SET_REG16(Buzz_COMPARE1_LSB_PTR, (uint16)compare);
- 515:.\Generated_Source\PSoC4/Buzz.c **** 		#else
- 516:.\Generated_Source\PSoC4/Buzz.c **** 	        CY_SET_REG16(Buzz_COMPARE1_LSB_PTR, compare);	
- 371              		.loc 1 516 0
- 372 000c 034B     		ldr	r3, .L25
- 373 000e BA1D     		add	r2, r7, #6
- 374 0010 1288     		ldrh	r2, [r2]
- 375 0012 1A80     		strh	r2, [r3]
- 517:.\Generated_Source\PSoC4/Buzz.c **** 		#endif /* (Buzz_UsingFixedFunction) */
- 518:.\Generated_Source\PSoC4/Buzz.c ****         
- 519:.\Generated_Source\PSoC4/Buzz.c ****         #if (Buzz_PWMMode == Buzz__B_PWM__DITHER)
- 520:.\Generated_Source\PSoC4/Buzz.c ****             #if(Buzz_UsingFixedFunction)
- 521:.\Generated_Source\PSoC4/Buzz.c ****     			CY_SET_REG16(Buzz_COMPARE2_LSB_PTR, (uint16)(compare + 1u));
- 522:.\Generated_Source\PSoC4/Buzz.c ****     		#else
- 523:.\Generated_Source\PSoC4/Buzz.c ****     	        CY_SET_REG16(Buzz_COMPARE2_LSB_PTR, (compare + 1u));	
- 524:.\Generated_Source\PSoC4/Buzz.c ****     		#endif /* (Buzz_UsingFixedFunction) */
- 525:.\Generated_Source\PSoC4/Buzz.c ****         #endif /* (Buzz_PWMMode == Buzz__B_PWM__DITHER) */
- 526:.\Generated_Source\PSoC4/Buzz.c ****     }
- 376              		.loc 1 526 0
- 377 0014 BD46     		mov	sp, r7
- 378 0016 02B0     		add	sp, sp, #8
- 379              		@ sp needed for prologue
- 380 0018 80BD     		pop	{r7, pc}
- 381              	.L26:
- 382 001a C046     		.align	2
- 383              	.L25:
- 384 001c 40100F40 		.word	1074729024
- 385              		.cfi_endproc
- 386              	.LFE7:
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cccQLrBH.s 			page 17
-
-
- 387              		.size	Buzz_WriteCompare, .-Buzz_WriteCompare
- 388              		.section	.text.Buzz_ReadControlRegister,"ax",%progbits
- 389              		.align	2
- 390              		.global	Buzz_ReadControlRegister
- 391              		.code	16
- 392              		.thumb_func
- 393              		.type	Buzz_ReadControlRegister, %function
- 394              	Buzz_ReadControlRegister:
- 395              	.LFB8:
- 527:.\Generated_Source\PSoC4/Buzz.c **** 
- 528:.\Generated_Source\PSoC4/Buzz.c **** 
- 529:.\Generated_Source\PSoC4/Buzz.c **** #else
- 530:.\Generated_Source\PSoC4/Buzz.c **** 
- 531:.\Generated_Source\PSoC4/Buzz.c **** 
- 532:.\Generated_Source\PSoC4/Buzz.c ****     /*******************************************************************************
- 533:.\Generated_Source\PSoC4/Buzz.c ****     * Function Name: Buzz_WriteCompare1
- 534:.\Generated_Source\PSoC4/Buzz.c ****     ********************************************************************************
- 535:.\Generated_Source\PSoC4/Buzz.c ****     * 
- 536:.\Generated_Source\PSoC4/Buzz.c ****     * Summary:
- 537:.\Generated_Source\PSoC4/Buzz.c ****     *  This funtion is used to change the compare1 value.  The compare output will 
- 538:.\Generated_Source\PSoC4/Buzz.c ****     *  reflect the new value on the next UDB clock.  The compare output will be 
- 539:.\Generated_Source\PSoC4/Buzz.c ****     *  driven high when the present counter value is less than or less than or 
- 540:.\Generated_Source\PSoC4/Buzz.c ****     *  equal to the compare register, depending on the mode.
- 541:.\Generated_Source\PSoC4/Buzz.c ****     *
- 542:.\Generated_Source\PSoC4/Buzz.c ****     * Parameters:  
- 543:.\Generated_Source\PSoC4/Buzz.c ****     *  compare:  New compare value.  
- 544:.\Generated_Source\PSoC4/Buzz.c ****     *
- 545:.\Generated_Source\PSoC4/Buzz.c ****     * Return: 
- 546:.\Generated_Source\PSoC4/Buzz.c ****     *  None
- 547:.\Generated_Source\PSoC4/Buzz.c ****     *
- 548:.\Generated_Source\PSoC4/Buzz.c ****     *******************************************************************************/
- 549:.\Generated_Source\PSoC4/Buzz.c ****     void Buzz_WriteCompare1(uint16 compare) \
- 550:.\Generated_Source\PSoC4/Buzz.c ****                                         
- 551:.\Generated_Source\PSoC4/Buzz.c ****     {
- 552:.\Generated_Source\PSoC4/Buzz.c ****         #if(Buzz_UsingFixedFunction)
- 553:.\Generated_Source\PSoC4/Buzz.c ****             CY_SET_REG16(Buzz_COMPARE1_LSB_PTR, (uint16)compare);
- 554:.\Generated_Source\PSoC4/Buzz.c ****         #else
- 555:.\Generated_Source\PSoC4/Buzz.c ****             CY_SET_REG16(Buzz_COMPARE1_LSB_PTR, compare);
- 556:.\Generated_Source\PSoC4/Buzz.c ****         #endif /* (Buzz_UsingFixedFunction) */
- 557:.\Generated_Source\PSoC4/Buzz.c ****     }
- 558:.\Generated_Source\PSoC4/Buzz.c **** 
- 559:.\Generated_Source\PSoC4/Buzz.c **** 
- 560:.\Generated_Source\PSoC4/Buzz.c ****     /*******************************************************************************
- 561:.\Generated_Source\PSoC4/Buzz.c ****     * Function Name: Buzz_WriteCompare2
- 562:.\Generated_Source\PSoC4/Buzz.c ****     ********************************************************************************
- 563:.\Generated_Source\PSoC4/Buzz.c ****     * 
- 564:.\Generated_Source\PSoC4/Buzz.c ****     * Summary:
- 565:.\Generated_Source\PSoC4/Buzz.c ****     *  This funtion is used to change the compare value, for compare1 output.  
- 566:.\Generated_Source\PSoC4/Buzz.c ****     *  The compare output will reflect the new value on the next UDB clock.  
- 567:.\Generated_Source\PSoC4/Buzz.c ****     *  The compare output will be driven high when the present counter value is 
- 568:.\Generated_Source\PSoC4/Buzz.c ****     *  less than or less than or equal to the compare register, depending on the 
- 569:.\Generated_Source\PSoC4/Buzz.c ****     *  mode.
- 570:.\Generated_Source\PSoC4/Buzz.c ****     *
- 571:.\Generated_Source\PSoC4/Buzz.c ****     * Parameters:  
- 572:.\Generated_Source\PSoC4/Buzz.c ****     *  compare:  New compare value.  
- 573:.\Generated_Source\PSoC4/Buzz.c ****     *
- 574:.\Generated_Source\PSoC4/Buzz.c ****     * Return: 
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cccQLrBH.s 			page 18
-
-
- 575:.\Generated_Source\PSoC4/Buzz.c ****     *  None
- 576:.\Generated_Source\PSoC4/Buzz.c ****     *
- 577:.\Generated_Source\PSoC4/Buzz.c ****     *******************************************************************************/
- 578:.\Generated_Source\PSoC4/Buzz.c ****     void Buzz_WriteCompare2(uint16 compare) \
- 579:.\Generated_Source\PSoC4/Buzz.c ****                                         
- 580:.\Generated_Source\PSoC4/Buzz.c ****     {
- 581:.\Generated_Source\PSoC4/Buzz.c ****         #if(Buzz_UsingFixedFunction)
- 582:.\Generated_Source\PSoC4/Buzz.c ****             CY_SET_REG16(Buzz_COMPARE2_LSB_PTR, compare);
- 583:.\Generated_Source\PSoC4/Buzz.c ****         #else
- 584:.\Generated_Source\PSoC4/Buzz.c ****             CY_SET_REG16(Buzz_COMPARE2_LSB_PTR, compare);
- 585:.\Generated_Source\PSoC4/Buzz.c ****         #endif /* (Buzz_UsingFixedFunction) */
- 586:.\Generated_Source\PSoC4/Buzz.c ****     }
- 587:.\Generated_Source\PSoC4/Buzz.c **** #endif /* UseOneCompareMode */
- 588:.\Generated_Source\PSoC4/Buzz.c **** 
- 589:.\Generated_Source\PSoC4/Buzz.c **** #if (Buzz_DeadBandUsed)
- 590:.\Generated_Source\PSoC4/Buzz.c **** 
- 591:.\Generated_Source\PSoC4/Buzz.c **** 
- 592:.\Generated_Source\PSoC4/Buzz.c ****     /*******************************************************************************
- 593:.\Generated_Source\PSoC4/Buzz.c ****     * Function Name: Buzz_WriteDeadTime
- 594:.\Generated_Source\PSoC4/Buzz.c ****     ********************************************************************************
- 595:.\Generated_Source\PSoC4/Buzz.c ****     * 
- 596:.\Generated_Source\PSoC4/Buzz.c ****     * Summary:
- 597:.\Generated_Source\PSoC4/Buzz.c ****     *  This function writes the dead-band counts to the corresponding register
- 598:.\Generated_Source\PSoC4/Buzz.c ****     *
- 599:.\Generated_Source\PSoC4/Buzz.c ****     * Parameters:  
- 600:.\Generated_Source\PSoC4/Buzz.c ****     *  deadtime:  Number of counts for dead time 
- 601:.\Generated_Source\PSoC4/Buzz.c ****     *
- 602:.\Generated_Source\PSoC4/Buzz.c ****     * Return: 
- 603:.\Generated_Source\PSoC4/Buzz.c ****     *  None
- 604:.\Generated_Source\PSoC4/Buzz.c ****     *
- 605:.\Generated_Source\PSoC4/Buzz.c ****     *******************************************************************************/
- 606:.\Generated_Source\PSoC4/Buzz.c ****     void Buzz_WriteDeadTime(uint8 deadtime) 
- 607:.\Generated_Source\PSoC4/Buzz.c ****     {
- 608:.\Generated_Source\PSoC4/Buzz.c ****         /* If using the Dead Band 1-255 mode then just write the register */
- 609:.\Generated_Source\PSoC4/Buzz.c ****         #if(!Buzz_DeadBand2_4)
- 610:.\Generated_Source\PSoC4/Buzz.c ****             CY_SET_REG8(Buzz_DEADBAND_COUNT_PTR, deadtime);
- 611:.\Generated_Source\PSoC4/Buzz.c ****         #else
- 612:.\Generated_Source\PSoC4/Buzz.c ****             /* Otherwise the data has to be masked and offset */        
- 613:.\Generated_Source\PSoC4/Buzz.c ****             /* Clear existing data */
- 614:.\Generated_Source\PSoC4/Buzz.c ****             Buzz_DEADBAND_COUNT &= ((uint8)(~Buzz_DEADBAND_COUNT_MASK));
- 615:.\Generated_Source\PSoC4/Buzz.c ****             
- 616:.\Generated_Source\PSoC4/Buzz.c ****             /* Set new dead time */
- 617:.\Generated_Source\PSoC4/Buzz.c ****             #if(Buzz_DEADBAND_COUNT_SHIFT)        
- 618:.\Generated_Source\PSoC4/Buzz.c ****                 Buzz_DEADBAND_COUNT |= ((uint8)((uint8)deadtime << Buzz_DEADBAND_COUNT_SHIFT)) & 
- 619:.\Generated_Source\PSoC4/Buzz.c ****                                                     Buzz_DEADBAND_COUNT_MASK;
- 620:.\Generated_Source\PSoC4/Buzz.c ****             #else
- 621:.\Generated_Source\PSoC4/Buzz.c ****                 Buzz_DEADBAND_COUNT |= deadtime & Buzz_DEADBAND_COUNT_MASK;        
- 622:.\Generated_Source\PSoC4/Buzz.c ****             #endif /* (Buzz_DEADBAND_COUNT_SHIFT) */
- 623:.\Generated_Source\PSoC4/Buzz.c ****         
- 624:.\Generated_Source\PSoC4/Buzz.c ****         #endif /* (!Buzz_DeadBand2_4) */
- 625:.\Generated_Source\PSoC4/Buzz.c ****     }
- 626:.\Generated_Source\PSoC4/Buzz.c **** 
- 627:.\Generated_Source\PSoC4/Buzz.c **** 
- 628:.\Generated_Source\PSoC4/Buzz.c ****     /*******************************************************************************
- 629:.\Generated_Source\PSoC4/Buzz.c ****     * Function Name: Buzz_ReadDeadTime
- 630:.\Generated_Source\PSoC4/Buzz.c ****     ********************************************************************************
- 631:.\Generated_Source\PSoC4/Buzz.c ****     * 
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cccQLrBH.s 			page 19
-
-
- 632:.\Generated_Source\PSoC4/Buzz.c ****     * Summary:
- 633:.\Generated_Source\PSoC4/Buzz.c ****     *  This function reads the dead-band counts from the corresponding register
- 634:.\Generated_Source\PSoC4/Buzz.c ****     *
- 635:.\Generated_Source\PSoC4/Buzz.c ****     * Parameters:  
- 636:.\Generated_Source\PSoC4/Buzz.c ****     *  None
- 637:.\Generated_Source\PSoC4/Buzz.c ****     *
- 638:.\Generated_Source\PSoC4/Buzz.c ****     * Return: 
- 639:.\Generated_Source\PSoC4/Buzz.c ****     *  Dead Band Counts
- 640:.\Generated_Source\PSoC4/Buzz.c ****     *
- 641:.\Generated_Source\PSoC4/Buzz.c ****     *******************************************************************************/
- 642:.\Generated_Source\PSoC4/Buzz.c ****     uint8 Buzz_ReadDeadTime(void) 
- 643:.\Generated_Source\PSoC4/Buzz.c ****     {
- 644:.\Generated_Source\PSoC4/Buzz.c ****         /* If using the Dead Band 1-255 mode then just read the register */
- 645:.\Generated_Source\PSoC4/Buzz.c ****         #if(!Buzz_DeadBand2_4)
- 646:.\Generated_Source\PSoC4/Buzz.c ****             return (CY_GET_REG8(Buzz_DEADBAND_COUNT_PTR));
- 647:.\Generated_Source\PSoC4/Buzz.c ****         #else
- 648:.\Generated_Source\PSoC4/Buzz.c ****         
- 649:.\Generated_Source\PSoC4/Buzz.c ****             /* Otherwise the data has to be masked and offset */
- 650:.\Generated_Source\PSoC4/Buzz.c ****             #if(Buzz_DEADBAND_COUNT_SHIFT)      
- 651:.\Generated_Source\PSoC4/Buzz.c ****                 return ((uint8)(((uint8)(Buzz_DEADBAND_COUNT & Buzz_DEADBAND_COUNT_MASK)) >> 
- 652:.\Generated_Source\PSoC4/Buzz.c ****                                                                            Buzz_DEADBAND_COUNT_SHIF
- 653:.\Generated_Source\PSoC4/Buzz.c ****             #else
- 654:.\Generated_Source\PSoC4/Buzz.c ****                 return (Buzz_DEADBAND_COUNT & Buzz_DEADBAND_COUNT_MASK);
- 655:.\Generated_Source\PSoC4/Buzz.c ****             #endif /* (Buzz_DEADBAND_COUNT_SHIFT) */
- 656:.\Generated_Source\PSoC4/Buzz.c ****         #endif /* (!Buzz_DeadBand2_4) */
- 657:.\Generated_Source\PSoC4/Buzz.c ****     }
- 658:.\Generated_Source\PSoC4/Buzz.c **** #endif /* DeadBandUsed */
- 659:.\Generated_Source\PSoC4/Buzz.c **** 
- 660:.\Generated_Source\PSoC4/Buzz.c **** #if (Buzz_UseStatus || Buzz_UsingFixedFunction)
- 661:.\Generated_Source\PSoC4/Buzz.c **** 
- 662:.\Generated_Source\PSoC4/Buzz.c **** 
- 663:.\Generated_Source\PSoC4/Buzz.c ****     /*******************************************************************************
- 664:.\Generated_Source\PSoC4/Buzz.c ****     * Function Name: Buzz_SetInterruptMode
- 665:.\Generated_Source\PSoC4/Buzz.c ****     ********************************************************************************
- 666:.\Generated_Source\PSoC4/Buzz.c ****     * 
- 667:.\Generated_Source\PSoC4/Buzz.c ****     * Summary:
- 668:.\Generated_Source\PSoC4/Buzz.c ****     *  This function configures the interrupts mask control of theinterrupt 
- 669:.\Generated_Source\PSoC4/Buzz.c ****     *  source status register.
- 670:.\Generated_Source\PSoC4/Buzz.c ****     *
- 671:.\Generated_Source\PSoC4/Buzz.c ****     * Parameters:  
- 672:.\Generated_Source\PSoC4/Buzz.c ****     *  uint8 interruptMode: Bit field containing the interrupt sources enabled 
- 673:.\Generated_Source\PSoC4/Buzz.c ****     *
- 674:.\Generated_Source\PSoC4/Buzz.c ****     * Return: 
- 675:.\Generated_Source\PSoC4/Buzz.c ****     *  None
- 676:.\Generated_Source\PSoC4/Buzz.c ****     *
- 677:.\Generated_Source\PSoC4/Buzz.c ****     *******************************************************************************/
- 678:.\Generated_Source\PSoC4/Buzz.c ****     void Buzz_SetInterruptMode(uint8 interruptMode)  
- 679:.\Generated_Source\PSoC4/Buzz.c ****     {
- 680:.\Generated_Source\PSoC4/Buzz.c ****     	CY_SET_REG8(Buzz_STATUS_MASK_PTR, interruptMode);
- 681:.\Generated_Source\PSoC4/Buzz.c ****     }
- 682:.\Generated_Source\PSoC4/Buzz.c **** 
- 683:.\Generated_Source\PSoC4/Buzz.c **** 
- 684:.\Generated_Source\PSoC4/Buzz.c ****     /*******************************************************************************
- 685:.\Generated_Source\PSoC4/Buzz.c ****     * Function Name: Buzz_ReadStatusRegister
- 686:.\Generated_Source\PSoC4/Buzz.c ****     ********************************************************************************
- 687:.\Generated_Source\PSoC4/Buzz.c ****     * 
- 688:.\Generated_Source\PSoC4/Buzz.c ****     * Summary:
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cccQLrBH.s 			page 20
-
-
- 689:.\Generated_Source\PSoC4/Buzz.c ****     *  This function returns the current state of the status register. 
- 690:.\Generated_Source\PSoC4/Buzz.c ****     *
- 691:.\Generated_Source\PSoC4/Buzz.c ****     * Parameters:  
- 692:.\Generated_Source\PSoC4/Buzz.c ****     *  None
- 693:.\Generated_Source\PSoC4/Buzz.c ****     *
- 694:.\Generated_Source\PSoC4/Buzz.c ****     * Return: 
- 695:.\Generated_Source\PSoC4/Buzz.c ****     *  uint8 : Current status register value. The status register bits are:
- 696:.\Generated_Source\PSoC4/Buzz.c ****     *  [7:6] : Unused(0)
- 697:.\Generated_Source\PSoC4/Buzz.c ****     *  [5]   : Kill event output
- 698:.\Generated_Source\PSoC4/Buzz.c ****     *  [4]   : FIFO not empty
- 699:.\Generated_Source\PSoC4/Buzz.c ****     *  [3]   : FIFO full
- 700:.\Generated_Source\PSoC4/Buzz.c ****     *  [2]   : Terminal count
- 701:.\Generated_Source\PSoC4/Buzz.c ****     *  [1]   : Compare output 2
- 702:.\Generated_Source\PSoC4/Buzz.c ****     *  [0]   : Compare output 1
- 703:.\Generated_Source\PSoC4/Buzz.c ****     *
- 704:.\Generated_Source\PSoC4/Buzz.c ****     *******************************************************************************/
- 705:.\Generated_Source\PSoC4/Buzz.c ****     uint8 Buzz_ReadStatusRegister(void)   
- 706:.\Generated_Source\PSoC4/Buzz.c ****     {
- 707:.\Generated_Source\PSoC4/Buzz.c ****     	uint8 result;
- 708:.\Generated_Source\PSoC4/Buzz.c ****     	
- 709:.\Generated_Source\PSoC4/Buzz.c ****     	result = CY_GET_REG8(Buzz_STATUS_PTR);
- 710:.\Generated_Source\PSoC4/Buzz.c ****     	return (result);
- 711:.\Generated_Source\PSoC4/Buzz.c ****     }
- 712:.\Generated_Source\PSoC4/Buzz.c **** 
- 713:.\Generated_Source\PSoC4/Buzz.c **** #endif /* (Buzz_UseStatus || Buzz_UsingFixedFunction) */
- 714:.\Generated_Source\PSoC4/Buzz.c **** 
- 715:.\Generated_Source\PSoC4/Buzz.c **** 
- 716:.\Generated_Source\PSoC4/Buzz.c **** #if (Buzz_UseControl)
- 717:.\Generated_Source\PSoC4/Buzz.c **** 
- 718:.\Generated_Source\PSoC4/Buzz.c **** 
- 719:.\Generated_Source\PSoC4/Buzz.c ****     /*******************************************************************************
- 720:.\Generated_Source\PSoC4/Buzz.c ****     * Function Name: Buzz_ReadControlRegister
- 721:.\Generated_Source\PSoC4/Buzz.c ****     ********************************************************************************
- 722:.\Generated_Source\PSoC4/Buzz.c ****     * 
- 723:.\Generated_Source\PSoC4/Buzz.c ****     * Summary:
- 724:.\Generated_Source\PSoC4/Buzz.c ****     *  Returns the current state of the control register. This API is available 
- 725:.\Generated_Source\PSoC4/Buzz.c ****     *  only if the control register is not removed.
- 726:.\Generated_Source\PSoC4/Buzz.c ****     *
- 727:.\Generated_Source\PSoC4/Buzz.c ****     * Parameters:  
- 728:.\Generated_Source\PSoC4/Buzz.c ****     *  None 
- 729:.\Generated_Source\PSoC4/Buzz.c ****     *
- 730:.\Generated_Source\PSoC4/Buzz.c ****     * Return: 
- 731:.\Generated_Source\PSoC4/Buzz.c ****     *  uint8 : Current control register value
- 732:.\Generated_Source\PSoC4/Buzz.c ****     *
- 733:.\Generated_Source\PSoC4/Buzz.c ****     *******************************************************************************/    
- 734:.\Generated_Source\PSoC4/Buzz.c ****     uint8 Buzz_ReadControlRegister(void) 
- 735:.\Generated_Source\PSoC4/Buzz.c ****     {
- 396              		.loc 1 735 0
- 397              		.cfi_startproc
- 398 0000 80B5     		push	{r7, lr}
- 399              	.LCFI20:
- 400              		.cfi_def_cfa_offset 8
- 401              		.cfi_offset 7, -8
- 402              		.cfi_offset 14, -4
- 403 0002 82B0     		sub	sp, sp, #8
- 404              	.LCFI21:
- 405              		.cfi_def_cfa_offset 16
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cccQLrBH.s 			page 21
-
-
- 406 0004 00AF     		add	r7, sp, #0
- 407              	.LCFI22:
- 408              		.cfi_def_cfa_register 7
- 736:.\Generated_Source\PSoC4/Buzz.c ****     	uint8 result;
- 737:.\Generated_Source\PSoC4/Buzz.c ****     	
- 738:.\Generated_Source\PSoC4/Buzz.c ****     	result = CY_GET_REG8(Buzz_CONTROL_PTR);
- 409              		.loc 1 738 0
- 410 0006 054A     		ldr	r2, .L29
- 411 0008 FB1D     		add	r3, r7, #7
- 412 000a 1278     		ldrb	r2, [r2]
- 413 000c 1A70     		strb	r2, [r3]
- 739:.\Generated_Source\PSoC4/Buzz.c ****     	return (result);
- 414              		.loc 1 739 0
- 415 000e FB1D     		add	r3, r7, #7
- 416 0010 1B78     		ldrb	r3, [r3]
- 740:.\Generated_Source\PSoC4/Buzz.c ****     }
- 417              		.loc 1 740 0
- 418 0012 181C     		mov	r0, r3
- 419 0014 BD46     		mov	sp, r7
- 420 0016 02B0     		add	sp, sp, #8
- 421              		@ sp needed for prologue
- 422 0018 80BD     		pop	{r7, pc}
- 423              	.L30:
- 424 001a C046     		.align	2
- 425              	.L29:
- 426 001c 71000F40 		.word	1074724977
- 427              		.cfi_endproc
- 428              	.LFE8:
- 429              		.size	Buzz_ReadControlRegister, .-Buzz_ReadControlRegister
- 430              		.section	.text.Buzz_WriteControlRegister,"ax",%progbits
- 431              		.align	2
- 432              		.global	Buzz_WriteControlRegister
- 433              		.code	16
- 434              		.thumb_func
- 435              		.type	Buzz_WriteControlRegister, %function
- 436              	Buzz_WriteControlRegister:
- 437              	.LFB9:
- 741:.\Generated_Source\PSoC4/Buzz.c **** 
- 742:.\Generated_Source\PSoC4/Buzz.c **** 
- 743:.\Generated_Source\PSoC4/Buzz.c ****     /*******************************************************************************
- 744:.\Generated_Source\PSoC4/Buzz.c ****     * Function Name: Buzz_WriteControlRegister
- 745:.\Generated_Source\PSoC4/Buzz.c ****     ********************************************************************************
- 746:.\Generated_Source\PSoC4/Buzz.c ****     * 
- 747:.\Generated_Source\PSoC4/Buzz.c ****     * Summary:
- 748:.\Generated_Source\PSoC4/Buzz.c ****     *  Sets the bit field of the control register. This API is available only if 
- 749:.\Generated_Source\PSoC4/Buzz.c ****     *  the control register is not removed.
- 750:.\Generated_Source\PSoC4/Buzz.c ****     *
- 751:.\Generated_Source\PSoC4/Buzz.c ****     * Parameters:  
- 752:.\Generated_Source\PSoC4/Buzz.c ****     *  uint8 control: Control register bit field, The status register bits are:
- 753:.\Generated_Source\PSoC4/Buzz.c ****     *  [7]   : PWM Enable
- 754:.\Generated_Source\PSoC4/Buzz.c ****     *  [6]   : Reset
- 755:.\Generated_Source\PSoC4/Buzz.c ****     *  [5:3] : Compare Mode2
- 756:.\Generated_Source\PSoC4/Buzz.c ****     *  [2:0] : Compare Mode2
- 757:.\Generated_Source\PSoC4/Buzz.c ****     *
- 758:.\Generated_Source\PSoC4/Buzz.c ****     * Return: 
- 759:.\Generated_Source\PSoC4/Buzz.c ****     *  None
- 760:.\Generated_Source\PSoC4/Buzz.c ****     *
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cccQLrBH.s 			page 22
-
-
- 761:.\Generated_Source\PSoC4/Buzz.c ****     *******************************************************************************/  
- 762:.\Generated_Source\PSoC4/Buzz.c ****     void Buzz_WriteControlRegister(uint8 control) 
- 763:.\Generated_Source\PSoC4/Buzz.c ****     {
- 438              		.loc 1 763 0
- 439              		.cfi_startproc
- 440 0000 80B5     		push	{r7, lr}
- 441              	.LCFI23:
- 442              		.cfi_def_cfa_offset 8
- 443              		.cfi_offset 7, -8
- 444              		.cfi_offset 14, -4
- 445 0002 82B0     		sub	sp, sp, #8
- 446              	.LCFI24:
- 447              		.cfi_def_cfa_offset 16
- 448 0004 00AF     		add	r7, sp, #0
- 449              	.LCFI25:
- 450              		.cfi_def_cfa_register 7
- 451 0006 021C     		mov	r2, r0
- 452 0008 FB1D     		add	r3, r7, #7
- 453 000a 1A70     		strb	r2, [r3]
- 764:.\Generated_Source\PSoC4/Buzz.c ****     	CY_SET_REG8(Buzz_CONTROL_PTR, control);
- 454              		.loc 1 764 0
- 455 000c 034B     		ldr	r3, .L32
- 456 000e FA1D     		add	r2, r7, #7
- 457 0010 1278     		ldrb	r2, [r2]
- 458 0012 1A70     		strb	r2, [r3]
- 765:.\Generated_Source\PSoC4/Buzz.c ****     }
- 459              		.loc 1 765 0
- 460 0014 BD46     		mov	sp, r7
- 461 0016 02B0     		add	sp, sp, #8
- 462              		@ sp needed for prologue
- 463 0018 80BD     		pop	{r7, pc}
- 464              	.L33:
- 465 001a C046     		.align	2
- 466              	.L32:
- 467 001c 71000F40 		.word	1074724977
- 468              		.cfi_endproc
- 469              	.LFE9:
- 470              		.size	Buzz_WriteControlRegister, .-Buzz_WriteControlRegister
- 471              		.section	.text.Buzz_ReadCapture,"ax",%progbits
- 472              		.align	2
- 473              		.global	Buzz_ReadCapture
- 474              		.code	16
- 475              		.thumb_func
- 476              		.type	Buzz_ReadCapture, %function
- 477              	Buzz_ReadCapture:
- 478              	.LFB10:
- 766:.\Generated_Source\PSoC4/Buzz.c **** 	
- 767:.\Generated_Source\PSoC4/Buzz.c **** #endif /* (Buzz_UseControl) */
- 768:.\Generated_Source\PSoC4/Buzz.c **** 
- 769:.\Generated_Source\PSoC4/Buzz.c **** 
- 770:.\Generated_Source\PSoC4/Buzz.c **** #if (!Buzz_UsingFixedFunction)
- 771:.\Generated_Source\PSoC4/Buzz.c **** 
- 772:.\Generated_Source\PSoC4/Buzz.c **** 
- 773:.\Generated_Source\PSoC4/Buzz.c ****     /*******************************************************************************
- 774:.\Generated_Source\PSoC4/Buzz.c ****     * Function Name: Buzz_ReadCapture
- 775:.\Generated_Source\PSoC4/Buzz.c ****     ********************************************************************************
- 776:.\Generated_Source\PSoC4/Buzz.c ****     * 
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cccQLrBH.s 			page 23
-
-
- 777:.\Generated_Source\PSoC4/Buzz.c ****     * Summary:
- 778:.\Generated_Source\PSoC4/Buzz.c ****     *  Reads the capture value from the capture FIFO.
- 779:.\Generated_Source\PSoC4/Buzz.c ****     *
- 780:.\Generated_Source\PSoC4/Buzz.c ****     * Parameters:  
- 781:.\Generated_Source\PSoC4/Buzz.c ****     *  None
- 782:.\Generated_Source\PSoC4/Buzz.c ****     *
- 783:.\Generated_Source\PSoC4/Buzz.c ****     * Return: 
- 784:.\Generated_Source\PSoC4/Buzz.c ****     *  uint8/uint16: The current capture value
- 785:.\Generated_Source\PSoC4/Buzz.c ****     *
- 786:.\Generated_Source\PSoC4/Buzz.c ****     *******************************************************************************/  
- 787:.\Generated_Source\PSoC4/Buzz.c ****     uint16 Buzz_ReadCapture(void)  
- 788:.\Generated_Source\PSoC4/Buzz.c ****     {
- 479              		.loc 1 788 0
- 480              		.cfi_startproc
- 481 0000 80B5     		push	{r7, lr}
- 482              	.LCFI26:
- 483              		.cfi_def_cfa_offset 8
- 484              		.cfi_offset 7, -8
- 485              		.cfi_offset 14, -4
- 486 0002 00AF     		add	r7, sp, #0
- 487              	.LCFI27:
- 488              		.cfi_def_cfa_register 7
- 789:.\Generated_Source\PSoC4/Buzz.c ****     	return (CY_GET_REG16(Buzz_CAPTURE_LSB_PTR));
- 489              		.loc 1 789 0
- 490 0004 024B     		ldr	r3, .L36
- 491 0006 1B88     		ldrh	r3, [r3]
- 492 0008 9BB2     		uxth	r3, r3
- 790:.\Generated_Source\PSoC4/Buzz.c ****     }
- 493              		.loc 1 790 0
- 494 000a 181C     		mov	r0, r3
- 495 000c BD46     		mov	sp, r7
- 496              		@ sp needed for prologue
- 497 000e 80BD     		pop	{r7, pc}
- 498              	.L37:
- 499              		.align	2
- 500              	.L36:
- 501 0010 A0100F40 		.word	1074729120
- 502              		.cfi_endproc
- 503              	.LFE10:
- 504              		.size	Buzz_ReadCapture, .-Buzz_ReadCapture
- 505              		.section	.text.Buzz_ReadCompare,"ax",%progbits
- 506              		.align	2
- 507              		.global	Buzz_ReadCompare
- 508              		.code	16
- 509              		.thumb_func
- 510              		.type	Buzz_ReadCompare, %function
- 511              	Buzz_ReadCompare:
- 512              	.LFB11:
- 791:.\Generated_Source\PSoC4/Buzz.c **** 	
- 792:.\Generated_Source\PSoC4/Buzz.c **** #endif /* (!Buzz_UsingFixedFunction) */
- 793:.\Generated_Source\PSoC4/Buzz.c **** 
- 794:.\Generated_Source\PSoC4/Buzz.c **** 
- 795:.\Generated_Source\PSoC4/Buzz.c **** #if (Buzz_UseOneCompareMode)
- 796:.\Generated_Source\PSoC4/Buzz.c **** 
- 797:.\Generated_Source\PSoC4/Buzz.c **** 
- 798:.\Generated_Source\PSoC4/Buzz.c ****     /*******************************************************************************
- 799:.\Generated_Source\PSoC4/Buzz.c ****     * Function Name: Buzz_ReadCompare
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cccQLrBH.s 			page 24
-
-
- 800:.\Generated_Source\PSoC4/Buzz.c ****     ********************************************************************************
- 801:.\Generated_Source\PSoC4/Buzz.c ****     * 
- 802:.\Generated_Source\PSoC4/Buzz.c ****     * Summary:
- 803:.\Generated_Source\PSoC4/Buzz.c ****     *  Reads the compare value for the compare output when the PWM Mode parameter is 
- 804:.\Generated_Source\PSoC4/Buzz.c ****     *  set to Dither mode, Center Aligned mode, or One Output mode.
- 805:.\Generated_Source\PSoC4/Buzz.c ****     *
- 806:.\Generated_Source\PSoC4/Buzz.c ****     * Parameters:  
- 807:.\Generated_Source\PSoC4/Buzz.c ****     *  None
- 808:.\Generated_Source\PSoC4/Buzz.c ****     *
- 809:.\Generated_Source\PSoC4/Buzz.c ****     * Return: 
- 810:.\Generated_Source\PSoC4/Buzz.c ****     *  uint8/uint16: Current compare value
- 811:.\Generated_Source\PSoC4/Buzz.c ****     *
- 812:.\Generated_Source\PSoC4/Buzz.c ****     *******************************************************************************/  
- 813:.\Generated_Source\PSoC4/Buzz.c ****     uint16 Buzz_ReadCompare(void)  
- 814:.\Generated_Source\PSoC4/Buzz.c ****     {
- 513              		.loc 1 814 0
- 514              		.cfi_startproc
- 515 0000 80B5     		push	{r7, lr}
- 516              	.LCFI28:
- 517              		.cfi_def_cfa_offset 8
- 518              		.cfi_offset 7, -8
- 519              		.cfi_offset 14, -4
- 520 0002 00AF     		add	r7, sp, #0
- 521              	.LCFI29:
- 522              		.cfi_def_cfa_register 7
- 815:.\Generated_Source\PSoC4/Buzz.c **** 		#if(Buzz_UsingFixedFunction)
- 816:.\Generated_Source\PSoC4/Buzz.c ****             return ((uint16)CY_GET_REG16(Buzz_COMPARE1_LSB_PTR));
- 817:.\Generated_Source\PSoC4/Buzz.c ****         #else
- 818:.\Generated_Source\PSoC4/Buzz.c ****             return (CY_GET_REG16(Buzz_COMPARE1_LSB_PTR));
- 523              		.loc 1 818 0
- 524 0004 024B     		ldr	r3, .L40
- 525 0006 1B88     		ldrh	r3, [r3]
- 526 0008 9BB2     		uxth	r3, r3
- 819:.\Generated_Source\PSoC4/Buzz.c ****         #endif /* (Buzz_UsingFixedFunction) */
- 820:.\Generated_Source\PSoC4/Buzz.c ****     }
- 527              		.loc 1 820 0
- 528 000a 181C     		mov	r0, r3
- 529 000c BD46     		mov	sp, r7
- 530              		@ sp needed for prologue
- 531 000e 80BD     		pop	{r7, pc}
- 532              	.L41:
- 533              		.align	2
- 534              	.L40:
- 535 0010 40100F40 		.word	1074729024
- 536              		.cfi_endproc
- 537              	.LFE11:
- 538              		.size	Buzz_ReadCompare, .-Buzz_ReadCompare
- 539              		.section	.text.Buzz_ReadPeriod,"ax",%progbits
- 540              		.align	2
- 541              		.global	Buzz_ReadPeriod
- 542              		.code	16
- 543              		.thumb_func
- 544              		.type	Buzz_ReadPeriod, %function
- 545              	Buzz_ReadPeriod:
- 546              	.LFB12:
- 821:.\Generated_Source\PSoC4/Buzz.c **** 
- 822:.\Generated_Source\PSoC4/Buzz.c **** #else
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cccQLrBH.s 			page 25
-
-
- 823:.\Generated_Source\PSoC4/Buzz.c **** 
- 824:.\Generated_Source\PSoC4/Buzz.c **** 
- 825:.\Generated_Source\PSoC4/Buzz.c ****     /*******************************************************************************
- 826:.\Generated_Source\PSoC4/Buzz.c ****     * Function Name: Buzz_ReadCompare1
- 827:.\Generated_Source\PSoC4/Buzz.c ****     ********************************************************************************
- 828:.\Generated_Source\PSoC4/Buzz.c ****     * 
- 829:.\Generated_Source\PSoC4/Buzz.c ****     * Summary:
- 830:.\Generated_Source\PSoC4/Buzz.c ****     *  Reads the compare value for the compare1 output.
- 831:.\Generated_Source\PSoC4/Buzz.c ****     *
- 832:.\Generated_Source\PSoC4/Buzz.c ****     * Parameters:  
- 833:.\Generated_Source\PSoC4/Buzz.c ****     *  None
- 834:.\Generated_Source\PSoC4/Buzz.c ****     *
- 835:.\Generated_Source\PSoC4/Buzz.c ****     * Return: 
- 836:.\Generated_Source\PSoC4/Buzz.c ****     *  uint8/uint16: Current compare value.
- 837:.\Generated_Source\PSoC4/Buzz.c ****     *
- 838:.\Generated_Source\PSoC4/Buzz.c ****     *******************************************************************************/  
- 839:.\Generated_Source\PSoC4/Buzz.c ****     uint16 Buzz_ReadCompare1(void) 
- 840:.\Generated_Source\PSoC4/Buzz.c ****     {
- 841:.\Generated_Source\PSoC4/Buzz.c **** 		return (CY_GET_REG16(Buzz_COMPARE1_LSB_PTR));
- 842:.\Generated_Source\PSoC4/Buzz.c ****     }
- 843:.\Generated_Source\PSoC4/Buzz.c **** 
- 844:.\Generated_Source\PSoC4/Buzz.c **** 
- 845:.\Generated_Source\PSoC4/Buzz.c ****     /*******************************************************************************
- 846:.\Generated_Source\PSoC4/Buzz.c ****     * Function Name: Buzz_ReadCompare2
- 847:.\Generated_Source\PSoC4/Buzz.c ****     ********************************************************************************
- 848:.\Generated_Source\PSoC4/Buzz.c ****     * 
- 849:.\Generated_Source\PSoC4/Buzz.c ****     * Summary:
- 850:.\Generated_Source\PSoC4/Buzz.c ****     *  Reads the compare value for the compare2 output.
- 851:.\Generated_Source\PSoC4/Buzz.c ****     *
- 852:.\Generated_Source\PSoC4/Buzz.c ****     * Parameters:  
- 853:.\Generated_Source\PSoC4/Buzz.c ****     *  None
- 854:.\Generated_Source\PSoC4/Buzz.c ****     *
- 855:.\Generated_Source\PSoC4/Buzz.c ****     * Return: 
- 856:.\Generated_Source\PSoC4/Buzz.c ****     *  uint8/uint16: Current compare value.
- 857:.\Generated_Source\PSoC4/Buzz.c ****     *
- 858:.\Generated_Source\PSoC4/Buzz.c ****     *******************************************************************************/  
- 859:.\Generated_Source\PSoC4/Buzz.c ****     uint16 Buzz_ReadCompare2(void)  
- 860:.\Generated_Source\PSoC4/Buzz.c ****     {
- 861:.\Generated_Source\PSoC4/Buzz.c **** 		return (CY_GET_REG16(Buzz_COMPARE2_LSB_PTR));
- 862:.\Generated_Source\PSoC4/Buzz.c ****     }
- 863:.\Generated_Source\PSoC4/Buzz.c **** 
- 864:.\Generated_Source\PSoC4/Buzz.c **** #endif /* (Buzz_UseOneCompareMode) */
- 865:.\Generated_Source\PSoC4/Buzz.c **** 
- 866:.\Generated_Source\PSoC4/Buzz.c **** 
- 867:.\Generated_Source\PSoC4/Buzz.c **** /*******************************************************************************
- 868:.\Generated_Source\PSoC4/Buzz.c **** * Function Name: Buzz_ReadPeriod
- 869:.\Generated_Source\PSoC4/Buzz.c **** ********************************************************************************
- 870:.\Generated_Source\PSoC4/Buzz.c **** * 
- 871:.\Generated_Source\PSoC4/Buzz.c **** * Summary:
- 872:.\Generated_Source\PSoC4/Buzz.c **** *  Reads the period value used by the PWM hardware.
- 873:.\Generated_Source\PSoC4/Buzz.c **** *
- 874:.\Generated_Source\PSoC4/Buzz.c **** * Parameters:  
- 875:.\Generated_Source\PSoC4/Buzz.c **** *  None
- 876:.\Generated_Source\PSoC4/Buzz.c **** *
- 877:.\Generated_Source\PSoC4/Buzz.c **** * Return: 
- 878:.\Generated_Source\PSoC4/Buzz.c **** *  uint8/16: Period value
- 879:.\Generated_Source\PSoC4/Buzz.c **** *
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cccQLrBH.s 			page 26
-
-
- 880:.\Generated_Source\PSoC4/Buzz.c **** *******************************************************************************/ 
- 881:.\Generated_Source\PSoC4/Buzz.c **** uint16 Buzz_ReadPeriod(void) 
- 882:.\Generated_Source\PSoC4/Buzz.c **** {
- 547              		.loc 1 882 0
- 548              		.cfi_startproc
- 549 0000 80B5     		push	{r7, lr}
- 550              	.LCFI30:
- 551              		.cfi_def_cfa_offset 8
- 552              		.cfi_offset 7, -8
- 553              		.cfi_offset 14, -4
- 554 0002 00AF     		add	r7, sp, #0
- 555              	.LCFI31:
- 556              		.cfi_def_cfa_register 7
- 883:.\Generated_Source\PSoC4/Buzz.c **** 	#if(Buzz_UsingFixedFunction)
- 884:.\Generated_Source\PSoC4/Buzz.c ****         return ((uint16)CY_GET_REG16(Buzz_PERIOD_LSB_PTR));
- 885:.\Generated_Source\PSoC4/Buzz.c ****     #else
- 886:.\Generated_Source\PSoC4/Buzz.c ****         return (CY_GET_REG16(Buzz_PERIOD_LSB_PTR));
- 557              		.loc 1 886 0
- 558 0004 024B     		ldr	r3, .L44
- 559 0006 1B88     		ldrh	r3, [r3]
- 560 0008 9BB2     		uxth	r3, r3
- 887:.\Generated_Source\PSoC4/Buzz.c ****     #endif /* (Buzz_UsingFixedFunction) */
- 888:.\Generated_Source\PSoC4/Buzz.c **** }
- 561              		.loc 1 888 0
- 562 000a 181C     		mov	r0, r3
- 563 000c BD46     		mov	sp, r7
- 564              		@ sp needed for prologue
- 565 000e 80BD     		pop	{r7, pc}
- 566              	.L45:
- 567              		.align	2
- 568              	.L44:
- 569 0010 80100F40 		.word	1074729088
- 570              		.cfi_endproc
- 571              	.LFE12:
- 572              		.size	Buzz_ReadPeriod, .-Buzz_ReadPeriod
- 573              		.text
- 574              	.Letext0:
- 575              		.file 2 ".\\Generated_Source\\PSoC4\\cytypes.h"
- 576              		.section	.debug_info,"",%progbits
- 577              	.Ldebug_info0:
- 578 0000 82020000 		.4byte	0x282
- 579 0004 0200     		.2byte	0x2
- 580 0006 00000000 		.4byte	.Ldebug_abbrev0
- 581 000a 04       		.byte	0x4
- 582 000b 01       		.uleb128 0x1
- 583 000c B6010000 		.4byte	.LASF35
- 584 0010 01       		.byte	0x1
- 585 0011 29020000 		.4byte	.LASF36
- 586 0015 7F000000 		.4byte	.LASF37
- 587 0019 00000000 		.4byte	.Ldebug_ranges0+0
- 588 001d 00000000 		.4byte	0
- 589 0021 00000000 		.4byte	0
- 590 0025 00000000 		.4byte	.Ldebug_line0
- 591 0029 02       		.uleb128 0x2
- 592 002a 01       		.byte	0x1
- 593 002b 06       		.byte	0x6
- 594 002c 15020000 		.4byte	.LASF0
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cccQLrBH.s 			page 27
-
-
- 595 0030 02       		.uleb128 0x2
- 596 0031 01       		.byte	0x1
- 597 0032 08       		.byte	0x8
- 598 0033 06010000 		.4byte	.LASF1
- 599 0037 02       		.uleb128 0x2
- 600 0038 02       		.byte	0x2
- 601 0039 05       		.byte	0x5
- 602 003a AC010000 		.4byte	.LASF2
- 603 003e 02       		.uleb128 0x2
- 604 003f 02       		.byte	0x2
- 605 0040 07       		.byte	0x7
- 606 0041 17000000 		.4byte	.LASF3
- 607 0045 02       		.uleb128 0x2
- 608 0046 04       		.byte	0x4
- 609 0047 05       		.byte	0x5
- 610 0048 FF010000 		.4byte	.LASF4
- 611 004c 02       		.uleb128 0x2
- 612 004d 04       		.byte	0x4
- 613 004e 07       		.byte	0x7
- 614 004f CD000000 		.4byte	.LASF5
- 615 0053 02       		.uleb128 0x2
- 616 0054 08       		.byte	0x8
- 617 0055 05       		.byte	0x5
- 618 0056 99010000 		.4byte	.LASF6
- 619 005a 02       		.uleb128 0x2
- 620 005b 08       		.byte	0x8
- 621 005c 07       		.byte	0x7
- 622 005d 2F010000 		.4byte	.LASF7
- 623 0061 03       		.uleb128 0x3
- 624 0062 04       		.byte	0x4
- 625 0063 05       		.byte	0x5
- 626 0064 696E7400 		.ascii	"int\000"
- 627 0068 02       		.uleb128 0x2
- 628 0069 04       		.byte	0x4
- 629 006a 07       		.byte	0x7
- 630 006b 22010000 		.4byte	.LASF8
- 631 006f 04       		.uleb128 0x4
- 632 0070 DF000000 		.4byte	.LASF9
- 633 0074 02       		.byte	0x2
- 634 0075 5B       		.byte	0x5b
- 635 0076 30000000 		.4byte	0x30
- 636 007a 04       		.uleb128 0x4
- 637 007b 1B010000 		.4byte	.LASF10
- 638 007f 02       		.byte	0x2
- 639 0080 5C       		.byte	0x5c
- 640 0081 3E000000 		.4byte	0x3e
- 641 0085 02       		.uleb128 0x2
- 642 0086 04       		.byte	0x4
- 643 0087 04       		.byte	0x4
- 644 0088 71000000 		.4byte	.LASF11
- 645 008c 02       		.uleb128 0x2
- 646 008d 08       		.byte	0x8
- 647 008e 04       		.byte	0x4
- 648 008f 14010000 		.4byte	.LASF12
- 649 0093 02       		.uleb128 0x2
- 650 0094 01       		.byte	0x1
- 651 0095 08       		.byte	0x8
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cccQLrBH.s 			page 28
-
-
- 652 0096 A7010000 		.4byte	.LASF13
- 653 009a 04       		.uleb128 0x4
- 654 009b C8000000 		.4byte	.LASF14
- 655 009f 02       		.byte	0x2
- 656 00a0 F0       		.byte	0xf0
- 657 00a1 A5000000 		.4byte	0xa5
- 658 00a5 05       		.uleb128 0x5
- 659 00a6 6F000000 		.4byte	0x6f
- 660 00aa 04       		.uleb128 0x4
- 661 00ab 00000000 		.4byte	.LASF15
- 662 00af 02       		.byte	0x2
- 663 00b0 F1       		.byte	0xf1
- 664 00b1 B5000000 		.4byte	0xb5
- 665 00b5 05       		.uleb128 0x5
- 666 00b6 7A000000 		.4byte	0x7a
- 667 00ba 02       		.uleb128 0x2
- 668 00bb 04       		.byte	0x4
- 669 00bc 07       		.byte	0x7
- 670 00bd 86010000 		.4byte	.LASF16
- 671 00c1 06       		.uleb128 0x6
- 672 00c2 01       		.byte	0x1
- 673 00c3 49020000 		.4byte	.LASF17
- 674 00c7 01       		.byte	0x1
- 675 00c8 32       		.byte	0x32
- 676 00c9 01       		.byte	0x1
- 677 00ca 00000000 		.4byte	.LFB0
- 678 00ce 24000000 		.4byte	.LFE0
- 679 00d2 00000000 		.4byte	.LLST0
- 680 00d6 01       		.byte	0x1
- 681 00d7 07       		.uleb128 0x7
- 682 00d8 01       		.byte	0x1
- 683 00d9 8F010000 		.4byte	.LASF20
- 684 00dd 01       		.byte	0x1
- 685 00de 4F       		.byte	0x4f
- 686 00df 01       		.byte	0x1
- 687 00e0 00000000 		.4byte	.LFB1
- 688 00e4 74000000 		.4byte	.LFE1
- 689 00e8 2C000000 		.4byte	.LLST1
- 690 00ec 01       		.byte	0x1
- 691 00ed 00010000 		.4byte	0x100
- 692 00f1 08       		.uleb128 0x8
- 693 00f2 81010000 		.4byte	.LASF27
- 694 00f6 01       		.byte	0x1
- 695 00f7 52       		.byte	0x52
- 696 00f8 6F000000 		.4byte	0x6f
- 697 00fc 02       		.byte	0x2
- 698 00fd 91       		.byte	0x91
- 699 00fe 77       		.sleb128 -9
- 700 00ff 00       		.byte	0
- 701 0100 09       		.uleb128 0x9
- 702 0101 01       		.byte	0x1
- 703 0102 4B000000 		.4byte	.LASF18
- 704 0106 01       		.byte	0x1
- 705 0107 C1       		.byte	0xc1
- 706 0108 01       		.byte	0x1
- 707 0109 00000000 		.4byte	.LFB2
- 708 010d 20000000 		.4byte	.LFE2
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cccQLrBH.s 			page 29
-
-
- 709 0111 64000000 		.4byte	.LLST2
- 710 0115 01       		.byte	0x1
- 711 0116 09       		.uleb128 0x9
- 712 0117 01       		.byte	0x1
- 713 0118 06000000 		.4byte	.LASF19
- 714 011c 01       		.byte	0x1
- 715 011d E3       		.byte	0xe3
- 716 011e 01       		.byte	0x1
- 717 011f 00000000 		.4byte	.LFB3
- 718 0123 1C000000 		.4byte	.LFE3
- 719 0127 90000000 		.4byte	.LLST3
- 720 012b 01       		.byte	0x1
- 721 012c 0A       		.uleb128 0xa
- 722 012d 01       		.byte	0x1
- 723 012e 5E010000 		.4byte	.LASF21
- 724 0132 01       		.byte	0x1
- 725 0133 8D01     		.2byte	0x18d
- 726 0135 01       		.byte	0x1
- 727 0136 00000000 		.4byte	.LFB4
- 728 013a 20000000 		.4byte	.LFE4
- 729 013e BC000000 		.4byte	.LLST4
- 730 0142 01       		.byte	0x1
- 731 0143 57010000 		.4byte	0x157
- 732 0147 0B       		.uleb128 0xb
- 733 0148 77000000 		.4byte	.LASF23
- 734 014c 01       		.byte	0x1
- 735 014d 8D01     		.2byte	0x18d
- 736 014f 7A000000 		.4byte	0x7a
- 737 0153 02       		.byte	0x2
- 738 0154 91       		.byte	0x91
- 739 0155 76       		.sleb128 -10
- 740 0156 00       		.byte	0
- 741 0157 0C       		.uleb128 0xc
- 742 0158 01       		.byte	0x1
- 743 0159 54020000 		.4byte	.LASF31
- 744 015d 01       		.byte	0x1
- 745 015e A301     		.2byte	0x1a3
- 746 0160 01       		.byte	0x1
- 747 0161 7A000000 		.4byte	0x7a
- 748 0165 00000000 		.4byte	.LFB5
- 749 0169 1C000000 		.4byte	.LFE5
- 750 016d F4000000 		.4byte	.LLST5
- 751 0171 01       		.byte	0x1
- 752 0172 0A       		.uleb128 0xa
- 753 0173 01       		.byte	0x1
- 754 0174 2A000000 		.4byte	.LASF22
- 755 0178 01       		.byte	0x1
- 756 0179 DC01     		.2byte	0x1dc
- 757 017b 01       		.byte	0x1
- 758 017c 00000000 		.4byte	.LFB6
- 759 0180 20000000 		.4byte	.LFE6
- 760 0184 20010000 		.4byte	.LLST6
- 761 0188 01       		.byte	0x1
- 762 0189 9D010000 		.4byte	0x19d
- 763 018d 0B       		.uleb128 0xb
- 764 018e 10000000 		.4byte	.LASF24
- 765 0192 01       		.byte	0x1
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cccQLrBH.s 			page 30
-
-
- 766 0193 DC01     		.2byte	0x1dc
- 767 0195 7A000000 		.4byte	0x7a
- 768 0199 02       		.byte	0x2
- 769 019a 91       		.byte	0x91
- 770 019b 76       		.sleb128 -10
- 771 019c 00       		.byte	0
- 772 019d 0A       		.uleb128 0xa
- 773 019e 01       		.byte	0x1
- 774 019f B6000000 		.4byte	.LASF25
- 775 01a3 01       		.byte	0x1
- 776 01a4 FE01     		.2byte	0x1fe
- 777 01a6 01       		.byte	0x1
- 778 01a7 00000000 		.4byte	.LFB7
- 779 01ab 20000000 		.4byte	.LFE7
- 780 01af 58010000 		.4byte	.LLST7
- 781 01b3 01       		.byte	0x1
- 782 01b4 C8010000 		.4byte	0x1c8
- 783 01b8 0B       		.uleb128 0xb
- 784 01b9 21020000 		.4byte	.LASF26
- 785 01bd 01       		.byte	0x1
- 786 01be FE01     		.2byte	0x1fe
- 787 01c0 7A000000 		.4byte	0x7a
- 788 01c4 02       		.byte	0x2
- 789 01c5 91       		.byte	0x91
- 790 01c6 76       		.sleb128 -10
- 791 01c7 00       		.byte	0
- 792 01c8 0D       		.uleb128 0xd
- 793 01c9 01       		.byte	0x1
- 794 01ca ED000000 		.4byte	.LASF38
- 795 01ce 01       		.byte	0x1
- 796 01cf DE02     		.2byte	0x2de
- 797 01d1 01       		.byte	0x1
- 798 01d2 6F000000 		.4byte	0x6f
- 799 01d6 00000000 		.4byte	.LFB8
- 800 01da 20000000 		.4byte	.LFE8
- 801 01de 90010000 		.4byte	.LLST8
- 802 01e2 01       		.byte	0x1
- 803 01e3 F7010000 		.4byte	0x1f7
- 804 01e7 0E       		.uleb128 0xe
- 805 01e8 57010000 		.4byte	.LASF28
- 806 01ec 01       		.byte	0x1
- 807 01ed E002     		.2byte	0x2e0
- 808 01ef 6F000000 		.4byte	0x6f
- 809 01f3 02       		.byte	0x2
- 810 01f4 91       		.byte	0x91
- 811 01f5 77       		.sleb128 -9
- 812 01f6 00       		.byte	0
- 813 01f7 0A       		.uleb128 0xa
- 814 01f8 01       		.byte	0x1
- 815 01f9 57000000 		.4byte	.LASF29
- 816 01fd 01       		.byte	0x1
- 817 01fe FA02     		.2byte	0x2fa
- 818 0200 01       		.byte	0x1
- 819 0201 00000000 		.4byte	.LFB9
- 820 0205 20000000 		.4byte	.LFE9
- 821 0209 C8010000 		.4byte	.LLST9
- 822 020d 01       		.byte	0x1
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cccQLrBH.s 			page 31
-
-
- 823 020e 22020000 		.4byte	0x222
- 824 0212 0B       		.uleb128 0xb
- 825 0213 E5000000 		.4byte	.LASF30
- 826 0217 01       		.byte	0x1
- 827 0218 FA02     		.2byte	0x2fa
- 828 021a 6F000000 		.4byte	0x6f
- 829 021e 02       		.byte	0x2
- 830 021f 91       		.byte	0x91
- 831 0220 77       		.sleb128 -9
- 832 0221 00       		.byte	0
- 833 0222 0C       		.uleb128 0xc
- 834 0223 01       		.byte	0x1
- 835 0224 70010000 		.4byte	.LASF32
- 836 0228 01       		.byte	0x1
- 837 0229 1303     		.2byte	0x313
- 838 022b 01       		.byte	0x1
- 839 022c 7A000000 		.4byte	0x7a
- 840 0230 00000000 		.4byte	.LFB10
- 841 0234 14000000 		.4byte	.LFE10
- 842 0238 00020000 		.4byte	.LLST10
- 843 023c 01       		.byte	0x1
- 844 023d 0C       		.uleb128 0xc
- 845 023e 01       		.byte	0x1
- 846 023f 46010000 		.4byte	.LASF33
- 847 0243 01       		.byte	0x1
- 848 0244 2D03     		.2byte	0x32d
- 849 0246 01       		.byte	0x1
- 850 0247 7A000000 		.4byte	0x7a
- 851 024b 00000000 		.4byte	.LFB11
- 852 024f 14000000 		.4byte	.LFE11
- 853 0253 2C020000 		.4byte	.LLST11
- 854 0257 01       		.byte	0x1
- 855 0258 0C       		.uleb128 0xc
- 856 0259 01       		.byte	0x1
- 857 025a 3B000000 		.4byte	.LASF34
- 858 025e 01       		.byte	0x1
- 859 025f 7103     		.2byte	0x371
- 860 0261 01       		.byte	0x1
- 861 0262 7A000000 		.4byte	0x7a
- 862 0266 00000000 		.4byte	.LFB12
- 863 026a 14000000 		.4byte	.LFE12
- 864 026e 58020000 		.4byte	.LLST12
- 865 0272 01       		.byte	0x1
- 866 0273 0F       		.uleb128 0xf
- 867 0274 08020000 		.4byte	.LASF39
- 868 0278 01       		.byte	0x1
- 869 0279 1B       		.byte	0x1b
- 870 027a 6F000000 		.4byte	0x6f
- 871 027e 01       		.byte	0x1
- 872 027f 05       		.byte	0x5
- 873 0280 03       		.byte	0x3
- 874 0281 00000000 		.4byte	Buzz_initVar
- 875 0285 00       		.byte	0
- 876              		.section	.debug_abbrev,"",%progbits
- 877              	.Ldebug_abbrev0:
- 878 0000 01       		.uleb128 0x1
- 879 0001 11       		.uleb128 0x11
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cccQLrBH.s 			page 32
-
-
- 880 0002 01       		.byte	0x1
- 881 0003 25       		.uleb128 0x25
- 882 0004 0E       		.uleb128 0xe
- 883 0005 13       		.uleb128 0x13
- 884 0006 0B       		.uleb128 0xb
- 885 0007 03       		.uleb128 0x3
- 886 0008 0E       		.uleb128 0xe
- 887 0009 1B       		.uleb128 0x1b
- 888 000a 0E       		.uleb128 0xe
- 889 000b 55       		.uleb128 0x55
- 890 000c 06       		.uleb128 0x6
- 891 000d 11       		.uleb128 0x11
- 892 000e 01       		.uleb128 0x1
- 893 000f 52       		.uleb128 0x52
- 894 0010 01       		.uleb128 0x1
- 895 0011 10       		.uleb128 0x10
- 896 0012 06       		.uleb128 0x6
- 897 0013 00       		.byte	0
- 898 0014 00       		.byte	0
- 899 0015 02       		.uleb128 0x2
- 900 0016 24       		.uleb128 0x24
- 901 0017 00       		.byte	0
- 902 0018 0B       		.uleb128 0xb
- 903 0019 0B       		.uleb128 0xb
- 904 001a 3E       		.uleb128 0x3e
- 905 001b 0B       		.uleb128 0xb
- 906 001c 03       		.uleb128 0x3
- 907 001d 0E       		.uleb128 0xe
- 908 001e 00       		.byte	0
- 909 001f 00       		.byte	0
- 910 0020 03       		.uleb128 0x3
- 911 0021 24       		.uleb128 0x24
- 912 0022 00       		.byte	0
- 913 0023 0B       		.uleb128 0xb
- 914 0024 0B       		.uleb128 0xb
- 915 0025 3E       		.uleb128 0x3e
- 916 0026 0B       		.uleb128 0xb
- 917 0027 03       		.uleb128 0x3
- 918 0028 08       		.uleb128 0x8
- 919 0029 00       		.byte	0
- 920 002a 00       		.byte	0
- 921 002b 04       		.uleb128 0x4
- 922 002c 16       		.uleb128 0x16
- 923 002d 00       		.byte	0
- 924 002e 03       		.uleb128 0x3
- 925 002f 0E       		.uleb128 0xe
- 926 0030 3A       		.uleb128 0x3a
- 927 0031 0B       		.uleb128 0xb
- 928 0032 3B       		.uleb128 0x3b
- 929 0033 0B       		.uleb128 0xb
- 930 0034 49       		.uleb128 0x49
- 931 0035 13       		.uleb128 0x13
- 932 0036 00       		.byte	0
- 933 0037 00       		.byte	0
- 934 0038 05       		.uleb128 0x5
- 935 0039 35       		.uleb128 0x35
- 936 003a 00       		.byte	0
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cccQLrBH.s 			page 33
-
-
- 937 003b 49       		.uleb128 0x49
- 938 003c 13       		.uleb128 0x13
- 939 003d 00       		.byte	0
- 940 003e 00       		.byte	0
- 941 003f 06       		.uleb128 0x6
- 942 0040 2E       		.uleb128 0x2e
- 943 0041 00       		.byte	0
- 944 0042 3F       		.uleb128 0x3f
- 945 0043 0C       		.uleb128 0xc
- 946 0044 03       		.uleb128 0x3
- 947 0045 0E       		.uleb128 0xe
- 948 0046 3A       		.uleb128 0x3a
- 949 0047 0B       		.uleb128 0xb
- 950 0048 3B       		.uleb128 0x3b
- 951 0049 0B       		.uleb128 0xb
- 952 004a 27       		.uleb128 0x27
- 953 004b 0C       		.uleb128 0xc
- 954 004c 11       		.uleb128 0x11
- 955 004d 01       		.uleb128 0x1
- 956 004e 12       		.uleb128 0x12
- 957 004f 01       		.uleb128 0x1
- 958 0050 40       		.uleb128 0x40
- 959 0051 06       		.uleb128 0x6
- 960 0052 9642     		.uleb128 0x2116
- 961 0054 0C       		.uleb128 0xc
- 962 0055 00       		.byte	0
- 963 0056 00       		.byte	0
- 964 0057 07       		.uleb128 0x7
- 965 0058 2E       		.uleb128 0x2e
- 966 0059 01       		.byte	0x1
- 967 005a 3F       		.uleb128 0x3f
- 968 005b 0C       		.uleb128 0xc
- 969 005c 03       		.uleb128 0x3
- 970 005d 0E       		.uleb128 0xe
- 971 005e 3A       		.uleb128 0x3a
- 972 005f 0B       		.uleb128 0xb
- 973 0060 3B       		.uleb128 0x3b
- 974 0061 0B       		.uleb128 0xb
- 975 0062 27       		.uleb128 0x27
- 976 0063 0C       		.uleb128 0xc
- 977 0064 11       		.uleb128 0x11
- 978 0065 01       		.uleb128 0x1
- 979 0066 12       		.uleb128 0x12
- 980 0067 01       		.uleb128 0x1
- 981 0068 40       		.uleb128 0x40
- 982 0069 06       		.uleb128 0x6
- 983 006a 9642     		.uleb128 0x2116
- 984 006c 0C       		.uleb128 0xc
- 985 006d 01       		.uleb128 0x1
- 986 006e 13       		.uleb128 0x13
- 987 006f 00       		.byte	0
- 988 0070 00       		.byte	0
- 989 0071 08       		.uleb128 0x8
- 990 0072 34       		.uleb128 0x34
- 991 0073 00       		.byte	0
- 992 0074 03       		.uleb128 0x3
- 993 0075 0E       		.uleb128 0xe
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cccQLrBH.s 			page 34
-
-
- 994 0076 3A       		.uleb128 0x3a
- 995 0077 0B       		.uleb128 0xb
- 996 0078 3B       		.uleb128 0x3b
- 997 0079 0B       		.uleb128 0xb
- 998 007a 49       		.uleb128 0x49
- 999 007b 13       		.uleb128 0x13
- 1000 007c 02       		.uleb128 0x2
- 1001 007d 0A       		.uleb128 0xa
- 1002 007e 00       		.byte	0
- 1003 007f 00       		.byte	0
- 1004 0080 09       		.uleb128 0x9
- 1005 0081 2E       		.uleb128 0x2e
- 1006 0082 00       		.byte	0
- 1007 0083 3F       		.uleb128 0x3f
- 1008 0084 0C       		.uleb128 0xc
- 1009 0085 03       		.uleb128 0x3
- 1010 0086 0E       		.uleb128 0xe
- 1011 0087 3A       		.uleb128 0x3a
- 1012 0088 0B       		.uleb128 0xb
- 1013 0089 3B       		.uleb128 0x3b
- 1014 008a 0B       		.uleb128 0xb
- 1015 008b 27       		.uleb128 0x27
- 1016 008c 0C       		.uleb128 0xc
- 1017 008d 11       		.uleb128 0x11
- 1018 008e 01       		.uleb128 0x1
- 1019 008f 12       		.uleb128 0x12
- 1020 0090 01       		.uleb128 0x1
- 1021 0091 40       		.uleb128 0x40
- 1022 0092 06       		.uleb128 0x6
- 1023 0093 9742     		.uleb128 0x2117
- 1024 0095 0C       		.uleb128 0xc
- 1025 0096 00       		.byte	0
- 1026 0097 00       		.byte	0
- 1027 0098 0A       		.uleb128 0xa
- 1028 0099 2E       		.uleb128 0x2e
- 1029 009a 01       		.byte	0x1
- 1030 009b 3F       		.uleb128 0x3f
- 1031 009c 0C       		.uleb128 0xc
- 1032 009d 03       		.uleb128 0x3
- 1033 009e 0E       		.uleb128 0xe
- 1034 009f 3A       		.uleb128 0x3a
- 1035 00a0 0B       		.uleb128 0xb
- 1036 00a1 3B       		.uleb128 0x3b
- 1037 00a2 05       		.uleb128 0x5
- 1038 00a3 27       		.uleb128 0x27
- 1039 00a4 0C       		.uleb128 0xc
- 1040 00a5 11       		.uleb128 0x11
- 1041 00a6 01       		.uleb128 0x1
- 1042 00a7 12       		.uleb128 0x12
- 1043 00a8 01       		.uleb128 0x1
- 1044 00a9 40       		.uleb128 0x40
- 1045 00aa 06       		.uleb128 0x6
- 1046 00ab 9742     		.uleb128 0x2117
- 1047 00ad 0C       		.uleb128 0xc
- 1048 00ae 01       		.uleb128 0x1
- 1049 00af 13       		.uleb128 0x13
- 1050 00b0 00       		.byte	0
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cccQLrBH.s 			page 35
-
-
- 1051 00b1 00       		.byte	0
- 1052 00b2 0B       		.uleb128 0xb
- 1053 00b3 05       		.uleb128 0x5
- 1054 00b4 00       		.byte	0
- 1055 00b5 03       		.uleb128 0x3
- 1056 00b6 0E       		.uleb128 0xe
- 1057 00b7 3A       		.uleb128 0x3a
- 1058 00b8 0B       		.uleb128 0xb
- 1059 00b9 3B       		.uleb128 0x3b
- 1060 00ba 05       		.uleb128 0x5
- 1061 00bb 49       		.uleb128 0x49
- 1062 00bc 13       		.uleb128 0x13
- 1063 00bd 02       		.uleb128 0x2
- 1064 00be 0A       		.uleb128 0xa
- 1065 00bf 00       		.byte	0
- 1066 00c0 00       		.byte	0
- 1067 00c1 0C       		.uleb128 0xc
- 1068 00c2 2E       		.uleb128 0x2e
- 1069 00c3 00       		.byte	0
- 1070 00c4 3F       		.uleb128 0x3f
- 1071 00c5 0C       		.uleb128 0xc
- 1072 00c6 03       		.uleb128 0x3
- 1073 00c7 0E       		.uleb128 0xe
- 1074 00c8 3A       		.uleb128 0x3a
- 1075 00c9 0B       		.uleb128 0xb
- 1076 00ca 3B       		.uleb128 0x3b
- 1077 00cb 05       		.uleb128 0x5
- 1078 00cc 27       		.uleb128 0x27
- 1079 00cd 0C       		.uleb128 0xc
- 1080 00ce 49       		.uleb128 0x49
- 1081 00cf 13       		.uleb128 0x13
- 1082 00d0 11       		.uleb128 0x11
- 1083 00d1 01       		.uleb128 0x1
- 1084 00d2 12       		.uleb128 0x12
- 1085 00d3 01       		.uleb128 0x1
- 1086 00d4 40       		.uleb128 0x40
- 1087 00d5 06       		.uleb128 0x6
- 1088 00d6 9742     		.uleb128 0x2117
- 1089 00d8 0C       		.uleb128 0xc
- 1090 00d9 00       		.byte	0
- 1091 00da 00       		.byte	0
- 1092 00db 0D       		.uleb128 0xd
- 1093 00dc 2E       		.uleb128 0x2e
- 1094 00dd 01       		.byte	0x1
- 1095 00de 3F       		.uleb128 0x3f
- 1096 00df 0C       		.uleb128 0xc
- 1097 00e0 03       		.uleb128 0x3
- 1098 00e1 0E       		.uleb128 0xe
- 1099 00e2 3A       		.uleb128 0x3a
- 1100 00e3 0B       		.uleb128 0xb
- 1101 00e4 3B       		.uleb128 0x3b
- 1102 00e5 05       		.uleb128 0x5
- 1103 00e6 27       		.uleb128 0x27
- 1104 00e7 0C       		.uleb128 0xc
- 1105 00e8 49       		.uleb128 0x49
- 1106 00e9 13       		.uleb128 0x13
- 1107 00ea 11       		.uleb128 0x11
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cccQLrBH.s 			page 36
-
-
- 1108 00eb 01       		.uleb128 0x1
- 1109 00ec 12       		.uleb128 0x12
- 1110 00ed 01       		.uleb128 0x1
- 1111 00ee 40       		.uleb128 0x40
- 1112 00ef 06       		.uleb128 0x6
- 1113 00f0 9742     		.uleb128 0x2117
- 1114 00f2 0C       		.uleb128 0xc
- 1115 00f3 01       		.uleb128 0x1
- 1116 00f4 13       		.uleb128 0x13
- 1117 00f5 00       		.byte	0
- 1118 00f6 00       		.byte	0
- 1119 00f7 0E       		.uleb128 0xe
- 1120 00f8 34       		.uleb128 0x34
- 1121 00f9 00       		.byte	0
- 1122 00fa 03       		.uleb128 0x3
- 1123 00fb 0E       		.uleb128 0xe
- 1124 00fc 3A       		.uleb128 0x3a
- 1125 00fd 0B       		.uleb128 0xb
- 1126 00fe 3B       		.uleb128 0x3b
- 1127 00ff 05       		.uleb128 0x5
- 1128 0100 49       		.uleb128 0x49
- 1129 0101 13       		.uleb128 0x13
- 1130 0102 02       		.uleb128 0x2
- 1131 0103 0A       		.uleb128 0xa
- 1132 0104 00       		.byte	0
- 1133 0105 00       		.byte	0
- 1134 0106 0F       		.uleb128 0xf
- 1135 0107 34       		.uleb128 0x34
- 1136 0108 00       		.byte	0
- 1137 0109 03       		.uleb128 0x3
- 1138 010a 0E       		.uleb128 0xe
- 1139 010b 3A       		.uleb128 0x3a
- 1140 010c 0B       		.uleb128 0xb
- 1141 010d 3B       		.uleb128 0x3b
- 1142 010e 0B       		.uleb128 0xb
- 1143 010f 49       		.uleb128 0x49
- 1144 0110 13       		.uleb128 0x13
- 1145 0111 3F       		.uleb128 0x3f
- 1146 0112 0C       		.uleb128 0xc
- 1147 0113 02       		.uleb128 0x2
- 1148 0114 0A       		.uleb128 0xa
- 1149 0115 00       		.byte	0
- 1150 0116 00       		.byte	0
- 1151 0117 00       		.byte	0
- 1152              		.section	.debug_loc,"",%progbits
- 1153              	.Ldebug_loc0:
- 1154              	.LLST0:
- 1155 0000 00000000 		.4byte	.LFB0
- 1156 0004 02000000 		.4byte	.LCFI0
- 1157 0008 0200     		.2byte	0x2
- 1158 000a 7D       		.byte	0x7d
- 1159 000b 00       		.sleb128 0
- 1160 000c 02000000 		.4byte	.LCFI0
- 1161 0010 04000000 		.4byte	.LCFI1
- 1162 0014 0200     		.2byte	0x2
- 1163 0016 7D       		.byte	0x7d
- 1164 0017 08       		.sleb128 8
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cccQLrBH.s 			page 37
-
-
- 1165 0018 04000000 		.4byte	.LCFI1
- 1166 001c 24000000 		.4byte	.LFE0
- 1167 0020 0200     		.2byte	0x2
- 1168 0022 77       		.byte	0x77
- 1169 0023 08       		.sleb128 8
- 1170 0024 00000000 		.4byte	0
- 1171 0028 00000000 		.4byte	0
- 1172              	.LLST1:
- 1173 002c 00000000 		.4byte	.LFB1
- 1174 0030 02000000 		.4byte	.LCFI2
- 1175 0034 0200     		.2byte	0x2
- 1176 0036 7D       		.byte	0x7d
- 1177 0037 00       		.sleb128 0
- 1178 0038 02000000 		.4byte	.LCFI2
- 1179 003c 04000000 		.4byte	.LCFI3
- 1180 0040 0200     		.2byte	0x2
- 1181 0042 7D       		.byte	0x7d
- 1182 0043 08       		.sleb128 8
- 1183 0044 04000000 		.4byte	.LCFI3
- 1184 0048 06000000 		.4byte	.LCFI4
- 1185 004c 0200     		.2byte	0x2
- 1186 004e 7D       		.byte	0x7d
- 1187 004f 10       		.sleb128 16
- 1188 0050 06000000 		.4byte	.LCFI4
- 1189 0054 74000000 		.4byte	.LFE1
- 1190 0058 0200     		.2byte	0x2
- 1191 005a 77       		.byte	0x77
- 1192 005b 10       		.sleb128 16
- 1193 005c 00000000 		.4byte	0
- 1194 0060 00000000 		.4byte	0
- 1195              	.LLST2:
- 1196 0064 00000000 		.4byte	.LFB2
- 1197 0068 02000000 		.4byte	.LCFI5
- 1198 006c 0200     		.2byte	0x2
- 1199 006e 7D       		.byte	0x7d
- 1200 006f 00       		.sleb128 0
- 1201 0070 02000000 		.4byte	.LCFI5
- 1202 0074 04000000 		.4byte	.LCFI6
- 1203 0078 0200     		.2byte	0x2
- 1204 007a 7D       		.byte	0x7d
- 1205 007b 08       		.sleb128 8
- 1206 007c 04000000 		.4byte	.LCFI6
- 1207 0080 20000000 		.4byte	.LFE2
- 1208 0084 0200     		.2byte	0x2
- 1209 0086 77       		.byte	0x77
- 1210 0087 08       		.sleb128 8
- 1211 0088 00000000 		.4byte	0
- 1212 008c 00000000 		.4byte	0
- 1213              	.LLST3:
- 1214 0090 00000000 		.4byte	.LFB3
- 1215 0094 02000000 		.4byte	.LCFI7
- 1216 0098 0200     		.2byte	0x2
- 1217 009a 7D       		.byte	0x7d
- 1218 009b 00       		.sleb128 0
- 1219 009c 02000000 		.4byte	.LCFI7
- 1220 00a0 04000000 		.4byte	.LCFI8
- 1221 00a4 0200     		.2byte	0x2
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cccQLrBH.s 			page 38
-
-
- 1222 00a6 7D       		.byte	0x7d
- 1223 00a7 08       		.sleb128 8
- 1224 00a8 04000000 		.4byte	.LCFI8
- 1225 00ac 1C000000 		.4byte	.LFE3
- 1226 00b0 0200     		.2byte	0x2
- 1227 00b2 77       		.byte	0x77
- 1228 00b3 08       		.sleb128 8
- 1229 00b4 00000000 		.4byte	0
- 1230 00b8 00000000 		.4byte	0
- 1231              	.LLST4:
- 1232 00bc 00000000 		.4byte	.LFB4
- 1233 00c0 02000000 		.4byte	.LCFI9
- 1234 00c4 0200     		.2byte	0x2
- 1235 00c6 7D       		.byte	0x7d
- 1236 00c7 00       		.sleb128 0
- 1237 00c8 02000000 		.4byte	.LCFI9
- 1238 00cc 04000000 		.4byte	.LCFI10
- 1239 00d0 0200     		.2byte	0x2
- 1240 00d2 7D       		.byte	0x7d
- 1241 00d3 08       		.sleb128 8
- 1242 00d4 04000000 		.4byte	.LCFI10
- 1243 00d8 06000000 		.4byte	.LCFI11
- 1244 00dc 0200     		.2byte	0x2
- 1245 00de 7D       		.byte	0x7d
- 1246 00df 10       		.sleb128 16
- 1247 00e0 06000000 		.4byte	.LCFI11
- 1248 00e4 20000000 		.4byte	.LFE4
- 1249 00e8 0200     		.2byte	0x2
- 1250 00ea 77       		.byte	0x77
- 1251 00eb 10       		.sleb128 16
- 1252 00ec 00000000 		.4byte	0
- 1253 00f0 00000000 		.4byte	0
- 1254              	.LLST5:
- 1255 00f4 00000000 		.4byte	.LFB5
- 1256 00f8 02000000 		.4byte	.LCFI12
- 1257 00fc 0200     		.2byte	0x2
- 1258 00fe 7D       		.byte	0x7d
- 1259 00ff 00       		.sleb128 0
- 1260 0100 02000000 		.4byte	.LCFI12
- 1261 0104 04000000 		.4byte	.LCFI13
- 1262 0108 0200     		.2byte	0x2
- 1263 010a 7D       		.byte	0x7d
- 1264 010b 08       		.sleb128 8
- 1265 010c 04000000 		.4byte	.LCFI13
- 1266 0110 1C000000 		.4byte	.LFE5
- 1267 0114 0200     		.2byte	0x2
- 1268 0116 77       		.byte	0x77
- 1269 0117 08       		.sleb128 8
- 1270 0118 00000000 		.4byte	0
- 1271 011c 00000000 		.4byte	0
- 1272              	.LLST6:
- 1273 0120 00000000 		.4byte	.LFB6
- 1274 0124 02000000 		.4byte	.LCFI14
- 1275 0128 0200     		.2byte	0x2
- 1276 012a 7D       		.byte	0x7d
- 1277 012b 00       		.sleb128 0
- 1278 012c 02000000 		.4byte	.LCFI14
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cccQLrBH.s 			page 39
-
-
- 1279 0130 04000000 		.4byte	.LCFI15
- 1280 0134 0200     		.2byte	0x2
- 1281 0136 7D       		.byte	0x7d
- 1282 0137 08       		.sleb128 8
- 1283 0138 04000000 		.4byte	.LCFI15
- 1284 013c 06000000 		.4byte	.LCFI16
- 1285 0140 0200     		.2byte	0x2
- 1286 0142 7D       		.byte	0x7d
- 1287 0143 10       		.sleb128 16
- 1288 0144 06000000 		.4byte	.LCFI16
- 1289 0148 20000000 		.4byte	.LFE6
- 1290 014c 0200     		.2byte	0x2
- 1291 014e 77       		.byte	0x77
- 1292 014f 10       		.sleb128 16
- 1293 0150 00000000 		.4byte	0
- 1294 0154 00000000 		.4byte	0
- 1295              	.LLST7:
- 1296 0158 00000000 		.4byte	.LFB7
- 1297 015c 02000000 		.4byte	.LCFI17
- 1298 0160 0200     		.2byte	0x2
- 1299 0162 7D       		.byte	0x7d
- 1300 0163 00       		.sleb128 0
- 1301 0164 02000000 		.4byte	.LCFI17
- 1302 0168 04000000 		.4byte	.LCFI18
- 1303 016c 0200     		.2byte	0x2
- 1304 016e 7D       		.byte	0x7d
- 1305 016f 08       		.sleb128 8
- 1306 0170 04000000 		.4byte	.LCFI18
- 1307 0174 06000000 		.4byte	.LCFI19
- 1308 0178 0200     		.2byte	0x2
- 1309 017a 7D       		.byte	0x7d
- 1310 017b 10       		.sleb128 16
- 1311 017c 06000000 		.4byte	.LCFI19
- 1312 0180 20000000 		.4byte	.LFE7
- 1313 0184 0200     		.2byte	0x2
- 1314 0186 77       		.byte	0x77
- 1315 0187 10       		.sleb128 16
- 1316 0188 00000000 		.4byte	0
- 1317 018c 00000000 		.4byte	0
- 1318              	.LLST8:
- 1319 0190 00000000 		.4byte	.LFB8
- 1320 0194 02000000 		.4byte	.LCFI20
- 1321 0198 0200     		.2byte	0x2
- 1322 019a 7D       		.byte	0x7d
- 1323 019b 00       		.sleb128 0
- 1324 019c 02000000 		.4byte	.LCFI20
- 1325 01a0 04000000 		.4byte	.LCFI21
- 1326 01a4 0200     		.2byte	0x2
- 1327 01a6 7D       		.byte	0x7d
- 1328 01a7 08       		.sleb128 8
- 1329 01a8 04000000 		.4byte	.LCFI21
- 1330 01ac 06000000 		.4byte	.LCFI22
- 1331 01b0 0200     		.2byte	0x2
- 1332 01b2 7D       		.byte	0x7d
- 1333 01b3 10       		.sleb128 16
- 1334 01b4 06000000 		.4byte	.LCFI22
- 1335 01b8 20000000 		.4byte	.LFE8
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cccQLrBH.s 			page 40
-
-
- 1336 01bc 0200     		.2byte	0x2
- 1337 01be 77       		.byte	0x77
- 1338 01bf 10       		.sleb128 16
- 1339 01c0 00000000 		.4byte	0
- 1340 01c4 00000000 		.4byte	0
- 1341              	.LLST9:
- 1342 01c8 00000000 		.4byte	.LFB9
- 1343 01cc 02000000 		.4byte	.LCFI23
- 1344 01d0 0200     		.2byte	0x2
- 1345 01d2 7D       		.byte	0x7d
- 1346 01d3 00       		.sleb128 0
- 1347 01d4 02000000 		.4byte	.LCFI23
- 1348 01d8 04000000 		.4byte	.LCFI24
- 1349 01dc 0200     		.2byte	0x2
- 1350 01de 7D       		.byte	0x7d
- 1351 01df 08       		.sleb128 8
- 1352 01e0 04000000 		.4byte	.LCFI24
- 1353 01e4 06000000 		.4byte	.LCFI25
- 1354 01e8 0200     		.2byte	0x2
- 1355 01ea 7D       		.byte	0x7d
- 1356 01eb 10       		.sleb128 16
- 1357 01ec 06000000 		.4byte	.LCFI25
- 1358 01f0 20000000 		.4byte	.LFE9
- 1359 01f4 0200     		.2byte	0x2
- 1360 01f6 77       		.byte	0x77
- 1361 01f7 10       		.sleb128 16
- 1362 01f8 00000000 		.4byte	0
- 1363 01fc 00000000 		.4byte	0
- 1364              	.LLST10:
- 1365 0200 00000000 		.4byte	.LFB10
- 1366 0204 02000000 		.4byte	.LCFI26
- 1367 0208 0200     		.2byte	0x2
- 1368 020a 7D       		.byte	0x7d
- 1369 020b 00       		.sleb128 0
- 1370 020c 02000000 		.4byte	.LCFI26
- 1371 0210 04000000 		.4byte	.LCFI27
- 1372 0214 0200     		.2byte	0x2
- 1373 0216 7D       		.byte	0x7d
- 1374 0217 08       		.sleb128 8
- 1375 0218 04000000 		.4byte	.LCFI27
- 1376 021c 14000000 		.4byte	.LFE10
- 1377 0220 0200     		.2byte	0x2
- 1378 0222 77       		.byte	0x77
- 1379 0223 08       		.sleb128 8
- 1380 0224 00000000 		.4byte	0
- 1381 0228 00000000 		.4byte	0
- 1382              	.LLST11:
- 1383 022c 00000000 		.4byte	.LFB11
- 1384 0230 02000000 		.4byte	.LCFI28
- 1385 0234 0200     		.2byte	0x2
- 1386 0236 7D       		.byte	0x7d
- 1387 0237 00       		.sleb128 0
- 1388 0238 02000000 		.4byte	.LCFI28
- 1389 023c 04000000 		.4byte	.LCFI29
- 1390 0240 0200     		.2byte	0x2
- 1391 0242 7D       		.byte	0x7d
- 1392 0243 08       		.sleb128 8
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cccQLrBH.s 			page 41
-
-
- 1393 0244 04000000 		.4byte	.LCFI29
- 1394 0248 14000000 		.4byte	.LFE11
- 1395 024c 0200     		.2byte	0x2
- 1396 024e 77       		.byte	0x77
- 1397 024f 08       		.sleb128 8
- 1398 0250 00000000 		.4byte	0
- 1399 0254 00000000 		.4byte	0
- 1400              	.LLST12:
- 1401 0258 00000000 		.4byte	.LFB12
- 1402 025c 02000000 		.4byte	.LCFI30
- 1403 0260 0200     		.2byte	0x2
- 1404 0262 7D       		.byte	0x7d
- 1405 0263 00       		.sleb128 0
- 1406 0264 02000000 		.4byte	.LCFI30
- 1407 0268 04000000 		.4byte	.LCFI31
- 1408 026c 0200     		.2byte	0x2
- 1409 026e 7D       		.byte	0x7d
- 1410 026f 08       		.sleb128 8
- 1411 0270 04000000 		.4byte	.LCFI31
- 1412 0274 14000000 		.4byte	.LFE12
- 1413 0278 0200     		.2byte	0x2
- 1414 027a 77       		.byte	0x77
- 1415 027b 08       		.sleb128 8
- 1416 027c 00000000 		.4byte	0
- 1417 0280 00000000 		.4byte	0
- 1418              		.section	.debug_aranges,"",%progbits
- 1419 0000 7C000000 		.4byte	0x7c
- 1420 0004 0200     		.2byte	0x2
- 1421 0006 00000000 		.4byte	.Ldebug_info0
- 1422 000a 04       		.byte	0x4
- 1423 000b 00       		.byte	0
- 1424 000c 0000     		.2byte	0
- 1425 000e 0000     		.2byte	0
- 1426 0010 00000000 		.4byte	.LFB0
- 1427 0014 24000000 		.4byte	.LFE0-.LFB0
- 1428 0018 00000000 		.4byte	.LFB1
- 1429 001c 74000000 		.4byte	.LFE1-.LFB1
- 1430 0020 00000000 		.4byte	.LFB2
- 1431 0024 20000000 		.4byte	.LFE2-.LFB2
- 1432 0028 00000000 		.4byte	.LFB3
- 1433 002c 1C000000 		.4byte	.LFE3-.LFB3
- 1434 0030 00000000 		.4byte	.LFB4
- 1435 0034 20000000 		.4byte	.LFE4-.LFB4
- 1436 0038 00000000 		.4byte	.LFB5
- 1437 003c 1C000000 		.4byte	.LFE5-.LFB5
- 1438 0040 00000000 		.4byte	.LFB6
- 1439 0044 20000000 		.4byte	.LFE6-.LFB6
- 1440 0048 00000000 		.4byte	.LFB7
- 1441 004c 20000000 		.4byte	.LFE7-.LFB7
- 1442 0050 00000000 		.4byte	.LFB8
- 1443 0054 20000000 		.4byte	.LFE8-.LFB8
- 1444 0058 00000000 		.4byte	.LFB9
- 1445 005c 20000000 		.4byte	.LFE9-.LFB9
- 1446 0060 00000000 		.4byte	.LFB10
- 1447 0064 14000000 		.4byte	.LFE10-.LFB10
- 1448 0068 00000000 		.4byte	.LFB11
- 1449 006c 14000000 		.4byte	.LFE11-.LFB11
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cccQLrBH.s 			page 42
-
-
- 1450 0070 00000000 		.4byte	.LFB12
- 1451 0074 14000000 		.4byte	.LFE12-.LFB12
- 1452 0078 00000000 		.4byte	0
- 1453 007c 00000000 		.4byte	0
- 1454              		.section	.debug_ranges,"",%progbits
- 1455              	.Ldebug_ranges0:
- 1456 0000 00000000 		.4byte	.LFB0
- 1457 0004 24000000 		.4byte	.LFE0
- 1458 0008 00000000 		.4byte	.LFB1
- 1459 000c 74000000 		.4byte	.LFE1
- 1460 0010 00000000 		.4byte	.LFB2
- 1461 0014 20000000 		.4byte	.LFE2
- 1462 0018 00000000 		.4byte	.LFB3
- 1463 001c 1C000000 		.4byte	.LFE3
- 1464 0020 00000000 		.4byte	.LFB4
- 1465 0024 20000000 		.4byte	.LFE4
- 1466 0028 00000000 		.4byte	.LFB5
- 1467 002c 1C000000 		.4byte	.LFE5
- 1468 0030 00000000 		.4byte	.LFB6
- 1469 0034 20000000 		.4byte	.LFE6
- 1470 0038 00000000 		.4byte	.LFB7
- 1471 003c 20000000 		.4byte	.LFE7
- 1472 0040 00000000 		.4byte	.LFB8
- 1473 0044 20000000 		.4byte	.LFE8
- 1474 0048 00000000 		.4byte	.LFB9
- 1475 004c 20000000 		.4byte	.LFE9
- 1476 0050 00000000 		.4byte	.LFB10
- 1477 0054 14000000 		.4byte	.LFE10
- 1478 0058 00000000 		.4byte	.LFB11
- 1479 005c 14000000 		.4byte	.LFE11
- 1480 0060 00000000 		.4byte	.LFB12
- 1481 0064 14000000 		.4byte	.LFE12
- 1482 0068 00000000 		.4byte	0
- 1483 006c 00000000 		.4byte	0
- 1484              		.section	.debug_line,"",%progbits
- 1485              	.Ldebug_line0:
- 1486 0000 47010000 		.section	.debug_str,"MS",%progbits,1
- 1486      02004300 
- 1486      00000201 
- 1486      FB0E0D00 
- 1486      01010101 
- 1487              	.LASF15:
- 1488 0000 72656731 		.ascii	"reg16\000"
- 1488      3600
- 1489              	.LASF19:
- 1490 0006 42757A7A 		.ascii	"Buzz_Stop\000"
- 1490      5F53746F 
- 1490      7000
- 1491              	.LASF24:
- 1492 0010 70657269 		.ascii	"period\000"
- 1492      6F6400
- 1493              	.LASF3:
- 1494 0017 73686F72 		.ascii	"short unsigned int\000"
- 1494      7420756E 
- 1494      7369676E 
- 1494      65642069 
- 1494      6E7400
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cccQLrBH.s 			page 43
-
-
- 1495              	.LASF22:
- 1496 002a 42757A7A 		.ascii	"Buzz_WritePeriod\000"
- 1496      5F577269 
- 1496      74655065 
- 1496      72696F64 
- 1496      00
- 1497              	.LASF34:
- 1498 003b 42757A7A 		.ascii	"Buzz_ReadPeriod\000"
- 1498      5F526561 
- 1498      64506572 
- 1498      696F6400 
- 1499              	.LASF18:
- 1500 004b 42757A7A 		.ascii	"Buzz_Enable\000"
- 1500      5F456E61 
- 1500      626C6500 
- 1501              	.LASF29:
- 1502 0057 42757A7A 		.ascii	"Buzz_WriteControlRegister\000"
- 1502      5F577269 
- 1502      7465436F 
- 1502      6E74726F 
- 1502      6C526567 
- 1503              	.LASF11:
- 1504 0071 666C6F61 		.ascii	"float\000"
- 1504      7400
- 1505              	.LASF23:
- 1506 0077 636F756E 		.ascii	"counter\000"
- 1506      74657200 
- 1507              	.LASF37:
- 1508 007f 433A5C50 		.ascii	"C:\\Projects\\PSoC\\Bootloading_PSoC5_LP\\PSoc4_Mai"
- 1508      726F6A65 
- 1508      6374735C 
- 1508      50536F43 
- 1508      5C426F6F 
- 1509 00ae 6E2E6379 		.ascii	"n.cydsn\000"
- 1509      64736E00 
- 1510              	.LASF25:
- 1511 00b6 42757A7A 		.ascii	"Buzz_WriteCompare\000"
- 1511      5F577269 
- 1511      7465436F 
- 1511      6D706172 
- 1511      6500
- 1512              	.LASF14:
- 1513 00c8 72656738 		.ascii	"reg8\000"
- 1513      00
- 1514              	.LASF5:
- 1515 00cd 6C6F6E67 		.ascii	"long unsigned int\000"
- 1515      20756E73 
- 1515      69676E65 
- 1515      6420696E 
- 1515      7400
- 1516              	.LASF9:
- 1517 00df 75696E74 		.ascii	"uint8\000"
- 1517      3800
- 1518              	.LASF30:
- 1519 00e5 636F6E74 		.ascii	"control\000"
- 1519      726F6C00 
- 1520              	.LASF38:
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cccQLrBH.s 			page 44
-
-
- 1521 00ed 42757A7A 		.ascii	"Buzz_ReadControlRegister\000"
- 1521      5F526561 
- 1521      64436F6E 
- 1521      74726F6C 
- 1521      52656769 
- 1522              	.LASF1:
- 1523 0106 756E7369 		.ascii	"unsigned char\000"
- 1523      676E6564 
- 1523      20636861 
- 1523      7200
- 1524              	.LASF12:
- 1525 0114 646F7562 		.ascii	"double\000"
- 1525      6C6500
- 1526              	.LASF10:
- 1527 011b 75696E74 		.ascii	"uint16\000"
- 1527      313600
- 1528              	.LASF8:
- 1529 0122 756E7369 		.ascii	"unsigned int\000"
- 1529      676E6564 
- 1529      20696E74 
- 1529      00
- 1530              	.LASF7:
- 1531 012f 6C6F6E67 		.ascii	"long long unsigned int\000"
- 1531      206C6F6E 
- 1531      6720756E 
- 1531      7369676E 
- 1531      65642069 
- 1532              	.LASF33:
- 1533 0146 42757A7A 		.ascii	"Buzz_ReadCompare\000"
- 1533      5F526561 
- 1533      64436F6D 
- 1533      70617265 
- 1533      00
- 1534              	.LASF28:
- 1535 0157 72657375 		.ascii	"result\000"
- 1535      6C7400
- 1536              	.LASF21:
- 1537 015e 42757A7A 		.ascii	"Buzz_WriteCounter\000"
- 1537      5F577269 
- 1537      7465436F 
- 1537      756E7465 
- 1537      7200
- 1538              	.LASF32:
- 1539 0170 42757A7A 		.ascii	"Buzz_ReadCapture\000"
- 1539      5F526561 
- 1539      64436170 
- 1539      74757265 
- 1539      00
- 1540              	.LASF27:
- 1541 0181 6374726C 		.ascii	"ctrl\000"
- 1541      00
- 1542              	.LASF16:
- 1543 0186 73697A65 		.ascii	"sizetype\000"
- 1543      74797065 
- 1543      00
- 1544              	.LASF20:
- 1545 018f 42757A7A 		.ascii	"Buzz_Init\000"
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cccQLrBH.s 			page 45
-
-
- 1545      5F496E69 
- 1545      7400
- 1546              	.LASF6:
- 1547 0199 6C6F6E67 		.ascii	"long long int\000"
- 1547      206C6F6E 
- 1547      6720696E 
- 1547      7400
- 1548              	.LASF13:
- 1549 01a7 63686172 		.ascii	"char\000"
- 1549      00
- 1550              	.LASF2:
- 1551 01ac 73686F72 		.ascii	"short int\000"
- 1551      7420696E 
- 1551      7400
- 1552              	.LASF35:
- 1553 01b6 474E5520 		.ascii	"GNU C 4.7.3 20130312 (release) [ARM/embedded-4_7-br"
- 1553      4320342E 
- 1553      372E3320 
- 1553      32303133 
- 1553      30333132 
- 1554 01e9 616E6368 		.ascii	"anch revision 196615]\000"
- 1554      20726576 
- 1554      6973696F 
- 1554      6E203139 
- 1554      36363135 
- 1555              	.LASF4:
- 1556 01ff 6C6F6E67 		.ascii	"long int\000"
- 1556      20696E74 
- 1556      00
- 1557              	.LASF39:
- 1558 0208 42757A7A 		.ascii	"Buzz_initVar\000"
- 1558      5F696E69 
- 1558      74566172 
- 1558      00
- 1559              	.LASF0:
- 1560 0215 7369676E 		.ascii	"signed char\000"
- 1560      65642063 
- 1560      68617200 
- 1561              	.LASF26:
- 1562 0221 636F6D70 		.ascii	"compare\000"
- 1562      61726500 
- 1563              	.LASF36:
- 1564 0229 2E5C4765 		.ascii	".\\Generated_Source\\PSoC4\\Buzz.c\000"
- 1564      6E657261 
- 1564      7465645F 
- 1564      536F7572 
- 1564      63655C50 
- 1565              	.LASF17:
- 1566 0249 42757A7A 		.ascii	"Buzz_Start\000"
- 1566      5F537461 
- 1566      727400
- 1567              	.LASF31:
- 1568 0254 42757A7A 		.ascii	"Buzz_ReadCounter\000"
- 1568      5F526561 
- 1568      64436F75 
- 1568      6E746572 
- 1568      00
-ARM GAS  C:\Users\javier\AppData\Local\Temp\cccQLrBH.s 			page 46
-
-
- 1569              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.7.3 20130312 (release) [ARM/embedded-4_7-br
+  78:.\Generated_Source\PSoC4/Buzz.c **** * Parameters:  
+  79:.\Generated_Source\PSoC4/Buzz.c **** *  None 
+  80:.\Generated_Source\PSoC4/Buzz.c **** *
+  81:.\Generated_Source\PSoC4/Buzz.c **** * Return: 
+  82:.\Generated_Source\PSoC4/Buzz.c **** *  Returns the current value of the Digital Port as a right justified number
+  83:.\Generated_Source\PSoC4/Buzz.c **** *  
+  84:.\Generated_Source\PSoC4/Buzz.c **** * Note:
+  85:.\Generated_Source\PSoC4/Buzz.c **** *  Macro Buzz_ReadPS calls this function. 
+  86:.\Generated_Source\PSoC4/Buzz.c **** *  
+  87:.\Generated_Source\PSoC4/Buzz.c **** *******************************************************************************/
+  88:.\Generated_Source\PSoC4/Buzz.c **** uint8 Buzz_Read(void) 
+  89:.\Generated_Source\PSoC4/Buzz.c **** {
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccT4t89T.s 			page 5
+
+
+ 140              		.loc 1 89 0
+ 141              		.cfi_startproc
+ 142 0000 80B5     		push	{r7, lr}
+ 143              	.LCFI6:
+ 144              		.cfi_def_cfa_offset 8
+ 145              		.cfi_offset 7, -8
+ 146              		.cfi_offset 14, -4
+ 147 0002 00AF     		add	r7, sp, #0
+ 148              	.LCFI7:
+ 149              		.cfi_def_cfa_register 7
+  90:.\Generated_Source\PSoC4/Buzz.c ****     return (uint8)((Buzz_PS & Buzz_MASK) >> Buzz_SHIFT);
+ 150              		.loc 1 90 0
+ 151 0004 044B     		ldr	r3, .L9
+ 152 0006 1A68     		ldr	r2, [r3]
+ 153 0008 2023     		mov	r3, #32
+ 154 000a 1340     		and	r3, r2
+ 155 000c 5B09     		lsr	r3, r3, #5
+ 156 000e DBB2     		uxtb	r3, r3
+  91:.\Generated_Source\PSoC4/Buzz.c **** }
+ 157              		.loc 1 91 0
+ 158 0010 181C     		mov	r0, r3
+ 159 0012 BD46     		mov	sp, r7
+ 160              		@ sp needed for prologue
+ 161 0014 80BD     		pop	{r7, pc}
+ 162              	.L10:
+ 163 0016 C046     		.align	2
+ 164              	.L9:
+ 165 0018 04020440 		.word	1074004484
+ 166              		.cfi_endproc
+ 167              	.LFE2:
+ 168              		.size	Buzz_Read, .-Buzz_Read
+ 169              		.section	.text.Buzz_ReadDataReg,"ax",%progbits
+ 170              		.align	2
+ 171              		.global	Buzz_ReadDataReg
+ 172              		.code	16
+ 173              		.thumb_func
+ 174              		.type	Buzz_ReadDataReg, %function
+ 175              	Buzz_ReadDataReg:
+ 176              	.LFB3:
+  92:.\Generated_Source\PSoC4/Buzz.c **** 
+  93:.\Generated_Source\PSoC4/Buzz.c **** 
+  94:.\Generated_Source\PSoC4/Buzz.c **** /*******************************************************************************
+  95:.\Generated_Source\PSoC4/Buzz.c **** * Function Name: Buzz_ReadDataReg
+  96:.\Generated_Source\PSoC4/Buzz.c **** ********************************************************************************
+  97:.\Generated_Source\PSoC4/Buzz.c **** *
+  98:.\Generated_Source\PSoC4/Buzz.c **** * Summary:
+  99:.\Generated_Source\PSoC4/Buzz.c **** *  Read the current value assigned to a Digital Port's data output register
+ 100:.\Generated_Source\PSoC4/Buzz.c **** *
+ 101:.\Generated_Source\PSoC4/Buzz.c **** * Parameters:  
+ 102:.\Generated_Source\PSoC4/Buzz.c **** *  None 
+ 103:.\Generated_Source\PSoC4/Buzz.c **** *
+ 104:.\Generated_Source\PSoC4/Buzz.c **** * Return: 
+ 105:.\Generated_Source\PSoC4/Buzz.c **** *  Returns the current value assigned to the Digital Port's data output register
+ 106:.\Generated_Source\PSoC4/Buzz.c **** *  
+ 107:.\Generated_Source\PSoC4/Buzz.c **** *******************************************************************************/
+ 108:.\Generated_Source\PSoC4/Buzz.c **** uint8 Buzz_ReadDataReg(void) 
+ 109:.\Generated_Source\PSoC4/Buzz.c **** {
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccT4t89T.s 			page 6
+
+
+ 177              		.loc 1 109 0
+ 178              		.cfi_startproc
+ 179 0000 80B5     		push	{r7, lr}
+ 180              	.LCFI8:
+ 181              		.cfi_def_cfa_offset 8
+ 182              		.cfi_offset 7, -8
+ 183              		.cfi_offset 14, -4
+ 184 0002 00AF     		add	r7, sp, #0
+ 185              	.LCFI9:
+ 186              		.cfi_def_cfa_register 7
+ 110:.\Generated_Source\PSoC4/Buzz.c ****     return (uint8)((Buzz_DR & Buzz_MASK) >> Buzz_SHIFT);
+ 187              		.loc 1 110 0
+ 188 0004 044B     		ldr	r3, .L13
+ 189 0006 1A68     		ldr	r2, [r3]
+ 190 0008 2023     		mov	r3, #32
+ 191 000a 1340     		and	r3, r2
+ 192 000c 5B09     		lsr	r3, r3, #5
+ 193 000e DBB2     		uxtb	r3, r3
+ 111:.\Generated_Source\PSoC4/Buzz.c **** }
+ 194              		.loc 1 111 0
+ 195 0010 181C     		mov	r0, r3
+ 196 0012 BD46     		mov	sp, r7
+ 197              		@ sp needed for prologue
+ 198 0014 80BD     		pop	{r7, pc}
+ 199              	.L14:
+ 200 0016 C046     		.align	2
+ 201              	.L13:
+ 202 0018 00020440 		.word	1074004480
+ 203              		.cfi_endproc
+ 204              	.LFE3:
+ 205              		.size	Buzz_ReadDataReg, .-Buzz_ReadDataReg
+ 206              		.section	.text.Buzz_ClearInterrupt,"ax",%progbits
+ 207              		.align	2
+ 208              		.global	Buzz_ClearInterrupt
+ 209              		.code	16
+ 210              		.thumb_func
+ 211              		.type	Buzz_ClearInterrupt, %function
+ 212              	Buzz_ClearInterrupt:
+ 213              	.LFB4:
+ 112:.\Generated_Source\PSoC4/Buzz.c **** 
+ 113:.\Generated_Source\PSoC4/Buzz.c **** 
+ 114:.\Generated_Source\PSoC4/Buzz.c **** /* If Interrupts Are Enabled for this Pins component */ 
+ 115:.\Generated_Source\PSoC4/Buzz.c **** #if defined(Buzz_INTSTAT) 
+ 116:.\Generated_Source\PSoC4/Buzz.c **** 
+ 117:.\Generated_Source\PSoC4/Buzz.c ****     /*******************************************************************************
+ 118:.\Generated_Source\PSoC4/Buzz.c ****     * Function Name: Buzz_ClearInterrupt
+ 119:.\Generated_Source\PSoC4/Buzz.c ****     ********************************************************************************
+ 120:.\Generated_Source\PSoC4/Buzz.c ****     *
+ 121:.\Generated_Source\PSoC4/Buzz.c ****     * Summary:
+ 122:.\Generated_Source\PSoC4/Buzz.c ****     *  Clears any active interrupts attached to port and returns the value of the 
+ 123:.\Generated_Source\PSoC4/Buzz.c ****     *  interrupt status register.
+ 124:.\Generated_Source\PSoC4/Buzz.c ****     *
+ 125:.\Generated_Source\PSoC4/Buzz.c ****     * Parameters:  
+ 126:.\Generated_Source\PSoC4/Buzz.c ****     *  None 
+ 127:.\Generated_Source\PSoC4/Buzz.c ****     *
+ 128:.\Generated_Source\PSoC4/Buzz.c ****     * Return: 
+ 129:.\Generated_Source\PSoC4/Buzz.c ****     *  Returns the value of the interrupt status register
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccT4t89T.s 			page 7
+
+
+ 130:.\Generated_Source\PSoC4/Buzz.c ****     *  
+ 131:.\Generated_Source\PSoC4/Buzz.c ****     *******************************************************************************/
+ 132:.\Generated_Source\PSoC4/Buzz.c ****     uint8 Buzz_ClearInterrupt(void) 
+ 133:.\Generated_Source\PSoC4/Buzz.c ****     {
+ 214              		.loc 1 133 0
+ 215              		.cfi_startproc
+ 216 0000 80B5     		push	{r7, lr}
+ 217              	.LCFI10:
+ 218              		.cfi_def_cfa_offset 8
+ 219              		.cfi_offset 7, -8
+ 220              		.cfi_offset 14, -4
+ 221 0002 82B0     		sub	sp, sp, #8
+ 222              	.LCFI11:
+ 223              		.cfi_def_cfa_offset 16
+ 224 0004 00AF     		add	r7, sp, #0
+ 225              	.LCFI12:
+ 226              		.cfi_def_cfa_register 7
+ 134:.\Generated_Source\PSoC4/Buzz.c **** 		uint8 maskedStatus = (uint8)(Buzz_INTSTAT & Buzz_MASK);
+ 227              		.loc 1 134 0
+ 228 0006 094B     		ldr	r3, .L17
+ 229 0008 1B68     		ldr	r3, [r3]
+ 230 000a D9B2     		uxtb	r1, r3
+ 231 000c FB1D     		add	r3, r7, #7
+ 232 000e 2022     		mov	r2, #32
+ 233 0010 0A40     		and	r2, r1
+ 234 0012 1A70     		strb	r2, [r3]
+ 135:.\Generated_Source\PSoC4/Buzz.c **** 		Buzz_INTSTAT = maskedStatus;
+ 235              		.loc 1 135 0
+ 236 0014 054B     		ldr	r3, .L17
+ 237 0016 FA1D     		add	r2, r7, #7
+ 238 0018 1278     		ldrb	r2, [r2]
+ 239 001a 1A60     		str	r2, [r3]
+ 136:.\Generated_Source\PSoC4/Buzz.c ****         return maskedStatus >> Buzz_SHIFT;
+ 240              		.loc 1 136 0
+ 241 001c FB1D     		add	r3, r7, #7
+ 242 001e 1B78     		ldrb	r3, [r3]
+ 243 0020 5B09     		lsr	r3, r3, #5
+ 244 0022 DBB2     		uxtb	r3, r3
+ 137:.\Generated_Source\PSoC4/Buzz.c ****     }
+ 245              		.loc 1 137 0
+ 246 0024 181C     		mov	r0, r3
+ 247 0026 BD46     		mov	sp, r7
+ 248 0028 02B0     		add	sp, sp, #8
+ 249              		@ sp needed for prologue
+ 250 002a 80BD     		pop	{r7, pc}
+ 251              	.L18:
+ 252              		.align	2
+ 253              	.L17:
+ 254 002c 10020440 		.word	1074004496
+ 255              		.cfi_endproc
+ 256              	.LFE4:
+ 257              		.size	Buzz_ClearInterrupt, .-Buzz_ClearInterrupt
+ 258              		.text
+ 259              	.Letext0:
+ 260              		.file 2 ".\\Generated_Source\\PSoC4\\cytypes.h"
+ 261              		.section	.debug_info,"",%progbits
+ 262              	.Ldebug_info0:
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccT4t89T.s 			page 8
+
+
+ 263 0000 64010000 		.4byte	0x164
+ 264 0004 0200     		.2byte	0x2
+ 265 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 266 000a 04       		.byte	0x4
+ 267 000b 01       		.uleb128 0x1
+ 268 000c 35010000 		.4byte	.LASF24
+ 269 0010 01       		.byte	0x1
+ 270 0011 93010000 		.4byte	.LASF25
+ 271 0015 34000000 		.4byte	.LASF26
+ 272 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 273 001d 00000000 		.4byte	0
+ 274 0021 00000000 		.4byte	0
+ 275 0025 00000000 		.4byte	.Ldebug_line0
+ 276 0029 02       		.uleb128 0x2
+ 277 002a 01       		.byte	0x1
+ 278 002b 06       		.byte	0x6
+ 279 002c 87010000 		.4byte	.LASF0
+ 280 0030 02       		.uleb128 0x2
+ 281 0031 01       		.byte	0x1
+ 282 0032 08       		.byte	0x8
+ 283 0033 6B000000 		.4byte	.LASF1
+ 284 0037 02       		.uleb128 0x2
+ 285 0038 02       		.byte	0x2
+ 286 0039 05       		.byte	0x5
+ 287 003a 25010000 		.4byte	.LASF2
+ 288 003e 02       		.uleb128 0x2
+ 289 003f 02       		.byte	0x2
+ 290 0040 07       		.byte	0x7
+ 291 0041 91000000 		.4byte	.LASF3
+ 292 0045 02       		.uleb128 0x2
+ 293 0046 04       		.byte	0x4
+ 294 0047 05       		.byte	0x5
+ 295 0048 7E010000 		.4byte	.LASF4
+ 296 004c 02       		.uleb128 0x2
+ 297 004d 04       		.byte	0x4
+ 298 004e 07       		.byte	0x7
+ 299 004f 7F000000 		.4byte	.LASF5
+ 300 0053 02       		.uleb128 0x2
+ 301 0054 08       		.byte	0x8
+ 302 0055 05       		.byte	0x5
+ 303 0056 01010000 		.4byte	.LASF6
+ 304 005a 02       		.uleb128 0x2
+ 305 005b 08       		.byte	0x8
+ 306 005c 07       		.byte	0x7
+ 307 005d D1000000 		.4byte	.LASF7
+ 308 0061 03       		.uleb128 0x3
+ 309 0062 04       		.byte	0x4
+ 310 0063 05       		.byte	0x5
+ 311 0064 696E7400 		.ascii	"int\000"
+ 312 0068 02       		.uleb128 0x2
+ 313 0069 04       		.byte	0x4
+ 314 006a 07       		.byte	0x7
+ 315 006b B2000000 		.4byte	.LASF8
+ 316 006f 04       		.uleb128 0x4
+ 317 0070 2F010000 		.4byte	.LASF9
+ 318 0074 02       		.byte	0x2
+ 319 0075 5B       		.byte	0x5b
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccT4t89T.s 			page 9
+
+
+ 320 0076 30000000 		.4byte	0x30
+ 321 007a 04       		.uleb128 0x4
+ 322 007b AB000000 		.4byte	.LASF10
+ 323 007f 02       		.byte	0x2
+ 324 0080 5D       		.byte	0x5d
+ 325 0081 4C000000 		.4byte	0x4c
+ 326 0085 02       		.uleb128 0x2
+ 327 0086 04       		.byte	0x4
+ 328 0087 04       		.byte	0x4
+ 329 0088 2E000000 		.4byte	.LASF11
+ 330 008c 02       		.uleb128 0x2
+ 331 008d 08       		.byte	0x8
+ 332 008e 04       		.byte	0x4
+ 333 008f A4000000 		.4byte	.LASF12
+ 334 0093 02       		.uleb128 0x2
+ 335 0094 01       		.byte	0x1
+ 336 0095 08       		.byte	0x8
+ 337 0096 20010000 		.4byte	.LASF13
+ 338 009a 04       		.uleb128 0x4
+ 339 009b 00000000 		.4byte	.LASF14
+ 340 009f 02       		.byte	0x2
+ 341 00a0 F2       		.byte	0xf2
+ 342 00a1 A5000000 		.4byte	0xa5
+ 343 00a5 05       		.uleb128 0x5
+ 344 00a6 7A000000 		.4byte	0x7a
+ 345 00aa 06       		.uleb128 0x6
+ 346 00ab 01       		.byte	0x1
+ 347 00ac 23000000 		.4byte	.LASF15
+ 348 00b0 01       		.byte	0x1
+ 349 00b1 2A       		.byte	0x2a
+ 350 00b2 01       		.byte	0x1
+ 351 00b3 00000000 		.4byte	.LFB0
+ 352 00b7 4C000000 		.4byte	.LFE0
+ 353 00bb 00000000 		.4byte	.LLST0
+ 354 00bf 01       		.byte	0x1
+ 355 00c0 E1000000 		.4byte	0xe1
+ 356 00c4 07       		.uleb128 0x7
+ 357 00c5 13000000 		.4byte	.LASF17
+ 358 00c9 01       		.byte	0x1
+ 359 00ca 2A       		.byte	0x2a
+ 360 00cb 6F000000 		.4byte	0x6f
+ 361 00cf 02       		.byte	0x2
+ 362 00d0 91       		.byte	0x91
+ 363 00d1 6F       		.sleb128 -17
+ 364 00d2 08       		.uleb128 0x8
+ 365 00d3 79000000 		.4byte	.LASF22
+ 366 00d7 01       		.byte	0x1
+ 367 00d8 2C       		.byte	0x2c
+ 368 00d9 6F000000 		.4byte	0x6f
+ 369 00dd 02       		.byte	0x2
+ 370 00de 91       		.byte	0x91
+ 371 00df 77       		.sleb128 -9
+ 372 00e0 00       		.byte	0
+ 373 00e1 06       		.uleb128 0x6
+ 374 00e2 01       		.byte	0x1
+ 375 00e3 BF000000 		.4byte	.LASF16
+ 376 00e7 01       		.byte	0x1
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccT4t89T.s 			page 10
+
+
+ 377 00e8 40       		.byte	0x40
+ 378 00e9 01       		.byte	0x1
+ 379 00ea 00000000 		.4byte	.LFB1
+ 380 00ee 30000000 		.4byte	.LFE1
+ 381 00f2 38000000 		.4byte	.LLST1
+ 382 00f6 01       		.byte	0x1
+ 383 00f7 0A010000 		.4byte	0x10a
+ 384 00fb 07       		.uleb128 0x7
+ 385 00fc E8000000 		.4byte	.LASF18
+ 386 0100 01       		.byte	0x1
+ 387 0101 40       		.byte	0x40
+ 388 0102 6F000000 		.4byte	0x6f
+ 389 0106 02       		.byte	0x2
+ 390 0107 91       		.byte	0x91
+ 391 0108 77       		.sleb128 -9
+ 392 0109 00       		.byte	0
+ 393 010a 09       		.uleb128 0x9
+ 394 010b 01       		.byte	0x1
+ 395 010c 19000000 		.4byte	.LASF19
+ 396 0110 01       		.byte	0x1
+ 397 0111 58       		.byte	0x58
+ 398 0112 01       		.byte	0x1
+ 399 0113 6F000000 		.4byte	0x6f
+ 400 0117 00000000 		.4byte	.LFB2
+ 401 011b 1C000000 		.4byte	.LFE2
+ 402 011f 70000000 		.4byte	.LLST2
+ 403 0123 01       		.byte	0x1
+ 404 0124 09       		.uleb128 0x9
+ 405 0125 01       		.byte	0x1
+ 406 0126 0F010000 		.4byte	.LASF20
+ 407 012a 01       		.byte	0x1
+ 408 012b 6C       		.byte	0x6c
+ 409 012c 01       		.byte	0x1
+ 410 012d 6F000000 		.4byte	0x6f
+ 411 0131 00000000 		.4byte	.LFB3
+ 412 0135 1C000000 		.4byte	.LFE3
+ 413 0139 9C000000 		.4byte	.LLST3
+ 414 013d 01       		.byte	0x1
+ 415 013e 0A       		.uleb128 0xa
+ 416 013f 01       		.byte	0x1
+ 417 0140 ED000000 		.4byte	.LASF21
+ 418 0144 01       		.byte	0x1
+ 419 0145 84       		.byte	0x84
+ 420 0146 01       		.byte	0x1
+ 421 0147 6F000000 		.4byte	0x6f
+ 422 014b 00000000 		.4byte	.LFB4
+ 423 014f 30000000 		.4byte	.LFE4
+ 424 0153 C8000000 		.4byte	.LLST4
+ 425 0157 01       		.byte	0x1
+ 426 0158 08       		.uleb128 0x8
+ 427 0159 06000000 		.4byte	.LASF23
+ 428 015d 01       		.byte	0x1
+ 429 015e 86       		.byte	0x86
+ 430 015f 6F000000 		.4byte	0x6f
+ 431 0163 02       		.byte	0x2
+ 432 0164 91       		.byte	0x91
+ 433 0165 77       		.sleb128 -9
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccT4t89T.s 			page 11
+
+
+ 434 0166 00       		.byte	0
+ 435 0167 00       		.byte	0
+ 436              		.section	.debug_abbrev,"",%progbits
+ 437              	.Ldebug_abbrev0:
+ 438 0000 01       		.uleb128 0x1
+ 439 0001 11       		.uleb128 0x11
+ 440 0002 01       		.byte	0x1
+ 441 0003 25       		.uleb128 0x25
+ 442 0004 0E       		.uleb128 0xe
+ 443 0005 13       		.uleb128 0x13
+ 444 0006 0B       		.uleb128 0xb
+ 445 0007 03       		.uleb128 0x3
+ 446 0008 0E       		.uleb128 0xe
+ 447 0009 1B       		.uleb128 0x1b
+ 448 000a 0E       		.uleb128 0xe
+ 449 000b 55       		.uleb128 0x55
+ 450 000c 06       		.uleb128 0x6
+ 451 000d 11       		.uleb128 0x11
+ 452 000e 01       		.uleb128 0x1
+ 453 000f 52       		.uleb128 0x52
+ 454 0010 01       		.uleb128 0x1
+ 455 0011 10       		.uleb128 0x10
+ 456 0012 06       		.uleb128 0x6
+ 457 0013 00       		.byte	0
+ 458 0014 00       		.byte	0
+ 459 0015 02       		.uleb128 0x2
+ 460 0016 24       		.uleb128 0x24
+ 461 0017 00       		.byte	0
+ 462 0018 0B       		.uleb128 0xb
+ 463 0019 0B       		.uleb128 0xb
+ 464 001a 3E       		.uleb128 0x3e
+ 465 001b 0B       		.uleb128 0xb
+ 466 001c 03       		.uleb128 0x3
+ 467 001d 0E       		.uleb128 0xe
+ 468 001e 00       		.byte	0
+ 469 001f 00       		.byte	0
+ 470 0020 03       		.uleb128 0x3
+ 471 0021 24       		.uleb128 0x24
+ 472 0022 00       		.byte	0
+ 473 0023 0B       		.uleb128 0xb
+ 474 0024 0B       		.uleb128 0xb
+ 475 0025 3E       		.uleb128 0x3e
+ 476 0026 0B       		.uleb128 0xb
+ 477 0027 03       		.uleb128 0x3
+ 478 0028 08       		.uleb128 0x8
+ 479 0029 00       		.byte	0
+ 480 002a 00       		.byte	0
+ 481 002b 04       		.uleb128 0x4
+ 482 002c 16       		.uleb128 0x16
+ 483 002d 00       		.byte	0
+ 484 002e 03       		.uleb128 0x3
+ 485 002f 0E       		.uleb128 0xe
+ 486 0030 3A       		.uleb128 0x3a
+ 487 0031 0B       		.uleb128 0xb
+ 488 0032 3B       		.uleb128 0x3b
+ 489 0033 0B       		.uleb128 0xb
+ 490 0034 49       		.uleb128 0x49
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccT4t89T.s 			page 12
+
+
+ 491 0035 13       		.uleb128 0x13
+ 492 0036 00       		.byte	0
+ 493 0037 00       		.byte	0
+ 494 0038 05       		.uleb128 0x5
+ 495 0039 35       		.uleb128 0x35
+ 496 003a 00       		.byte	0
+ 497 003b 49       		.uleb128 0x49
+ 498 003c 13       		.uleb128 0x13
+ 499 003d 00       		.byte	0
+ 500 003e 00       		.byte	0
+ 501 003f 06       		.uleb128 0x6
+ 502 0040 2E       		.uleb128 0x2e
+ 503 0041 01       		.byte	0x1
+ 504 0042 3F       		.uleb128 0x3f
+ 505 0043 0C       		.uleb128 0xc
+ 506 0044 03       		.uleb128 0x3
+ 507 0045 0E       		.uleb128 0xe
+ 508 0046 3A       		.uleb128 0x3a
+ 509 0047 0B       		.uleb128 0xb
+ 510 0048 3B       		.uleb128 0x3b
+ 511 0049 0B       		.uleb128 0xb
+ 512 004a 27       		.uleb128 0x27
+ 513 004b 0C       		.uleb128 0xc
+ 514 004c 11       		.uleb128 0x11
+ 515 004d 01       		.uleb128 0x1
+ 516 004e 12       		.uleb128 0x12
+ 517 004f 01       		.uleb128 0x1
+ 518 0050 40       		.uleb128 0x40
+ 519 0051 06       		.uleb128 0x6
+ 520 0052 9742     		.uleb128 0x2117
+ 521 0054 0C       		.uleb128 0xc
+ 522 0055 01       		.uleb128 0x1
+ 523 0056 13       		.uleb128 0x13
+ 524 0057 00       		.byte	0
+ 525 0058 00       		.byte	0
+ 526 0059 07       		.uleb128 0x7
+ 527 005a 05       		.uleb128 0x5
+ 528 005b 00       		.byte	0
+ 529 005c 03       		.uleb128 0x3
+ 530 005d 0E       		.uleb128 0xe
+ 531 005e 3A       		.uleb128 0x3a
+ 532 005f 0B       		.uleb128 0xb
+ 533 0060 3B       		.uleb128 0x3b
+ 534 0061 0B       		.uleb128 0xb
+ 535 0062 49       		.uleb128 0x49
+ 536 0063 13       		.uleb128 0x13
+ 537 0064 02       		.uleb128 0x2
+ 538 0065 0A       		.uleb128 0xa
+ 539 0066 00       		.byte	0
+ 540 0067 00       		.byte	0
+ 541 0068 08       		.uleb128 0x8
+ 542 0069 34       		.uleb128 0x34
+ 543 006a 00       		.byte	0
+ 544 006b 03       		.uleb128 0x3
+ 545 006c 0E       		.uleb128 0xe
+ 546 006d 3A       		.uleb128 0x3a
+ 547 006e 0B       		.uleb128 0xb
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccT4t89T.s 			page 13
+
+
+ 548 006f 3B       		.uleb128 0x3b
+ 549 0070 0B       		.uleb128 0xb
+ 550 0071 49       		.uleb128 0x49
+ 551 0072 13       		.uleb128 0x13
+ 552 0073 02       		.uleb128 0x2
+ 553 0074 0A       		.uleb128 0xa
+ 554 0075 00       		.byte	0
+ 555 0076 00       		.byte	0
+ 556 0077 09       		.uleb128 0x9
+ 557 0078 2E       		.uleb128 0x2e
+ 558 0079 00       		.byte	0
+ 559 007a 3F       		.uleb128 0x3f
+ 560 007b 0C       		.uleb128 0xc
+ 561 007c 03       		.uleb128 0x3
+ 562 007d 0E       		.uleb128 0xe
+ 563 007e 3A       		.uleb128 0x3a
+ 564 007f 0B       		.uleb128 0xb
+ 565 0080 3B       		.uleb128 0x3b
+ 566 0081 0B       		.uleb128 0xb
+ 567 0082 27       		.uleb128 0x27
+ 568 0083 0C       		.uleb128 0xc
+ 569 0084 49       		.uleb128 0x49
+ 570 0085 13       		.uleb128 0x13
+ 571 0086 11       		.uleb128 0x11
+ 572 0087 01       		.uleb128 0x1
+ 573 0088 12       		.uleb128 0x12
+ 574 0089 01       		.uleb128 0x1
+ 575 008a 40       		.uleb128 0x40
+ 576 008b 06       		.uleb128 0x6
+ 577 008c 9742     		.uleb128 0x2117
+ 578 008e 0C       		.uleb128 0xc
+ 579 008f 00       		.byte	0
+ 580 0090 00       		.byte	0
+ 581 0091 0A       		.uleb128 0xa
+ 582 0092 2E       		.uleb128 0x2e
+ 583 0093 01       		.byte	0x1
+ 584 0094 3F       		.uleb128 0x3f
+ 585 0095 0C       		.uleb128 0xc
+ 586 0096 03       		.uleb128 0x3
+ 587 0097 0E       		.uleb128 0xe
+ 588 0098 3A       		.uleb128 0x3a
+ 589 0099 0B       		.uleb128 0xb
+ 590 009a 3B       		.uleb128 0x3b
+ 591 009b 0B       		.uleb128 0xb
+ 592 009c 27       		.uleb128 0x27
+ 593 009d 0C       		.uleb128 0xc
+ 594 009e 49       		.uleb128 0x49
+ 595 009f 13       		.uleb128 0x13
+ 596 00a0 11       		.uleb128 0x11
+ 597 00a1 01       		.uleb128 0x1
+ 598 00a2 12       		.uleb128 0x12
+ 599 00a3 01       		.uleb128 0x1
+ 600 00a4 40       		.uleb128 0x40
+ 601 00a5 06       		.uleb128 0x6
+ 602 00a6 9742     		.uleb128 0x2117
+ 603 00a8 0C       		.uleb128 0xc
+ 604 00a9 00       		.byte	0
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccT4t89T.s 			page 14
+
+
+ 605 00aa 00       		.byte	0
+ 606 00ab 00       		.byte	0
+ 607              		.section	.debug_loc,"",%progbits
+ 608              	.Ldebug_loc0:
+ 609              	.LLST0:
+ 610 0000 00000000 		.4byte	.LFB0
+ 611 0004 02000000 		.4byte	.LCFI0
+ 612 0008 0200     		.2byte	0x2
+ 613 000a 7D       		.byte	0x7d
+ 614 000b 00       		.sleb128 0
+ 615 000c 02000000 		.4byte	.LCFI0
+ 616 0010 04000000 		.4byte	.LCFI1
+ 617 0014 0200     		.2byte	0x2
+ 618 0016 7D       		.byte	0x7d
+ 619 0017 08       		.sleb128 8
+ 620 0018 04000000 		.4byte	.LCFI1
+ 621 001c 06000000 		.4byte	.LCFI2
+ 622 0020 0200     		.2byte	0x2
+ 623 0022 7D       		.byte	0x7d
+ 624 0023 18       		.sleb128 24
+ 625 0024 06000000 		.4byte	.LCFI2
+ 626 0028 4C000000 		.4byte	.LFE0
+ 627 002c 0200     		.2byte	0x2
+ 628 002e 77       		.byte	0x77
+ 629 002f 18       		.sleb128 24
+ 630 0030 00000000 		.4byte	0
+ 631 0034 00000000 		.4byte	0
+ 632              	.LLST1:
+ 633 0038 00000000 		.4byte	.LFB1
+ 634 003c 02000000 		.4byte	.LCFI3
+ 635 0040 0200     		.2byte	0x2
+ 636 0042 7D       		.byte	0x7d
+ 637 0043 00       		.sleb128 0
+ 638 0044 02000000 		.4byte	.LCFI3
+ 639 0048 04000000 		.4byte	.LCFI4
+ 640 004c 0200     		.2byte	0x2
+ 641 004e 7D       		.byte	0x7d
+ 642 004f 08       		.sleb128 8
+ 643 0050 04000000 		.4byte	.LCFI4
+ 644 0054 06000000 		.4byte	.LCFI5
+ 645 0058 0200     		.2byte	0x2
+ 646 005a 7D       		.byte	0x7d
+ 647 005b 10       		.sleb128 16
+ 648 005c 06000000 		.4byte	.LCFI5
+ 649 0060 30000000 		.4byte	.LFE1
+ 650 0064 0200     		.2byte	0x2
+ 651 0066 77       		.byte	0x77
+ 652 0067 10       		.sleb128 16
+ 653 0068 00000000 		.4byte	0
+ 654 006c 00000000 		.4byte	0
+ 655              	.LLST2:
+ 656 0070 00000000 		.4byte	.LFB2
+ 657 0074 02000000 		.4byte	.LCFI6
+ 658 0078 0200     		.2byte	0x2
+ 659 007a 7D       		.byte	0x7d
+ 660 007b 00       		.sleb128 0
+ 661 007c 02000000 		.4byte	.LCFI6
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccT4t89T.s 			page 15
+
+
+ 662 0080 04000000 		.4byte	.LCFI7
+ 663 0084 0200     		.2byte	0x2
+ 664 0086 7D       		.byte	0x7d
+ 665 0087 08       		.sleb128 8
+ 666 0088 04000000 		.4byte	.LCFI7
+ 667 008c 1C000000 		.4byte	.LFE2
+ 668 0090 0200     		.2byte	0x2
+ 669 0092 77       		.byte	0x77
+ 670 0093 08       		.sleb128 8
+ 671 0094 00000000 		.4byte	0
+ 672 0098 00000000 		.4byte	0
+ 673              	.LLST3:
+ 674 009c 00000000 		.4byte	.LFB3
+ 675 00a0 02000000 		.4byte	.LCFI8
+ 676 00a4 0200     		.2byte	0x2
+ 677 00a6 7D       		.byte	0x7d
+ 678 00a7 00       		.sleb128 0
+ 679 00a8 02000000 		.4byte	.LCFI8
+ 680 00ac 04000000 		.4byte	.LCFI9
+ 681 00b0 0200     		.2byte	0x2
+ 682 00b2 7D       		.byte	0x7d
+ 683 00b3 08       		.sleb128 8
+ 684 00b4 04000000 		.4byte	.LCFI9
+ 685 00b8 1C000000 		.4byte	.LFE3
+ 686 00bc 0200     		.2byte	0x2
+ 687 00be 77       		.byte	0x77
+ 688 00bf 08       		.sleb128 8
+ 689 00c0 00000000 		.4byte	0
+ 690 00c4 00000000 		.4byte	0
+ 691              	.LLST4:
+ 692 00c8 00000000 		.4byte	.LFB4
+ 693 00cc 02000000 		.4byte	.LCFI10
+ 694 00d0 0200     		.2byte	0x2
+ 695 00d2 7D       		.byte	0x7d
+ 696 00d3 00       		.sleb128 0
+ 697 00d4 02000000 		.4byte	.LCFI10
+ 698 00d8 04000000 		.4byte	.LCFI11
+ 699 00dc 0200     		.2byte	0x2
+ 700 00de 7D       		.byte	0x7d
+ 701 00df 08       		.sleb128 8
+ 702 00e0 04000000 		.4byte	.LCFI11
+ 703 00e4 06000000 		.4byte	.LCFI12
+ 704 00e8 0200     		.2byte	0x2
+ 705 00ea 7D       		.byte	0x7d
+ 706 00eb 10       		.sleb128 16
+ 707 00ec 06000000 		.4byte	.LCFI12
+ 708 00f0 30000000 		.4byte	.LFE4
+ 709 00f4 0200     		.2byte	0x2
+ 710 00f6 77       		.byte	0x77
+ 711 00f7 10       		.sleb128 16
+ 712 00f8 00000000 		.4byte	0
+ 713 00fc 00000000 		.4byte	0
+ 714              		.section	.debug_aranges,"",%progbits
+ 715 0000 3C000000 		.4byte	0x3c
+ 716 0004 0200     		.2byte	0x2
+ 717 0006 00000000 		.4byte	.Ldebug_info0
+ 718 000a 04       		.byte	0x4
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccT4t89T.s 			page 16
+
+
+ 719 000b 00       		.byte	0
+ 720 000c 0000     		.2byte	0
+ 721 000e 0000     		.2byte	0
+ 722 0010 00000000 		.4byte	.LFB0
+ 723 0014 4C000000 		.4byte	.LFE0-.LFB0
+ 724 0018 00000000 		.4byte	.LFB1
+ 725 001c 30000000 		.4byte	.LFE1-.LFB1
+ 726 0020 00000000 		.4byte	.LFB2
+ 727 0024 1C000000 		.4byte	.LFE2-.LFB2
+ 728 0028 00000000 		.4byte	.LFB3
+ 729 002c 1C000000 		.4byte	.LFE3-.LFB3
+ 730 0030 00000000 		.4byte	.LFB4
+ 731 0034 30000000 		.4byte	.LFE4-.LFB4
+ 732 0038 00000000 		.4byte	0
+ 733 003c 00000000 		.4byte	0
+ 734              		.section	.debug_ranges,"",%progbits
+ 735              	.Ldebug_ranges0:
+ 736 0000 00000000 		.4byte	.LFB0
+ 737 0004 4C000000 		.4byte	.LFE0
+ 738 0008 00000000 		.4byte	.LFB1
+ 739 000c 30000000 		.4byte	.LFE1
+ 740 0010 00000000 		.4byte	.LFB2
+ 741 0014 1C000000 		.4byte	.LFE2
+ 742 0018 00000000 		.4byte	.LFB3
+ 743 001c 1C000000 		.4byte	.LFE3
+ 744 0020 00000000 		.4byte	.LFB4
+ 745 0024 30000000 		.4byte	.LFE4
+ 746 0028 00000000 		.4byte	0
+ 747 002c 00000000 		.4byte	0
+ 748              		.section	.debug_line,"",%progbits
+ 749              	.Ldebug_line0:
+ 750 0000 A6000000 		.section	.debug_str,"MS",%progbits,1
+ 750      02004300 
+ 750      00000201 
+ 750      FB0E0D00 
+ 750      01010101 
+ 751              	.LASF14:
+ 752 0000 72656733 		.ascii	"reg32\000"
+ 752      3200
+ 753              	.LASF23:
+ 754 0006 6D61736B 		.ascii	"maskedStatus\000"
+ 754      65645374 
+ 754      61747573 
+ 754      00
+ 755              	.LASF17:
+ 756 0013 76616C75 		.ascii	"value\000"
+ 756      6500
+ 757              	.LASF19:
+ 758 0019 42757A7A 		.ascii	"Buzz_Read\000"
+ 758      5F526561 
+ 758      6400
+ 759              	.LASF15:
+ 760 0023 42757A7A 		.ascii	"Buzz_Write\000"
+ 760      5F577269 
+ 760      746500
+ 761              	.LASF11:
+ 762 002e 666C6F61 		.ascii	"float\000"
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccT4t89T.s 			page 17
+
+
+ 762      7400
+ 763              	.LASF26:
+ 764 0034 433A5C50 		.ascii	"C:\\Projects\\PSoC\\Bootloading_PSoC5_LP\\PSoc4_Mai"
+ 764      726F6A65 
+ 764      6374735C 
+ 764      50536F43 
+ 764      5C426F6F 
+ 765 0063 6E2E6379 		.ascii	"n.cydsn\000"
+ 765      64736E00 
+ 766              	.LASF1:
+ 767 006b 756E7369 		.ascii	"unsigned char\000"
+ 767      676E6564 
+ 767      20636861 
+ 767      7200
+ 768              	.LASF22:
+ 769 0079 64725661 		.ascii	"drVal\000"
+ 769      6C00
+ 770              	.LASF5:
+ 771 007f 6C6F6E67 		.ascii	"long unsigned int\000"
+ 771      20756E73 
+ 771      69676E65 
+ 771      6420696E 
+ 771      7400
+ 772              	.LASF3:
+ 773 0091 73686F72 		.ascii	"short unsigned int\000"
+ 773      7420756E 
+ 773      7369676E 
+ 773      65642069 
+ 773      6E7400
+ 774              	.LASF12:
+ 775 00a4 646F7562 		.ascii	"double\000"
+ 775      6C6500
+ 776              	.LASF10:
+ 777 00ab 75696E74 		.ascii	"uint32\000"
+ 777      333200
+ 778              	.LASF8:
+ 779 00b2 756E7369 		.ascii	"unsigned int\000"
+ 779      676E6564 
+ 779      20696E74 
+ 779      00
+ 780              	.LASF16:
+ 781 00bf 42757A7A 		.ascii	"Buzz_SetDriveMode\000"
+ 781      5F536574 
+ 781      44726976 
+ 781      654D6F64 
+ 781      6500
+ 782              	.LASF7:
+ 783 00d1 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 783      206C6F6E 
+ 783      6720756E 
+ 783      7369676E 
+ 783      65642069 
+ 784              	.LASF18:
+ 785 00e8 6D6F6465 		.ascii	"mode\000"
+ 785      00
+ 786              	.LASF21:
+ 787 00ed 42757A7A 		.ascii	"Buzz_ClearInterrupt\000"
+ARM GAS  C:\Users\javier\AppData\Local\Temp\ccT4t89T.s 			page 18
+
+
+ 787      5F436C65 
+ 787      6172496E 
+ 787      74657272 
+ 787      75707400 
+ 788              	.LASF6:
+ 789 0101 6C6F6E67 		.ascii	"long long int\000"
+ 789      206C6F6E 
+ 789      6720696E 
+ 789      7400
+ 790              	.LASF20:
+ 791 010f 42757A7A 		.ascii	"Buzz_ReadDataReg\000"
+ 791      5F526561 
+ 791      64446174 
+ 791      61526567 
+ 791      00
+ 792              	.LASF13:
+ 793 0120 63686172 		.ascii	"char\000"
+ 793      00
+ 794              	.LASF2:
+ 795 0125 73686F72 		.ascii	"short int\000"
+ 795      7420696E 
+ 795      7400
+ 796              	.LASF9:
+ 797 012f 75696E74 		.ascii	"uint8\000"
+ 797      3800
+ 798              	.LASF24:
+ 799 0135 474E5520 		.ascii	"GNU C 4.7.3 20130312 (release) [ARM/embedded-4_7-br"
+ 799      4320342E 
+ 799      372E3320 
+ 799      32303133 
+ 799      30333132 
+ 800 0168 616E6368 		.ascii	"anch revision 196615]\000"
+ 800      20726576 
+ 800      6973696F 
+ 800      6E203139 
+ 800      36363135 
+ 801              	.LASF4:
+ 802 017e 6C6F6E67 		.ascii	"long int\000"
+ 802      20696E74 
+ 802      00
+ 803              	.LASF0:
+ 804 0187 7369676E 		.ascii	"signed char\000"
+ 804      65642063 
+ 804      68617200 
+ 805              	.LASF25:
+ 806 0193 2E5C4765 		.ascii	".\\Generated_Source\\PSoC4\\Buzz.c\000"
+ 806      6E657261 
+ 806      7465645F 
+ 806      536F7572 
+ 806      63655C50 
+ 807              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.7.3 20130312 (release) [ARM/embedded-4_7-br

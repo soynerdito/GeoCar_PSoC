@@ -1,28 +1,29 @@
 dont_use_io iocell 3 2
 dont_use_io iocell 3 3
-set_location "\BLUE:BUART:tx_bitclk\" macrocell 0 0 1 1
 set_location "\BLUE:BUART:tx_state_2\" macrocell 1 0 0 1
+set_location "\BLUE:BUART:tx_status_2\" macrocell 1 0 1 3
 set_location "\BLUE:BUART:rx_state_stop1_reg\" macrocell 0 1 1 2
 set_location "\BLUE:BUART:rx_last\" macrocell 0 1 1 3
-set_location "\BLUE:BUART:tx_bitclk_enable_pre\" macrocell 0 0 1 2
-set_location "\BLUE:BUART:rx_status_5\" macrocell 1 1 0 0
 set_location "\BLUE:BUART:rx_state_0\" macrocell 0 1 0 0
 set_location "\BLUE:BUART:rx_status_3\" macrocell 0 1 0 3
 set_location "\BLUE:BUART:tx_state_1\" macrocell 0 0 1 0
-set_location "Net_467" macrocell 1 1 1 0
-set_location "\BLUE:BUART:rx_address_detected\" macrocell 1 1 0 2
+set_location "Net_467" macrocell 1 1 0 2
+set_location "\BLUE:BUART:rx_address_detected\" macrocell 1 1 0 3
 set_location "\BLUE:BUART:pollcount_1\" macrocell 0 0 0 0
 set_location "\BLUE:BUART:sTX:TxShifter:u0\" datapathcell 1 0 2 
-set_location "\BLUE:BUART:rx_status_4\" macrocell 1 1 0 1
+set_location "\BLUE:BUART:rx_status_4\" macrocell 1 1 0 0
 set_location "\BLUE:BUART:sRX:RxSts\" statusicell 1 1 4 
 set_location "\BLUE:BUART:sTX:TxSts\" statusicell 1 0 4 
 set_location "\BLUE:BUART:counter_load_not\" macrocell 0 0 1 3
+set_location "__ONE__" macrocell 1 0 0 2
 set_location "\BLUE:BUART:rx_state_2\" macrocell 0 1 1 0
 set_location "\BLUE:BUART:pollcount_0\" macrocell 0 0 0 2
+set_location "\BLUE:BUART:tx_bitclk\" macrocell 0 0 1 1
 set_location "\BLUE:BUART:sRX:RxShifter:u0\" datapathcell 0 1 2 
-set_location "\BLUE:BUART:tx_status_2\" macrocell 1 0 1 1
 set_location "\BLUE:BUART:rx_postpoll\" macrocell 0 0 0 1
 set_location "\BLUE:BUART:sRX:RxBitCounter\" count7cell 0 1 7 
+set_location "\BLUE:BUART:tx_bitclk_enable_pre\" macrocell 0 0 1 2
+set_location "\BLUE:BUART:rx_status_5\" macrocell 1 1 0 1
 set_location "\BLUE:BUART:rx_counter_load\" macrocell 0 1 1 1
 set_location "\BLUE:BUART:sTX:sCLOCK:TxBitClkGen\" datapathcell 0 0 2 
 set_location "\BLUE:BUART:tx_status_0\" macrocell 1 0 1 0
@@ -31,18 +32,24 @@ set_location "\BLUE:BUART:rx_state_3\" macrocell 0 1 0 2
 set_location "\BLUE:BUART:rx_bitclk_enable\" macrocell 0 0 0 3
 set_location "\BLUE:BUART:txn\" macrocell 1 0 0 0
 set_location "\BLUE:BUART:tx_state_0\" macrocell 1 0 1 2
+set_io "Pin_GreenLED(0)" iocell 0 2
 set_location "\PSOC5:SCB\" m0s8scbcell -1 -1 1
-set_location "ClockBlock" m0s8clockblockcell -1 -1 0
+set_location "\IDAC_1:cy_psoc4_idac\" p4csidac8cell -1 -1 0
+set_io "Pin_RedLED(0)" iocell 1 6
 set_io "\PSOC5:tx(0)\" iocell 3 1
 # Warning: unknown type "p4sarmuxcell"
 #set_location "\ADC_ACCELEROMETER:cy_psoc4_sarmux_8\" p4sarmuxcell -1 -1 -1 -1
+set_location "\OutStatus:Sync:ctrl_reg\" controlcell 1 0 6 
 set_io "Blue_Tx(0)" iocell 0 5
 set_io "Blue_Rx(0)" iocell 0 4
 set_location "\ADC_ACCELEROMETER:IRQ\" interrupt -1 -1 14
 set_location "ClockGenBlock" m0s8clockgenblockcell -1 -1 0
 set_location "\BLUE:TXInternalInterrupt\" interrupt -1 -1 0
+set_location "\ADC_ACCELEROMETER:cy_psoc4_sar\" p4sarcell -1 -1 0
 set_io "\PSOC5:rx(0)\" iocell 3 0
+set_location "ClockBlock" m0s8clockblockcell -1 -1 0
+set_io "Buzz(0)" iocell 2 5
+set_io "Pin_BlueLED(0)" iocell 0 3
 set_io "Vin(0)" iocell 2 3
 set_io "Vin_Y(0)" iocell 2 1
 set_io "Vin_Z(0)" iocell 2 0
-set_location "\ADC_ACCELEROMETER:cy_psoc4_sar\" p4sarcell -1 -1 0

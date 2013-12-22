@@ -31,6 +31,16 @@
 #include <Vin_Z.h>
 #include <Vin_Z_aliases.h>
 #include <BLUE.h>
+#include <IDAC_1.h>
+#include <Buzz.h>
+#include <Buzz_aliases.h>
+#include <Pin_RedLED.h>
+#include <Pin_RedLED_aliases.h>
+#include <OutStatus.h>
+#include <Pin_BlueLED.h>
+#include <Pin_BlueLED_aliases.h>
+#include <Pin_GreenLED.h>
+#include <Pin_GreenLED_aliases.h>
 #include <PSOC5_rx.h>
 #include <PSOC5_rx_aliases.h>
 #include <PSOC5_SCBCLK.h>

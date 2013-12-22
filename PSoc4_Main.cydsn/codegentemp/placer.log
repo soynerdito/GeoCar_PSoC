@@ -6,7 +6,7 @@
 
 #Build Date:         Mar 26 2013 14:54:34
 
-#File Generated:     Dec 7 2013 13:35:03
+#File Generated:     Dec 22 2013 18:54:23
 
 #Purpose:            
 
@@ -44,18 +44,18 @@ Phase 2
 Phase 3
 
 Design Statistics after Packing
-    Number of Combinational MCs 	:	9
+    Number of Combinational MCs 	:	10
     Number of Sequential MCs    	:	16
     Number of DPs               	:	3
-    Number of Controls          	:	1
+    Number of Controls          	:	2
     Number of Status            	:	2
     Number of SyncCells         	:	0
     Number of count7cells       	:	1
 
 Device Utilization Summary after Packing
-    Macrocells                  :	25/32
+    Macrocells                  :	26/32
     UDBS                        :	4/4
-    IOs                         :	7/36
+    IOs                         :	11/36
 
 
 D2088: Phase 3, elapsed time : 0.0 (sec)
@@ -92,7 +92,7 @@ Clock: PSOC5_SCBCLK(FFB)    | Frequency: N/A       | Target:   0.1 MHz
                      End of Clock Summary
 ######################################################################
 
-D2088: Phase 6, elapsed time : 0.0 (sec)
+D2088: Phase 6, elapsed time : 0.1 (sec)
 
 Phase 7
 ######################################################################
@@ -113,21 +113,21 @@ Clock: PSOC5_SCBCLK(FFB)    | Frequency: N/A       | Target:   0.1 MHz
 ======================================================================
                      End of Clock Summary
 ######################################################################
-D2088: Phase 7, elapsed time : 0.2 (sec)
+D2088: Phase 7, elapsed time : 0.3 (sec)
 
 Final Design Statistics
-    Number of Combinational MCs 	:	9
+    Number of Combinational MCs 	:	10
     Number of Sequential MCs    	:	16
     Number of DPs               	:	3
-    Number of Controls          	:	1
+    Number of Controls          	:	2
     Number of Status            	:	2
     Number of SyncCells         	:	0
     Number of count7cells       	:	1
-    Number of IOs       	:	7
+    Number of IOs       	:	11
 
 Device Utilization Summary
-    Macrocells                  :	25/32
-    IOs                         :	7/36
+    Macrocells                  :	26/32
+    IOs                         :	11/36
 
 
 
@@ -164,5 +164,5 @@ D2088: Phase 8, elapsed time : 0.0 (sec)
 
 D2054: Placement of the design completed successfully
 
-I2076: Total run-time: 0.8 sec.
+I2076: Total run-time: 1.1 sec.
 

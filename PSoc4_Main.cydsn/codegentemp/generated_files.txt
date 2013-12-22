@@ -44,6 +44,23 @@
   <file name="C:\Projects\PSoC\Bootloading_PSoC5_LP\PSoc4_Main.cydsn\codegentemp\BLUE_PM.c" value="ARM_C_FILE;BLUE" />
   <file name="C:\Projects\PSoC\Bootloading_PSoC5_LP\PSoc4_Main.cydsn\codegentemp\BLUE_INT.c" value="ARM_C_FILE;BLUE" />
   <file name="C:\Projects\PSoC\Bootloading_PSoC5_LP\PSoc4_Main.cydsn\codegentemp\BLUE_BOOT.c" value="ARM_C_FILE;BLUE" />
+  <file name="C:\Projects\PSoC\Bootloading_PSoC5_LP\PSoc4_Main.cydsn\codegentemp\IDAC_1.c" value="ARM_C_FILE;IDAC_1" />
+  <file name="C:\Projects\PSoC\Bootloading_PSoC5_LP\PSoc4_Main.cydsn\codegentemp\IDAC_1.h" value="NONE;IDAC_1" />
+  <file name="C:\Projects\PSoC\Bootloading_PSoC5_LP\PSoc4_Main.cydsn\codegentemp\IDAC_1_PM.c" value="ARM_C_FILE;IDAC_1" />
+  <file name="C:\Projects\PSoC\Bootloading_PSoC5_LP\PSoc4_Main.cydsn\codegentemp\Buzz.c" value="ARM_C_FILE;Buzz" />
+  <file name="C:\Projects\PSoC\Bootloading_PSoC5_LP\PSoc4_Main.cydsn\codegentemp\Buzz.h" value="NONE;Buzz" />
+  <file name="C:\Projects\PSoC\Bootloading_PSoC5_LP\PSoc4_Main.cydsn\codegentemp\Buzz_aliases.h" value="NONE;Buzz" />
+  <file name="C:\Projects\PSoC\Bootloading_PSoC5_LP\PSoc4_Main.cydsn\codegentemp\Pin_RedLED.c" value="ARM_C_FILE;Pin_RedLED" />
+  <file name="C:\Projects\PSoC\Bootloading_PSoC5_LP\PSoc4_Main.cydsn\codegentemp\Pin_RedLED.h" value="NONE;Pin_RedLED" />
+  <file name="C:\Projects\PSoC\Bootloading_PSoC5_LP\PSoc4_Main.cydsn\codegentemp\Pin_RedLED_aliases.h" value="NONE;Pin_RedLED" />
+  <file name="C:\Projects\PSoC\Bootloading_PSoC5_LP\PSoc4_Main.cydsn\codegentemp\OutStatus.c" value="ARM_C_FILE;OutStatus" />
+  <file name="C:\Projects\PSoC\Bootloading_PSoC5_LP\PSoc4_Main.cydsn\codegentemp\OutStatus.h" value="NONE;OutStatus" />
+  <file name="C:\Projects\PSoC\Bootloading_PSoC5_LP\PSoc4_Main.cydsn\codegentemp\Pin_BlueLED.c" value="ARM_C_FILE;Pin_BlueLED" />
+  <file name="C:\Projects\PSoC\Bootloading_PSoC5_LP\PSoc4_Main.cydsn\codegentemp\Pin_BlueLED.h" value="NONE;Pin_BlueLED" />
+  <file name="C:\Projects\PSoC\Bootloading_PSoC5_LP\PSoc4_Main.cydsn\codegentemp\Pin_BlueLED_aliases.h" value="NONE;Pin_BlueLED" />
+  <file name="C:\Projects\PSoC\Bootloading_PSoC5_LP\PSoc4_Main.cydsn\codegentemp\Pin_GreenLED.c" value="ARM_C_FILE;Pin_GreenLED" />
+  <file name="C:\Projects\PSoC\Bootloading_PSoC5_LP\PSoc4_Main.cydsn\codegentemp\Pin_GreenLED.h" value="NONE;Pin_GreenLED" />
+  <file name="C:\Projects\PSoC\Bootloading_PSoC5_LP\PSoc4_Main.cydsn\codegentemp\Pin_GreenLED_aliases.h" value="NONE;Pin_GreenLED" />
   <file name="C:\Projects\PSoC\Bootloading_PSoC5_LP\PSoc4_Main.cydsn\codegentemp\PSOC5_rx.c" value="ARM_C_FILE;PSOC5_rx" />
   <file name="C:\Projects\PSoC\Bootloading_PSoC5_LP\PSoc4_Main.cydsn\codegentemp\PSOC5_rx.h" value="NONE;PSOC5_rx" />
   <file name="C:\Projects\PSoC\Bootloading_PSoC5_LP\PSoc4_Main.cydsn\codegentemp\PSOC5_rx_aliases.h" value="NONE;PSOC5_rx" />
